@@ -73,22 +73,48 @@ app.get('/getMatches', (request, response) => {
 
 // Endpoint that will insert to the database some player data
 app.post('/createMatch', (request, response) => {
+    // Get the data from the request
     var p1 = request.body.p1;
     var p2 = request.body.p2;
 
-
-    if (!p1 && p2){
+    // if the vars are empty is gives an error message
+    if (!p1 || !p2){
         response.send("Missing data!");
         return;
     }
 
-
+    // Executes the query to create a new match, if it has an error, it will send the error message
     connection.execute('insert into `Match` (match_ms_id, match_pc_id) values(1, 1);',
         function (err, results, fields) {
             if (err){
                 response.send(err);
             }else{
-                response.send("Account created - ");
+                // Get the id of the last inserted match
+                var matchId = results.insertId;
+
+                insertMatchPlayer(request, response, p1, p2, matchId)
             }
         });
 });
+
+function insertMatchPlayer(request, response, p1, p2, matchId) {
+    connection.execute('INSERT INTO Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) VALUES (?, ?, 1, 1);',
+    [matchId, p1],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            // Insert player 2 data into the `Match_Player` table
+            connection.execute('INSERT INTO Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) VALUES (?, ?, 1, 2);',
+                [matchId, p2],
+                function (err, results, fields) {
+                    if (err) {
+                        response.send(err);
+                    } else {
+                        response.send("Match created successfully!");
+                    }
+                });
+        }
+    });
+}
+

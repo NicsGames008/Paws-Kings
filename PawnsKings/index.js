@@ -7,6 +7,7 @@ const serverPort = 3000;
 
 // Create a new instance of express
 const app = express();
+app.use(express.urlencoded());
 
 // Create a new connection to the database
 const connection = mysql.createConnection({
@@ -30,7 +31,12 @@ connection.connect((err) => {
 })
 
 
-app.use(express.urlencoded());
+// Listen on port for any requests made.
+// Note: Only 1 program can be listening at a single port at any time. This means we can't execute this server two times in the same port...
+app.listen(serverPort, () => {
+    console.log('👌 Server is running at ' + serverPort);
+});
+
 
 // Endpoints
 
@@ -48,50 +54,41 @@ app.get('/getPlayer', (request, response) => {
         });
 });
 
-// Endpoint that will insert to the database some player data
-app.post('/createPlayer', (request, response) => {
-    var playerName = request.body.playerName;
+// Endpoint that will get all the macths from the database
+app.get('/getMatches', (request, response) => {
 
-    if (!playerName){
-        response.send("Missing data! 💩");
-        return;
-    }
-
-    // The old fashion way (use execute instead. MAFALDA. execute!!!!!)
-    //connection.query("INSERT INTO player (player_username) VALUES ('" + playerName + "')");
-
-    // Check if the playerName already exists in the database
-    connection.execute('SELECT * FROM player WHERE player_username = ?',
-        [playerName],
-        function (err, results, fields) {
-            // Check if the results length is greater than 0
-            if (results.length == 0){
-                // If its 0 then we don't have any username with that name in the DB
-                createAccount(request, response, playerName);
-            }else{
-                // If different of 0 (> 0), means we have a username with that name!
-                response.send("Username already picked!");
-            }
-        });
-});
-
-// Aux. Function to create account. This is called after we validate that there is no playerName in the DB
-function createAccount(request, response, playerName){
-    // Execute the insert. The function defined here (third parameter) is called callback.
-    // Callback gets executed after the insert gets executed (sucessfully or not!)
-    connection.execute('INSERT INTO player (player_username) VALUES (?)',
-        [playerName],
+    // Executes the query to get all the matchs from the database, if it has an error, it will send the error message
+    connection.execute('SELECT m.match_id, ms.ms_description AS match_state, pc1.pc_name AS player_color, p.player_name, ut.ut_name AS upgrade_tier FROM `Match` m INNER JOIN Match_State ms ON m.match_ms_id = ms.ms_id INNER JOIN Match_Player mp ON m.match_id = mp.mp_match_id INNER JOIN Player p ON mp.mp_player_id = p.player_id INNER JOIN Player_Color pc1 ON m.match_pc_id = pc1.pc_id INNER JOIN Player_Color pc2 ON mp.mp_pc_id = pc2.pc_id INNER JOIN Upgrade_Tier ut ON mp.mp_ut_id = ut.ut_id ORDER BY m.match_id;',
         function (err, results, fields) {
             if (err){
                 response.send(err);
             }else{
-                response.send("Account created - " + playerName);
+                response.send(results);
             }
         });
-}
+});
 
-// Listen on port for any requests made.
-// Note: Only 1 program can be listening at a single port at any time. This means we can't execute this server two times in the same port...
-app.listen(serverPort, () => {
-    console.log('👌 Server is running at ' + serverPort);
+
+
+
+// Endpoint that will insert to the database some player data
+app.post('/createMatch', (request, response) => {
+    var p1 = request.body.p1;
+    var p2 = request.body.p2;
+
+
+    if (!p1 && p2){
+        response.send("Missing data!");
+        return;
+    }
+
+
+    connection.execute('insert into `Match` (match_ms_id, match_pc_id) values(1, 1);',
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                response.send("Account created - ");
+            }
+        });
 });

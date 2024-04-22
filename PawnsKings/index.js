@@ -41,7 +41,7 @@ app.listen(serverPort, () => {
 // Endpoints
 
 // Endpoint that will get all the players from the database
-app.get('/getPlayer', (request, response) => {
+app.get('/getPlayers', (request, response) => {
 
     // Executes the query to get all the players from the database, if it has an error, it will send the error message
     connection.execute('SELECT * FROM player',
@@ -92,11 +92,13 @@ app.post('/createMatch', (request, response) => {
                 // Get the id of the last inserted match
                 var matchId = results.insertId;
 
+                // Insert players data into the `Match_Player` table
                 insertMatchPlayer(request, response, p1, p2, matchId)
             }
         });
 });
 
+// fuction that will insert the match player to the database
 function insertMatchPlayer(request, response, p1, p2, matchId) {
     connection.execute('INSERT INTO Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) VALUES (?, ?, 1, 1);',
     [matchId, p1],

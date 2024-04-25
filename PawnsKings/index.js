@@ -137,7 +137,7 @@ function insertMatchPlayer(request, response, p1, p2, matchId) {
 
 
 
-app.post('/move', (request, response) => {
+app.post('/movePiece', (request, response) => {
     // Get the data from the request
     var startX = request.body.startX;
     var startY = request.body.startY;

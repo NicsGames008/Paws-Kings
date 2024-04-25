@@ -143,32 +143,39 @@ app.post('/move', (request, response) => {
     var startY = request.body.startY;
     var endX = request.body.endX;
     var endY = request.body.endY;
-    var pieceType = request.body.pieceType;
+    var playerId = request.body.playerId;
+    var matchId = request.body.matchId;
+
 
     // if the vars are empty is gives an error message
-    if (!startX || !startY || !endX || !endY ||!pieceType ){
+    if (!startX || !startY || !endX || !endY ||!playerId || !matchId){
         response.send("Missing data!");
         return;
     }
 
-    if (isValidMove(startX, startY, endX, endY, pieceType))
-        response.send("Move is valid!");
-    else
-        response.send("Move is not valid!");
+    // Execute the query
+    connection.execute(`SELECT ms.ms_description AS match_state FROM Match_Player mp INNER JOIN Match_State ms ON mp.mp_match_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ms.ms_id; `,
+    [matchId, playerId], 
+    function (err, results, fields){
+        if (err) {
+            response.send(err);
+        } else {
+            if (results.length === 0) {
+                // Player is not in the match
+                response.send("Player is not in that match!");
+            } else {
+                const matchState = results[0].match_state;
+                response.send({ matchState: matchState });
+            }
+        }
+    });
 
-    // // Executes the query to create a new match, if it has an error, it will send the error message
-    // connection.execute('insert into `Match` (match_ms_id, match_pc_id) values(1, 1);',
-    //     function (err, results, fields) {
-    //         if (err){
-    //             response.send(err);
-    //         }else{
-    //             // Get the id of the last inserted match
-    //             var matchId = results.insertId;
 
-    //             // Insert players data into the `Match_Player` table
-    //             insertMatchPlayer(request, response, p1, p2, matchId)
-    //         }
-    //     });
+    // if (isValidMove(startX, startY, endX, endY, pieceType))
+    //     response.send("Move is valid!");
+    // else
+    //     response.send("Move is not valid!");
+
 });
 
 
@@ -204,6 +211,7 @@ function isValidMove(startX, startY, endX, endY, pieceType) {
             return false; // If the piece type is not recognized
     }
 }
+
 function isValidPawnMove(startX, startY, endX, endY) {
     // For white pawns
     if (startY == 2) { // Initial row for white pawns
@@ -239,7 +247,6 @@ function isValidPawnMove(startX, startY, endX, endY) {
     return false;
 }
 
-
 function isValidRookMove(startX, startY, endX, endY) {
     // Rook moves along a rank (row) or file (column)
     if (startX === endX || startY === endY) {
@@ -263,7 +270,6 @@ function isValidKnightMove(startX, startY, endX, endY) {
     // If none of the conditions are met, the move is invalid
     return false;
 }
-
 
 function isValidBishopMove(startX, startY, endX, endY) {
     // Bishop moves along a diagonal

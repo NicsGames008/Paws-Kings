@@ -120,3 +120,182 @@ function insertMatchPlayer(request, response, p1, p2, matchId) {
     });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.post('/move', (request, response) => {
+    // Get the data from the request
+    var startX = request.body.startX;
+    var startY = request.body.startY;
+    var endX = request.body.endX;
+    var endY = request.body.endY;
+    var pieceType = request.body.pieceType;
+
+    // if the vars are empty is gives an error message
+    if (!startX || !startY || !endX || !endY ||!pieceType ){
+        response.send("Missing data!");
+        return;
+    }
+
+    if (isValidMove(startX, startY, endX, endY, pieceType))
+        response.send("Move is valid!");
+    else
+        response.send("Move is not valid!");
+
+    // // Executes the query to create a new match, if it has an error, it will send the error message
+    // connection.execute('insert into `Match` (match_ms_id, match_pc_id) values(1, 1);',
+    //     function (err, results, fields) {
+    //         if (err){
+    //             response.send(err);
+    //         }else{
+    //             // Get the id of the last inserted match
+    //             var matchId = results.insertId;
+
+    //             // Insert players data into the `Match_Player` table
+    //             insertMatchPlayer(request, response, p1, p2, matchId)
+    //         }
+    //     });
+});
+
+
+
+
+
+function isValidMove(startX, startY, endX, endY, pieceType) {
+    // Validate if the positions are within the board boundaries
+    if (startX < 1 || startX > 8 || startY < 1 || startY > 8 || endX < 1 || endX > 8 || endY < 1 || endY > 8) {
+        return false;
+    }
+
+    // Validate if the start and end positions are the same
+    if (startX === endX && startY === endY) {
+        return false;
+    }
+
+    // Check if the move is valid based on the piece type
+    switch (pieceType) {
+        case 'Pawn':
+            return isValidPawnMove(startX, startY, endX, endY);
+        case 'Roock':
+            return isValidRookMove(startX, startY, endX, endY);
+        case 'Knight':
+            return isValidKnightMove(startX, startY, endX, endY);
+        case 'Bishop':
+            return isValidBishopMove(startX, startY, endX, endY);
+        case 'Queen':
+            return isValidQueenMove(startX, startY, endX, endY);
+        case 'King':
+            return isValidKingMove(startX, startY, endX, endY);
+        default:
+            return false; // If the piece type is not recognized
+    }
+}
+function isValidPawnMove(startX, startY, endX, endY) {
+    // For white pawns
+    if (startY == 2) { // Initial row for white pawns
+        // Pawn moves one or two squares forward from its initial position
+        if (startX === endX && (endY - startY === 1 || endY - startY === 2)) {
+            return true;
+        }
+    } else { // For non-initial moves of white pawns
+        // Pawn moves one square forward
+        if (startX === endX && endY - startY === 1) {
+            return true;
+        }
+    }
+    // For black pawns
+    if (startY == 7) { // Initial row for black pawns
+        // Pawn moves one or two squares forward from its initial position
+        if (startX === endX && (startY - endY === 1 || startY - endY === 2)) {
+            return true;
+        }
+    } else { // For non-initial moves of black pawns
+        // Pawn moves one square forward
+        if (startX === endX && startY - endY === 1) {
+            return true;
+        }
+    }
+
+    // Pawn captures diagonally
+    if (Math.abs(startX - endX) === 1 && Math.abs(startY - endY) === 1) {
+        return true;
+    }
+
+    // If none of the conditions are met, the move is invalid
+    return false;
+}
+
+
+function isValidRookMove(startX, startY, endX, endY) {
+    // Rook moves along a rank (row) or file (column)
+    if (startX === endX || startY === endY) {
+        return true;
+    }
+
+    // If none of the conditions are met, the move is invalid
+    return false;
+}
+
+function isValidKnightMove(startX, startY, endX, endY) {
+    // Knight moves in an L shape: 2 squares in one direction and 1 square perpendicular to that direction
+    const dx = Math.abs(startX - endX);
+    const dy = Math.abs(startY - endY);
+    
+    // Check if the move is an L shape (2 squares in one direction and 1 square perpendicular)
+    if ((dx === 1 && dy === 2) || (dx === 2 && dy === 1)) {
+        return true;
+    }
+
+    // If none of the conditions are met, the move is invalid
+    return false;
+}
+
+
+function isValidBishopMove(startX, startY, endX, endY) {
+    // Bishop moves along a diagonal
+    // Check if the absolute difference between the start and end positions in x and y is the same
+    if (Math.abs(startX - endX) === Math.abs(startY - endY)) {
+        return true;
+    }
+
+    // If none of the conditions are met, the move is invalid
+    return false;
+}
+
+function isValidQueenMove(startX, startY, endX, endY) {
+    // Queen moves along a rank (row), file (column), or diagonal
+    // Check if the move is valid for a rook or bishop
+    if ((startX === endX || startY === endY) || (Math.abs(startX - endX) === Math.abs(startY - endY))) {
+        return true;
+    }
+
+    // If none of the conditions are met, the move is invalid
+    return false;
+}
+
+function isValidKingMove(startX, startY, endX, endY) {
+    // King moves one square in any direction
+    // Check if the absolute difference between start and end positions is at most 1 in both x and y
+    if (Math.abs(startX - endX) <= 1 && Math.abs(startY - endY) <= 1) {
+        return true;
+    }
+
+    // If none of the conditions are met, the move is invalid
+    return false;
+}
+
+

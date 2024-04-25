@@ -153,6 +153,18 @@ app.post('/move', (request, response) => {
         return;
     }
 
+    // Validate if the positions are within the board boundaries
+    if (startX < 1 || startX > 8 || startY < 1 || startY > 8 || endX < 1 || endX > 8 || endY < 1 || endY > 8) {
+        response.send("Invalid position!");
+        return ;
+    }
+
+    // Validate if the start and end positions are the same
+    if (startX === endX && startY === endY) {
+        response.send("Same position!");
+        return ;
+    }
+
     // Execute the query
     connection.execute(`SELECT ms.ms_description AS match_state FROM Match_Player mp INNER JOIN Match_State ms ON mp.mp_match_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ms.ms_id; `,
     [matchId, playerId], 
@@ -160,14 +172,87 @@ app.post('/move', (request, response) => {
         if (err) {
             response.send(err);
         } else {
+            // Check if the query returned no results
             if (results.length === 0) {
                 // Player is not in the match
                 response.send("Player is not in that match!");
             } else {
+
+                // Extract the match state from the first row of the results
                 const matchState = results[0].match_state;
-                response.send({ matchState: matchState });
+                
+                // Check if the match state is "On-going"
+                if (matchState === "On-going") {
+                    var pieceType ;
+
+                    // Call the CheckIfPieceExists function with specified parameters
+                    CheckIfPieceExists(request, response, startX, startY, matchId, function(result){
+                        // Once the callback function is called, send the result back in the response
+                        // Check if the move is valid by calling the isValidMove function
+                        if (isValidMove(startX, startY, endX, endY, result)) {
+
+                            var shard = "";
+
+                            // Generate a random number between 0 and 1
+                            const randomNumber = Math.random();
+
+                            // Define the probability ranges
+                            const range1 = 0.3; // 30%
+                            const range2 = range1 + 0.3; // 30% + 30% = 60%
+                            const range3 = range2 + 0.3; // 30% + 30% + 30% = 90%
+                            const range4 = 1.0; // 100%
+
+                            // Determine the random number category
+                            if (randomNumber < range1) {
+                                shard = 1; // 30% chance
+                            } else if (randomNumber < range2) {
+                                shard = 2; // 30% chance
+                            } else if (randomNumber < range3) {
+                                shard = 3; // 30% chance
+                            } else {
+                                shard = 4; // 10% chance
+                            }
+                            
+                            connection.execute('SELECT mps.mps_shard_ammount, s.shard_ammount_needed FROM Match_Player_Shard mps JOIN Shard s ON mps.mps_shard_id = s.card_id JOIN Match_Player mp ON mps.mps_mp_id = mp.mp_id JOIN `Match` m ON mp.mp_match_id = m.match_id JOIN Player p ON mp.mp_player_id = p.player_id WHERE m.match_id = ? AND p.player_id = ? AND mps.mps_shard_id = ?;',
+                            [matchId, playerId, shard],
+                            function (err, results, fields) {
+                                if (err) {
+                                    response.send(err);
+                                } else {
+                                    var shardAmount = results[0].mps_shard_ammount;
+                                    var shardNeeded = results[0].shard_ammount_needed;
+
+                                    // Check if the shard amount is equal to the shard needed
+                                    if(shardAmount++ === shardNeeded) {
+                                        // Add a card and change the value of the shard to 0
+                                        response.send("Add Card");
+                                    }
+                                    else{
+                                        // Adds a shard 
+                                        //UPDATE match_player_shard SET mps_shard_ammount = ? WHERE mps_shard_id = ?;
+
+                                        connection.execute('UPDATE Match_Player_Shard SET mps_shard_ammount = ? WHERE mps_mp_id = ( SELECT mp.mp_id FROM Match_Player mp JOIN `Match` m ON mp.mp_match_id = m.match_id WHERE m.match_id = ? AND mp.mp_player_id = ?) AND mps_shard_id = ?;',
+                                        [shardAmount++, matchId, playerId, shard],
+                                        function (err, results, fields) {
+                                            if (err) {
+                                                response.send(err);
+                                            } else {
+                                                response.send(shard + " ");
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        } else {
+                            // Send a response indicating that the move is not valid
+                            response.send("Move is not valid!");
+                        }
+                    });
+
+                }
             }
         }
+
     });
 
 
@@ -180,18 +265,36 @@ app.post('/move', (request, response) => {
 
 
 
+// Function to check if a piece exists at a specified position in a match
+function CheckIfPieceExists(request, response, startX, startY, matchId, callback) {
+    // Database query to select the piece name from the Match_Player_Piece table
+    connection.execute(
+        'SELECT Piece.piece_name FROM Match_Player_Piece JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id WHERE Match_Player.mp_match_id = ? AND Tile.tile_x = ? AND Tile.tile_y = ?;',
+        [matchId, startX, startY], // Array of values to replace placeholders in the query
+        function (err, results, fields) {
+            // Check if there was an error during the query execution
+            if (err) { // If there was an error, send the error back in the response
+                
+                response.send(err);
+            } else { // If the query was successful                        
+                // Check if there are any results returned
+                if (results.length > 0) {
+                    // If there are results,send the type of piece
+                    callback(results[0].piece_name);
+                } else {
+                    // If no results are found, call the callback function with false
+                    callback(false);
+                }
+            }
+        }
+    );
+}
+
+
+
 
 
 function isValidMove(startX, startY, endX, endY, pieceType) {
-    // Validate if the positions are within the board boundaries
-    if (startX < 1 || startX > 8 || startY < 1 || startY > 8 || endX < 1 || endX > 8 || endY < 1 || endY > 8) {
-        return false;
-    }
-
-    // Validate if the start and end positions are the same
-    if (startX === endX && startY === endY) {
-        return false;
-    }
 
     // Check if the move is valid based on the piece type
     switch (pieceType) {

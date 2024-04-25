@@ -191,6 +191,9 @@ app.post('/move', (request, response) => {
                         // Check if the move is valid by calling the isValidMove function
                         if (isValidMove(startX, startY, endX, endY, result)) {
 
+                            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            //Updatethe piece position in the database
+                            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             var shard = "";
 
                             // Generate a random number between 0 and 1
@@ -225,21 +228,11 @@ app.post('/move', (request, response) => {
                                     // Check if the shard amount is equal to the shard needed
                                     if(shardAmount++ === shardNeeded) {
                                         // Add a card and change the value of the shard to 0
-                                        response.send("Add Card");
+                                        response.send("Add Card " + shard);
                                     }
                                     else{
                                         // Adds a shard 
-                                        //UPDATE match_player_shard SET mps_shard_ammount = ? WHERE mps_shard_id = ?;
-
-                                        connection.execute('UPDATE Match_Player_Shard SET mps_shard_ammount = ? WHERE mps_mp_id = ( SELECT mp.mp_id FROM Match_Player mp JOIN `Match` m ON mp.mp_match_id = m.match_id WHERE m.match_id = ? AND mp.mp_player_id = ?) AND mps_shard_id = ?;',
-                                        [shardAmount++, matchId, playerId, shard],
-                                        function (err, results, fields) {
-                                            if (err) {
-                                                response.send(err);
-                                            } else {
-                                                response.send(shard + " ");
-                                            }
-                                        });
+                                        AddShard(request, response, shardAmount, matchId, playerId, shard);
                                     }
                                 }
                             });
@@ -254,13 +247,6 @@ app.post('/move', (request, response) => {
         }
 
     });
-
-
-    // if (isValidMove(startX, startY, endX, endY, pieceType))
-    //     response.send("Move is valid!");
-    // else
-    //     response.send("Move is not valid!");
-
 });
 
 
@@ -290,7 +276,18 @@ function CheckIfPieceExists(request, response, startX, startY, matchId, callback
     );
 }
 
+function AddShard(request, response, shardAmount, matchId, playerId, shard){
 
+    connection.execute('UPDATE Match_Player_Shard SET mps_shard_ammount = ? WHERE mps_mp_id = ( SELECT mp.mp_id FROM Match_Player mp JOIN `Match` m ON mp.mp_match_id = m.match_id WHERE m.match_id = ? AND mp.mp_player_id = ?) AND mps_shard_id = ?;',
+    [shardAmount++, matchId, playerId, shard],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            response.send("Shard added " + shard);
+        }
+    });
+}
 
 
 

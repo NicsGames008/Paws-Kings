@@ -121,7 +121,7 @@ function insertMatchPlayer(request, response, p1, p2, matchId) {
 }
 
 
-
+//p1 must not be p2
 // Endpoint that will insert to the database some player data
 app.post('/joinLobby', (request, response) => {
     // Get the data from the request
@@ -137,7 +137,7 @@ app.post('/joinLobby', (request, response) => {
     }
 
     // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
-    connection.execute('SELECT match_id FROM `Match` WHERE match_ms_id = 3;',
+    connection.execute('SELECT match_id, mp_player_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id WHERE match_ms_id = 3;',
         function (err, results, fields) {
             if (err){
                 response.send(err);
@@ -151,12 +151,13 @@ app.post('/joinLobby', (request, response) => {
                     CreateMatchAsFirst(request, response, p1)
                 }else{
 */
-
                 if(results.length == 0){
                     console.log("no one is searching for a match");
-                    response.send("nessuno ti vuole!")
+                    response.send("none is searching for a match");
+                }else if(results[0].mp_player_id == p1){
+                    response.send("you cannot play a match against yourself, you silly goose");
                 }else{
-
+                
 
                 // Get the id of the first "searching for a match" result
                 var matchId = results[0].match_id;
@@ -165,6 +166,9 @@ app.post('/joinLobby', (request, response) => {
                 choseColorOpponent(request, response, p1, matchId);
                 }
 //                }
+                for(let i = 0; i<= results.length; i++){
+
+                }
             }
             //console.log("dopo la selezione del colore: " + colorOpponent);
         });

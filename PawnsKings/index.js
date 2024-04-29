@@ -435,7 +435,7 @@ function AllocatingShards(matchPlayerId, cardId){
 }
 
 
-app.get('/fillBoard', (request, response) => {
+app.put('/fillBoard', (request, response) => {
     // Get the data from the request
     var matchPlayerId = request.body.mpId;
     var color = 3;
@@ -557,17 +557,201 @@ app.post('/createLobby', (request, response) => {
         function (err, results, fields) {
             if (err){
                 response.send(err);
-            }else if(results[0].mp_player_id == p1){
-                response.send("you cannot search for a second match, you goofy goober");
             }else{
-                console.log("Creating The lobby");
+                if(results.length == 0){
 
-                //creates a match whihc state is 3(in search of a opponent)
-                CreateMatchAsFirst(request, response, p1);
-            }
-            console.log("Lobby creata");
+                    console.log("Creating The lobby");
+
+                    //creates a match whihc state is 3(in search of a opponent)
+                    CreateMatchAsFirst(request, response, p1);
+                
+                    console.log("Lobby creata");
+                }else{
+                    response.send("you cannot search for a second match, you goofy goober");
+
+                }}
         });
 });
+
+app.get('/getGameState', (request, response) => {
+    // Get the data from the request
+    var matchId = request.body.matchId;
+
+    //should check if player exist as ab actual player, retrieving his information
+
+    // if the vars are empty is gives an error message
+    if (!matchId){
+        response.send(" Missing data!");
+        return;
+    }
+/*
+    let array = new Array(8); // Initialize outer array
+    for (let i = 0; i < array.length; i++) {
+        array[i] = new Array(8); // Initialize inner arrays
+    }
+*/
+
+    //Should select the said match, join it with mp and mpp to then allow the displaynaiton of the board
+    // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
+    connection.execute('select mpp_piece_id, mpp_tile_id, tile_x, tile_y from Match_player_piece inner join match_player on match_player.mp_id = match_player_piece.mpp_mp_id INNER JOIN piece on piece.piece_id = match_player_piece.mpp_piece_id INNER JOIN Tile ON tile.tile_id = mpp_tile_id where mp_match_id = ? ORDER BY Tile_id DESC',
+        [matchId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("there is no pieces on the board")
+                }else{
+                    console.log("board loaded");
+
+                    createChessBoard(request, response, results);
+                    
+                    response.send(results);
+                }
+                
+            }
+                
+            
+        });
+});
+
+
+function createChessBoard(request, response, results) {
+ //funzione che funziona
+    // let counter = 0;
+    let board = [];
+    for (let i = 0; i < 8; i++) {
+        board[i] = [];
+        for (let j = 0; j < 8; j++) {
+            board[i][j] = '0';
+        }
+    }
+
+
+
+    let TileOccupated = {};
+    for(let i = 0; i < results.length; i++){
+        TileOccupated[i] = results[i].mpp_tile_id;
+        console.log("Tile id occupied:" + i + " by " + results[i].mpp_piece_id );
+    }
+
+
+    //let board = [];
+    let tileId = 1;
+    
+
+//called for the first time and checks when a certain tile is free or occupied by which piece
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+
+            if(IsTileOccupied(tileId, TileOccupated)){
+//problema
+                //console.log("occupied tile");
+
+                if (results[i+j].mpp_piece_id == 5) { // controlla se si sta ciclando su una itle occupata, se si controlla il tipo del pezzo
+                    
+                    console.log("pawn at tile: " + tileId);
+                    board[i][j] = 'P';
+
+                }else if(results[i+j].mpp_piece_id == 6) {
+                    console.log("king at tile: " + tileId);
+                    board[i][j] = 'k';
+
+                }
+                
+
+            }else{
+                console.log("tile: " + tileId + " empty");
+                board[i][j] = ' ';
+                
+            }
+            //console.log(TileOccupated[tileId] + " index:" + tileId);
+            tileId++;
+        }
+        console.log("\n");
+    }
+
+    /*
+
+    // Loop through the data and update the board
+    for (let item = 0; item < results.length; item++) {
+        // Map the piece_id values to chess pieces
+        let piece = '0'; // Default to '0' if there's no piece on this tile
+
+        if (results[item].piece_id == 5) {
+            piece = 'P';
+        } else if (results[item].piece_id == 6) {
+            piece = 'K';
+        }
+
+        // Update the board
+        board[results[item].tile_y][results[item].tile_x] = piece;
+    }
+
+*/
+
+    // Print the board
+    printBoard(board);
+
+/*
+    let board1 = [];
+    //var counter = 0;
+    for (let i = 0; i < 8; i++) {
+        board1[i] = [];
+        for (let j = 0; j < 8; j++) {
+
+            if (results[counter].piece_id == 5) {
+                board1[i][j] = 'P';
+            }   else if (results[counter].piece_id == 6) {
+                board1[i][j] = 'k';
+            }else{
+                board1[i][j] = ' ';
+            }
+            counter++;
+            console.log(board1[i][j]);
+        }
+        counter++;
+        console.log("\n");
+    }
+
+    printBoard(board1);
+    */
+}
+
+function IsTileOccupied(posToCheck, arrToCheck){
+
+    for(let i=0; i < 32; i++){
+        
+        if(posToCheck == arrToCheck[i]){
+            //console.log(posToCheck + ": Piece detected \n");
+            console.log(arrToCheck[i]);
+            return true;
+        }
+    }
+    return false;
+}
+
+function printBoard(board) {
+    let output = '';
+    for (let i = 0; i < board.length; i++) {
+      output += '-----------------\n|';
+      for (let j = 0; j < board[i].length; j++) {
+        output += board[i][j] + '|';
+      }
+      output += '\n';
+    }
+    output += '-----------------';
+    console.log(output);
+  }
+
+
+
+
+
+
+
+
+
 
 
 

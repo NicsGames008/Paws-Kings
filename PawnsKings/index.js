@@ -121,7 +121,61 @@ function insertMatchPlayer(request, response, p1, p2, matchId) {
 }
 
 
-//p1 must not be p2
+app.put('/leaveQueue', (request, response) => {
+    // Get the data from the request
+    var p1 = request.body.p1;
+    var matchId;
+
+    //should check if player exist as ab actual player, retrieving his information
+
+    // if the vars are empty is gives an error message
+    if (!p1){
+        response.send(" Missing data!");
+        return;
+    }
+
+    // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
+    connection.execute('SELECT match_id, mp_player_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id WHERE match_ms_id = 3;',
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    console.log("gotta start searching for a match before stopping")
+                    response.send("gotta start searching for a match before stopping");
+                }else if(results[0].mp_player_id == p1){
+                    matchId = results[0].match_id;
+                    console.log("Stopped searching for a match aaaaaaaaaaaaaaaaaa");
+                    LeaveMatchPlayer(request, response, matchId);
+                }else{
+
+                }
+
+            }
+
+        });
+});
+
+
+function LeaveMatchPlayer(request, response, matchId) {
+
+    //Updates the state of the match of the given match
+    
+        connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
+        [matchId],
+        function (err, results, fields) {
+            if (err) {
+                response.send(err);
+            } else {
+                //console.log("p1: " + p1 + " matchId: " + matchId + " color opponent: " + colorOpponent);
+                console.log("Stopped searching for a match bbbbbbbbbbbbbbbbbbbb");
+                response.send("Stopped searching for a match");
+            }
+        });
+    }
+
+
+
 // Endpoint that will insert to the database some player data
 app.post('/joinLobby', (request, response) => {
     // Get the data from the request
@@ -241,7 +295,7 @@ function insertPlayerIntoMatch(request, response, p1, matchId, colorOpponent, ch
             response.send(err);
         } else {
             //response.send("Match created successfully!");
-            console.log("Utente associato al match adeguato!");
+            console.log("User assosiacted to the right match!");
             //now to fill the board with pieces.
             RetrieveDataForFillBoard(request, response, matchId, colorOpponent, chosenColor);
         }
@@ -499,10 +553,12 @@ app.post('/createLobby', (request, response) => {
     }
 
     // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
-    connection.execute('SELECT match_id FROM `Match` WHERE match_ms_id = 3;',
+    connection.execute('SELECT match_id, mp_player_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id WHERE match_ms_id = 3;',
         function (err, results, fields) {
             if (err){
                 response.send(err);
+            }else if(results[0].mp_player_id == p1){
+                response.send("you cannot search for a second match, you goofy goober");
             }else{
                 console.log("Creating The lobby");
 
@@ -511,7 +567,6 @@ app.post('/createLobby', (request, response) => {
             }
             console.log("Lobby creata");
         });
-        
 });
 
 

@@ -161,7 +161,7 @@ function LeaveMatchPlayer(request, response, matchId) {
 
     //Updates the state of the match of the given match
     
-        connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
+        connection.execute('UPDATE `Match` SET match_ms_id = 4 WHERE match_id = ?;',
         [matchId],
         function (err, results, fields) {
             if (err) {
@@ -319,8 +319,8 @@ function RetrieveDataForFillBoard(request, response, matchId, colorOpponent, cho
             //response.send(results[0]);
 
             //now to fill the board with pieces.
-            FillBoard(request, response, matchPlayerId1, chosenColor);
-            FillBoard(request, response, matchPlayerId2, colorOpponent);
+            //FillBoard(request, response, matchPlayerId1, chosenColor);
+            //FillBoard(request, response, matchPlayerId2, colorOpponent);
 
             //time to create the card and shard counter!
             FillCardandShard(request, response, matchPlayerId1);
@@ -336,6 +336,7 @@ function RetrieveDataForFillBoard(request, response, matchId, colorOpponent, cho
 function FillBoard(request, response, matchPlayerId, colorSent){   //function FillBoard(request, response, matchPlayerId, colorOpponent){
 
     var pieceId = 5;
+    var pieceStateId = 4;
     
     //fills the board for whites
     if(colorSent == 1){
@@ -346,11 +347,13 @@ function FillBoard(request, response, matchPlayerId, colorSent){   //function Fi
 
             if(i == 4){
                 pieceId = 6;
+                pieceStateId = 1;
             }
 
-            AllocatingPieces(matchPlayerId, i, pieceId)
+            AllocatingPieces(matchPlayerId, i, pieceId, pieceStateId)
 
             pieceId = 5;
+            pieceStateId = 4;
             console.log("piece set in place white");
           }
     }else{ //fill the board for black
@@ -358,10 +361,12 @@ function FillBoard(request, response, matchPlayerId, colorSent){   //function Fi
 
             if(i == 4){
                 pieceId = 6;
+                pieceStateId = 1;
             }
 
-            AllocatingPieces(matchPlayerId, 64+1-i, pieceId)
+            AllocatingPieces(matchPlayerId, 64+1-i, pieceId, pieceStateId)
 
+            pieceStateId = 4;
             pieceId = 5;
             console.log("piece set in place black");
           } 
@@ -371,10 +376,10 @@ function FillBoard(request, response, matchPlayerId, colorSent){   //function Fi
 
 }
 
-function AllocatingPieces(matchPlayerId, tile, piece){
+function AllocatingPieces(matchPlayerId, tile, piece, pieceState){
 
-    connection.execute('INSERT INTO Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) VALUE (?, ?, ?, 1);',
-    [matchPlayerId, tile, piece],
+    connection.execute('INSERT INTO Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) VALUE (?, ?, ?, ?);',
+    [matchPlayerId, tile, piece, pieceState],
     function (err, results, fields) {
         if (err) {
             response.send(err);
@@ -576,7 +581,7 @@ app.post('/createLobby', (request, response) => {
 app.get('/getGameState', (request, response) => {
     // Get the data from the request
     var matchId = request.body.matchId;
-
+    var chessboard = [];
     //should check if player exist as ab actual player, retrieving his information
 
     // if the vars are empty is gives an error message
@@ -584,29 +589,49 @@ app.get('/getGameState', (request, response) => {
         response.send(" Missing data!");
         return;
     }
-/*
-    let array = new Array(8); // Initialize outer array
-    for (let i = 0; i < array.length; i++) {
-        array[i] = new Array(8); // Initialize inner arrays
-    }
-*/
+
 
     //Should select the said match, join it with mp and mpp to then allow the displaynaiton of the board
     // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
-    connection.execute('select mpp_piece_id, mpp_tile_id, tile_x, tile_y from Match_player_piece inner join match_player on match_player.mp_id = match_player_piece.mpp_mp_id INNER JOIN piece on piece.piece_id = match_player_piece.mpp_piece_id INNER JOIN Tile ON tile.tile_id = mpp_tile_id where mp_match_id = ? ORDER BY Tile_id DESC',
-        [matchId],
+    // connection.execute('select mpp_id, mpp_mp_id , mp_match_id , mpp_piece_id, mpp_tile_id , tile_x , tile_y from Match_player_piece inner join match_player on match_player.mp_id = match_player_piece.mpp_mp_id INNER JOIN Tile ON tile.tile_id = mpp_tile_id where mp_match_id = ? order by tile_x desc,  tile_y asc;',
+    //     [matchId],
+    //     function (err, results, fields) {
+    //         if (err){
+    //             response.send(err);
+    //         }else{
+    //             if(results.length == 0){
+    //                 response.send("there is no pieces on the board")
+    //             }else{
+    //                 console.log("board loaded");
+    //                 TileField(request, response, chessboard);
+    //                 createChessBoard(request, response, results, chessboard);
+
+    //                 //response.send(results);
+    //             }
+                
+    //         }
+                
+            
+    //     });
+    connection.execute('SELECT tile_x, tile_y, tile_id FROM Tile order by tile_x desc, tile_Y asc;',
         function (err, results, fields) {
             if (err){
                 response.send(err);
             }else{
                 if(results.length == 0){
-                    response.send("there is no pieces on the board")
+                    response.send("tChessboard un-retrievable");
                 }else{
-                    console.log("board loaded");
+                    console.log("chessboard loaded");
 
-                    createChessBoard(request, response, results);
+                    //createChessBoard(request, response, results);
+                    for(let i =0; i< results.length; i++){
+                        chessboard[i] = results[i].tile_id;
+                        console.log(chessboard[i] + " at index:" + i);
+                    }
+
+                    ObtainChessPiecesLocation(request, response, chessboard, matchId);
+                    //response.send(results);
                     
-                    response.send(results);
                 }
                 
             }
@@ -615,10 +640,32 @@ app.get('/getGameState', (request, response) => {
         });
 });
 
+function ObtainChessPiecesLocation(request, response, chessboard, matchId){
+    connection.execute('select mpp_id, mpp_mp_id , mp_match_id , mpp_piece_id, mpp_tile_id , tile_x , tile_y, mp_pc_id from Match_player_piece inner join match_player on match_player.mp_id = match_player_piece.mpp_mp_id INNER JOIN Tile ON tile.tile_id = mpp_tile_id where mp_match_id = ? order by tile_x desc,  tile_y asc;',
+        [matchId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("there is no pieces on the board")
+                }else{
+                    console.log("pieces located");
+                    //response.send(results.length + "");
 
-function createChessBoard(request, response, results) {
- //funzione che funziona
-    // let counter = 0;
+                    CreateChessBoard(request, response, results, chessboard);
+
+                }
+                
+            }
+                
+            
+        });
+}
+
+
+function CreateChessBoard(request, response, results, chessboard) {
+
     let board = [];
     for (let i = 0; i < 8; i++) {
         board[i] = [];
@@ -627,46 +674,63 @@ function createChessBoard(request, response, results) {
         }
     }
 
-
-
-    let TileOccupated = {};
-    for(let i = 0; i < results.length; i++){
-        TileOccupated[i] = results[i].mpp_tile_id;
-        console.log("Tile id occupied:" + i + " by " + results[i].mpp_piece_id );
+    let TileOccupated = [];
+    let pieceOnTile = [];
+    for(let i = 0; i < results.length + 32; i++){
+        if(i < 32){
+            TileOccupated[i] = results[i].mpp_tile_id;
+            pieceOnTile[i] = results[i].mpp_piece_id;
+            console.log("Tile(" + TileOccupated[i] + ") occupied at index:" + i);
+        }
     }
 
+    let tileToCheck = 1;
+    // var currentY = 8;
+    // var mapOutput = "";
 
-    //let board = [];
-    let tileId = 1;
-    
+    // for (var x = 0; x < 64; x++)
+    // {   
+    //     if (currentY != Math.floor(x / 8))
+    //     {
+    //         currentY--;
+    //         mapOutput += "\n";
+    //     }
+    //      if (IsTileOccupied(tileId, TileOccupated))
+    //         mapOutput += "|" + results[x];
+    //     //it stops here, results[x] is undefined.
+    //     else
+    //         mapOutput += "| "
+    //      tileId++;
+    // }
+//console.log(mapOutput);
 
+
+
+tileToCheck = 1;
+var posArray = 0;
 //called for the first time and checks when a certain tile is free or occupied by which piece
+
     for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-
-            if(IsTileOccupied(tileId, TileOccupated)){
-//problema
-                //console.log("occupied tile");
-
-                if (results[i+j].mpp_piece_id == 5) { // controlla se si sta ciclando su una itle occupata, se si controlla il tipo del pezzo
+        for (let j = 0; j < 8 ; j++) {
+            console.log("tile da controllata: " + tileToCheck);
+            if(CheckTile(tileToCheck, TileOccupated)){
+                console.log("piece on a tile");
+                if (results[posArray].mpp_piece_id == 5) { // controlla se si sta ciclando su una itle occupata, se si controlla il tipo del pezzo //results[i+j].mpp_piece_id == 5
                     
-                    console.log("pawn at tile: " + tileId);
+                    console.log(pieceOnTile[posArray]);
                     board[i][j] = 'P';
 
-                }else if(results[i+j].mpp_piece_id == 6) {
-                    console.log("king at tile: " + tileId);
-                    board[i][j] = 'k';
-
+                }else if(results[posArray].mpp_piece_id == 6) {
+                    console.log(pieceOnTile[posArray]);
+                    board[i][j] = 'K';
                 }
-                
-
+                posArray++;
             }else{
-                console.log("tile: " + tileId + " empty");
                 board[i][j] = ' ';
-                
+                console.log("tile empty");
             }
-            //console.log(TileOccupated[tileId] + " index:" + tileId);
-            tileId++;
+            tileToCheck++;
+            console.log("\n");
         }
         console.log("\n");
     }
@@ -692,44 +756,32 @@ function createChessBoard(request, response, results) {
 
     // Print the board
     printBoard(board);
-
-/*
-    let board1 = [];
-    //var counter = 0;
-    for (let i = 0; i < 8; i++) {
-        board1[i] = [];
-        for (let j = 0; j < 8; j++) {
-
-            if (results[counter].piece_id == 5) {
-                board1[i][j] = 'P';
-            }   else if (results[counter].piece_id == 6) {
-                board1[i][j] = 'k';
-            }else{
-                board1[i][j] = ' ';
-            }
-            counter++;
-            console.log(board1[i][j]);
-        }
-        counter++;
-        console.log("\n");
-    }
-
-    printBoard(board1);
-    */
+    response.send(board);
 }
 
-function IsTileOccupied(posToCheck, arrToCheck){
+function IsTileOccupied(posToCheck, arrToCheck, arrReferenced){
 
-    for(let i=0; i < 32; i++){
-        
-        if(posToCheck == arrToCheck[i]){
-            //console.log(posToCheck + ": Piece detected \n");
-            console.log(arrToCheck[i]);
+    for(let i = 0; i < arrReferenced.length; i++){
+        if(arrToCheck[posToCheck] === arrReferenced[i]){
+            console.log("posizione:" + arrToCheck[posToCheck] + " == :" + arrReferenced[i] + "   indice:" + i);
             return true;
         }
+
     }
     return false;
 }
+
+function CheckTile(posToCheck, arrToCheck){
+    for(let i = 0; i < 64; i++){
+        if(arrToCheck[i] === posToCheck){
+            console.log("posizione:" + arrToCheck[i] + " == :" + posToCheck);
+            return true;
+        }
+
+    }
+    return false;
+}
+
 
 function printBoard(board) {
     let output = '';
@@ -742,14 +794,189 @@ function printBoard(board) {
     }
     output += '-----------------';
     console.log(output);
-  }
+}
+
+
+function TileField(request, response, chessboard){
+    connection.execute('SELECT tile_x, tile_y, tile_id FROM Tile order by tile_x desc, tile_Y asc;',
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("tChessboard un-retrievable");
+                }else{
+                    console.log("chessboard loaded");
+
+                    //createChessBoard(request, response, results);
+                    for(let i =0; i< results.length; i++){
+                        chessboard[i] = results[i].tile_id;
+                        console.log(chessboard[i]);
+                    }
+                    //response.send(results);
+                    
+                }
+                
+            }
+                
+            
+        });
+}
 
 
 
 
 
+  app.put('/fillBoard1', (request, response) => {
+    // Get the data from the request
+    var matchPlayerId = request.body.mpId;
+    var color = 3;
 
 
+    // if the vars are empty is gives an error message
+    if (!matchPlayerId){
+        response.send("Missing data!   matchPlayerId: " + matchPlayerId + " color: " + color);
+        return;
+    }
+
+
+    //retrieves the color
+    connection.execute('SELECT mp_pc_id FROM Match_Player WHERE mp_id = ?;',
+    [matchPlayerId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            //response.send(results[0].mp_pc_id + "");
+            var colorSent = results[0].mp_pc_id;
+            //console.log("colore trovato " + colorSent);
+
+            //now to fill the board with pieces.
+            FillBoard1(request, response, matchPlayerId, colorSent);
+            response.send("schacchiera riepmita")
+        }
+    });
+
+
+    //FillBoard(matchPlayerId, color);
+
+});
+
+function FillBoard1(request, response, matchPlayerId, colorSent){   //function FillBoard(request, response, matchPlayerId, colorOpponent){
+
+    var pieceId = 6;
+    
+    //fills the board for whites
+    if(colorSent == 1){
+        //looping and calling the function 16 times, incrementing the tileId and keeping the same pieceId apart for the king.
+        for (let i = 1; i <= 16; i++) {
+
+            console.log("i: " + i);
+
+            if(i == 4){
+                pieceId = 5;
+            }
+
+            AllocatingPieces1(matchPlayerId, i, pieceId)
+
+            console.log("piece set in place white");
+          }
+    }else{ //fill the board for black
+        for (let i = 49; i <= 64; i++) {
+
+            if(i == 4){
+                pieceId = 5;
+            }
+
+            AllocatingPieces1(matchPlayerId, i, pieceId)
+
+            pieceId = 6;
+            console.log("piece set in place black");
+          } 
+    }
+
+    //response.send("Board FILLED!")
+
+}
+
+function AllocatingPieces1(matchPlayerId, tile, piece){
+
+    connection.execute('INSERT INTO Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) VALUE (?, ?, ?, 1);',
+    [matchPlayerId, tile, piece],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            //response.send("all pieces SET in place");
+        }
+    });
+
+}
+
+
+
+
+app.get('/getGameState1/:matchId', (request, response) => {
+    // Get the data from the request
+    var matchId = request.params.matchId;
+    var chessboard = [];
+    //should check if player exist as ab actual player, retrieving his information
+
+    // if the vars are empty is gives an error message
+    if (!matchId){
+        response.send(" Missing data!");
+        return;
+    }
+
+    connection.execute('SELECT tile_x, tile_y, tile_id FROM Tile order by tile_x desc, tile_Y asc;',
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("tChessboard un-retrievable");
+                }else{
+                    console.log("chessboard loaded");
+
+                    //createChessBoard(request, response, results);
+                    for(let i =0; i< results.length; i++){
+                        chessboard[i] = results[i].tile_id;
+                        console.log(chessboard[i] + " at index:" + i);
+                    }
+
+                    ObtainChessPiecesLocation(request, response, chessboard, matchId);
+                    //response.send(results);
+                    
+                }
+                
+            }
+                
+            
+        });
+});
+
+function ObtainChessPiecesLocation(request, response, chessboard, matchId){
+    connection.execute('select mpp_id, mpp_mp_id , mp_match_id , mpp_piece_id, mpp_tile_id , tile_x , tile_y from Match_player_piece inner join match_player on match_player.mp_id = match_player_piece.mpp_mp_id INNER JOIN Tile ON tile.tile_id = mpp_tile_id where mp_match_id = ? order by tile_x desc,  tile_y asc;',
+        [matchId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("there is no pieces on the board")
+                }else{
+                    console.log("pieces located");
+                    //response.send(results.length + "");
+
+                    CreateChessBoard(request, response, results, chessboard);
+
+                }
+                
+            }
+                
+            
+        });
+}
 
 
 

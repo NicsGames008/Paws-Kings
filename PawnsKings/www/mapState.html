@@ -38,67 +38,90 @@
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         // Typical action to be performed when the document is ready:
-                        response = JSON.parse(xhttp.responseText);
+                        var response = JSON.parse(xhttp.responseText);
 
+                        var c = 0;
                         let output = '';
 
                         for (let i = 0; i < response.length; i++) {
                             output += '---------------------------------------\n|';
-                            for (let j = 0; j < response[i].length; j++) {
-                                if(response[i][j] == 'P'){
-                                    response[i][j] = "🦧";
-                                }else if(response[i][j] == 'K'){
-                                    response[i][j] = "🦀";
-                                }else{
-                                    if((i+j)%2 == 0){
-                                        response[i][j] = "⬜";
-                                    }else{
-                                        response[i][j] = "⬛";
-                                    }
+                            for (let j = response[i].length - 1; j >= 0; j--) {
+
+                                switch(response[i][j]){
+                                    case 'wBi':     //White Bishop
+                                        response[i][j] = '♗';
+                                        break;
+                                    case 'wRo':     //White Roock
+                                        response[i][j] = '♖';
+                                        break;
+                                    case 'wKn':     //White Knight
+                                        response[i][j] = '♘';
+                                        break;
+                                    case 'wQw':     //White Quween
+                                        response[i][j] = '♕';
+                                        break;
+                                    case 'wPa':     //White Pawn
+                                        response[i][j] = "♙";
+                                        break;
+                                    case 'wKi':     //White King
+                                        response[i][j] = "♔";
+                                        break;
+                                    case 'bBi':     //Black Bishop
+                                        response[i][j] = '♝';
+                                        break;
+                                    case 'bRo':     //Black Roock
+                                        response[i][j] = '♜';
+                                        break;
+                                    case 'bKn':     //Black Knight
+                                        response[i][j] = '♞';
+                                        break;
+                                    case 'bQw':     //Black Quween
+                                        response[i][j] = '♛';
+                                        break;
+                                    case 'bPa':     //Black Pawn
+                                        response[i][j] = "♟️";
+                                        break;
+                                    case 'bKi':     //Black King
+                                        response[i][j] = "♚";
+                                        break;
+                                    default:
+                                        if((i+j)%2 == 1){
+                                           response[i][j] = "⬜";
+                                        }else{
+                                            response[i][j] = "⬛";
+                                        }
+                                        console.log("roock is intentional btw");
                                 }
 
+                                // if(response[i][j] == 'wPa'){
+                                //     response[i][j] = "♙";
+                                // }else if(response[i][j] == 'wKi'){
+                                //     response[i][j] = "♙";
+                                // }else if(response[i][j] == 'bPa'){
+                                //     response[i][j] = "♟️";
+                                // }else if(response[i][j] == 'bKi'){
+                                //     response[i][j] = "♚";
+                                // }else{
+                                //     if((i+j)%2 == 1){
+                                //         response[i][j] = "⬜";
+                                //     }else{
+                                //         response[i][j] = "⬛";
+                                //     }
+                                // }
                                 output += response[i][j] + '|';
-                        }
+
+                                c++;
+                            }
                             output += '\n';
                         }
+
                         output += '---------------------------------------';
                         console.log(output);
 
-                        //style="background-color: rgb(52, 52, 52); text-align: center; color:aliceblue; vertical-align: middle;"
-
-                        // var mapPrint = "";
-                        // var lastY = 1;
-        
-                        // //this for loop logs every single tile
-                        // for (var i = 0; i < response.length; i++) {
-        
-                        //     var currentX = response[i].tile_x_coordinates;
-                        //     var currentY = response[i].tile_y_coordinates;
-        
-                        //     if (lastY !== currentY){
-                        //         lastY = currentY;
-                        //         mapPrint += "\n";
-                        //     }
-        
-                        //     var tileType = response[i].tiletype.split(" "); // Se alguma vez aparecer um tile com um espaço vai partir isto tudo :(
-                        //     var tileTypeKey = tileType[1];
-                        //     var tileTypeKey = tileTypeKey.replace("(", "");
-                        //     var tileTypeKey = tileTypeKey.replace(")", "");
-        
-                        //     if (tileTypeKey == 3)
-                        //         tileTypeKey = "⬛";
-                        //     else if (tileTypeKey == 2)
-                        //         tileTypeKey = "🟦";
-                        //     else if (tileTypeKey == 1)
-                        //         tileTypeKey = "⬜";
-        
-                        //     mapPrint += tileTypeKey;
-                        // }
-                        // console.log(mapPrint);
                         document.getElementById("superbChessboard").innerText = output;
                     }
                 };
-                xhttp.open("GET", "/getGameState1/" + matchId, true);
+                xhttp.open("GET", "state/board1/" + matchId, true);
                 xhttp.send()
             }
             </script>

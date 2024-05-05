@@ -3,6 +3,7 @@ const express = require('express');
 const connection = require('./database');
 const lobby = require('./API/lobby');
 const state = require('./API/state');
+const movePiece = require('./API/movePiece');
 
 // Set the port of the server
 const serverPort = 3000;
@@ -16,6 +17,7 @@ app.use(express.urlencoded());
 app.use(express.static('www'));
 app.use('/lobby', lobby);
 app.use('/state', state);
+app.use('/piece', movePiece);
 
 
 // Connect to database and check if it's working. Otherwise gives an error.

@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('./www/font/RobotoMono.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto Mono', monospace;
+}
+.container {
+    display: flex;
+    height: 100%;
+}
+.section {
+    display: flex;
+    flex-direction: column;
+}
+.subsection {
+    flex: 1;
+}
+.subsubsection {
+    flex: 1;
+}
+.section1 {
+    flex: 10%;
+    background-color: #ff0000;
+}
+.section1-1 {
+    flex: 50%;
+    background-color: #a50505;
+}
+.section1-2 {
+    flex: 50%;
+    text-align: right;
+    background-color: #520101;
+}
+.section2 {
+    flex: 50%;
+    background-color: #0d00ff;
+    display: flex;
+}
+.section2-1 {
+    flex: 5%;
+    background-color: #0b0ba7;
+}
+.section2-2 {
+    flex: 5%;
+    background-color: #2b05c2;
+}
+.section2-3 {
+    flex: 90%;
+    font-size: 18px;
+    text-align: center;
+    background-color: #7574b6;
+}
+.section3 {
+    flex: 40%;
+    background-color: #00ff51;
+    display: flex;
+}
+.section3-1 {
+    flex: 50%;
+    background-color: #0ab136;
+}
+.section3-2 {
+    flex: 50%;
+    text-align: right;
+    background-color: #056a23;
+}
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin: 10px;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}

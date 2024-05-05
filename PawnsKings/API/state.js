@@ -181,7 +181,7 @@ function printBoard(board) {
 }
 
 
-//----------------------------HTML-------------------------
+//----------------------------HTML usage only-------------------------
 
 router.get('/board1/:matchId', (request, response) => {
     // Get the data from the request
@@ -221,6 +221,107 @@ router.get('/board1/:matchId', (request, response) => {
             
         });
 });
+
+//----------------------------------------------GAME STATE----------------------------
+
+router.get('/game/:matchId', (request, response) => {
+    // Get the data from the request
+    var matchId = request.params.matchId;
+
+    //should check if player exist as ab actual player, retrieving his information
+
+    // if the vars are empty is gives an error message
+    if (!matchId){
+        response.send(" Missing data!");
+        return;
+    }
+
+    connection.execute('SELECT match_id, match_ms_id, match_pc_id, player_color.pc_name AS colorName, mp_match_id, mp_ut_id, ut_name AS upgradeTier, player_id, player_name, mp_pc_id, pc.pc_name FROM `Match` INNER JOIN player_color ON player_color.pc_id = match_pc_id INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id  INNER JOIN Player ON Player.player_id = mp_player_id INNER JOIN player_color pc ON pc.pc_id = mp_pc_id INNER JOIN Upgrade_Tier ON Upgrade_Tier.ut_id = mp_ut_id WHERE match_id = 1 ORDER BY mp_pc_id;',
+        [matchId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("no match existed with said id");
+                }else{
+                    console.log("match id found");
+                    response.send(results);
+                    
+                }
+                
+            }
+        });
+});
+
+router.get('/card/:matchId', (request, response) => {
+    // Get the data from the request
+    var matchId = request.params.matchId;
+
+    //should check if player exist as ab actual player, retrieving his information
+
+    // if the vars are empty is gives an error message
+    if (!matchId){
+        response.send(" Missing data!");
+        return;
+    }
+
+    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON card.card_id = match_player_card.mpc_card_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
+        [matchId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("no match existed with said id");
+                }else{
+                    console.log("cards found");
+                    response.send(results);
+                    
+                }
+                
+            }
+        });
+});
+
+router.get('/shard/:matchId', (request, response) => {
+    // Get the data from the request
+    var matchId = request.params.matchId;
+
+    //should check if player exist as ab actual player, retrieving his information
+
+    // if the vars are empty is gives an error message
+    if (!matchId){
+        response.send(" Missing data!");
+        return;
+    }
+
+    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Card ON card.card_id = match_player_shard.mps_shard_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
+        [matchId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("no match existed with said id");
+                }else{
+                    console.log("shards found");
+                    response.send(results);
+                    
+                }
+                
+            }
+        });
+});
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;

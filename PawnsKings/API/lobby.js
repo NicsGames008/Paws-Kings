@@ -3,7 +3,7 @@ const router = express.Router();
 const connection = require('../database');
 
 
-router.post('/join', (request, response) => {
+router.post('/search', (request, response) => {
     // Get the data from the request
     var p1 = request.body.p1;
     var colorOpponent;

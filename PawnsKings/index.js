@@ -43,12 +43,7 @@ app.post('/upgradePiece',(request, response)=>{
     var startY = request.body.startY;
     var playerId = request.body.playerId;
     var matchId = request.body.matchId;
-    var endY = request.body.endY;
-    var endX = request.body.endX;
-    var tilePromotion = request.body.tilePromotion;
-    var card = request.body.card
-    var pieceState = request.body.pieceState
-    var upgradeTier = request.body. upgradeTier
+    var cardId = request.body.cardId
 
 // Validate if the positions are within the board boundaries
 if (startX < 1 || startX > 8 || startY < 1 || startY > 8 || endX < 1 || endX > 8 || endY < 1 || endY > 8) {

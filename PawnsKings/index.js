@@ -4,16 +4,12 @@ const express = require('express');
 const connection = require('./database');
 const signing = require('./API/signing');
 
-
 // Set the port of the server
 const serverPort = 3000;
 
 // Create a new instance of express
 const app = express();
 app.use(express.urlencoded());
-
-
-
 
 // Middlewares
 // We are telling the server to use the folder 'www' as static pages
@@ -47,6 +43,12 @@ app.post('/upgradePiece',(request, response)=>{
     var startY = request.body.startY;
     var playerId = request.body.playerId;
     var matchId = request.body.matchId;
+    var endY = request.body.endY;
+    var endX = request.body.endX;
+    var tilePromotion = request.body.tilePromotion;
+    var card = request.body.card
+    var pieceState = request.body.pieceState
+    var upgradeTier = request.body. upgradeTier
 
 // Validate if the positions are within the board boundaries
 if (startX < 1 || startX > 8 || startY < 1 || startY > 8 || endX < 1 || endX > 8 || endY < 1 || endY > 8) {
@@ -64,4 +66,13 @@ if (startX === endX && startY === endY) {
 
 
 })
+
+
+////////////////////////////////////////////////////////////////////
+///Chanse state to sleep here 
+////////////////////////////////////////////////////////////////////
+
+
+
+
 

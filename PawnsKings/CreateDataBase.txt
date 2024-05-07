@@ -1,19 +1,3 @@
-drop table match_player_shard;
-drop table shard;
-drop table match_player_card;
-drop table card;
-drop table match_player_piece;
-drop table match_player;
-drop table `match`;
-drop table match_state;
-drop table piece;
-drop table piece_state;
-drop table player;
-drop table tile_promotion;
-drop table player_color;
-drop table tile;
-drop table upgrade_tier;
-
 create table Player (
                  	player_id int not null auto_increment,
                  	player_name VARCHAR(60) not null,

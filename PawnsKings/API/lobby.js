@@ -8,7 +8,6 @@ router.post('/search', (request, response) => {
     var p1 = request.body.p1;
     var colorOpponent;
 
-    //should check if player exist as ab actual player, retrieving his information
 
     // if the vars are empty is gives an error message
     if (!p1){

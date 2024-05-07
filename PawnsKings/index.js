@@ -11,6 +11,8 @@ const serverPort = 3000;
 // Create a new instance of express
 const app = express();
 app.use(express.urlencoded());
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // Middlewares
 // We are telling the server to use the folder 'www' as static pages

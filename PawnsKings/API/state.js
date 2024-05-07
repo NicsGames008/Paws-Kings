@@ -254,6 +254,8 @@ router.get('/game/:matchId', (request, response) => {
         });
 });
 
+//----------------------------CARD---------------------------------------------------
+
 router.get('/card/:matchId', (request, response) => {
     // Get the data from the request
     var matchId = request.params.matchId;
@@ -283,6 +285,8 @@ router.get('/card/:matchId', (request, response) => {
             }
         });
 });
+
+//----------------------------SHARD---------------------------------------------------
 
 router.get('/shard/:matchId', (request, response) => {
     // Get the data from the request
@@ -314,14 +318,151 @@ router.get('/shard/:matchId', (request, response) => {
         });
 });
 
+//-----------------------------GAME STAUTS NOW DONE RIGHT-------------------------------
+
+router.get('/boardR/:matchId', (request, response) => {
+    // Get the data from the request
+    var matchId = request.params.matchId;
 
 
+    //should check if player exist as ab actual player, retrieving his information
+
+    // if the vars are empty is gives an error message
+    if (!matchId){
+        response.send(" Missing data!");
+        return;
+    }
+
+    connection.execute('SELECT DISTINCT(mp_id) FROM match_player INNER JOIN match_player_piece ON mp_id = mpp_mp_id WHERE mp_match_id = ?;',
+        [matchId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("mps unretrieved");
+                }else{
+                    console.log("Got the two mps!");
+                    //response.send(results);
+                    FillFleetingBoard(request, response, matchId, results);
+  
+                }
+                
+            }
+                
+            
+        });
+});
+
+function FillFleetingBoard(request, response, matchId, previusResults){
+    //array that rappresents the chessboard
+    var chessboard = [];
+
+    var amogus = [];
+
+    connection.execute('SELECT t.tile_id, mpp.mpp_tile_id, mpp.mpp_piece_id, mpp_mp_id, mp_pc_id FROM tile t LEFT JOIN match_player_piece mpp ON mpp.mpp_tile_id = t.tile_id  AND (mpp.mpp_mp_id = ? OR mpp.mpp_mp_id = ?) AND mpp_ps_id != 2 LEFT JOIN match_player mp ON mp.mp_id = mpp.mpp_mp_id;',
+    [previusResults[0].mp_id, previusResults[1].mp_id],
+    function (err, results, fields) {
+        if (err){
+            response.send(err);
+        }else{
+            if(results.length == 0){
+                response.send("MPPS for mps not found");
+            }else{
+                console.log("pieces founds!");
+
+                //printing th eboard to see if the id matches
+                let tileset = '';
+                for(let i = 0; i< results.length; i++){
+                    chessboard[i] = results[i].tile_id;
+                    tileset += chessboard[i] + '|'
+                    if((i+1)%8 == 0){
+                        tileset += '\n|';
+                    }
+                }
+
+                //composing the chees board
+                for(let i = 0; i < results.length; i++){
+
+                    //If the pieece exist, we can start wokring on it
+                    if(results[i].mpp_piece_id != null){
+
+                        //Detecting the color
+                        if(results[i].mp_pc_id == 1){
+                            amogus[i] = 'w';
+                        }else{
+                            amogus[i] = 'b';
+                        }
+
+                        //Assinging the piece type
+                        switch(results[i].mpp_piece_id){
+                            case 1:     //Bishop
+                                amogus[i] += 'Bi';
+                                break;
+                            case 2:     //Roock
+                                amogus[i] += 'Ro';
+                                break;
+                            case 3:     //Knight
+                                amogus[i] += 'Kn';
+                                break;
+                            case 4:     //Quween
+                                amogus[i] += 'Qw';
+                                break;
+                            case 5:     //Pawn
+                                amogus[i] += 'Pa';
+                                break;
+                            case 6:     //King
+                                amogus[i] += 'Ki';
+                                break;
+                            default:
+                                console.log("roock is intentional btw");
+                        }
+                    }else{
+                        amogus[i] = ' '
+                    }
+                }
+
+                console.log(amogus);
+
+                let horizontallyReversed = reverseHorizontally(amogus);
+
+                response.send(horizontallyReversed);
+            }
+            
+        }
+            
+        
+    });
+}
 
 
+function StringifyChessboard(chessboard){
+    let output = '-----------------\n|';
+    for(let i = 0; i< chessboard.length; i++){
+        output += chessboard[i] + '|';
 
+        if((i+1)%8 == 0  && i != (chessboard.length-1)){  
+            output += '\n|';
+        }
 
+    }
+    output += '\n-----------------';
+    console.log(output)
 
+    return output;
+}
 
+function reverseHorizontally(array) {
+    let numRows = array.length / 8;
+    let reversedArray = [];
 
+    for (let i = numRows - 1; i >= 0; i--) {
+        let row = array.slice(i * 8, (i + 1) * 8);
+        reversedArray.push(...row);
+    }
+
+    console.log(reversedArray);
+    return reversedArray;
+}
 
 module.exports = router;

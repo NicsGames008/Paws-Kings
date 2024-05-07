@@ -26,7 +26,7 @@ function DisplayName(){
             user1Info = response[0].player_name + '\n' + response[0].pc_name;
             document.getElementById("p1Name").innerText = user1Info;
             document.getElementById("p1Id").innerText = 'player ID: ' + response[0].player_id;
-            document.getElementById("p1NameForPromotion").innerText = user1Info + "'s INVENTORY";
+            document.getElementById("p1NameForPromotion").innerText = response[0].player_name + "'s INVENTORY";
 
 
 
@@ -34,7 +34,7 @@ function DisplayName(){
             user2Info = response[1].player_name + '\n' + response[1].pc_name;
             document.getElementById("p2Name").innerText = user2Info;
             document.getElementById("p2Id").innerText = 'player ID: ' + response[1].player_id;
-            document.getElementById("p2NameForPromotion").innerText = user2Info + "'s INVENTORY";
+            document.getElementById("p2NameForPromotion").innerText = response[1].player_name + "'s INVENTORY";
 
 
 
@@ -198,7 +198,7 @@ function DisplayBoard(){
             }
             output += '\n-------------------------\n';
 
-            output += '1- 2- 3- 4- 5 - 6- 7- 8';
+            output += '1- 2- 3- 4- 5- 6- 7- 8';
 
             document.getElementById("superbChessboard").innerText = output;
         }

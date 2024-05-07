@@ -145,7 +145,7 @@ connection.execute('SELECT ms_description AS match_state, pc1.pc_name AS player_
                                         //check if the move is valid 
                                         if ((piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying && validateCardExists && validadePromoten && validateUpgradeTier && piece.pieceType == 'Pawn') {
                                             UpdatePieceType(request, response, cardId, startX, startY);
-                                            UpdateCard(request, response, cardId);
+                                            UpdateCard(request, response, cardId, playerId);
                                             response.send ('Promotion Valid'); 
                                             
                                         } else // Send a response indicating that the move is not valid
@@ -222,10 +222,10 @@ function CheckUpgradeTier(request, response, matchId, cardId, callback){
     });
 }
 //updates the value of the card after the update of the piece 
-function UpdateCard(request, response, cardId) {
+function UpdateCard(request, response, cardId, playerId) {
 
-    connection.execute('UPDATE match_player_card SET mpc_ammount = mpc_ammount -1 WHERE mpc_card_id = ? ',
-    [cardId],
+    connection.execute('UPDATE match_player_card mpc INNER JOIN match_player mp ON mp.mp_id = mpc.mpc_mp_id SET mpc.mpc_ammount = mpc.mpc_ammount -1 WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ?; ',
+    [cardId, playerId],
     function (err, results, fields) {
         if (err) {
             response.send(err);

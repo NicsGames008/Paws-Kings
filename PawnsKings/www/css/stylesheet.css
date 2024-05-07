@@ -37,7 +37,7 @@ body, html {
 }
 .section1-2 {
     flex: 50%;
-    background-color: #8b6a53;
+    background-color: #8d4a4a;
     text-align: center;
     font-size: 30px;
 }
@@ -61,7 +61,7 @@ body, html {
     flex: 60%;
     font-size: 18px;
     text-align: center;
-    background-color: #8b8b8b;
+    background-color: #3300ff46;
 }
 .section2-4 {
     flex: 30%;
@@ -117,4 +117,9 @@ button{
 }
 p{   
     font-size: 12px;
+}
+.thin-border {
+    border: 0px solid black;
+    font-weight: normal;
+    font-size: 20px;
 }

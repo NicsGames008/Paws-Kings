@@ -213,7 +213,6 @@ insert into `Match` (match_ms_id, match_pc_id) values(1, 1);	#Id: 1 / on-going 	
 insert into `Match` (match_ms_id, match_pc_id) values(2, 1);	#Id: 2 / finished 				/ white won(1)
 insert into `Match` (match_ms_id, match_pc_id) values(3, 2);	#Id: 3 / searching for a match 	/ black(2)
 insert into `Match` (match_ms_id, match_pc_id) values(1, 1);	#Id: 4 / on-going 				/ white turn(1)
-insert into `Match` (match_ms_id, match_pc_id) values(3, 1);	#Id: 5 / searching for a match 	/ white(2)
 
 
 
@@ -230,7 +229,6 @@ insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(
 insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(4, 3, 2, 1);	#Id: 6	on-going
 insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(4, 1, 2, 1);	#Id: 7
 
-insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(5, 5, 2, 1);	#Id: 8	searching
 
 
 
@@ -278,10 +276,6 @@ insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) valu
 
 
 
-insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 1, 0);	#Id: 29	bishop
-insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 2, 0);	#Id: 30	roock
-insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 3, 0);	#Id: 31	knight
-insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 4, 0);	#Id: 32	queen
 
 
 
@@ -329,11 +323,6 @@ insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(7, 3,
 insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(7, 4, 0);	#Id: 28	queen
 
 
-
-insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 1, 0);	#Id: 29	bishop
-insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 2, 0);	#Id: 30	roock
-insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 3, 0);	#Id: 31	knight
-insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 4, 0);	#Id: 32	queen
 
 
 
@@ -401,10 +390,3 @@ insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id)
 insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(7, 14, 5, 1);	#Id: 50	pawn(5)
 insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(7, 15, 5, 1);	#Id: 51	pawn(5)
 insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(7, 16, 5, 1);	#Id: 52	pawn(5)
-
-
-
-insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 1, 5, 1);	#Id: 53	pawn(5)
-insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 2, 5, 1);	#Id: 54	pawn(5)
-insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 3, 5, 1);	#Id: 55	pawn(5)
-insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 4, 5, 1);	#Id: 56	pawn(5)

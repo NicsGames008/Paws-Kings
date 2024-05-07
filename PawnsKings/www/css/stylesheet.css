@@ -53,13 +53,13 @@ body, html {
     background-color: #2b05c2;
 }
 .section2-3 {
-    flex: 70%;
+    flex: 60%;
     font-size: 18px;
     text-align: center;
     background-color: #7574b6;
 }
 .section2-4 {
-    flex: 20%;
+    flex: 30%;
     font-size: 20px;
     
     text-align: center;
@@ -104,8 +104,6 @@ td {
     background-color: #f2ff00;
     display: flex;
     font-size: 14px;
-    
-    
 }
 .section5 {
     flex: 50%;
@@ -113,6 +111,8 @@ td {
     background-color: #dda304;
     display: flex;
     font-size: 14px;
+    
+    
 }
 input {
     width:5%;
@@ -120,7 +120,10 @@ input {
     font-size: 16px;
 }
 button{
-    width:10%;
+    width:85px;
     height:80%;
     font-size: 16px;
+}
+p{   
+    font-size: 12px;
 }

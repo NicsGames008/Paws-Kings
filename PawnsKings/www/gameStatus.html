@@ -49,9 +49,11 @@
                     
                     
 
-                    <span>Player Id: <input type="text" id="playerId">
+                    <span>Player Id: <input type="text" id="playerIdMove">
                     
-                    <button onclick="MakeMove()" value="Make a Move">Move!</span>
+                    <button onclick="MakeMove()" >Move!</button></span>
+
+                    <span><p id="responseMove"></p></span>
                     
                 </div>
                 <div class="section section5">
@@ -60,12 +62,14 @@
                     <span> X: <input type="text" id="X">
                          Y: <input type="text" id="Y"></span>
     
-                        <span>Player Id: <input type="text" id="PId">
+                        <span>Player Id: <input type="text" id="PlayerIdPromote">
                         Card ID: <input type="text" id="cardId"></span> 
 
                         <span>
     
-                        <button onclick="Promote()" value="Promote">Promote!</span>
+                        <button onclick="Promote()">Promote! </button></span>
+                            
+                        <span><p id="responsePromote"></p></span>
                     
                 </div>
 

@@ -146,7 +146,7 @@ connection.execute('SELECT ms_description AS match_state, pc1.pc_name AS player_
                                         if ((piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying && validateCardExists && validadePromoten && validateUpgradeTier && piece.pieceType == 'Pawn') {
                                             UpdatePieceType(request, response, cardId, startX, startY);
                                             UpdateCard(request, response, cardId);
-                                            response.send ('promotiona Valid'); 
+                                            response.send ('Promotion Valid'); 
                                             
                                         } else // Send a response indicating that the move is not valid
                                         response.send("Piece is not valid!");                            

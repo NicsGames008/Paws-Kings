@@ -239,9 +239,7 @@ function MakeMove() {
     var startY = document.getElementById('startY').value;
     var endX = document.getElementById('endX').value;
     var endY = document.getElementById('endY').value;
-    var playerId = document.getElementById('playerId').value;
-
-    //var matchId = document.querySelector('input[name="matchId"]').value;
+    var playerId = document.getElementById('playerIdMove').value;
 
     // Construct JSON object with form data
     var data = {
@@ -266,10 +264,12 @@ function MakeMove() {
                 var response = this.responseText;
 
                 // Update the HTML element with the response
-                //document.getElementById("response").innerText = response;
+                document.getElementById("responseMove").innerText = response;
 
                 // Log the response from the server
                 console.log(response);
+                getGameData();
+
             } else { // If there was an error with the request
                 // Log the error status
                 console.error("Error:", this.status);
@@ -287,7 +287,7 @@ function MakeMove() {
 function Promote(){
     var startX = document.getElementById('X').value;
     var startY = document.getElementById('Y').value;
-    var playerId = document.getElementById('PId').value;
+    var playerId = document.getElementById('PlayerIdPromote').value;
     var cardId = document.getElementById('cardId').value;
 
     var data = {
@@ -305,9 +305,14 @@ var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4) { // When the request is complete
         if (this.status == 200) { // If the request was successful
-            // Get the response from the server
             var response = this.responseText;
+
+            // Update the HTML element with the response
+            document.getElementById("responsePromote").innerText = response;
+
+            // Log the response from the server
             console.log(response);
+            getGameData();
         } else { // If there was an error with the request
             // Log the error status
             console.error("Error:", this.status);

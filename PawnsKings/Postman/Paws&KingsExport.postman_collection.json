@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "ba5fc56f-85e2-405d-9265-0c3660234f6c",
+		"name": "Paws&Kings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34445835",
+		"_collection_link": "https://pawns-kings.postman.co/workspace/Pawns-%26-Kings-Workspace~28a0319a-b500-48e6-b1db-0d13d03e8d8c/collection/34445835-ba5fc56f-85e2-405d-9265-0c3660234f6c?action=share&source=collection_link&creator=34445835"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "feet",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "222",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "69",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/signing/up",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signing",
+						"up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "222",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "69",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/signing/in",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signing",
+						"in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movePiece",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "startX",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "startY",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "endX",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "endY",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "playerId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "matchId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/piece/move",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"piece",
+						"move"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upgradePiece",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "startX",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "startY",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "playerId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "matchId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "cardId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/piece/promote",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"piece",
+						"promote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lobby search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "p1",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/lobby/search",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lobby",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lobby create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "p1",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/lobby/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lobby",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lobby leave",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "p1",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/lobby/leave",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lobby",
+						"leave"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "State Game",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "matchId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/state/game/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"state",
+						"game",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "State Card",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "matchId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/state/card/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"state",
+						"card",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "State shard",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "matchId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/state/shard/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"state",
+						"shard",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "State board",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "matchId",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/state/board/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"state",
+						"board",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

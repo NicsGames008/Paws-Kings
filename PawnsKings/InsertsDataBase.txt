@@ -1,0 +1,410 @@
+#--------------------------------------------------------Static Table----------------------------------------------------------------------------
+#Match State
+insert into Match_State (ms_description) values('On-going');				#id:1
+insert into Match_State (ms_description) values('Finished');				#id:2
+insert into Match_State (ms_description) values('Searching for a match');	#id:3
+insert into Match_State (ms_description) values('Stopped searching for a match');	#id:4
+
+#Upgrade Tier
+insert into Upgrade_Tier (ut_name) values('None');		#id:1
+insert into Upgrade_Tier (ut_name) values('Bishop');	#id:2
+insert into Upgrade_Tier (ut_name) values('Roock');		#id:3
+insert into Upgrade_Tier (ut_name) values('Knight');	#id:4
+insert into Upgrade_Tier (ut_name) values('Queen');		#id:5
+
+#Card
+insert into Card (card_name) values('Bishop');		#id:1
+insert into Card (card_name) values('Roock');		#id:2
+insert into Card (card_name) values('Knight');		#id:3
+insert into Card (card_name) values('Queen');		#id:4
+
+#Shard
+insert into Shard (shard_ammount_needed, shard_chance) values(2, 0.3);	#id:1	Bishop
+insert into Shard (shard_ammount_needed, shard_chance) values(2, 0.3);	#id:2	Roock
+insert into Shard (shard_ammount_needed, shard_chance) values(2, 0.3);	#id:3	Knight
+insert into Shard (shard_ammount_needed, shard_chance) values(3, 0.1);	#id:4	Queen
+
+#Piece
+insert into Piece (piece_name) values('Bishop');	#id:1	Bishop
+insert into Piece (piece_name) values('Roock');		#id:2	Roock
+insert into Piece (piece_name) values('Knight');	#id:3	Knight
+insert into Piece (piece_name) values('Queen');		#id:4	Queen
+insert into Piece (piece_name) values('Pawn');		#id:5	Pawn
+insert into Piece (piece_name) values('King');		#id:6	King
+
+#Piece_State
+insert into Piece_State (ps_description) values('Alive');					#id:1
+insert into Piece_State (ps_description) values('Dead');					#id:2
+insert into Piece_State (ps_description) values('Unusable for this turn');	#id:3
+INSERT INTO piece_state (ps_description) VALUES('Has not moved yet');		#id:4
+
+#Player_Color
+insert into Player_Color (pc_name) values('White');	#id:1	Only White
+insert into Player_Color (pc_name) values('Black');	#id:2	Only Black
+insert into Player_Color (pc_name) values('Gray');	#id:3	Both White and Black
+
+
+
+
+#Tile 4x4,	x = Letters, y = numbers.	Starting from bottom left, compliting untill right and then moving back to left and increasing the column height
+#FIRST ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 1, 'A1');	#id:1		Bottom Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 1, 'B1');	#id:2		Bottom Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 1, 'C1');	#id:3		Bottom Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 1, 'D1');	#id:4		Bottom Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 1, 'E1');	#id:5		Bottom Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 1, 'F1');	#id:6		Bottom Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 1, 'G1');	#id:7		Bottom Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 1, 'H1');	#id:8		Bottom Right
+#SECOND ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 2, 'A2');	#id:9		Lower-Half Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 2, 'B2');	#id:10		Lower-Half Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 2, 'C2');	#id:11		Lower-Half Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 2, 'D2');	#id:12		Lower-Half Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 2, 'E2');	#id:13		Lower-Half Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 2, 'F2');	#id:14		Lower-Half Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 2, 'G2');	#id:15		Lower-Half Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 2, 'H2');	#id:16		Lower-Half Right
+#THIRD ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 3, 'A3');	#id:17		Higher-Half Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 3, 'B3');	#id:18		Higher-Half Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 3, 'C3');	#id:19		Higher-Half Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 3, 'D3');	#id:20		Higher-Half Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 3, 'E3');	#id:21		Higher-Half Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 3, 'F3');	#id:22		Higher-Half Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 3, 'G3');	#id:23		Higher-Half Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 3, 'H3');	#id:24		Higher-Half Right
+#FOURTH ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 4, 'A4');	#id:25		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 4, 'B4');	#id:26		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 4, 'C4');	#id:27		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 4, 'D4');	#id:28		Top Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 4, 'E4');	#id:29		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 4, 'F4');	#id:30		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 4, 'G4');	#id:31		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 4, 'H4');	#id:32		Top Right
+#FIFTH ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 5, 'A5');	#id:33		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 5, 'B5');	#id:34		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 5, 'C5');	#id:35		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 5, 'D5');	#id:36		Top Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 5, 'E5');	#id:37		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 5, 'F5');	#id:38		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 5, 'G5');	#id:39		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 5, 'H5');	#id:40		Top Right
+#SIXTH ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 6, 'A6');	#id:41		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 6, 'B6');	#id:42		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 6, 'C6');	#id:43		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 6, 'D6');	#id:44		Top Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 6, 'E6');	#id:45		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 6, 'F6');	#id:46		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 6, 'G6');	#id:47		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 6, 'H6');	#id:48		Top Right
+#SEVENTH ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 7, 'A7');	#id:49		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 7, 'B7');	#id:50		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 7, 'C7');	#id:51		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 7, 'D7');	#id:52		Top Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 7, 'E7');	#id:53		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 7, 'F7');	#id:54		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 7, 'G7');	#id:55		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 7, 'H7');	#id:56		Top Right
+#EIGTH ROW
+insert into Tile (tile_x, tile_y, tile_name) values(1, 8, 'A8');	#id:57		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(2, 8, 'B8');	#id:58		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(3, 8, 'C8');	#id:59		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(4, 8, 'D8');	#id:60		Top Right
+insert into Tile (tile_x, tile_y, tile_name) values(5, 8, 'E8');	#id:61		Top Left
+insert into Tile (tile_x, tile_y, tile_name) values(6, 8, 'F8');	#id:62		Top Center-Left
+insert into Tile (tile_x, tile_y, tile_name) values(7, 8, 'G8');	#id:63		Top Center-Right
+insert into Tile (tile_x, tile_y, tile_name) values(8, 8, 'H8');	#id:64		Top Right
+
+
+
+#Tile_Promotion
+#FIRST ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(1, 1, 'A1');	#id:1		Bottom Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(2, 1, 'B1');	#id:2		Bottom Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(3, 1, 'C1');	#id:3		Bottom Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(4, 1, 'D1');	#id:4		Bottom Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(5, 1, 'E1');	#id:5		Bottom Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(6, 1, 'F1');	#id:6		Bottom Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(7, 1, 'G1');	#id:7		Bottom Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(8, 1, 'H1');	#id:8		Bottom Right
+#SECOND ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(9, 1, 'A2');	#id:9		Lower-Half Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(10, 1, 'B2');	#id:10		Lower-Half Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(11, 1, 'C2');	#id:11		Lower-Half Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(12, 1, 'D2');	#id:12		Lower-Half Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(13, 1, 'E2');	#id:13		Lower-Half Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(14, 1, 'F2');	#id:14		Lower-Half Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(15, 1, 'G2');	#id:15		Lower-Half Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(16, 1, 'H2');	#id:16		Lower-Half Right
+#THIRD ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(17, 1, 'A3');	#id:17		Higher-Half Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(18, 1, 'B3');	#id:18		Higher-Half Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(19, 1, 'C3');	#id:19		Higher-Half Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(20, 1, 'D3');	#id:20		Higher-Half Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(21, 1, 'E3');	#id:21		Higher-Half Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(22, 1, 'F3');	#id:22		Higher-Half Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(23, 1, 'G3');	#id:23		Higher-Half Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(24, 1, 'H3');	#id:24		Higher-Half Right
+#FOURTH ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(25, 3, 'A4');	#id:25		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(26, 3, 'B4');	#id:26		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(27, 3, 'C4');	#id:27		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(28, 3, 'D4');	#id:28		Top Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(29, 3, 'E4');	#id:29		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(30, 3, 'F4');	#id:30		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(31, 3, 'G4');	#id:31		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(32, 3, 'H4');	#id:32		Top Right
+#FIFTH ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(33, 3, 'A5');	#id:33		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(34, 3, 'B5');	#id:34		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(35, 3, 'C5');	#id:35		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(36, 3, 'D5');	#id:36		Top Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(37, 3, 'E5');	#id:37		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(38, 3, 'F5');	#id:38		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(39, 3, 'G5');	#id:39		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(40, 3, 'H5');	#id:40		Top Right
+#SIXTH ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(41, 2, 'A6');	#id:41		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(42, 2, 'B6');	#id:42		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(43, 2, 'C6');	#id:43		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(44, 2, 'D6');	#id:44		Top Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(45, 2, 'E6');	#id:45		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(46, 2, 'F6');	#id:46		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(47, 2, 'G6');	#id:47		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(48, 2, 'H6');	#id:48		Top Right
+#SEVENTH ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(49, 2, 'A7');	#id:49		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(50, 2, 'B7');	#id:50		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(51, 2, 'C7');	#id:51		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(52, 2, 'D7');	#id:52		Top Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(53, 2, 'E7');	#id:53		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(54, 2, 'F7');	#id:54		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(55, 2, 'G7');	#id:55		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(56, 2, 'H7');	#id:56		Top Right
+#EIGTH ROW
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(57, 2, 'A8');	#id:57		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(58, 2, 'B8');	#id:58		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(59, 2, 'C8');	#id:59		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(60, 2, 'D8');	#id:60		Top Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(61, 2, 'E8');	#id:61		Top Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(62, 2, 'F8');	#id:62		Top Center-Left
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(63, 2, 'G8');	#id:63		Top Center-Right
+insert into Tile_Promotion (tp_tile_id, tp_pc_id, tp_name) values(64, 2, 'H8');	#id:64		Top Right
+
+
+#----------------------------------------------------Non-Static Table----------------------------------------------------------------------------
+#Player
+insert into Player (player_name, player_email, player_password) values('amogus', 'amogus@amogus.amogus', 'amogusamogus');			#Id: 1
+insert into Player (player_name, player_email, player_password) values('Chirly', 'ImNotMoistCritikal@fake.yourHouse', 'YEAHBABY!');	#Id: 2
+insert into Player (player_name, player_email, player_password) values('BigChungus', 'big@chungus.real', 'kappachungus');			#Id: 3
+insert into Player (player_name, player_email, player_password) values('idk', 'idk@idk.idk', 'idk');								#Id: 4
+insert into Player (player_name, player_email, player_password) values('John DarkSouls', 'john@dark.souls', 'johndarksouls');		#Id: 5
+
+
+
+
+#`Match`
+insert into `Match` (match_ms_id, match_pc_id) values(1, 1);	#Id: 1 / on-going 				/ white turn(2)
+insert into `Match` (match_ms_id, match_pc_id) values(2, 1);	#Id: 2 / finished 				/ white won(1)
+insert into `Match` (match_ms_id, match_pc_id) values(3, 2);	#Id: 3 / searching for a match 	/ black(2)
+insert into `Match` (match_ms_id, match_pc_id) values(1, 1);	#Id: 4 / on-going 				/ white turn(1)
+insert into `Match` (match_ms_id, match_pc_id) values(3, 1);	#Id: 5 / searching for a match 	/ white(2)
+
+
+
+
+#Match_Player		2 Lines = 1 Match / 1 line = seaching match
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(1, 1, 1, 1);	#Id: 1	on-going
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(1, 2, 1, 2);	#Id: 2
+
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(2, 2, 1, 1);	#Id: 3	finished
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(2, 3, 1, 1);	#Id: 4
+
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(3, 4, 1, 1);	#Id: 5	searching
+
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(4, 3, 2, 1);	#Id: 6	on-going
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(4, 1, 2, 1);	#Id: 7
+
+insert into Match_Player (mp_match_id, mp_player_id, mp_ut_id, mp_pc_id) values(5, 5, 2, 1);	#Id: 8	searching
+
+
+
+
+#Match_Player_Shard		3 shards total
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(1, 1, 0);	#Id: 1	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(1, 2, 0);	#Id: 2	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(1, 3, 0);	#Id: 3	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(1, 4, 0);	#Id: 4	queen
+
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(2, 1, 0);	#Id: 5	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(2, 2, 0);	#Id: 6	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(2, 3, 0);	#Id: 7	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(2, 4, 0);	#Id: 8	queen
+
+
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(3, 1, 1);	#Id: 9	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(3, 2, 1);	#Id: 10	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(3, 3, 0);	#Id: 11	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(3, 4, 1);	#Id: 12	queen
+
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(4, 1, 2);	#Id: 13	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(4, 2, 0);	#Id: 14	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(4, 3, 0);	#Id: 15	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(4, 4, 1);	#Id: 16	queen
+
+
+
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(5, 1, 0);	#Id: 17	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(5, 2, 0);	#Id: 18	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(5, 3, 0);	#Id: 19	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(5, 4, 0);	#Id: 20	queen
+
+
+
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(6, 1, 0);	#Id: 21	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(6, 2, 0);	#Id: 22	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(6, 3, 1);	#Id: 23	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(6, 4, 0);	#Id: 24	queen
+
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(7, 1, 0);	#Id: 25	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(7, 2, 0);	#Id: 26	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(7, 3, 0);	#Id: 27	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(7, 4, 0);	#Id: 28	queen
+
+
+
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 1, 0);	#Id: 29	bishop
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 2, 0);	#Id: 30	roock
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 3, 0);	#Id: 31	knight
+insert into Match_Player_Shard (mps_mp_id, mps_shard_id, mps_shard_ammount) values(8, 4, 0);	#Id: 32	queen
+
+
+
+
+#Match_Player_Card
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(1, 1, 0);	#Id: 1	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(1, 2, 0);	#Id: 2	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(1, 3, 0);	#Id: 3	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(1, 4, 0);	#Id: 4	queen
+
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(2, 1, 0);	#Id: 5	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(2, 2, 1);	#Id: 6	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(2, 3, 1);	#Id: 7	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(2, 4, 1);	#Id: 8	queen
+
+
+
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(3, 1, 0);	#Id: 9	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(3, 2, 1);	#Id: 10	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(3, 3, 1);	#Id: 11	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(3, 4, 1);	#Id: 12	queen
+
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(4, 1, 0);	#Id: 13	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(4, 2, 1);	#Id: 14	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(4, 3, 1);	#Id: 15	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(4, 4, 1);	#Id: 16	queen
+
+
+
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(5, 1, 0);	#Id: 17	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(5, 2, 0);	#Id: 18	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(5, 3, 0);	#Id: 19	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(5, 4, 0);	#Id: 20	queen
+
+
+
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(6, 1, 0);	#Id: 21	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(6, 2, 2);	#Id: 22	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(6, 3, 0);	#Id: 23	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(6, 4, 1);	#Id: 24	queen
+
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(7, 1, 0);	#Id: 25	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(7, 2, 0);	#Id: 26	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(7, 3, 0);	#Id: 27	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(7, 4, 0);	#Id: 28	queen
+
+
+
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 1, 0);	#Id: 29	bishop
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 2, 0);	#Id: 30	roock
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 3, 0);	#Id: 31	knight
+insert into Match_Player_Card (mpc_mp_id, mpc_card_id, mpc_ammount) values(8, 4, 0);	#Id: 32	queen
+
+
+
+
+#Match_Player_Piece		just 4 pieces each
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 1, 5, 1);	#Id: 1	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 2, 5, 1);	#Id: 2	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 3, 5, 1);	#Id: 3	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 4, 5, 1);	#Id: 4	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 5, 6, 1);	#Id: 5	king(6) 
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 6, 5, 4);	#Id: 6	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 7, 5, 4);	#Id: 7	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 8, 5, 4);	#Id: 8	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 9, 5, 1);	#Id: 9	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 10, 5, 1);	#Id: 10	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 11, 5, 1);	#Id: 11	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 12, 5, 1);	#Id: 12	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 13, 5, 1);	#Id: 13	pawn(5) 
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 14, 5, 4);	#Id: 14	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 15, 5, 4);	#Id: 15	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(1, 16, 5, 4);	#Id: 16	pawn(5)
+
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 57, 5, 1);	#Id: 17	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 58, 5, 1);	#Id: 18	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 59, 5, 1);	#Id: 19	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 60, 5, 1);	#Id: 20	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 61, 6, 1);	#Id: 21	king(6) 
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 62, 5, 1);	#Id: 22	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 63, 5, 1);	#Id: 23	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 64, 5, 1);	#Id: 24	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 49, 5, 1);	#Id: 25	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 50, 5, 1);	#Id: 26	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 51, 5, 1);	#Id: 27	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 52, 5, 1);	#Id: 28	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 53, 5, 1);	#Id: 29	pawn(5) 
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 54, 5, 1);	#Id: 30	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 55, 5, 1);	#Id: 31	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(2, 56, 5, 1);	#Id: 32	pawn(5)
+
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(3, 1, 5, 1);	#Id: 33	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(3, 2, 5, 1);	#Id: 34	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(3, 3, 5, 1);	#Id: 35	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(3, 4, 5, 1);	#Id: 36	pawn(5)
+
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(4, 13, 5, 1);	#Id: 37	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(4, 14, 5, 1);	#Id: 38	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(4, 15, 5, 1);	#Id: 39	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(4, 16, 5, 1);	#Id: 40	pawn(5)
+
+
+
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(5, 1, 5, 1);	#Id: 41	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(5, 2, 5, 1);	#Id: 42	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(5, 3, 5, 1);	#Id: 43	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(5, 4, 5, 1);	#Id: 44	pawn(5)
+
+
+
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) value (6, 1, 5, 1);	#Id: 45	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(6, 2, 5, 1);	#Id: 46	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(6, 3, 5, 1);	#Id: 47	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(6, 4, 5, 1);	#Id: 48	pawn(5)
+
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(7, 13, 5, 1);	#Id: 49	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(7, 14, 5, 1);	#Id: 50	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(7, 15, 5, 1);	#Id: 51	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(7, 16, 5, 1);	#Id: 52	pawn(5)
+
+
+
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 1, 5, 1);	#Id: 53	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 2, 5, 1);	#Id: 54	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 3, 5, 1);	#Id: 55	pawn(5)
+insert into Match_Player_Piece (mpp_mp_id, mpp_tile_id, mpp_piece_id, mpp_ps_id) values(8, 4, 5, 1);	#Id: 56	pawn(5)

@@ -282,3 +282,41 @@ function MakeMove() {
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
     xhttp.send(JSON.stringify(data)); // Send JSON data to the server
 }
+
+
+function Promote(){
+    var startX = document.getElementById('X').value;
+    var startY = document.getElementById('Y').value;
+    var playerId = document.getElementById('PId').value;
+    var cardId = document.getElementById('cardId').value;
+
+    var data = {
+        startX: startX,
+        startY: startY,
+        playerId: playerId,
+        matchId: '1',
+        cardId: cardId,
+    };
+    console.log(JSON.stringify(data));
+// Create an XMLHttpRequest object
+var xhttp = new XMLHttpRequest();
+
+// Define the callback function to handle the response
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) { // When the request is complete
+        if (this.status == 200) { // If the request was successful
+            // Get the response from the server
+            var response = this.responseText;
+            console.log(response);
+        } else { // If there was an error with the request
+            // Log the error status
+            console.error("Error:", this.status);
+        }
+    }
+};
+
+// Configure the XMLHttpRequest object
+xhttp.open("POST", "/piece/promote", true); // Specify the method and URL
+xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
+xhttp.send(JSON.stringify(data)); // Send JSON data to the server
+}

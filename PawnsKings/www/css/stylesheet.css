@@ -112,6 +112,7 @@ td {
     height: 50%;
     background-color: #dda304;
     display: flex;
+    font-size: 14px;
 }
 input {
     width:5%;

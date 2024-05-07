@@ -57,14 +57,15 @@ body, html {
     font-weight: bold;
     font-size: 20px;
 }
-.section2-3 { /* chess board prints*/
-    flex: 70%;
-    font-size: 20px;
+.section2-3 {
+    flex: 60%;
+    font-size: 18px;
     text-align: center;
     background-color: #8b8b8b;
 }
 .section2-4 {
-    flex: 20%;
+    flex: 30%;
+    font-size: 20px;
     
     text-align: center;
     background-color: #876288;
@@ -103,18 +104,17 @@ td {
     padding: 16px;
     font-size: 20px;
 }
+ 
 input {
     width:4%;
     height:50%;
     font-size: 16px;
 }
 button{
-    width:20%;
+    width:85px;
     height:80%;
-    font-weight: bold;
+    font-size: 16px;
 }
-.thin-border {
-    border: 0px solid black;
-    font-weight: normal;
-    font-size: 20px;
+p{   
+    font-size: 12px;
 }

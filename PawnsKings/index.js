@@ -3,7 +3,7 @@ const express = require('express');
 const connection = require('./database');
 const lobby = require('./API/lobby');
 const state = require('./API/state');
-const movePiece = require('./API/movePiece');
+const movePiece = require('./API/piece');
 
 // Set the port of the server
 const serverPort = 3000;

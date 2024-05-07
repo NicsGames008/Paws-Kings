@@ -213,9 +213,7 @@ function MakeMove() {
     var startY = document.getElementById('startY').value;
     var endX = document.getElementById('endX').value;
     var endY = document.getElementById('endY').value;
-    var playerId = document.getElementById('playerId').value;
-
-    //var matchId = document.querySelector('input[name="matchId"]').value;
+    var playerId = document.getElementById('playerIdMove').value;
 
     // Construct JSON object with form data
     var data = {
@@ -240,10 +238,12 @@ function MakeMove() {
                 var response = this.responseText;
 
                 // Update the HTML element with the response
-                //document.getElementById("response").innerText = response;
+                document.getElementById("responseMove").innerText = response;
 
                 // Log the response from the server
                 console.log(response);
+                getGameData();
+
             } else { // If there was an error with the request
                 // Log the error status
                 console.error("Error:", this.status);
@@ -255,4 +255,47 @@ function MakeMove() {
     xhttp.open("POST", "piece/move", true); // Specify the method and URL
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
     xhttp.send(JSON.stringify(data)); // Send JSON data to the server
+}
+
+
+function Promote(){
+    var startX = document.getElementById('X').value;
+    var startY = document.getElementById('Y').value;
+    var playerId = document.getElementById('PlayerIdPromote').value;
+    var cardId = document.getElementById('cardId').value;
+
+    var data = {
+        startX: startX,
+        startY: startY,
+        playerId: playerId,
+        matchId: '1',
+        cardId: cardId,
+    };
+    console.log(JSON.stringify(data));
+// Create an XMLHttpRequest object
+var xhttp = new XMLHttpRequest();
+
+// Define the callback function to handle the response
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) { // When the request is complete
+        if (this.status == 200) { // If the request was successful
+            var response = this.responseText;
+
+            // Update the HTML element with the response
+            document.getElementById("responsePromote").innerText = response;
+
+            // Log the response from the server
+            console.log(response);
+            getGameData();
+        } else { // If there was an error with the request
+            // Log the error status
+            console.error("Error:", this.status);
+        }
+    }
+};
+
+// Configure the XMLHttpRequest object
+xhttp.open("POST", "/piece/promote", true); // Specify the method and URL
+xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
+xhttp.send(JSON.stringify(data)); // Send JSON data to the server
 }

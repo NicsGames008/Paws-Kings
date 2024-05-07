@@ -60,7 +60,7 @@ body, html {
 }
 .section2-4 {
     flex: 20%;
-    font-size: 10px;
+    font-size: 20px;
     
     text-align: center;
     background-color: #ec63f1;
@@ -69,30 +69,33 @@ body, html {
     flex: 40%;
     background-color: #00ff51;
     display: flex;
+    
 }
 .section3-1 {
     flex: 50%;
     background-color: #0ab136;
+    font-size: 30;
 }
 .section3-2 {
     flex: 50%;
     text-align: right;
     background-color: #056a23;
+    font-size: 30;
 }
 table {
     border-collapse: collapse;
     border: 1px solid black;
-    margin: 10px;
+    margin: 20px;
     font-size: 12px;
 }
 th{
     border: 1px solid black;
     padding: 8px;
-    font-size: 10px;
+    font-size: 20px;
 }
 td {
     border: 1px solid black;
-    padding: 8px;
+    padding: 16px;
 }
 
 .section4 {
@@ -100,7 +103,7 @@ td {
     height: 50%;
     background-color: #f2ff00;
     display: flex;
-    font-size: 10px;
+    font-size: 14px;
     
     
 }
@@ -112,11 +115,11 @@ td {
 }
 input {
     width:5%;
-    height:60%;
-    font-size: 10px;
+    height:50%;
+    font-size: 16px;
 }
 button{
     width:10%;
     height:80%;
-    font-size: 8px;
+    font-size: 16px;
 }

@@ -380,7 +380,7 @@ function FillFleetingBoard(request, response, matchId, previusResults){
                         tileset += '\n|';
                     }
                 }
-
+                console.log(tileset)
                 //composing the chees board
                 for(let i = 0; i < results.length; i++){
 
@@ -422,7 +422,7 @@ function FillFleetingBoard(request, response, matchId, previusResults){
                     }
                 }
 
-                console.log(amogus);
+                //console.log(amogus);
 
                 let horizontallyReversed = reverseHorizontally(amogus);
 
@@ -461,7 +461,7 @@ function reverseHorizontally(array) {
         reversedArray.push(...row);
     }
 
-    console.log(reversedArray);
+    //console.log(reversedArray);
     return reversedArray;
 }
 

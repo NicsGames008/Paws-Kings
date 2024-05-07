@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pawns & Kings</title>
+<link rel="stylesheet" type="text/css" href="./css/stylesheetFinal.css">
+<script src="./scripts/finalScripts.js"></script>
+</head>
+<body onload="getGameData()">
+    
+    <div class="container">
+        <div class="section section1">
+
+            <div class="subsection section1-1">
+                <div id="p1Name"></div>
+                <div id="p1Id"></div>
+            </div>
+            
+            <div class="subsection section1-2">
+                
+                <div id="p1NameForPromotion"></div>
+                <table>
+                    <tr>
+                        <div></div>
+                        <th></th>
+                        <th id ="cardName1w"></th>
+                        <th id ="cardName2w"></th>
+                        <th id ="cardName3w"></th>
+                        <th id ="cardName4w"></th>
+                    </tr>
+                    <tr>
+                        <td>Cards:</td>
+                        <td id ="cardQuantity1w"></td>
+                        <td id ="cardQuantity2w"></td>
+                        <td id ="cardQuantity3w"></td>
+                        <td id ="cardQuantity4w"></td>
+                    </tr>
+                    <tr>
+                        <td>Shards:</td>
+                        <td id ="shardQuantity1w"></td>
+                        <td id ="shardQuantity2w"></td>
+                        <td id ="shardQuantity3w"></td>
+                        <td id ="shardQuantity4w"></td>
+                    </tr>
+                </table>
+            
+            </div>
+        </div>
+
+
+        <div class="section section2">
+
+            <div class="subsection section2-1">
+                <div></div>
+                Upgrade available: 
+                <span id ="utGoesHere"></span>
+            </div>
+
+            <div class="subsection section2-2"> 
+                <span id="ColorPlyaing"></span>
+            </div>
+
+            <div class="subsection section2-3">
+                <div id="superbChessboard"></div>
+            </div>
+
+            <div class="subsection section2-4">
+                <table>
+                    <tr class="thin-border">
+                        <th class="thin-border">
+            
+                                <span>MOVEMENT:</span>
+                                <br>
+
+                                <span>Start X: <input type="text" id="startX">
+                                Start Y: <input type="text" id="startY">
+                                <br>
+                                </span>
+                                
+                                <span>End X: <input type="text" id="endX">
+                                End Y: <input type="text" id="endY">
+                                <br>
+                                </span>
+                                
+                                
+            
+                                <span>Player Id: <input type="text" id="playerId"> 
+                                <br>
+                                <button onclick="MakeMove()" value="Make a Move">Move!</span>
+                                
+
+                        </th class="thin-border">
+                        <th class="thin-border">
+
+                            <span>PROMOTION:</span>
+                            <br>
+
+                            <span>Start X: <input type="text" id="startX">
+                            Start Y: <input type="text" id="startY"> 
+                            <br>
+                            </span>
+                            
+                            <span>End X: <input type="text" id="endX">
+                            End Y: <input type="text" id="endY"> 
+                            <br> 
+                            </span>
+                            
+                            
+        
+                            <span>Player Id: <input type="text" id="playerId">
+                            <br>
+                            <button onclick="MakeMove()" value="Make a Move">Move!</button></span>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+        <div class="section section3">
+
+            <div class="subsection section3-1">
+                <div id="p2Name"> </div>
+                <div id ="p2Id"></div>
+            </div>
+            
+            <div class="subsection section3-2">
+                <div id="p2NameForPromotion"></div>
+                <table>
+                    <tr>
+                        <div></div>
+                        <th></th>
+                        <th id ="cardName1b"></th>
+                        <th id ="cardName2b"></th>
+                        <th id ="cardName3b"></th>
+                        <th id ="cardName4b"></th>
+                    </tr>
+                    <tr>
+                        <td>Cards:</td>
+                        <td id ="cardQuantity1b"></td>
+                        <td id ="cardQuantity2b"></td>
+                        <td id ="cardQuantity3b"></td>
+                        <td id ="cardQuantity4b"></td>
+                    </tr>
+                    <tr>
+                        <td>Shards:</td>
+                        <td id ="shardQuantity1b"></td>
+                        <td id ="shardQuantity2b"></td>
+                        <td id ="shardQuantity3b"></td>
+                        <td id ="shardQuantity4b"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+</html>

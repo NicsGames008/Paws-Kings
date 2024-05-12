@@ -6,7 +6,7 @@ const state = require('./API/state');
 const movePiece = require('./API/piece');
 
 // Set the port of the server
-const serverPort = 3000;
+const serverPort = process.env.PORT || 3000;
 
 // Create a new instance of express
 const app = express();
@@ -34,6 +34,10 @@ connection.connect((err) => {
 
 // Listen on port for any requests made.
 // Note: Only 1 program can be listening at a single port at any time. This means we can't execute this server two times in the same port...
-app.listen(serverPort, () => {
+const server = app.listen(serverPort, () => {
     console.log('👌 Server is running at ' + serverPort);
 });
+
+
+server.keepAliveTimeout = 120 * 1000;
+server.headersTimeout = 120 * 1000;

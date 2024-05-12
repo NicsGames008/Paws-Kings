@@ -33,7 +33,7 @@ router.post('/move', (request, response) => {
 
 
     // Execute the query
-    connection.execute('SELECT ms_description AS match_state, pc1.pc_name AS player_color, pc2.pc_name AS color_playing FROM Match_Player mp INNER JOIN Match_State ms ON mp.mp_match_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ms.ms_id INNER JOIN Player_Color pc1 ON mp.mp_pc_id = pc1.pc_id INNER JOIN `Match` m ON mp.mp_match_id = m.match_id INNER JOIN Player_Color pc2 ON m.match_pc_id = pc2.pc_id; ',
+    connection.execute('SELECT ms_description AS match_state, pc1.pc_name AS Player_Color, pc2.pc_name AS color_playing FROM Match_Player mp INNER JOIN `Match_State` ms ON mp.mp_match_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ms.ms_id INNER JOIN Player_Color pc1 ON mp.mp_pc_id = pc1.pc_id INNER JOIN `Match` m ON mp.mp_match_id = m.match_id INNER JOIN Player_Color pc2 ON m.match_pc_id = pc2.pc_id; ',
     [matchId, playerId], 
     function (err, results, fields){
         if (err) {
@@ -65,15 +65,15 @@ router.post('/move', (request, response) => {
                                 if(piece.pieceState == 'Has not moved yet')
                                     ChangePieceState(request, response, startX, startY, matchId, 1);
                                 //if its valid but has a pice on the way....
+                                console.log(moveIsValide[1]);
                                 if(moveIsValide[1]){ //if there is an enemy on the way....
                                     //checks if its an enemy or an ally
+
                                     if(moveIsValide[1].color == playerColor) //if its an allly send a message saying so
                                         response.send("Ally on the Tile " + moveIsValide[1].x + " " + moveIsValide[1].y);
                                     else { // if its an enemy changes the piece location and the enemy's state
                                         if( moveIsValide[1].x == endX && moveIsValide[1].y == endY){
-                                            ChangePieceState(request, response, moveIsValide[1].x, moveIsValide[1].y, matchId, 2);
-                                            ChangeUpgardeTier(request, response, matchId);    
-                                            UpdatePiecePositionWithShard(request, response, startX, startY, moveIsValide[1].x, moveIsValide[1].y, matchId, playerId, "Move with an enemy on the way and finished on position " + moveIsValide[1].x + " " + moveIsValide[1].y);
+                                            YourFunction(request, response, moveIsValide, matchId, startX, startY, playerId) 
                                         }
                                         else
                                             response.send("Enemy piece on the way" + moveIsValide[1].x + " " + moveIsValide[1].y);
@@ -110,13 +110,13 @@ router.post('/promote',(request, response)=>{
         return;
     }
 
-    // Validate if the positions are within the board boundaries
-    if (startX < 1 || startX > 8 || startY < 1 || startY > 8) {
-        response.send("Invalid position!");
-        return ;
-    }
+// Validate if the positions are within the board boundaries
+if (startX < 1 || startX > 8 || startY < 1 || startY > 8) {
+    response.send("Invalid position!");
+    return ;
+}
 
-    connection.execute('SELECT ms_description AS match_state, pc1.pc_name AS player_color, pc2.pc_name AS color_playing FROM Match_Player mp INNER JOIN Match_State ms ON mp.mp_match_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ms.ms_id INNER JOIN Player_Color pc1 ON mp.mp_pc_id = pc1.pc_id INNER JOIN `Match` m ON mp.mp_match_id = m.match_id INNER JOIN Player_Color pc2 ON m.match_pc_id = pc2.pc_id; ',
+connection.execute('SELECT ms_description AS match_state, pc1.pc_name AS Player_Color, pc2.pc_name AS color_playing FROM Match_Player mp INNER JOIN `Match_State` ms ON mp.mp_match_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ms.ms_id INNER JOIN Player_Color pc1 ON mp.mp_pc_id = pc1.pc_id INNER JOIN `Match` m ON mp.mp_match_id = m.match_id INNER JOIN Player_Color pc2 ON m.match_pc_id = pc2.pc_id; ',
     [matchId, playerId], 
     function (err, results, fields){
         if (err) {
@@ -164,9 +164,22 @@ router.post('/promote',(request, response)=>{
         }
     });
 });
+
+
+async function YourFunction(request, response, moveIsValide, matchId, startX, startY, playerId) {
+    try {
+        await ChangePieceState(moveIsValide[1].x, moveIsValide[1].y, matchId, 2);
+        await ChangeUpgardeTier(request, response, matchId);
+        await UpdatePiecePositionWithShard(request, response, startX, startY, moveIsValide[1].x, moveIsValide[1].y, matchId, playerId, "Move with an enemy on the way and finished on position " + moveIsValide[1].x + " " + moveIsValide[1].y);
+        // Other operations after the updates
+    } catch (error) {
+        response.send(error); // Handle errors appropriately
+    }
+}
+
 function UpdatePieceType(request, response, cardId, startX, startY) {
 
-    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ?WHERE t.tile_x = ? AND t.tile_y = ?;',
+    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ?;',
     [cardId, startX, startY],
     function (err, results, fields) {
         if (err) {
@@ -177,7 +190,7 @@ function UpdatePieceType(request, response, cardId, startX, startY) {
 //Check's if the card exists in the players hand 
 function CheckCardExist(request, response, cardId, playerId, matchId, callback) {
 
-    connection.execute('SELECT mpc.mpc_ammount AS ammount FROM Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id WHERE mpc.mpc_card_id = 1 AND mp.mp_player_id = 1 AND mp.mp_match_id = 1;',
+    connection.execute('SELECT mpc.mpc_ammount AS ammount from Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id WHERE mpc.mpc_card_id = ? and mp.mp_player_id = ? AND mp.mp_match_id = ?;',
     [cardId, playerId, matchId],
     function (err, results, fields) {
         if (err) {
@@ -224,7 +237,7 @@ function CheckUpgradeTier(request, response, matchId, cardId, callback){
 //updates the value of the card after the update of the piece 
 function UpdateCard(request, response, cardId, playerId) {
 
-    connection.execute('UPDATE Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id SET mpc.mpc_ammount = mpc.mpc_ammount -1 WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ?;',
+    connection.execute('UPDATE Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id SET mpc.mpc_ammount = mpc.mpc_ammount -1 WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ?; ',
     [cardId, playerId],
     function (err, results, fields) {
         if (err) {
@@ -240,13 +253,16 @@ function ChangeUpgardeTier(request, response, matchId){
         if (err) {
             response.send(err);
         } else {
+
             if (results[0].upgradeTier != 'Queen'){
                 connection.execute('UPDATE Match_Player SET mp_ut_id = mp_ut_id + 1 WHERE mp_match_id = ?;',
                 [matchId]
                 , function (err, resultsInsert, fields) {
                     if (err) {
                         response.send(err);
-                    } 
+                    } else {
+                        resolve();
+                    }
                 });
             }
         }
@@ -315,7 +331,7 @@ function GetBoardState(request, response, matchId, callback) {
             response.send(err);
         }
         else{
-            connection.execute('SELECT t.tile_x AS x, t.tile_y AS y, pc.pc_name AS color, ps.ps_description AS piece_state, mpp.mpp_mp_id AS playerID FROM Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id INNER JOIN Match_Player mp ON mp.mp_id = mpp.mpp_mp_id INNER JOIN Player_Color pc ON pc.pc_id = mp.mp_pc_id INNER JOIN Piece_State ps ON mpp.mpp_ps_id = ps.ps_id WHERE mpp_mp_id = ? OR mpp_mp_id = ?;',
+            connection.execute('SELECT t.tile_x AS x, t.tile_y AS y, pc.pc_name AS color, ps.ps_description AS Piece_State, mpp.mpp_mp_id AS playerID FROM Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id =mpp.mpp_tile_id INNER JOIN Match_Player mp ON mp.mp_id = mpp.mpp_mp_id INNER JOIN Player_Color pc ON pc.pc_id = mp.mp_pc_id INNER JOIN Piece_State ps ON mpp.mpp_ps_id = ps.ps_id WHERE mpp_mp_id = ? OR mpp_mp_id = ?;',
             [results[1].p1_id, results[1].p2_id]
             , function (err, results, fields) {
                 if (err) {
@@ -329,7 +345,7 @@ function GetBoardState(request, response, matchId, callback) {
 }
 
 function ChangeWhoIsPlaying(request, response, matchId){
-    connection.execute('UPDATE `Match` m SET match_pc_id = CASE WHEN match_pc_id = 1 THEN 2  WHEN match_pc_id = 2 THEN 1 ELSE match_pc_id  END  WHERE m.match_id = ?;',
+    connection.execute('UPDATE `Match` m SET match_pc_id = CASE WHEN match_pc_id = 1 THEN 2 WHEN match_pc_id = 2 THEN 1 ELSE match_pc_id END WHERE m.match_id = ?;',
     [matchId],
     function (err, results, fields){
         if (err) {
@@ -362,16 +378,20 @@ function CheckIfPieceExists(request, response, startX, startY, matchId, callback
     );
 }
 
-function ChangePieceState(request, response, endX, endY, matchId, state){
-    connection.execute('UPDATE Match_Player_Piece INNER JOIN Tile t ON mpp_tile_id = tile_id INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mp.mp_match_id = ?;',
-    [state, endX, endY, matchId],
-    function (err, results, fields){
-        if (err) {
-            response.send(err);
-        } 
+function ChangePieceState(endX, endY, matchId, state) {
+    return new Promise((resolve, reject) => {
+        connection.execute('UPDATE Match_Player_Piece INNER JOIN Tile t ON mpp_tile_id = tile_id INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mp.mp_match_id = ?;',
+            [state, endX, endY, matchId],
+            function (err, results, fields) {
+                if (err) {
+                    reject(err);
+                } else {
+                    console.log(endX, endY, matchId, state);
+                    resolve();
+                }
+            });
     });
 }
-
 function ChangePieceLocation(request, response, startX, startY, endX, endY){
     connection.execute('UPDATE Match_Player_Piece SET mpp_tile_id = ( SELECT tile_id FROM Tile WHERE tile_x = ? AND tile_y = ?) WHERE mpp_tile_id = (SELECT tile_id FROM Tile WHERE tile_x = ? AND tile_y = ?);',
     [endX, endY, startX, startY],

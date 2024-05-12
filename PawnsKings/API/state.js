@@ -17,7 +17,7 @@ router.get('/game/:matchId', (request, response) => {
     }
 
     //gives back a number of basic information for display reasons
-    connection.execute('SELECT match_id, match_ms_id, match_pc_id, player_color.pc_name AS colorName, mp_match_id, mp_ut_id, ut_name AS upgradeTier, player_id, player_name, mp_pc_id, pc.pc_name FROM `Match` INNER JOIN player_color ON player_color.pc_id = match_pc_id INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id  INNER JOIN Player ON Player.player_id = mp_player_id INNER JOIN player_color pc ON pc.pc_id = mp_pc_id INNER JOIN Upgrade_Tier ON Upgrade_Tier.ut_id = mp_ut_id WHERE match_id = 1 ORDER BY mp_pc_id;',
+    connection.execute('SELECT match_id, match_ms_id, match_pc_id, Player_Color.pc_name AS colorName, mp_match_id, mp_ut_id, ut_name AS upgradeTier, player_id, player_name, mp_pc_id, pc.pc_name FROM `Match` INNER JOIN Player_Color ON Player_Color.pc_id = match_pc_id INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id  INNER JOIN Player ON Player.player_id = mp_player_id INNER JOIN Player_Color pc ON pc.pc_id = mp_pc_id INNER JOIN Upgrade_Tier ON Upgrade_Tier.ut_id = mp_ut_id WHERE match_id = 1 ORDER BY mp_pc_id;',
         [matchId],
         function (err, results, fields) {
             if (err){
@@ -48,7 +48,7 @@ router.get('/card/:matchId', (request, response) => {
     }
 
     //returns the card's name and ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON card.card_id = match_player_card.mpc_card_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
+    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Card.mpc_card_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
         [matchId],
         function (err, results, fields) {
             if (err){
@@ -79,7 +79,7 @@ router.get('/shard/:matchId', (request, response) => {
     }
 
     //returns the shard's ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Card ON card.card_id = match_player_shard.mps_shard_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
+    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Shard.mps_shard_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
         [matchId],
         function (err, results, fields) {
             if (err){
@@ -110,7 +110,7 @@ router.get('/boardR/:matchId', (request, response) => {
         return;
     }
 
-    connection.execute('SELECT DISTINCT(mp_id) FROM match_player INNER JOIN match_player_piece ON mp_id = mpp_mp_id WHERE mp_match_id = ?;',
+    connection.execute('SELECT DISTINCT(mp_id) FROM Match_Player INNER JOIN Match_Player_Piece ON mp_id = mpp_mp_id WHERE mp_match_id = ?;',
         [matchId],
         function (err, results, fields) {
             if (err){
@@ -133,7 +133,7 @@ function FillFleetingBoard(request, response, previusResults){
 
     var actualChessBoard = [];
 
-    connection.execute('SELECT t.tile_id, mpp.mpp_tile_id, mpp.mpp_piece_id, mpp_mp_id, mp_pc_id FROM tile t LEFT JOIN match_player_piece mpp ON mpp.mpp_tile_id = t.tile_id  AND (mpp.mpp_mp_id = ? OR mpp.mpp_mp_id = ?) AND mpp_ps_id != 2 LEFT JOIN match_player mp ON mp.mp_id = mpp.mpp_mp_id;',
+    connection.execute('SELECT t.tile_id, mpp.mpp_tile_id, mpp.mpp_piece_id, mpp_mp_id, mp_pc_id FROM Tile t LEFT JOIN Match_Player_Piece mpp ON mpp.mpp_tile_id = t.tile_id  AND (mpp.mpp_mp_id = ? OR mpp.mpp_mp_id = ?) AND mpp_ps_id != 2 LEFT JOIN Match_Player mp ON mp.mp_id = mpp.mpp_mp_id;',
     [previusResults[0].mp_id, previusResults[1].mp_id],
     function (err, results, fields) {
         if (err){

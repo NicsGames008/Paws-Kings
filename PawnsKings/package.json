@@ -2,19 +2,14 @@
   "name": "pawnskings",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node PawnsKings/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.19.2",
     "mysql2": "^3.9.7"
-  },
-  "engines": {
-    "node": ">=14"
   }
 }

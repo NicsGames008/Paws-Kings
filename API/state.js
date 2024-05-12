@@ -26,7 +26,7 @@ router.get('/game/:matchId', (request, response) => {
                 if(results.length == 0){
                     response.send("no match existed with said id");
                 }else{
-                    console.log("match id found");
+                    //console.log("match id found");
                     response.send(results);
                     
                 }
@@ -57,7 +57,7 @@ router.get('/card/:matchId', (request, response) => {
                 if(results.length == 0){
                     response.send("no match existed with said id, cannot retrieve cards");
                 }else{
-                    console.log("cards found");
+                    //console.log("cards found");
                     response.send(results);
                     
                 }
@@ -88,7 +88,7 @@ router.get('/shard/:matchId', (request, response) => {
                 if(results.length == 0){
                     response.send("no match existed with said id, cannot retrieve shards");
                 }else{
-                    console.log("shards found");
+                    //console.log("shards found");
                     response.send(results);
                     
                 }
@@ -119,7 +119,7 @@ router.get('/boardR/:matchId', (request, response) => {
                 if(results.length == 0){
                     response.send("mps unretrieved");
                 }else{
-                    console.log("Got the two mps!");
+                    //console.log("Got the two mps!");
 
                     FillFleetingBoard(request, response, results);
                 }
@@ -142,7 +142,7 @@ function FillFleetingBoard(request, response, previusResults){
             if(results.length == 0){
                 response.send("MPPS for mps not found");
             }else{
-                console.log("pieces founds!");
+                //console.log("pieces founds!");
 
                 //printing th eboard to see if the id matches
                 let tileset = '';

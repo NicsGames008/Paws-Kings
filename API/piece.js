@@ -166,7 +166,7 @@ router.post('/promote',(request, response)=>{
 });
 function UpdatePieceType(request, response, cardId, startX, startY) {
 
-    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ?WHERE t.tile_x = ? AND t.tile_y = ?;',
+    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ?;',
     [cardId, startX, startY],
     function (err, results, fields) {
         if (err) {

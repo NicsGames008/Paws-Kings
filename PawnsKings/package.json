@@ -4,6 +4,6 @@
     "mysql2": "^3.9.7"
   }, 
   "scripts": {
-    "build-project": "nodemon PawnsKings/index.js"
+    "build-project": "nodemon index.js"
   }
 }

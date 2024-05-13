@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Roboto Mono';
-    src: url('./www/font/RobotoMono.ttf') format('ttf');
+    src: url('www/font/RobotoMono.ttf');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,6 +9,8 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: 'Roboto Mono', monospace;
+    font-family: 'Courier New', Courier, monospace;
+    
 }
 .container {
     display: flex;
@@ -46,21 +48,22 @@ body, html {
     display: flex;
 }
 .section2-1 {
-    flex: 5%;
+    flex: 10%;
     background-color: #7676f0;
     font-weight: bold;
     font-size: 20px;
 }
 .section2-2 {
-    flex: 5%;
+    flex: 10%;
     background-color: #7467ab;
     font-weight: bold;
     font-size: 20px;
 }
 .section2-3 {
-    flex: 60%;
+    flex: 80%;
     font-size: 18px;
     text-align: center;
+    font-weight: lighter;
     background-color: #3300ff46;
 }
 .section2-4 {
@@ -79,14 +82,14 @@ body, html {
 .section3-1 {
     flex: 50%;
     background-color: #429658;
-    font-size: 30px;
+    font-size: 20px;
     font-style: normal;
 }
 .section3-2 {
     flex: 50%;
     text-align: center;
     background-color: #4d7b39;
-    font-size: 30px;
+    font-size: 20px;
 }
 table {
     border-collapse: collapse;
@@ -96,7 +99,7 @@ table {
 }
 th{
     border: 1px solid black;
-    padding: 8px;
+    padding: 4px;
     font-size: 20px;
 }
 td {
@@ -106,13 +109,13 @@ td {
 }
  
 input {
-    width:4%;
-    height:50%;
+    width:6%;
+    height:6%;
     font-size: 16px;
 }
 button{
     width:85px;
-    height:80%;
+    height:10%;
     font-size: 16px;
 }
 p{   

@@ -66,22 +66,28 @@ router.post('/move', (request, response) => {
                                     ChangePieceState(request, response, startX, startY, matchId, 1);
                                 //if its valid but has a pice on the way....
                                 if(moveIsValide[1]){ //if there is an enemy on the way....
-                                    //checks if its an enemy or an ally
-                                    if(moveIsValide[1].color == playerColor) //if its an allly send a message saying so
+                                    // Check whether the piece on the target tile is an enemy or an ally.
+                                    if (moveIsValide[1].color == playerColor) { // If it's an ally, send a message indicating so.
                                         response.send("Ally on the Tile " + moveIsValide[1].x + " " + moveIsValide[1].y);
-                                    else { // if its an enemy changes the piece location and the enemy's state
-                                        if( moveIsValide[1].x == endX && moveIsValide[1].y == endY){
-                                            ChangePieceState(request, response, moveIsValide[1].x, moveIsValide[1].y, matchId, 2);
-                                            if( moveIsValide[1].pieceType == 'King'){
-                                                ChangeMatchState(request, response, matchId)
+                                    } else { // If it's an enemy, update piece location and enemy's state accordingly.
+                                        if (moveIsValide[1].x == endX && moveIsValide[1].y == endY) { // If the enemy is captured:
+                                            // Check if the pawn has reached the promotion rank, and if so, promote it.
+                                            if ((endY == 8 && piece.color_piece == 'White') || (endY == 1 && piece.color_piece == 'Black')) {
+                                                var promotionPiece = RandomShardGenerator();
+                                                UpdatePieceType(request, response, promotionPiece, startX, startY);
                                             }
-                                            else{
-                                                ChangeUpgardeTier(request, response, matchId);    
+                                            // Change the captured enemy's state and, if applicable, the match state.
+                                            ChangePieceState(request, response, moveIsValide[1].x, moveIsValide[1].y, matchId, 2);
+                                            if (moveIsValide[1].pieceType == 'King') {
+                                                ChangeMatchState(request, response, matchId);
+                                            } else {
+                                                // Upgrade the tier, update the piece position, and notify about the move.
+                                                ChangeUpgardeTier(request, response, matchId);
                                                 UpdatePiecePositionWithShard(request, response, startX, startY, moveIsValide[1].x, moveIsValide[1].y, matchId, playerId, "Move with an enemy on the way and finished on position " + moveIsValide[1].x + " " + moveIsValide[1].y);
                                             }
-                                        }
-                                        else
+                                        } else { // If there's an enemy piece on the way but not captured, send a message indicating so.
                                             response.send("Enemy piece on the way" + moveIsValide[1].x + " " + moveIsValide[1].y);
+                                        }
                                     }
                                 }
                                 else // if all check send a message saying so
@@ -169,6 +175,32 @@ router.post('/promote',(request, response)=>{
         }
     });
 });
+
+function RandomShardGenerator(){
+    var shard = "";
+    
+    // Generate a random number between 0 and 1
+    const randomNumber = Math.random();
+    
+    // Define the probability ranges
+    const range1 = 0.3; // 30%
+    const range2 = range1 + 0.3; // 30% + 30% = 60%
+    const range3 = range2 + 0.3; // 30% + 30% + 30% = 90%
+    const range4 = 1.0; // 100%
+    
+    // Determine the random number category
+    if (randomNumber < range1) {
+        shard = 1; // 30% chance
+    } else if (randomNumber < range2) {
+        shard = 2; // 30% chance
+    } else if (randomNumber < range3) {
+        shard = 3; // 30% chance
+    } else {
+        shard = 4; // 10% chance
+    }
+
+    return shard
+}
 
 function ChangeMatchState(request, response, matchId) {
     ChangePieceLocation(request, response, startX, startY, endX, endY)
@@ -277,28 +309,8 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
     //Update the piece position in the DB
     ChangePieceLocation(request, response, startX, startY, endX, endY)
                                 
-    var shard = "";
-    
-    // Generate a random number between 0 and 1
-    const randomNumber = Math.random();
-    
-    // Define the probability ranges
-    const range1 = 0.3; // 30%
-    const range2 = range1 + 0.3; // 30% + 30% = 60%
-    const range3 = range2 + 0.3; // 30% + 30% + 30% = 90%
-    const range4 = 1.0; // 100%
-    
-    // Determine the random number category
-    if (randomNumber < range1) {
-        shard = 1; // 30% chance
-    } else if (randomNumber < range2) {
-        shard = 2; // 30% chance
-    } else if (randomNumber < range3) {
-        shard = 3; // 30% chance
-    } else {
-        shard = 4; // 10% chance
-    }
-    
+    var shard = RandomShardGenerator();
+   
     connection.execute('SELECT mps.mps_shard_ammount, s.shard_ammount_needed FROM Match_Player_Shard mps JOIN Shard s ON mps.mps_shard_id = s.card_id JOIN Match_Player mp ON mps.mps_mp_id = mp.mp_id JOIN `Match` m ON mp.mp_match_id = m.match_id JOIN Player p ON mp.mp_player_id = p.player_id WHERE m.match_id = ? AND p.player_id = ? AND mps.mps_shard_id = ?;',
     [matchId, playerId, shard],
     function (err, results, fields) {

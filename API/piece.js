@@ -49,7 +49,6 @@ router.post('/move', (request, response) => {
                 const playerColor = results[0].player_color;
                 const colorPlaying = results[0].color_playing;
                 
-                console.log(matchState);
                 // Check if the match state is "On-going"
                 if (matchState === "On-going") {
 
@@ -73,17 +72,8 @@ router.post('/move', (request, response) => {
                                     else { // if its an enemy changes the piece location and the enemy's state
                                         if( moveIsValide[1].x == endX && moveIsValide[1].y == endY){
                                             ChangePieceState(request, response, moveIsValide[1].x, moveIsValide[1].y, matchId, 2);
-                                            console.log( moveIsValide[1]);
                                             if( moveIsValide[1].pieceType == 'King'){
-                                                ChangePieceLocation(request, response, startX, startY, endX, endY)
-                                                connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
-                                                [matchId],
-                                                function (err, results, fields) {
-                                                    if (err) {
-                                                        response.send(err);
-                                                    } 
-                                                });
-                                                response.send("King died");
+                                                ChangeMatchState(request, response, matchId)
                                             }
                                             else{
                                                 ChangeUpgardeTier(request, response, matchId);    
@@ -179,6 +169,21 @@ router.post('/promote',(request, response)=>{
         }
     });
 });
+
+function ChangeMatchState(request, response, matchId) {
+    ChangePieceLocation(request, response, startX, startY, endX, endY)
+    connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
+    [matchId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        else {
+            response.send("King died");
+        }
+    });
+}
+
 function UpdatePieceType(request, response, cardId, startX, startY) {
 
     connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ?;',

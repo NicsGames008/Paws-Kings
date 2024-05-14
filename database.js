@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
 
     // host: 'localhost',
     // user: 'root', 
-    // password: 'tgpsi', 
+    // password: '123', 
     // database: 'pawns&kings' 
 
     //online (filess)

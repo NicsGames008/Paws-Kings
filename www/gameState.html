@@ -13,35 +13,35 @@
         <div class="section section1">
 
             <div class="subsection section1-1">
-                <div id="p1Name"></div>
-                <div id="p1Id"></div>
+                <div id="playerName"></div>
+                <div id="playerId"></div>
             </div>
             
             <div class="subsection section1-2">
                 
-                <div id="p1NameForPromotion"></div>
+                <div id="playerNameForPromotion"></div>
                 <table>
                     <tr>
                         <div></div>
                         <th></th>
-                        <th id ="cardName1w"></th>
-                        <th id ="cardName2w"></th>
-                        <th id ="cardName3w"></th>
-                        <th id ="cardName4w"></th>
+                        <th id ="cardName1"></th>
+                        <th id ="cardName2"></th>
+                        <th id ="cardName3"></th>
+                        <th id ="cardName4"></th>
                     </tr>
                     <tr>
                         <td>Cards:</td>
-                        <td id ="cardQuantity1w"></td>
-                        <td id ="cardQuantity2w"></td>
-                        <td id ="cardQuantity3w"></td>
-                        <td id ="cardQuantity4w"></td>
+                        <td id ="cardQuantity1"></td>
+                        <td id ="cardQuantity2"></td>
+                        <td id ="cardQuantity3"></td>
+                        <td id ="cardQuantity4"></td>
                     </tr>
                     <tr>
                         <td>Shards:</td>
-                        <td id ="shardQuantity1w"></td>
-                        <td id ="shardQuantity2w"></td>
-                        <td id ="shardQuantity3w"></td>
-                        <td id ="shardQuantity4w"></td>
+                        <td id ="shardQuantity1"></td>
+                        <td id ="shardQuantity2"></td>
+                        <td id ="shardQuantity3"></td>
+                        <td id ="shardQuantity4"></td>
                     </tr>
                 </table>
             
@@ -52,7 +52,13 @@
         <div class="section section2">
 
             <div class="subsection section2-1">
-                Upgrade available until: <span id ="utGoesHere"></span>
+                <table>
+                    <th>Upgrade available until:</th>
+                    <th id ="promotionName1"></th>
+                    <th id ="promotionName2"></th>
+                    <th id ="promotionName3"></th>
+                    <th id ="promotionName4"></th>
+                </table>
             </div>
 
             <div class="subsection section2-2"> 
@@ -84,8 +90,6 @@
                 </span>                                
 
                 <span>
-                    <!-- Player Id: <input type="text" id="playerIdMove">
-                    <br> -->
                     <button onclick="MakeMove()" accesskey="m">Move!</button>
                 </span>
                 <br>
@@ -102,8 +106,6 @@
                 </span>
 
                    <span>
-                        <!-- Player Id: <input type="text" id="PlayerIdPromote">
-                        <br>-->
                         Card ID: <input type="text" id="cardId" maxlength="1">
                         <br>
                     </span> 

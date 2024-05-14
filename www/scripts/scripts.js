@@ -4,10 +4,11 @@ setInterval(getGameData, 3000);
 const searchParams = new URLSearchParams(window.location.search);
 
 
-var playerId4 = searchParams.get('playerId');
+var playerId = searchParams.get('playerId');
 var matchId = searchParams.get('matchId');
 var CurrentColor = '';
 var playerColor = '';
+var ut = '';
 
 //funciton called on page loading and every 2 seconds
 function getGameData(){
@@ -15,8 +16,6 @@ function getGameData(){
     DisplayCard();
     DisplayShard();
     DisplayBoard();
-    console.log(this.playerId4);
-    console.log(this.matchId);
 }
 
 function DisplayName(){
@@ -32,18 +31,17 @@ function DisplayName(){
 
             var user1Info = ' ';
             var matchColor = ' ';
-            playerId = response[0].player_id;
 
 
             //all the infos for the player with the lowest id: name, color and, currently, id
             user1Info = response[0].player_name + '\n' + response[0].pc_name;
-            document.getElementById("p1Name").innerText = user1Info;
-            document.getElementById("p1Id").innerText = 'playeR ID: ' + response[0].player_id;
-            document.getElementById("p1NameForPromotion").innerText = response[0].player_name + "'s INVENTORY";
+            document.getElementById("playerName").innerText = user1Info;
+            document.getElementById("playerNameForPromotion").innerText = response[0].player_name + "'s INVENTORY";
 
 
             CurrentColor = response[0].match_pc_id;
             playerColor = response[0].mp_pc_id;
+
 
 
 
@@ -64,12 +62,13 @@ function DisplayName(){
             }
             document.getElementById("ColorPlyaing").innerText = matchColor;
 
-            //Shows up unntil which type the user can upgrade his pawns
-            document.getElementById("utGoesHere").innerText = response[0].upgradeTier;
+
+            //Saves unitl when the upgrade tier has been unlocked
+            ut = response[0].upgradeTier;
             //onsole.log(response[0].upgradeTier);
         }
     };
-    xhttp.open("GET", "state/game/" + matchId, true);
+    xhttp.open("GET", "state/game/" + matchId + "/" + playerId, true);
     xhttp.send()
 }
 
@@ -83,19 +82,31 @@ function DisplayCard(){
 
 
             //----------------WHITE INVERTORY--------------------------------------
-            document.getElementById("cardName1w").innerText = response[0].card_name + "(1)";
-            document.getElementById("cardName2w").innerText = response[1].card_name + "(2)";
-            document.getElementById("cardName3w").innerText = response[2].card_name + "(3)";
-            document.getElementById("cardName4w").innerText = response[3].card_name + "(4)";
+            document.getElementById("cardName1").innerText = response[0].card_name + "(1)";
+            document.getElementById("cardName2").innerText = response[1].card_name + "(2)";
+            document.getElementById("cardName3").innerText = response[2].card_name + "(3)";
+            document.getElementById("cardName4").innerText = response[3].card_name + "(4)";
 
-            document.getElementById("cardQuantity1w").innerText = response[0].mpc_ammount;
-            document.getElementById("cardQuantity2w").innerText = response[1].mpc_ammount;
-            document.getElementById("cardQuantity3w").innerText = response[2].mpc_ammount;
-            document.getElementById("cardQuantity4w").innerText = response[3].mpc_ammount;
+            document.getElementById("cardQuantity1").innerText = response[0].mpc_ammount;
+            document.getElementById("cardQuantity2").innerText = response[1].mpc_ammount;
+            document.getElementById("cardQuantity3").innerText = response[2].mpc_ammount;
+            document.getElementById("cardQuantity4").innerText = response[3].mpc_ammount;
 
+
+            //used to rappresent on a table until when the players can promote their pieces
+            for(let i = 1; i <= 4; i++){
+
+                if(response[i-1].card_name != ut)
+                    document.getElementById("promotionName" + i).innerText = response[i-1].card_name;
+                else{
+                    document.getElementById("promotionName" + i).innerText = response[i-1].card_name;
+                    break;
+                }
+
+            }
         }
     };
-    xhttp.open("GET", "state/card/" + matchId, true);
+    xhttp.open("GET", "state/card/" + matchId + "/" + playerId, true);
     xhttp.send()
 }
 
@@ -110,14 +121,14 @@ function DisplayShard(){
 
 
             //----------------WHITE INVERTORY--------------------------------------
-            document.getElementById("shardQuantity1w").innerText = response[0].mps_shard_ammount;
-            document.getElementById("shardQuantity2w").innerText = response[1].mps_shard_ammount;
-            document.getElementById("shardQuantity3w").innerText = response[2].mps_shard_ammount;
-            document.getElementById("shardQuantity4w").innerText = response[3].mps_shard_ammount;
+            document.getElementById("shardQuantity1").innerText = response[0].mps_shard_ammount;
+            document.getElementById("shardQuantity2").innerText = response[1].mps_shard_ammount;
+            document.getElementById("shardQuantity3").innerText = response[2].mps_shard_ammount;
+            document.getElementById("shardQuantity4").innerText = response[3].mps_shard_ammount;
 
         }
     };
-    xhttp.open("GET", "state/shard/" + matchId, true);
+    xhttp.open("GET", "state/shard/" + matchId + "/" + playerId, true);
     xhttp.send()
 }
 
@@ -129,6 +140,7 @@ function DisplayBoard(){
             var response = JSON.parse(xhttp.responseText);
 
             var c = 8;
+            var j = 0;
             let output = '-----------------------\n' + c + '|';
             for(let i = 0; i< response.length; i++){
 
@@ -172,9 +184,11 @@ function DisplayBoard(){
                         break;
                     default:
                         if(i%2 == 1){//⬜
-                           response[i] = "◻";
+                            response[i] = "◻";
+                            j = i;
                         }else{//⬛
                             response[i] = "◼";
+                            j = i;
                         }
                     }
                 
@@ -182,14 +196,14 @@ function DisplayBoard(){
                 output += response[i] + '|';
 
                 if((i+1) % 8 == 0  && i != (response.length-1)){  
-                    c --;
+                    c--;
                     output += '\n-----------------------\n' + c +'|';
                 }
 
             }
             output += '\n-------------------------\n';
 
-            output += '1 ‎ ‎ ‎ ‎ 2 ‎  3 ‎  4 ‎  5 ‎  6 ‎ 7 ‎ 8';
+            output += '[1][2][3][4][5][6][7][8]';
 
             document.getElementById("superbChessboard").innerText = output;
         }
@@ -214,10 +228,11 @@ function MakeMove() {
         endX: endX,
         endY: endY,
         playerId: playerId,
-        matchId: this.matchId
+        matchId: matchId
     };
 
     //console.log(JSON.stringify(data));
+
 
     // Create an XMLHttpRequest object
     var xhttp = new XMLHttpRequest();
@@ -264,41 +279,43 @@ function Promote(){
         startX: startX,
         startY: startY,
         playerId: playerId,
-        matchId: this.matchId,
+        matchId: matchId,
         cardId: cardId,
     };
-    console.log(JSON.stringify(data));
-// Create an XMLHttpRequest object
-var xhttp = new XMLHttpRequest();
+    //console.log(JSON.stringify(data));
 
-// Define the callback function to handle the response
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4) { // When the request is complete
-        if (this.status == 200) { // If the request was successful
-            var response = this.responseText;
 
-            // Update the HTML element with the response
-            document.getElementById("responsePromote").innerText = response;
+    // Create an XMLHttpRequest object
+    var xhttp = new XMLHttpRequest();
 
-            // Log the response from the server
-            console.log(response);
-            document.getElementById('X').value = '';
-            document.getElementById('Y').value = '';
-            document.getElementById('cardId').value = '';
+    // Define the callback function to handle the response
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) { // When the request is complete
+            if (this.status == 200) { // If the request was successful
+                var response = this.responseText;
 
-            getGameData();
-        } else { // If there was an error with the request
-            // Log the error status
-            console.error("Error:", this.status);
+                // Update the HTML element with the response
+                document.getElementById("responsePromote").innerText = response;
+
+                // Log the response from the server
+                console.log(response);
+                document.getElementById('X').value = '';
+                document.getElementById('Y').value = '';
+                document.getElementById('cardId').value = '';
+
+                getGameData();
+            } else { // If there was an error with the request
+                // Log the error status
+                console.error("Error:", this.status);
+            }
         }
-    }
 
 
 
-};
+    };
 
-// Configure the XMLHttpRequest object
-xhttp.open("POST", "/piece/promote", true); // Specify the method and URL
-xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
-xhttp.send(JSON.stringify(data)); // Send JSON data to the server
+    // Configure the XMLHttpRequest object
+    xhttp.open("POST", "/piece/promote", true); // Specify the method and URL
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
+    xhttp.send(JSON.stringify(data)); // Send JSON data to the server
 }

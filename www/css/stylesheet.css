@@ -50,11 +50,13 @@ body, html {
 .section2-1 {
     flex: 10%;
     background-color: #7676f0;
+    text-align: center;
     font-weight: bold;
     font-size: 20px;
 }
 .section2-2 {
     flex: 10%;
+
     background-color: #7467ab;
     font-weight: bold;
     font-size: 20px;

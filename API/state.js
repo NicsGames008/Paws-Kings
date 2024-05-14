@@ -5,10 +5,10 @@ const connection = require('../database');
 
 //----------------------------------------------GAME STATE----------------------------
 
-router.get('/game/:matchId', (request, response) => {
+router.get('/game/:matchId/:playerId', (request, response) => {
     // Get the data from the request as a parameter
     var matchId = request.params.matchId;
-
+    var playerId = request.params.playerId;
 
     // if the vars are empty is gives an error message
     if (!matchId){
@@ -17,8 +17,8 @@ router.get('/game/:matchId', (request, response) => {
     }
 
     //gives back a number of basic information for display reasons
-    connection.execute('SELECT match_id, match_ms_id, match_pc_id, Player_Color.pc_name AS colorName, mp_match_id, mp_ut_id, ut_name AS upgradeTier, player_id, player_name, mp_pc_id, pc.pc_name FROM `Match` INNER JOIN Player_Color ON Player_Color.pc_id = match_pc_id INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id  INNER JOIN Player ON Player.player_id = mp_player_id INNER JOIN Player_Color pc ON pc.pc_id = mp_pc_id INNER JOIN Upgrade_Tier ON Upgrade_Tier.ut_id = mp_ut_id WHERE match_id = 1 ORDER BY mp_pc_id;',
-        [matchId],
+    connection.execute('SELECT match_id, match_ms_id, match_pc_id, Player_Color.pc_name AS colorName, mp_match_id, mp_ut_id, ut_name AS upgradeTier, player_id, player_name, mp_pc_id, pc.pc_name FROM `Match` INNER JOIN Player_Color ON Player_Color.pc_id = match_pc_id INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id  INNER JOIN Player ON Player.player_id = mp_player_id INNER JOIN Player_Color pc ON pc.pc_id = mp_pc_id INNER JOIN Upgrade_Tier ON Upgrade_Tier.ut_id = mp_ut_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id;',
+        [matchId, playerId],
         function (err, results, fields) {
             if (err){
                 response.send(err);
@@ -37,9 +37,10 @@ router.get('/game/:matchId', (request, response) => {
 
 //----------------------------CARD---------------------------------------------------
 
-router.get('/card/:matchId', (request, response) => {
+router.get('/card/:matchId/:playerId', (request, response) => {
     // Get the data from the request
     var matchId = request.params.matchId;
+    var playerId = request.params.playerId;
 
     // if the vars are empty is gives an error message
     if (!matchId){
@@ -48,8 +49,8 @@ router.get('/card/:matchId', (request, response) => {
     }
 
     //returns the card's name and ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Card.mpc_card_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
-        [matchId],
+    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Card.mpc_card_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
+        [matchId, playerId],
         function (err, results, fields) {
             if (err){
                 response.send(err);
@@ -68,9 +69,10 @@ router.get('/card/:matchId', (request, response) => {
 
 //----------------------------SHARD---------------------------------------------------
 
-router.get('/shard/:matchId', (request, response) => {
+router.get('/shard/:matchId/:playerId', (request, response) => {
     // Get the data from the request
     var matchId = request.params.matchId;
+    var playerId = request.params.playerId;
 
     // if the vars are empty is gives an error message
     if (!matchId){
@@ -79,8 +81,8 @@ router.get('/shard/:matchId', (request, response) => {
     }
 
     //returns the shard's ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Shard.mps_shard_id WHERE match_id = ? ORDER BY mp_pc_id, card_id;',
-        [matchId],
+    connection.execute('SELECT * FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Shard.mps_shard_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
+        [matchId, playerId],
         function (err, results, fields) {
             if (err){
                 response.send(err);

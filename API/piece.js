@@ -15,7 +15,6 @@ router.post('/move', (request, response) => {
     // if the vars are empty is gives an error message
     if (!startX || !startY || !endX || !endY ||!playerId || !matchId){
         response.send("Missing data!");
-        console.log(request.body);
         return;
     }
 
@@ -103,7 +102,6 @@ router.post('/move', (request, response) => {
 });
 
 //EndPoint Update Piece
-
 router.post('/promote',(request, response)=>{
 
     var startX = request.body.startX;
@@ -525,8 +523,7 @@ function IsValidPawnMove(startX, startY, endX, endY, piecesArray) {
     }
     
     
-    // Check if the move is the initial two-step move    
-    console.log(pieceAtStart.piece_state);
+    // Check if the move is the initial two-step move   
     if (startX == endX && pieceAtStart.piece_state == 'Has not moved yet' && endY == startY + 2 * direction) {
         // Check if the intermediate square is empty
         for (let i = 0; i < piecesArray.length; i++) {

@@ -20,6 +20,7 @@ function getGameDataOnLoad(){
 
 //funciton called on page every 2 seconds
 function getGameData(){
+    DisplayName();
     DisplayBoard();
     DisplayCardandUT();
     DisplayShard();
@@ -35,8 +36,8 @@ function DisplayName(){
             // Typical action to be performed when the document is ready:
             var response = JSON.parse(xhttp.responseText);
 
-            console.log(response);
-
+            //console.log(response);
+            //console.log(matchId);
 
             var user1Info = ' ';
             var matchColor = ' ';
@@ -73,9 +74,10 @@ function DisplayName(){
             document.getElementById("ColorPlyaing").innerText = matchColor;
 
 
-            //Saves unitl when the upgrade tier has been unlocked
+            //Saves unitl when the upgrade tier has been unlocked, uses a string
             ut = response[0].upgradeTier;
-            //onsole.log(response[0].upgradeTier);
+            console.log(ut);
+            console.log(response[0].upgradeTier);
         }
     };
     xhttp.open("GET", "state/game/" + matchId, true);
@@ -104,15 +106,18 @@ function DisplayCardandUT(){
 
 
             //used to rappresent on a table until which piece the players can promote. Even thouigh the funciton name may suggest otherwise, tha sam einfo are used
-            for(let i = 1; i <= 4; i++){
-
-                if(response[i-1].card_name != ut)
-                    document.getElementById("promotionName" + i).innerText = response[i-1].card_name;
-                else{
-                    document.getElementById("promotionName" + i).innerText = response[i-1].card_name;
+            for(let i = 1; i <= 5; i++){
+                if(ut == "None"){
+                    document.getElementById("promotionName" + i).innerText = '';
                     break;
+                }else{
+                    if(response[i-1].card_name != ut)
+                        document.getElementById("promotionName" + i).innerText = response[i-1].card_name;
+                    else{
+                        document.getElementById("promotionName" + i).innerText = response[i-1].card_name;
+                        break;
+                    }
                 }
-
             }
         }
     };

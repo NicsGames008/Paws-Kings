@@ -219,7 +219,6 @@ function ResetPieceState(request, response, matchId) {
     });
 }
 
-
 function ChangeMatchState(request, response, matchId) {
     ChangePieceLocation(request, response, startX, startY, endX, endY)
     connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
@@ -325,7 +324,8 @@ function ChangeUpgardeTier(request, response, matchId){
 
 function UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece, text){
     
-    ResetPieceState(request, response, matchId);
+    if(piece.pieceState == 'Unusable for this turn')
+        ResetPieceState(request, response, matchId);
 
     //if the pawnn gewt to the last row it promotes to a random piece
     if ((endY == 8 && piece.color_piece == 'White') || (endY == 1 && piece.color_piece == 'Black')) {

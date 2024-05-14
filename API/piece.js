@@ -15,7 +15,6 @@ router.post('/move', (request, response) => {
     // if the vars are empty is gives an error message
     if (!startX || !startY || !endX || !endY ||!playerId || !matchId){
         response.send("Missing data!");
-        console.log(request.body);
         return;
     }
 
@@ -62,8 +61,8 @@ router.post('/move', (request, response) => {
                             //check if the move is valid                
                             if (moveIsValide[0] && (piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying) {
                                 
-                                if(piece.pieceState == 'Has not moved yet')
-                                    ChangePieceState(request, response, startX, startY, matchId, 1);
+
+
                                 //if its valid but has a pice on the way....
                                 if(moveIsValide[1]){ //if there is an enemy on the way....
                                     // Check whether the piece on the target tile is an enemy or an ally.
@@ -72,18 +71,15 @@ router.post('/move', (request, response) => {
                                     } else { // If it's an enemy, update piece location and enemy's state accordingly.
                                         if (moveIsValide[1].x == endX && moveIsValide[1].y == endY) { // If the enemy is captured:
                                             // Check if the pawn has reached the promotion rank, and if so, promote it.
-                                            if ((endY == 8 && piece.color_piece == 'White') || (endY == 1 && piece.color_piece == 'Black')) {
-                                                var promotionPiece = RandomShardGenerator();
-                                                UpdatePieceType(request, response, promotionPiece, startX, startY);
-                                            }
+
                                             // Change the captured enemy's state and, if applicable, the match state.
                                             ChangePieceState(request, response, moveIsValide[1].x, moveIsValide[1].y, matchId, 2);
                                             if (moveIsValide[1].pieceType == 'King') {
-                                                ChangeMatchState(request, response, matchId);
+                                                ChangeMatchState(request, response, startX, startY, endX, endY,matchId);
                                             } else {
                                                 // Upgrade the tier, update the piece position, and notify about the move.
                                                 ChangeUpgardeTier(request, response, matchId);
-                                                UpdatePiecePositionWithShard(request, response, startX, startY, moveIsValide[1].x, moveIsValide[1].y, matchId, playerId, "Move with an enemy on the way and finished on position " + moveIsValide[1].x + " " + moveIsValide[1].y);
+                                                UpdatePiecePositionWithShard(request, response, startX, startY, moveIsValide[1].x, moveIsValide[1].y, matchId, playerId, piece, "Move with an enemy on the way and finished on position " + moveIsValide[1].x + " " + moveIsValide[1].y);
                                             }
                                         } else { // If there's an enemy piece on the way but not captured, send a message indicating so.
                                             response.send("Enemy piece on the way" + moveIsValide[1].x + " " + moveIsValide[1].y);
@@ -91,7 +87,7 @@ router.post('/move', (request, response) => {
                                     }
                                 }
                                 else // if all check send a message saying so
-                                    UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, "Move with out piece on the way")
+                                    UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece,"Move with out piece on the way")
                             } else // Send a response indicating that the move is not valid
                                 response.send("Move is not valid!");                            
                         });
@@ -106,7 +102,6 @@ router.post('/move', (request, response) => {
 });
 
 //EndPoint Update Piece
-
 router.post('/promote',(request, response)=>{
 
     var startX = request.body.startX;
@@ -149,20 +144,24 @@ router.post('/promote',(request, response)=>{
                     // Call the CheckIfPieceExists function with specified parameters
                     CheckIfPieceExists(request, response, startX, startY, matchId, function(piece){
                         CheckCardExist(request, response, cardId, playerId, matchId, function(validateCardExists){
-                            CheckPromotenArea(request, response, playerColor, startX, startY, function(validadePromoten){ 
-                                CheckUpgradeTier(request, response, matchId, cardId, function(validateUpgradeTier){
-                                    // Once the callback function is called, send the result back in the response
-                                    GetBoardState(request, response, matchId, function(boardState) {   
-                                        //check if the move is valid 
-                                        if ((piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying && validateCardExists && validadePromoten && validateUpgradeTier && piece.pieceType == 'Pawn') {
-                                            UpdatePieceType(request, response, cardId, startX, startY);
-                                            UpdateCard(request, response, cardId, playerId);
-                                            response.send ('Promotion Valid'); 
-                                            
-                                        } else // Send a response indicating that the move is not valid
-                                        response.send("Piece is not valid!");                            
-                                    });
-                                });                                  
+                            ChangeCanPromote(request, response, matchId, playerId, function(canPromote){
+                                CheckPromotenArea(request, response, playerColor, startX, startY, function(validadePromoten){ 
+                                    CheckUpgradeTier(request, response, matchId, cardId, function(validateUpgradeTier){
+                                        // Once the callback function is called, send the result back in the response
+                                        GetBoardState(request, response, matchId, function(boardState) {   
+                                            //check if the move is valid 
+                                            if ((piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying && validateCardExists && validadePromoten && validateUpgradeTier && canPromote && piece.pieceType == 'Pawn') {
+                                                UpdatePieceType(request, response, cardId, startX, startY);
+                                                ChangePieceState(request, response, startX, startY, matchId, 3);
+                                                UpdateCanPromoteState(request, response, matchId, playerId);
+                                                UpdateCard(request, response, cardId, playerId);
+                                                response.send ('Promotion Valid'); 
+                                                
+                                            } else // Send a response indicating that the move is not valid
+                                            response.send("Piece is not valid!");                            
+                                        });
+                                    });                                  
+                                });
                             });
                         });
                     });
@@ -202,7 +201,57 @@ function RandomShardGenerator(){
     return shard
 }
 
-function ChangeMatchState(request, response, matchId) {
+function ChangeCanPromote(request, response, matchId, playerId, callback) {
+    connection.execute('SELECT mp_canPromote AS canPromote FROM Match_Player mpp WHERE mp_match_id = ? AND mp_player_id = ?;',
+    [matchId, playerId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        else {
+            if (results[0].canPromote == 1)
+                callback(true);
+            else if (results[0].canPromote == 0)
+                callback(false);
+            
+        }
+    });
+}
+
+function UpdateCanPromoteState(request, response, matchId, playerId) {
+
+    connection.execute('UPDATE Match_Player SET mp_canPromote = CASE WHEN mp_canPromote = 0 THEN 1 WHEN mp_canPromote = 1 THEN 0 ELSE mp_canPromote END WHERE mp_match_id = ? AND mp_player_id = ?;',
+    [matchId, playerId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        
+    });
+}
+
+function ResetPieceState(request, response, matchId) {
+    connection.execute('SELECT mpp.mpp_id AS pieceId FROM Match_Player_Piece mpp INNER JOIN Piece_State ps ON mpp.mpp_ps_id = ps.ps_id INNER JOIN Match_Player mp ON mpp.mpp_mp_id =  mp.mp_id WHERE ps.ps_description = "Unusable for this turn" AND mp.mp_match_id = ?;',
+    [matchId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        else {
+            if( results[0]){
+                connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = 1 WHERE mp.mp_match_id = ? AND mpp.mpp_id = ?;',
+                [matchId, results[0].pieceId],
+                function (err, results, fields) {
+                    if (err) {
+                        response.send(err);
+                    } 
+                });
+            }
+        }
+    });
+}
+
+function ChangeMatchState(request, response, startX, startY, endX, endY,matchId) {
     ChangePieceLocation(request, response, startX, startY, endX, endY)
     connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
     [matchId],
@@ -229,7 +278,7 @@ function UpdatePieceType(request, response, cardId, startX, startY) {
 //Check's if the card exists in the players hand 
 function CheckCardExist(request, response, cardId, playerId, matchId, callback) {
 
-    connection.execute('SELECT mpc.mpc_ammount AS ammount FROM Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id WHERE mpc.mpc_card_id = 1 AND mp.mp_player_id = 1 AND mp.mp_match_id = 1;',
+    connection.execute('SELECT mpc.mpc_ammount AS ammount FROM Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ?;',
     [cardId, playerId, matchId],
     function (err, results, fields) {
         if (err) {
@@ -305,10 +354,28 @@ function ChangeUpgardeTier(request, response, matchId){
     });
 }
 
-function UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, text){
+function UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece, text){
+    
+    if(piece.pieceState == 'Unusable for this turn')
+        ResetPieceState(request, response, matchId);
+
+    //if the pawnn gewt to the last row it promotes to a random piece
+    if ((endY == 8 && piece.color_piece == 'White') || (endY == 1 && piece.color_piece == 'Black')) {
+        var promotionPiece = RandomShardGenerator();
+        UpdatePieceType(request, response, promotionPiece, startX, startY);
+    }
+
+
+    //makes the pawn go get the state that he cant move 2 tile after 1st move
+    if(piece.pieceState == 'Has not moved yet')
+        ChangePieceState(request, response, startX, startY, matchId, 1);
+    
     //Update the piece position in the DB
-    ChangePieceLocation(request, response, startX, startY, endX, endY)
-                                
+    ChangePieceLocation(request, response, startX, startY, endX, endY);
+    
+    UpdateCanPromoteState(request, response, matchId, playerId);
+
+
     var shard = RandomShardGenerator();
    
     connection.execute('SELECT mps.mps_shard_ammount, s.shard_ammount_needed FROM Match_Player_Shard mps JOIN Shard s ON mps.mps_shard_id = s.card_id JOIN Match_Player mp ON mps.mps_mp_id = mp.mp_id JOIN `Match` m ON mp.mp_match_id = m.match_id JOIN Player p ON mp.mp_player_id = p.player_id WHERE m.match_id = ? AND p.player_id = ? AND mps.mps_shard_id = ?;',
@@ -494,8 +561,7 @@ function IsValidPawnMove(startX, startY, endX, endY, piecesArray) {
     }
     
     
-    // Check if the move is the initial two-step move    
-    console.log(pieceAtStart.piece_state);
+    // Check if the move is the initial two-step move   
     if (startX == endX && pieceAtStart.piece_state == 'Has not moved yet' && endY == startY + 2 * direction) {
         // Check if the intermediate square is empty
         for (let i = 0; i < piecesArray.length; i++) {

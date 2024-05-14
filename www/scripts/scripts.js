@@ -1,8 +1,7 @@
-setInterval(getGameData, 3000);
+setInterval(getGameData, 1500);
 
 //var used to avoid using the playerId everywhere.
 const searchParams = new URLSearchParams(window.location.search);
-
 
 var playerId = searchParams.get('playerId');
 var matchId = searchParams.get('matchId');
@@ -10,17 +9,24 @@ var CurrentColor = '';
 var playerColor = '';
 var ut = '';
 
-//funciton called on page loading and every 2 seconds
-function getGameData(){
+
+//func, called on loading the page
+function getGameDataOnLoad(){
     DisplayName();
-    DisplayCard();
+    DisplayCardandUT();
     DisplayShard();
     DisplayBoard();
 }
 
+//funciton called on page every 2 seconds
+function getGameData(){
+    DisplayBoard();
+    DisplayCardandUT();
+    DisplayShard();
+}
+
 function DisplayName(){
     //Works for the match 1
-
 
 
     var xhttp = new XMLHttpRequest();
@@ -29,21 +35,25 @@ function DisplayName(){
             // Typical action to be performed when the document is ready:
             var response = JSON.parse(xhttp.responseText);
 
+            console.log(response);
+
+
             var user1Info = ' ';
             var matchColor = ' ';
 
 
             //all the infos for the player with the lowest id: name, color and, currently, id
-            user1Info = response[0].player_name + '\n' + response[0].pc_name;
-            document.getElementById("playerName").innerText = user1Info;
-            document.getElementById("playerNameForPromotion").innerText = response[0].player_name + "'s INVENTORY";
 
-
-            CurrentColor = response[0].match_pc_id;
-            playerColor = response[0].mp_pc_id;
-
-
-
+            for(let i = 0; i < response.length; i++){
+                if(response[i].player_id == playerId){
+                    user1Info = response[i].player_name + ' - ' + response[i].pc_name + "(you)";
+                    document.getElementById("playerName").innerText = user1Info;
+                    document.getElementById("playerNameForPromotion").innerText = response[i].player_name + "'s INVENTORY";
+                    playerColor = response[i].mp_pc_id;
+                }else{
+                    document.getElementById("enemyInfo").innerText = "\n" + response[i].player_name + " - " + response[i].pc_name + "(opponent)";
+                }
+            }
 
 
             //deciphers who's turn is it to play and displays who has won
@@ -68,11 +78,11 @@ function DisplayName(){
             //onsole.log(response[0].upgradeTier);
         }
     };
-    xhttp.open("GET", "state/game/" + matchId + "/" + playerId, true);
+    xhttp.open("GET", "state/game/" + matchId, true);
     xhttp.send()
 }
 
-function DisplayCard(){
+function DisplayCardandUT(){
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -93,7 +103,7 @@ function DisplayCard(){
             document.getElementById("cardQuantity4").innerText = response[3].mpc_ammount;
 
 
-            //used to rappresent on a table until when the players can promote their pieces
+            //used to rappresent on a table until which piece the players can promote. Even thouigh the funciton name may suggest otherwise, tha sam einfo are used
             for(let i = 1; i <= 4; i++){
 
                 if(response[i-1].card_name != ut)
@@ -252,6 +262,7 @@ function MakeMove() {
                 document.getElementById('endY').value = '';
                 // Log the response from the server
                 console.log(response);
+
                 getGameData();
 
             } else { // If there was an error with the request

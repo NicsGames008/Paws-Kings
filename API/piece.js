@@ -75,7 +75,7 @@ router.post('/move', (request, response) => {
                                             // Change the captured enemy's state and, if applicable, the match state.
                                             ChangePieceState(request, response, moveIsValide[1].x, moveIsValide[1].y, matchId, 2);
                                             if (moveIsValide[1].pieceType == 'King') {
-                                                ChangeMatchState(request, response, matchId);
+                                                ChangeMatchState(request, response, startX, startY, endX, endY,matchId);
                                             } else {
                                                 // Upgrade the tier, update the piece position, and notify about the move.
                                                 ChangeUpgardeTier(request, response, matchId);
@@ -149,9 +149,6 @@ router.post('/promote',(request, response)=>{
                                     CheckUpgradeTier(request, response, matchId, cardId, function(validateUpgradeTier){
                                         // Once the callback function is called, send the result back in the response
                                         GetBoardState(request, response, matchId, function(boardState) {   
-
-                                            console.log(cardId, playerId, matchId, );
-
                                             //check if the move is valid 
                                             if ((piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying && validateCardExists && validadePromoten && validateUpgradeTier && canPromote && piece.pieceType == 'Pawn') {
                                                 UpdatePieceType(request, response, cardId, startX, startY);
@@ -254,7 +251,7 @@ function ResetPieceState(request, response, matchId) {
     });
 }
 
-function ChangeMatchState(request, response, matchId) {
+function ChangeMatchState(request, response, startX, startY, endX, endY,matchId) {
     ChangePieceLocation(request, response, startX, startY, endX, endY)
     connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
     [matchId],
@@ -287,7 +284,6 @@ function CheckCardExist(request, response, cardId, playerId, matchId, callback) 
         if (err) {
             response.send(err);
         } else {
-            console.log(results);
             if (results[0].ammount >= 1)
                 callback(true);            
             else

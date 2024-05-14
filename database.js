@@ -5,18 +5,18 @@ const connection = mysql.createConnection({
 
     //localhost:
 
-    // host: 'localhost',
-    // user: 'root', 
-    // password: '123', 
-    // database: 'pawns&kings' 
+    host: 'localhost',
+    user: 'root', 
+    password: '123', 
+    database: 'pawns&kings' 
 
     //online (filess)
 
-    host: 'ck8.h.filess.io',
-    user: 'pawnsnkings_thoughtup', 
-    port:' 3307',
-    password: 'sussybussy', 
-    database: 'pawnsnkings_thoughtup' 
+    // host: 'ck8.h.filess.io',
+    // user: 'pawnsnkings_thoughtup', 
+    // port:' 3307',
+    // password: 'sussybussy', 
+    // database: 'pawnsnkings_thoughtup' 
 });
 
 module.exports = connection;

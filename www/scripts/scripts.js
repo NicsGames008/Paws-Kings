@@ -10,19 +10,12 @@ var playerColor = '';
 var ut = '';
 
 
-//func, called on loading the page
-function getGameDataOnLoad(){
-    DisplayName();
-    DisplayCardandUT();
-    DisplayShard();
-    DisplayBoard();
-}
 
 //funciton called on page every 2 seconds
 function getGameData(){
     DisplayName();
-    DisplayBoard();
     DisplayCardandUT();
+    DisplayBoard();
     DisplayShard();
 }
 
@@ -76,8 +69,6 @@ function DisplayName(){
 
             //Saves unitl when the upgrade tier has been unlocked, uses a string
             ut = response[0].upgradeTier;
-            console.log(ut);
-            console.log(response[0].upgradeTier);
         }
     };
     xhttp.open("GET", "state/game/" + matchId, true);
@@ -136,10 +127,10 @@ function DisplayShard(){
 
 
             //----------------WHITE INVERTORY--------------------------------------
-            document.getElementById("shardQuantity1").innerText = response[0].mps_shard_ammount;
-            document.getElementById("shardQuantity2").innerText = response[1].mps_shard_ammount;
-            document.getElementById("shardQuantity3").innerText = response[2].mps_shard_ammount;
-            document.getElementById("shardQuantity4").innerText = response[3].mps_shard_ammount;
+            document.getElementById("shardQuantity1").innerText = response[0].mps_shard_ammount + "/2";
+            document.getElementById("shardQuantity2").innerText = response[1].mps_shard_ammount + "/2";
+            document.getElementById("shardQuantity3").innerText = response[2].mps_shard_ammount + "/2";
+            document.getElementById("shardQuantity4").innerText = response[3].mps_shard_ammount + "/3";
 
         }
     };
@@ -156,7 +147,7 @@ function DisplayBoard(){
 
             var c = 8;
             var j = 0;
-            let output = '-----------------------\n' + c + '|';
+            let output = '-----------------------\n' + c + ' |';
             for(let i = 0; i< response.length; i++){
 
                 //Translates the pieces from an array into a string, which will be printed
@@ -198,10 +189,10 @@ function DisplayBoard(){
                         response[i] = "♚";
                         break;
                     default:
-                        if(i%2 == 1){//⬜
+                        if(i%2 == 1){//⬜  //◽ ◻️   
                             response[i] = "◻";
                             j = i;
-                        }else{//⬛
+                        }else{//⬛  //  ▪ ▪️ ◼️ ⬛⬛
                             response[i] = "◼";
                             j = i;
                         }
@@ -212,13 +203,13 @@ function DisplayBoard(){
 
                 if((i+1) % 8 == 0  && i != (response.length-1)){  
                     c--;
-                    output += '\n-----------------------\n' + c +'|';
+                    output += '\n------------------\n' + c +'|';
                 }
 
             }
             output += '\n-------------------------\n';
 
-            output += '[1][2][3][4][5][6][7][8]';
+            //output += '[1 ‎ 2 3 4 5 6 7 8]';
 
             document.getElementById("superbChessboard").innerText = output;
         }

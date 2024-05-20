@@ -356,7 +356,6 @@ function ChangeUpgardeTier(request, response, matchId){
 
 function UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece, text){
     
-    if(piece.pieceState == 'Unusable for this turn')
         ResetPieceState(request, response, matchId);
 
     //if the pawnn gewt to the last row it promotes to a random piece

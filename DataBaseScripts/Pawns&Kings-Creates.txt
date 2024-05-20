@@ -1,0 +1,200 @@
+create table Player (
+                 	player_id int not null auto_increment,
+                 	player_name VARCHAR(60) not null,
+					player_email VARCHAR(60),
+					player_password VARCHAR(60) not null,
+					primary key (player_id)
+);
+
+create table `Match` (
+                 	match_id int not null auto_increment,
+                 	match_ms_id int not null,	#FK to Match_State
+					match_pc_id int not null,	#FK to Player_Color, Used to define who's plaiyng or who won
+                 	primary key (match_id)
+);
+
+create table Match_State (
+					ms_id int not null auto_increment,
+					ms_description VARCHAR(30),
+					primary key (ms_id)
+);
+
+create table Match_Player (
+					mp_id int not null auto_increment,
+					mp_match_id int not null,			#FK to Match
+					mp_player_id int not null,  		#FK to Player
+                    mp_ut_id int not null,	#FK to Upgrade_Tier
+                    mp_pc_id int not null, 	#FK to Player_Color, used for checking the promotion
+                    mp_canPromote int not null, #Defines that the player can promote just once per turn; 0 = False, 1 = True
+					primary key (mp_id)
+);
+
+create table Upgrade_Tier (
+					ut_id int not null auto_increment,
+					ut_name VARCHAR(60) not null,         
+					primary key (ut_id)
+);
+
+create table Match_Player_Shard (
+					mps_id int not null auto_increment,
+					mps_mp_id int not null,	#FK to MP_id
+					mps_shard_id int not null,	#FK to Shard
+                    mps_shard_ammount int not null,
+					primary key (mps_id)
+);
+
+
+
+create table Shard (
+					card_id int not null auto_increment, #should be FK to Card
+					shard_ammount_needed int not null,
+					shard_chance decimal not null,
+					primary key (card_id)
+);
+
+create table Player_Color (
+					pc_id int not null auto_increment,
+					pc_name VARCHAR(60) not null, 
+					primary key (pc_id)         
+);
+
+create table Piece (
+					piece_id int not null auto_increment,
+					piece_name VARCHAR(60) not null,
+					primary key (piece_id)
+
+);
+
+create table Match_Player_Piece (
+					mpp_id int not null auto_increment,
+					mpp_mp_id int not null,	#FK to Match_Player
+					mpp_tile_id int not null,	#FK to Tile
+					mpp_piece_id int not null,	#FK to Piece
+                    mpp_ps_id int not null,		#fk to Piece_State
+					primary key (mpp_id)
+);
+
+create table Match_Player_Card (
+					mpc_id int not null auto_increment,
+					mpc_mp_id int not null,	#FK to Match_Player
+                    mpc_card_id int not null,	#FK to Card
+                    mpc_ammount int not null,
+					primary key (mpc_id)
+);
+
+create table Card (
+					card_id int not null auto_increment, 
+					card_name VARCHAR(60) not null,
+					primary key (card_id)
+);
+
+create table Tile (
+			tile_id int not null auto_increment,
+			tile_x int not null,
+			tile_y int not null,
+            tile_name VARCHAR(60), #Translating coordinates of the tile to a name (eg A1, A2)
+			primary key (tile_id)
+);
+
+create table Tile_Promotion (
+			tp_id int not null auto_increment,
+			tp_tile_id int not null,		#FK to Tile
+			tp_pc_id int not null,				#FK to Player_Color
+            tp_name VARCHAR(60), 	# Forgor the necessity as well
+			primary key (tp_id)
+);
+
+create table Piece_State (
+			ps_id int not null auto_increment,
+            ps_description VARCHAR(60), 	#1:Alive,	2:Dead,	3:Unsable for this turn
+			primary key (ps_id)
+);
+
+
+
+-- Foreign Keys
+
+alter table `Match`
+add constraint match_fk_matchState 
+foreign key (match_ms_id) references Match_State(ms_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table `Match`
+add constraint match_fk_playerColor
+foreign key (match_pc_id) references Player_Color(pc_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Shard
+add constraint shard_fk_card 
+foreign key (card_id) references Card(card_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player
+add constraint matchPlayer_fk_match
+foreign key (mp_match_id) references `Match`(match_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player
+add constraint matchPlayer_fk_player 
+foreign key (mp_player_id) references Player(player_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player
+add constraint matchPlayer_fk_upgradeTier 
+foreign key (mp_ut_id) references Upgrade_Tier(ut_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player
+add constraint matchPlayer_fk_playerColor 
+foreign key (mp_pc_id) references Player_Color(pc_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Shard
+add constraint matchPlayerShard_fk_matchPlayer
+foreign key (mps_mp_id) references Match_Player(mp_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Shard
+add constraint matchPlayerShard_fk_shard
+foreign key (mps_shard_id) references Shard(card_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Piece
+add constraint matchPlayerPiece_fk_matchPlayer
+foreign key (mpp_mp_id) references Match_Player(mp_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Piece
+add constraint matchPlayerPiece_fk_tile 
+foreign key (mpp_tile_id) references Tile(tile_id) #tbd
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Piece
+add constraint matchPlayerPiece_fk_piece
+foreign key (mpp_piece_id) references Piece(piece_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Piece
+add constraint matchPlayerPiece_fk_pieceState 
+foreign key (mpp_ps_id) references Piece_State(ps_id)
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Card
+add constraint matchPlayerCard_fk_matchPlayer
+foreign key (mpc_mp_id) references Match_Player(mp_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Match_Player_Card
+add constraint matchPlayerCard_fk_card
+foreign key (mpc_card_id) references Card(card_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Tile_Promotion
+add constraint tilePromotion_fk_tile
+foreign key (tp_tile_id) references Tile(tile_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+alter table Tile_Promotion
+add constraint tilePromotion_fk_playerColor
+foreign key (tp_pc_id) references Player_Color(pc_id) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;

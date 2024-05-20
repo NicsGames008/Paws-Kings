@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "ba5fc56f-85e2-405d-9265-0c3660234f6c",
+		"name": "Pawns&Kings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33361756",
+		"_collection_link": "https://pawns-kings.postman.co/workspace/Pawns-%26-Kings-Workspace~28a0319a-b500-48e6-b1db-0d13d03e8d8c/collection/34445835-ba5fc56f-85e2-405d-9265-0c3660234f6c?action=share&source=collection_link&creator=33361756"
+	},
+	"item": [
+		{
+			"name": "Piece",
+			"item": [
+				{
+					"name": "Move",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "startX",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "startY",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "endX",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "endY",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "playerId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "matchId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:3000/piece/move"
+					},
+					"response": []
+				},
+				{
+					"name": "Promote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "startX",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "startY",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "playerId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "matchId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cardId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:3000/piece/promote"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Status",
+			"item": [
+				{
+					"name": "Game",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "matchId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "localhost:3000/state/game/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Shard",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "matchId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "localhost:3000/state/shard/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Card",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "matchId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "localhost:3000/state/card/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Board",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "matchId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "localhost:3000/state/board/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lobby",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "p1",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:3000/lobby/search"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "p1",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:3000/lobby/create"
+					},
+					"response": []
+				},
+				{
+					"name": "Leave",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "p1",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:3000/lobby/leave"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Signing",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "feet",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "222",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "69",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:3000/signing/up"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "222",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "69",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:3000/signing/in"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

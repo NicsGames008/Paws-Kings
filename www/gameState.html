@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pawns & Kings</title>
+<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+<script src="./scripts/scripts.js"></script>
+</head>
+<body onload="getGameData()">
+    
+    <div class="container">
+        <div class="section section1">
+
+            <div class="subsection section1-1">
+                <div id="playerName"></div>
+                Vs. <span id="enemyInfo"></span>
+            </div>
+            
+            <div class="subsection section1-2">
+                
+                <div id="playerNameForPromotion"></div>
+                <table>
+                    <tr>
+                        <div></div>
+                        <th></th>
+                        <th id ="cardName1"></th>
+                        <th id ="cardName2"></th>
+                        <th id ="cardName3"></th>
+                        <th id ="cardName4"></th>
+                    </tr>
+                    <tr>
+                        <td>Cards:</td>
+                        <td id ="cardQuantity1"></td>
+                        <td id ="cardQuantity2"></td>
+                        <td id ="cardQuantity3"></td>
+                        <td id ="cardQuantity4"></td>
+                    </tr>
+                    <tr>
+                        <td>Shards:</td>
+                        <td id ="shardQuantity1"></td>
+                        <td id ="shardQuantity2"></td>
+                        <td id ="shardQuantity3"></td>
+                        <td id ="shardQuantity4"></td>
+                    </tr>
+                </table>
+            
+            </div>
+        </div>
+
+
+        <div class="section section2">
+
+            <div class="subsection section2-1">
+                <table>
+                    <th>Promotion available:</th>
+                    <th id ="promotionName1"></th>
+                    <th id ="promotionName2"></th>
+                    <th id ="promotionName3"></th>
+                    <th id ="promotionName4"></th>
+                </table>
+
+            </div>
+
+            <div class="subsection section2-2"> 
+                <span id="ColorPlyaing"></span>
+            </div>
+
+            <div class="subsection section2-3">
+                <div id="superbChessboard"></div>
+                <span style="font-size: 20px">1 &nbsp2 &nbsp3 &nbsp4 &nbsp5 &nbsp6 &nbsp7 &nbsp8</span>
+            </div>
+
+        </div>
+
+
+        <div class="section section3">
+
+            <div class="subsection section3-1">
+                <span>MOVEMENT:</span>
+                <br>
+                <span>
+                    Start X: <input type="text" id="startX" maxlength="1">
+                    Start Y: <input type="text" id="startY" maxlength="1">
+                    <br>
+                </span>
+                
+                <span>
+                    End X: <input type="text" id="endX" maxlength="1">
+                    End Y: <input type="text" id="endY" maxlength="1">
+                    <br>
+                </span>                                
+
+                <span>
+                    <button onclick="MakeMove()" accesskey="m">Move!</button>
+                </span>
+                <br>
+                <p id="responseMove"></p> 
+            </div>
+            
+            <div class="subsection section3-2">
+                <span>PROMOTION:</span>
+                <br>
+                <span> 
+                    X: <input type="text" id="X" maxlength="1">
+                    Y: <input type="text" id="Y" maxlength="1">
+                    <br>
+                </span>
+
+                   <span>
+                        Card ID: <input type="text" id="cardId" maxlength="1">
+                        <br>
+                    </span> 
+
+                    <span>           
+                    <button onclick="Promote()" accesskey="p">Promote! </button>
+                    </span>
+                    <br>
+                    <span><p id="responsePromote"></p></span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+</html>

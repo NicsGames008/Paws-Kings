@@ -267,7 +267,7 @@ function ChangeMatchState(request, response, startX, startY, endX, endY,matchId)
 
 function UpdatePieceType(request, response, cardId, startX, startY) {
 
-    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ?;',
+    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mpp.mpp_piece_id = 5;',
     [cardId, startX, startY],
     function (err, results, fields) {
         if (err) {
@@ -356,7 +356,7 @@ function ChangeUpgardeTier(request, response, matchId){
 
 function UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece, text){
     
-        ResetPieceState(request, response, matchId);
+    ResetPieceState(request, response, matchId);
 
     //if the pawnn gewt to the last row it promotes to a random piece
     if ((endY == 8 && piece.color_piece == 'White') || (endY == 1 && piece.color_piece == 'Black')) {

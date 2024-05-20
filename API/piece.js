@@ -144,7 +144,7 @@ router.post('/promote',(request, response)=>{
                     // Call the CheckIfPieceExists function with specified parameters
                     CheckIfPieceExists(request, response, startX, startY, matchId, function(piece){
                         CheckCardExist(request, response, cardId, playerId, matchId, function(validateCardExists){
-                            ChangeCanPromote(request, response, matchId, playerId, function(canPromote){
+                            CheckCanPromote(request, response, matchId, playerId, function(canPromote){
                                 CheckPromotenArea(request, response, playerColor, startX, startY, function(validadePromoten){ 
                                     CheckUpgradeTier(request, response, matchId, cardId, function(validateUpgradeTier){
                                         // Once the callback function is called, send the result back in the response
@@ -153,7 +153,7 @@ router.post('/promote',(request, response)=>{
                                             if ((piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying && validateCardExists && validadePromoten && validateUpgradeTier && canPromote && piece.pieceType == 'Pawn') {
                                                 UpdatePieceType(request, response, cardId, startX, startY);
                                                 ChangePieceState(request, response, startX, startY, matchId, 3);
-                                                UpdateCanPromoteState(request, response, matchId, playerId);
+                                                UpdateCanPromoteState(request, response, matchId, playerId, 0);
                                                 UpdateCard(request, response, cardId, playerId);
                                                 response.send ('Promotion Valid'); 
                                                 
@@ -201,159 +201,6 @@ function RandomShardGenerator(){
     return shard
 }
 
-function ChangeCanPromote(request, response, matchId, playerId, callback) {
-    connection.execute('SELECT mp_canPromote AS canPromote FROM Match_Player mpp WHERE mp_match_id = ? AND mp_player_id = ?;',
-    [matchId, playerId],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } 
-        else {
-            if (results[0].canPromote == 1)
-                callback(true);
-            else if (results[0].canPromote == 0)
-                callback(false);
-            
-        }
-    });
-}
-
-function UpdateCanPromoteState(request, response, matchId, playerId) {
-
-    connection.execute('UPDATE Match_Player SET mp_canPromote = CASE WHEN mp_canPromote = 0 THEN 1 WHEN mp_canPromote = 1 THEN 0 ELSE mp_canPromote END WHERE mp_match_id = ? AND mp_player_id = ?;',
-    [matchId, playerId],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } 
-        
-    });
-}
-
-function ResetPieceState(request, response, matchId) {
-    connection.execute('SELECT mpp.mpp_id AS pieceId FROM Match_Player_Piece mpp INNER JOIN Piece_State ps ON mpp.mpp_ps_id = ps.ps_id INNER JOIN Match_Player mp ON mpp.mpp_mp_id =  mp.mp_id WHERE ps.ps_description = "Unusable for this turn" AND mp.mp_match_id = ?;',
-    [matchId],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } 
-        else {
-            if( results[0]){
-                connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = 1 WHERE mp.mp_match_id = ? AND mpp.mpp_id = ?;',
-                [matchId, results[0].pieceId],
-                function (err, results, fields) {
-                    if (err) {
-                        response.send(err);
-                    } 
-                });
-            }
-        }
-    });
-}
-
-function ChangeMatchState(request, response, startX, startY, endX, endY,matchId) {
-    ChangePieceLocation(request, response, startX, startY, endX, endY)
-    connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
-    [matchId],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } 
-        else {
-            response.send("King died");
-        }
-    });
-}
-
-function UpdatePieceType(request, response, cardId, startX, startY) {
-
-    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mpp.mpp_piece_id = 5;',
-    [cardId, startX, startY],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } 
-    });
-}
-//Check's if the card exists in the players hand 
-function CheckCardExist(request, response, cardId, playerId, matchId, callback) {
-
-    connection.execute('SELECT mpc.mpc_ammount AS ammount FROM Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ?;',
-    [cardId, playerId, matchId],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } else {
-            if (results[0].ammount >= 1)
-                callback(true);            
-            else
-                callback(false);
-        }
-    });
-}
-//check's if they in the promoten area
-function CheckPromotenArea(request, response, playerColor, startX, startY, callback) {
-
-    connection.execute('SELECT count(*) AS promotionTile FROM Tile_Promotion tp INNER JOIN Tile t ON tp.tp_tile_id = t.tile_id INNER JOIN Player_Color pc ON pc.pc_id = tp.tp_pc_id WHERE (pc.pc_name = ? OR pc.pc_name = "Gray") AND t.tile_x = ? AND t.tile_y = ?;',
-    [playerColor, startX, startY],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } else {
-            if (results[0].promotionTile == 1)
-                callback(true)            
-            else
-                callback(false)
-        }
-    });
-
-}
-function CheckUpgradeTier(request, response, matchId, cardId, callback){
-    connection.execute('SELECT mp_ut_id AS upgradeTier FROM Match_Player WHERE mp_match_id = ?;',
-    [matchId],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } else {
-            if (results[0].upgradeTier >= cardId)
-                callback(true)            
-            else
-                callback(false)
-        }
-    });
-}
-//updates the value of the card after the update of the piece 
-function UpdateCard(request, response, cardId, playerId) {
-
-    connection.execute('UPDATE Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id SET mpc.mpc_ammount = mpc.mpc_ammount -1 WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ?;',
-    [cardId, playerId],
-    function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } 
-    });
-}
-
-function ChangeUpgardeTier(request, response, matchId){
-    connection.execute('SELECT ut.ut_name AS upgradeTier FROM Match_Player mp INNER JOIN Upgrade_Tier ut ON ut.ut_id = mp.mp_ut_id WHERE mp.mp_match_id = ?;',
-    [matchId]
-    , function (err, results, fields) {
-        if (err) {
-            response.send(err);
-        } else {
-            if (results[0].upgradeTier != 'Queen'){
-                connection.execute('UPDATE Match_Player SET mp_ut_id = mp_ut_id + 1 WHERE mp_match_id = ?;',
-                [matchId]
-                , function (err, resultsInsert, fields) {
-                    if (err) {
-                        response.send(err);
-                    } 
-                });
-            }
-        }
-    });
-}
-
 function UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece, text){
     
     ResetPieceState(request, response, matchId);
@@ -364,7 +211,6 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
         UpdatePieceType(request, response, promotionPiece, startX, startY);
     }
 
-
     //makes the pawn go get the state that he cant move 2 tile after 1st move
     if(piece.pieceState == 'Has not moved yet')
         ChangePieceState(request, response, startX, startY, matchId, 1);
@@ -372,7 +218,7 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
     //Update the piece position in the DB
     ChangePieceLocation(request, response, startX, startY, endX, endY);
     
-    UpdateCanPromoteState(request, response, matchId, playerId);
+    UpdateCanPromoteState(request, response, matchId, playerId, 1);
 
 
     var shard = RandomShardGenerator();
@@ -401,6 +247,108 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
             
             //Changes who's turn is 
             ChangeWhoIsPlaying(request, response, matchId);
+        }
+    });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Promotion related functions
+
+function CheckCanPromote(request, response, matchId, playerId, callback) {
+    connection.execute('SELECT mp_canPromote AS canPromote FROM Match_Player mpp WHERE mp_match_id = ? AND mp_player_id = ?;',
+    [matchId, playerId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        else {
+            if (results[0].canPromote == 1)
+                callback(true);
+            else if (results[0].canPromote == 0)
+                callback(false);
+            
+        }
+    });
+}
+
+function UpdateCanPromoteState(request, response, matchId, playerId, canPromote) {
+
+    connection.execute('UPDATE Match_Player SET mp_canPromote = ? WHERE mp_match_id = ? AND mp_player_id = ?;',
+    [canPromote, matchId, playerId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        
+    });
+}
+
+//check's if they in the promoten area
+function CheckPromotenArea(request, response, playerColor, startX, startY, callback) {
+
+    connection.execute('SELECT count(*) AS promotionTile FROM Tile_Promotion tp INNER JOIN Tile t ON tp.tp_tile_id = t.tile_id INNER JOIN Player_Color pc ON pc.pc_id = tp.tp_pc_id WHERE (pc.pc_name = ? OR pc.pc_name = "Gray") AND t.tile_x = ? AND t.tile_y = ?;',
+    [playerColor, startX, startY],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            if (results[0].promotionTile == 1)
+                callback(true)            
+            else
+                callback(false)
+        }
+    });
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Board/Match functions
+
+function CheckUpgradeTier(request, response, matchId, cardId, callback){
+    connection.execute('SELECT mp_ut_id AS upgradeTier FROM Match_Player WHERE mp_match_id = ?;',
+    [matchId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            if (results[0].upgradeTier >= cardId)
+                callback(true)            
+            else
+                callback(false)
+        }
+    });
+}
+
+function ChangeUpgardeTier(request, response, matchId){
+    connection.execute('SELECT ut.ut_name AS upgradeTier FROM Match_Player mp INNER JOIN Upgrade_Tier ut ON ut.ut_id = mp.mp_ut_id WHERE mp.mp_match_id = ?;',
+    [matchId]
+    , function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            if (results[0].upgradeTier != 'Queen'){
+                connection.execute('UPDATE Match_Player SET mp_ut_id = mp_ut_id + 1 WHERE mp_match_id = ?;',
+                [matchId]
+                , function (err, resultsInsert, fields) {
+                    if (err) {
+                        response.send(err);
+                    } 
+                });
+            }
+        }
+    });
+}
+
+function ChangeMatchState(request, response, startX, startY, endX, endY,matchId) {
+    ChangePieceLocation(request, response, startX, startY, endX, endY)
+    connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
+    [matchId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        else {
+            response.send("King died");
         }
     });
 }
@@ -436,6 +384,9 @@ function ChangeWhoIsPlaying(request, response, matchId){
     });
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Piece related functions
+
 // Function to check if a piece exists at a specified position in a match
 function CheckIfPieceExists(request, response, startX, startY, matchId, callback) {
     // Database query to select the piece name from the Match_Player_Piece table
@@ -460,6 +411,38 @@ function CheckIfPieceExists(request, response, startX, startY, matchId, callback
     );
 }
 
+function UpdatePieceType(request, response, cardId, startX, startY) {
+
+    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mpp.mpp_piece_id = 5;',
+    [cardId, startX, startY],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+    });
+}
+
+function ResetPieceState(request, response, matchId) {
+    connection.execute('SELECT mpp.mpp_id AS pieceId FROM Match_Player_Piece mpp INNER JOIN Piece_State ps ON mpp.mpp_ps_id = ps.ps_id INNER JOIN Match_Player mp ON mpp.mpp_mp_id =  mp.mp_id WHERE ps.ps_description = "Unusable for this turn" AND mp.mp_match_id = ?;',
+    [matchId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+        else {
+            if( results[0]){
+                connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = 1 WHERE mp.mp_match_id = ? AND mpp.mpp_id = ?;',
+                [matchId, results[0].pieceId],
+                function (err, results, fields) {
+                    if (err) {
+                        response.send(err);
+                    } 
+                });
+            }
+        }
+    });
+}
+
 function ChangePieceState(request, response, endX, endY, matchId, state){
     connection.execute('UPDATE Match_Player_Piece INNER JOIN Tile t ON mpp_tile_id = tile_id INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mp.mp_match_id = ?;',
     [state, endX, endY, matchId],
@@ -480,10 +463,31 @@ function ChangePieceLocation(request, response, startX, startY, endX, endY){
     });
 }
 
-function ChangeShard(request, response, shardAmount, matchId, playerId, shard){
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Card/shard related functions
 
-    connection.execute('UPDATE Match_Player_Shard SET mps_shard_ammount = ? WHERE mps_mp_id = ( SELECT mp.mp_id FROM Match_Player mp JOIN `Match` m ON mp.mp_match_id = m.match_id WHERE m.match_id = ? AND mp.mp_player_id = ?) AND mps_shard_id = ?;',
-    [shardAmount, matchId, playerId, shard],
+//Check's if the card exists in the players hand 
+function CheckCardExist(request, response, cardId, playerId, matchId, callback) {
+
+    connection.execute('SELECT mpc.mpc_ammount AS ammount FROM Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ?;',
+    [cardId, playerId, matchId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } else {
+            if (results[0].ammount >= 1)
+                callback(true);            
+            else
+                callback(false);
+        }
+    });
+}
+
+//updates the value of the card after the update of the piece 
+function UpdateCard(request, response, cardId, playerId) {
+
+    connection.execute('UPDATE Match_Player_Card mpc INNER JOIN Match_Player mp ON mp.mp_id = mpc.mpc_mp_id SET mpc.mpc_ammount = mpc.mpc_ammount -1 WHERE mpc.mpc_card_id = ? AND mp.mp_player_id = ?;',
+    [cardId, playerId],
     function (err, results, fields) {
         if (err) {
             response.send(err);
@@ -501,6 +505,20 @@ function AddCard(request, response, matchId, playerId, shard){
         } 
     });
 }
+
+function ChangeShard(request, response, shardAmount, matchId, playerId, shard){
+
+    connection.execute('UPDATE Match_Player_Shard SET mps_shard_ammount = ? WHERE mps_mp_id = ( SELECT mp.mp_id FROM Match_Player mp JOIN `Match` m ON mp.mp_match_id = m.match_id WHERE m.match_id = ? AND mp.mp_player_id = ?) AND mps_shard_id = ?;',
+    [shardAmount, matchId, playerId, shard],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        } 
+    });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Move validation functions
 
 function IsValidMove(startX, startY, endX, endY, pieceType, piecesArray) {
     // Check if the move is valid based on the piece type

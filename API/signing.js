@@ -2,10 +2,7 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../database');
 
-
-
 // Endpoint Register
-
 router.post('/up', (request, response) => {
     var name = request.body.name;
     var email = request.body.email;
@@ -17,13 +14,13 @@ router.post('/up', (request, response) => {
         return;
     }
 
-    connection.query("SELECT * FROM player where player_name = ? OR player_email = ?;",
+    connection.query("SELECT * FROM Player WHERE player_name = ? OR player_email = ?;",
     [name, email],
        function (err, results, fields) {
         if (err) {
            response.send(err);
         } else {
-            if(results.lenght == 0 ){
+            if(results.length == 0){
                 InsertIntoPlayer(response, name, email, password);
             }else
                 response.send("there are some mfs with those info");
@@ -41,14 +38,13 @@ function InsertIntoPlayer(response, name, email, password){
      if (err) {
         response.send(err);
      } else {
-            response.send("user Register");
+            response.send("User Register");
      }
  });
 }
 
 
 // Endpoint Login
-
 router.get('/in', (request, response) => {
 
     var email = request.body.email;
@@ -60,7 +56,7 @@ router.get('/in', (request, response) => {
         return;
     }
  
-    connection.query("SELECT * FROM player where player_email = ? AND player_password = ?;",
+    connection.query("SELECT * FROM Player WHERE player_email = ? AND player_password = ?;",
     [email, password],
        function (err, results, fields) {
         if (err) {
@@ -74,11 +70,4 @@ router.get('/in', (request, response) => {
     });
 
 })
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//update user info
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 module.exports = router;

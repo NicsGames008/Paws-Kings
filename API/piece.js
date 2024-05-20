@@ -60,9 +60,6 @@ router.post('/move', (request, response) => {
                             var moveIsValide = IsValidMove(startX, startY, endX, endY, piece.pieceType, boardState)  
                             //check if the move is valid                
                             if (moveIsValide[0] && (piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying) {
-                                
-
-
                                 //if its valid but has a pice on the way....
                                 if(moveIsValide[1]){ //if there is an enemy on the way....
                                     // Check whether the piece on the target tile is an enemy or an ally.

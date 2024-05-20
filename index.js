@@ -1,5 +1,6 @@
 // Dependencies of the project
 const express = require('express');
+const session = require('express-session');
 const connection = require('./database');
 const lobby = require('./API/lobby');
 const state = require('./API/state');
@@ -11,17 +12,37 @@ const serverPort = 3000;
 
 // Create a new instance of express
 const app = express();
-app.use(express.urlencoded());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
 // Middlewares
 // We are telling the server to use the folder 'www' as static pages
 app.use(express.static('www'));
+app.use(express.urlencoded({extended: true}));
 app.use('/lobby', lobby);
 app.use('/state', state);
 app.use('/piece', movePiece);
 app.use('/signing', signing);
+app.use(session({
+    secret: 'sussybussy',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        //USE THIS WHEN SERVER
+        //secure: true,
+        maxAge: 2628000000
+    }
+  }))
+
+app.get('/counters', function (req, res) {
+    if (req.session.counter){
+        req.session.counter++;
+    }
+    else{
+        req.session.counter = 1;
+    }
+    res.send('Counters: ' + req.session.counter);
+})
 
 
 // Connect to database and check if it's working. Otherwise gives an error.

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home of Poo - Register</title>
+    <link rel="stylesheet" href="./style/main.css">
+    <script src="./scripts/main.js"></script>
+</head>
+<body>
+    <div id="navbar">
+        <a href="index.html#home">💩 Home</a>
+        <a href="index.html#instructions">📖 Instructions</a>
+        <a href="index.html#about">😦 About</a>
+        <div id ="navbarright">
+            <a href="register.html">🆕 Register</a>
+            <a href="login.html">🗝️ Login</a>
+        </div>
+    </div>
+    <div class="container">
+        <span id="title">Register</span><br/><br/>
+        <input type="text" id="username" placeholder="Username"><br/>
+        <input type="password" id="password" placeholder="Password"><br/>
+        <input type="password" id="password2" placeholder="Confirm Password"><br/>
+        <input type="button" onclick="register()" value="Register"><br/>
+        <div id="message"></div>
+    </div>
+</body>
+</html>

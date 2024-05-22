@@ -1,0 +1,32 @@
+#navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#navbar a:hover {
+    background-color: #ddd;
+    color: rgba(0,0,0,1);
+} 
+
+/** #navbar in center of screen with opacity of 50% */
+#navbar {
+    position: absolute;
+    width: 95%;
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    margin: 5px;
+    padding: 5px;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#navbarright {
+    float: right;
+}

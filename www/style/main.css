@@ -1,0 +1,89 @@
+        body, html {
+            border: 0px;
+            margin: 0px;
+            background-color: black;
+            background-image: url('../img/wallpaper.jpg');
+
+            /** Fullscreen background image without repeating. Adapt to the height of the screen */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        #navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        #gametitle {
+            color: white;
+            font-size: 3vw;
+        }
+
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            width: 80%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            align-content: center;
+            text-align: center;
+
+        }
+
+        .container input[type=text], .container input[type=password] {
+            width: 20%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            min-width: 200px;
+        }
+
+        .container input[type=submit], .container input[type=button]{
+            width: 20%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            min-width: 200px;
+        }
+
+        .container #title {
+            color: green;
+            font-size: 4vw;
+            text-shadow: 2px 2px 4px #000000;        
+        }
+
+        #navbarright {
+            float: right;
+        }
+
+        a {
+            font-size: 18px;
+        }
+
+        #message {
+            font-size: 2vw;
+        }
+

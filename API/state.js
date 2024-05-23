@@ -26,7 +26,9 @@ router.get('/game/:matchId', (request, response) => {
                     response.send("no match existes with said id");
                 }else{
                     //console.log("match id found");
+                    console.log(matchId);
                     response.send(results);
+                    
                     
                 }
                 

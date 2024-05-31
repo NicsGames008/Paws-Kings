@@ -119,7 +119,7 @@ router.post('/promote',(request, response)=>{
         return ;
     }
 
-    connection.execute('SELECT ms_description AS match_state, pc1.pc_name AS player_color, pc2.pc_name AS color_playing FROM Match_Player mp INNER JOIN Match_State ms ON mp.mp_match_id = ? AND mp.mp_player_id = ? AND mp.mp_match_id = ms.ms_id INNER JOIN Player_Color pc1 ON mp.mp_pc_id = pc1.pc_id INNER JOIN `Match` m ON mp.mp_match_id = m.match_id INNER JOIN Player_Color pc2 ON m.match_pc_id = pc2.pc_id; ',
+    connection.execute('SELECT ms.ms_description AS match_state, pc1.pc_name AS player_color, pc2.pc_name AS color_playing FROM Match_Player mp INNER JOIN Player_Color pc1 ON mp.mp_pc_id = pc1.pc_id INNER JOIN `Match` m ON mp.mp_match_id = m.match_id INNER JOIN Match_State ms ON ms.ms_id = m.match_ms_id INNER JOIN Player_Color pc2 ON m.match_pc_id = pc2.pc_id WHERE m.match_id = ? AND mp.mp_player_id = ?; ',
     [matchId, playerId], 
     function (err, results, fields){
         if (err) {
@@ -387,7 +387,7 @@ function ChangeWhoIsPlaying(request, response, matchId){
 // Function to check if a piece exists at a specified position in a match
 function CheckIfPieceExists(request, response, startX, startY, matchId, callback) {
     // Database query to select the piece name from the Match_Player_Piece table
-    connection.execute('SELECT Piece.piece_name AS pieceType, ps.ps_description AS pieceState, Match_Player.mp_player_id AS playerID, pc.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece_State ps ON  Match_Player_Piece.mpp_ps_id = ps_id JOIN Player_Color pc ON Match_Player.mp_pc_id = pc.pc_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ?;',
+    connection.execute('SELECT Piece.piece_name AS pieceType, ps.ps_description AS pieceState, Match_Player.mp_player_id AS playerID, pc.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece_State ps ON  Match_Player_Piece.mpp_ps_id = ps_id JOIN Player_Color pc ON Match_Player.mp_pc_id = pc.pc_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ? AND ps.ps_description = "Alive";',
         [startX, startY, matchId], // Array of values to replace placeholders in the query
         function (err, results, fields) {
             // Check if there was an error during the query execution
@@ -408,17 +408,35 @@ function CheckIfPieceExists(request, response, startX, startY, matchId, callback
     );
 }
 
-function UpdatePieceType(request, response, cardId, startX, startY) {
+function UpdatePieceType(request, response, cardId, startX, startY, matchId) {
 
-    connection.execute('UPDATE Match_Player_Piece mpp INNER JOIN Tile t ON t.tile_id = mpp.mpp_tile_id SET mpp.mpp_piece_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mpp.mpp_piece_id = 5;',
-    [cardId, startX, startY],
+    var mppId;
+
+    connection.execute('SELECT mpp_id FROM match_player_piece INNER JOIN tile ON tile_id = mpp_tile_id INNER JOIN match_player ON mp_id = mpp_mp_id WHERE mp_match_id = ? AND (tile_x = ? AND tile_y = ?);',
+    [matchId, startX, startY],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        }else{
+            mppId = results[0].mpp_id;
+
+            PromoteSaidPiece(request, response, endX, endY, mppId)
+        }
+    });
+
+
+}
+
+function PromoteSaidPiece(request, response, cardId, mppId){
+
+    connection.execute('UPDATE Match_Player_Piece mpp SET mpp.mpp_piece_id = ? WHERE mpp_id = ? AND mpp.mpp_piece_id = 5;',
+    [cardId, mppId],
     function (err, results, fields) {
         if (err) {
             response.send(err);
         } 
     });
 }
-
 function ResetPieceState(request, response, matchId) {
     connection.execute('SELECT mpp.mpp_id AS pieceId FROM Match_Player_Piece mpp INNER JOIN Piece_State ps ON mpp.mpp_ps_id = ps.ps_id INNER JOIN Match_Player mp ON mpp.mpp_mp_id =  mp.mp_id WHERE ps.ps_description = "Unusable for this turn" AND mp.mp_match_id = ?;',
     [matchId],
@@ -441,7 +459,7 @@ function ResetPieceState(request, response, matchId) {
 }
 
 function ChangePieceState(request, response, endX, endY, matchId, state){
-    connection.execute('UPDATE Match_Player_Piece INNER JOIN Tile t ON mpp_tile_id = tile_id INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mp.mp_match_id = ?;',
+    connection.execute('UPDATE Match_Player_Piece INNER JOIN Tile t ON mpp_tile_id = tile_id INNER JOIN Match_Player mp ON mpp_mp_id = mp.mp_id SET mpp_ps_id = ? WHERE t.tile_x = ? AND t.tile_y = ? AND mp.mp_match_id = ? AND (mpp_ps_id = 1 OR mpp_ps_id = 4);',
     [state, endX, endY, matchId],
     function (err, results, fields){
         if (err) {

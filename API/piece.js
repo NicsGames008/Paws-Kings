@@ -351,7 +351,7 @@ function ChangeMatchState(request, response, startX, startY, endX, endY,matchId)
 }
 
 function GetBoardState(request, response, matchId, callback) {
-    connection.execute('SELECT mp1.mp_player_id AS p1_id, mp2.mp_player_id AS p2_id FROM `Match` AS m JOIN Match_Player AS mp1 ON m.match_id = mp1.mp_match_id JOIN Match_Player AS mp2 ON m.match_id = mp2.mp_match_id WHERE m.match_id = ?;',
+    connection.execute('SELECT mp1.mp_id AS p1_id, mp2.mp_id AS p2_id FROM `Match` AS m JOIN Match_Player AS mp1 ON m.match_id = mp1.mp_match_id JOIN Match_Player AS mp2 ON m.match_id = mp2.mp_match_id WHERE m.match_id = ?;',
     [matchId],
     function (err, results, fields) {
         if (err) {
@@ -387,7 +387,7 @@ function ChangeWhoIsPlaying(request, response, matchId){
 // Function to check if a piece exists at a specified position in a match
 function CheckIfPieceExists(request, response, startX, startY, matchId, callback) {
     // Database query to select the piece name from the Match_Player_Piece table
-    connection.execute('SELECT Piece.piece_name AS pieceType, ps.ps_description AS pieceState, Match_Player_Piece.mpp_mp_id AS playerID, pc.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece_State ps ON  Match_Player_Piece.mpp_ps_id = ps_id JOIN Player_Color pc ON Match_Player.mp_pc_id = pc.pc_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ?;',
+    connection.execute('SELECT Piece.piece_name AS pieceType, ps.ps_description AS pieceState, Match_Player.mp_player_id AS playerID, pc.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece_State ps ON  Match_Player_Piece.mpp_ps_id = ps_id JOIN Player_Color pc ON Match_Player.mp_pc_id = pc.pc_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ?;',
         [startX, startY, matchId], // Array of values to replace placeholders in the query
         function (err, results, fields) {
             // Check if there was an error during the query execution

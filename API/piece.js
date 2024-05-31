@@ -213,7 +213,7 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
         ChangePieceState(request, response, startX, startY, matchId, 1);
     
     //Update the piece position in the DB
-    ChangePieceLocation(request, response, startX, startY, endX, endY);
+    ChangePieceLocation(request, response, startX, startY, endX, endY, matchId);
     
     UpdateCanPromoteState(request, response, matchId, playerId, 1);
 
@@ -450,13 +450,31 @@ function ChangePieceState(request, response, endX, endY, matchId, state){
     });
 }
 
-function ChangePieceLocation(request, response, startX, startY, endX, endY){
-    connection.execute('UPDATE Match_Player_Piece SET mpp_tile_id = ( SELECT tile_id FROM Tile WHERE tile_x = ? AND tile_y = ?) WHERE mpp_tile_id = (SELECT tile_id FROM Tile WHERE tile_x = ? AND tile_y = ?);',
-    [endX, endY, startX, startY],
+function ChangePieceLocation(request, response, startX, startY, endX, endY, matchId){
+    var mppId;
+
+    connection.execute('SELECT mpp_id FROM match_player_piece INNER JOIN tile ON tile_id = mpp_tile_id INNER JOIN match_player ON mp_id = mpp_mp_id WHERE mp_match_id = ? AND (tile_x = ? AND tile_y = ?);',
+    [matchId, startX, startY],
     function (err, results, fields) {
         if (err) {
             response.send(err);
-        } 
+        }else{
+            mppId = results[0].mpp_id;
+            
+            MovePiece(request, response, endX, endY, mppId)
+        }
+    });
+
+}
+
+function MovePiece(request, response, endX, endY, mppId){
+
+    connection.execute('UPDATE Match_Player_Piece SET mpp_tile_id = ( SELECT tile_id FROM Tile WHERE tile_x = ? AND tile_y = ?) WHERE mpp_id = ?;',
+    [endX, endY, mppId],
+    function (err, results, fields) {
+        if (err) {
+            response.send(err);
+        }
     });
 }
 

@@ -73,30 +73,34 @@ class Preload extends Phaser.Scene {
 
 	// Check if the user is logged in
 	checkLogin(scene) {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = () => {
-			if (xhttp.readyState == 4) {
-				console.log(xhttp.status);
-				if (xhttp.status == 200)
-					{					
-						// If the user is logged in, we show the navbar and load the scene "Level"
-						//document.getElementById("navbar").style.display = "block";
-						this.scene.start("Level")
-					}
-					else
-					{
-						// If the user is not logged in, we show a message and redirect to the login page in 3 seconds.
-						this.loadingText.text = "Log in please!";
-						// Redirect to login page in 3 seconds
-						setTimeout(() => {
-							window.location.replace("../login.html");
-						}, 3000)
-					}
-			}
-		};
+		this.scene.start("Level")
+
+
+
+		// var xhttp = new XMLHttpRequest();
+		// xhttp.onreadystatechange = () => {
+		// 	if (xhttp.readyState == 4) {
+		// 		console.log(xhttp.status);
+		// 		if (xhttp.status == 200)
+		// 			{					
+		// 				// If the user is logged in, we show the navbar and load the scene "Level"
+		// 				//document.getElementById("navbar").style.display = "block";
+		// 				this.scene.start("Level")
+		// 			}
+		// 			else
+		// 			{
+		// 				// If the user is not logged in, we show a message and redirect to the login page in 3 seconds.
+		// 				this.loadingText.text = "Log in please!";
+		// 				// Redirect to login page in 3 seconds
+		// 				setTimeout(() => {
+		// 					window.location.replace("../login.html");
+		// 				}, 3000)
+		// 			}
+		// 	}
+		// };
 		
-		xhttp.open("GET", "/signing/checkLogin", true);
-		xhttp.send();
+		// xhttp.open("GET", "/signing/checkLogin", true);
+		// xhttp.send();
 	}
 
 	/* END-USER-CODE */

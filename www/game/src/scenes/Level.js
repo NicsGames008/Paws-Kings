@@ -722,21 +722,24 @@ class Level extends Phaser.Scene {
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Possibel way to get the board state from the server
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// // call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
-		// setInterval(() => {
-		// 	var xhttp = new XMLHttpRequest();
-		// 	xhttp.onreadystatechange = () => {
-		// 		if (xhttp.readyState == 4) {
-		// 			// Parse the JSON response
-		// 			var data = JSON.parse(xhttp.responseText);
-		// 			console.log(data);
-		// 		}
-		// 	};
+		var boardState;
+		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
+		setInterval(() => {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+					// Parse the JSON response
+					var data = JSON.parse(xhttp.responseText);
+					//console.log(data);
+					boardState = data;
+					//console.log(boardState);
+				}
+			};
 
-		// 	// Send a GET request to the server (just testing with /match/11 endpoint)
-		// 	xhttp.open("GET", "../state/boardR/1", true);
-		// 	xhttp.send();
-		// }, TIME_BETWEEN_SYNC)
+			// Send a GET request to the server (just testing with /match/11 endpoint)
+			xhttp.open("GET", "../state/boardR/1", true);
+			xhttp.send();
+		}, TIME_BETWEEN_SYNC)
 
 		// Loop through each tile in the 'tiles' array
 		for (let index = 0; index < this.tiles.length; index++) {
@@ -745,17 +748,32 @@ class Level extends Phaser.Scene {
 			
 			// Add an event listener to the tile for the 'pointerdown' event
 			element.on("pointerdown", event => {
+
 				// Extract the number from the tile's name using the 'extractNumberFromString' function
 				var numbFromImage = extractNumberFromString(element.name);
 				
-				// Convert the extracted number to coordinates using the 'numberToCoordinates' function
-				var tileCordinates = numberToCoordinates(numbFromImage);
-				
-				// Log the x and y coordinates to the console
-				console.log(tileCordinates.x, tileCordinates.y);
+				for (let i = 0; i < boardState.length; i++) {
+					
+					var k = i;
+					k++;
+					if(boardState[i].mpp_tile_id && k == numbFromImage)
+					{
+						console.log("aaaaa", k, numbFromImage);
+						break
+					}
+					
+				}
 			});
 		}
-
+		
+		// // Extract the number from the tile's name using the 'extractNumberFromString' function
+		// var numbFromImage = extractNumberFromString(element.name);
+		
+		// // Convert the extracted number to coordinates using the 'numberToCoordinates' function
+		// var tileCordinates = numberToCoordinates(numbFromImage);
+		
+		// // Log the x and y coordinates to the console
+		// console.log(tileCordinates.x, tileCordinates.y);
 	}
 
 

@@ -15,6 +15,16 @@
                 "url": "assets/whiteTile.png",
                 "type": "image",
                 "key": "whiteTile"
+            },
+            {
+                "url": "assets/worm.png",
+                "type": "image",
+                "key": "worm"
+            },
+            {
+                "url": "src/prefabs/WPawn.js",
+                "type": "sceneFile",
+                "key": "WPawn"
             }
         ]
     },

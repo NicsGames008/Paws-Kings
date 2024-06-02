@@ -197,11 +197,14 @@ function FillFleetingBoard(request, response, previusResults){
                     }else{
                         actualChessBoard[i] = ' '
                     }
+
+                    //console.log((i+1) + " " + actualChessBoard[i]);
                 }
 
                 let horizontallyReversed = ReverseHorizontally(actualChessBoard);
 
                 response.send(horizontallyReversed);
+                
             }
             
         }

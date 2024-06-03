@@ -756,9 +756,18 @@ class Level extends Phaser.Scene {
 					
 					var k = i;
 					k++;
-					if(boardState[i].mpp_tile_id && k == numbFromImage)
+
+					if(boardState[i].mpp_ps_id && k == numbFromImage)
 					{
-						console.log("aaaaa", k, numbFromImage);
+
+						//need validation to know if selected tile belong to a piece that the user has
+
+						var xPosition = boardState[i].x;
+						var yPosition = boardState[i].y;
+						var pieceType = boardState[i].mpp_piece_id;
+
+
+						console.log(getPossibleMoves(xPosition, yPosition, pieceType, boardState));
 						break
 					}
 					
@@ -810,4 +819,161 @@ function numberToCoordinates(num) {
 	const y = Math.floor(index / 8) + 1;
 	
 	return { x, y };
+}
+
+function getPossibleMoves(startX, startY, pieceType, piecesArray) {
+    switch (pieceType) {
+        case 1: // Bishop
+            return getPossibleBishopMoves(startX, startY, piecesArray);
+        case 2: // Rook
+            return getPossibleRookMoves(startX, startY, piecesArray);
+        case 3: // Knight
+            return getPossibleKnightMoves(startX, startY, piecesArray);
+        case 4: // Queen
+            return getPossibleQueenMoves(startX, startY, piecesArray);
+        case 5: // Pawn
+            return getPossiblePawnMoves(startX, startY, piecesArray);
+        case 6: // King
+            return getPossibleKingMoves(startX, startY, piecesArray);
+        default:
+            return [];
+    }
+}
+
+function getPossiblePawnMoves(startX, startY, piecesArray) {
+    const moves = [];
+    const pieceAtStart = piecesArray.find(piece => piece.x === startX && piece.y === startY);
+    const direction = pieceAtStart.mp_pc_id === 1 ? 1 : -1; // 1 for white, -1 for black
+
+    // One step forward
+    if (!isTileOccupied(startX, startY + direction, piecesArray) && !isTileOccupiedByOpponent(startX, startY + direction, piecesArray, pieceAtStart.mp_pc_id)) {
+        moves.push({ x: startX, y: startY + direction });
+    }
+
+    // Two steps forward from initial position
+    if (pieceAtStart.mpp_ps_id === 4 && !isTileOccupied(startX, startY + direction, piecesArray) && !isTileOccupied(startX, startY + 2 * direction, piecesArray) && !isTileOccupiedByOpponent(startX, startY + 2 * direction, piecesArray, pieceAtStart.mp_pc_id)) {
+        moves.push({ x: startX, y: startY + 2 * direction });
+    }
+
+    // Capturing diagonally
+    if (isTileOccupiedByOpponent(startX + 1, startY + direction, piecesArray, pieceAtStart.mp_pc_id)) {
+        moves.push({ x: startX + 1, y: startY + direction, enemyOnTheWay: { x: startX + 1, y: startY + direction } });
+    }
+    if (isTileOccupiedByOpponent(startX - 1, startY + direction, piecesArray, pieceAtStart.mp_pc_id)) {
+        moves.push({ x: startX - 1, y: startY + direction, enemyOnTheWay: { x: startX - 1, y: startY + direction } });
+    }
+    return moves;
+}
+
+function getPossibleRookMoves(startX, startY, piecesArray) {
+    const moves = [];
+    const pieceAtStart = piecesArray.find(piece => piece.x === startX && piece.y === startY);
+    const directions = [
+        { dx: 0, dy: 1 }, { dx: 1, dy: 0 },
+        { dx: 0, dy: -1 }, { dx: -1, dy: 0 }
+    ];
+
+    directions.forEach(direction => {
+        let x = startX + direction.dx, y = startY + direction.dy;
+        while (x >= 1 && x <= 8 && y >= 1 && y <= 8) {
+            if (isTileOccupied(x, y, piecesArray)) {
+                if (isTileOccupiedByOpponent(x, y, piecesArray, pieceAtStart.mp_pc_id)) {
+                    moves.push({ x, y, enemyOnTheWay: { x, y } });
+                }
+                break;
+            }
+            moves.push({ x, y });
+            x += direction.dx;
+            y += direction.dy;
+        }
+    });
+
+    return moves;
+}
+
+function getPossibleKnightMoves(startX, startY, piecesArray) {
+    const moves = [];
+    const pieceAtStart = piecesArray.find(piece => piece.x === startX && piece.y === startY);
+    const knightMoves = [
+        { dx: 2, dy: 1 }, { dx: 2, dy: -1 }, { dx: -2, dy: 1 }, { dx: -2, dy: -1 },
+        { dx: 1, dy: 2 }, { dx: 1, dy: -2 }, { dx: -1, dy: 2 }, { dx: -1, dy: -2 }
+    ];
+
+    knightMoves.forEach(move => {
+        const x = startX + move.dx;
+        const y = startY + move.dy;
+        if (x >= 1 && x <= 8 && y >= 1 && y <= 8) {
+            if (isTileOccupied(x, y, piecesArray)) {
+                if (isTileOccupiedByOpponent(x, y, piecesArray, pieceAtStart.mp_pc_id)) {
+                    moves.push({ x, y, enemyOnTheWay: { x, y } });
+                }
+            } else {
+                moves.push({ x, y });
+            }
+        }
+    });
+
+    return moves;
+}
+
+function getPossibleBishopMoves(startX, startY, piecesArray) {
+    const moves = [];
+    const pieceAtStart = piecesArray.find(piece => piece.x === startX && piece.y === startY);
+    const directions = [
+        { dx: 1, dy: 1 }, { dx: 1, dy: -1 },
+        { dx: -1, dy: 1 }, { dx: -1, dy: -1 }
+    ];
+    directions.forEach(direction => {
+        let x = startX, y = startY;
+        while (true) {
+            x += direction.dx;
+            y += direction.dy;
+            if (x < 1 || x > 8 || y < 1 || y > 8) break;
+            if (isTileOccupied(x, y, piecesArray)) {
+                if (isTileOccupiedByOpponent(x, y, piecesArray, pieceAtStart.mp_pc_id)) {
+                    moves.push({ x, y, enemyOnTheWay: { x, y } });
+                }
+                break;
+            }
+            moves.push({ x, y });
+        }
+    });
+    return moves;
+}
+
+
+function getPossibleQueenMoves(startX, startY, piecesArray) {
+    return [
+        ...getPossibleRookMoves(startX, startY, piecesArray),
+        ...getPossibleBishopMoves(startX, startY, piecesArray)
+    ];
+}
+
+function getPossibleKingMoves(startX, startY, piecesArray) {
+    const moves = [];
+    const pieceAtStart = piecesArray.find(piece => piece.x === startX && piece.y === startY);
+    const directions = [
+        { dx: 0, dy: 1 }, { dx: 1, dy: 0 }, { dx: 0, dy: -1 }, { dx: -1, dy: 0 },
+        { dx: 1, dy: 1 }, { dx: 1, dy: -1 }, { dx: -1, dy: 1 }, { dx: -1, dy: -1 }
+    ];
+    directions.forEach(direction => {
+        const x = startX + direction.dx;
+        const y = startY + direction.dy;
+        if (x >= 1 && x <= 8 && y >= 1 && y <= 8) {
+            if (!isTileOccupied(x, y, piecesArray) || isTileOccupiedByOpponent(x, y, piecesArray, pieceAtStart.mp_pc_id)) {
+                moves.push({ x, y, ...(isTileOccupiedByOpponent(x, y, piecesArray, pieceAtStart.mp_pc_id) ? { enemyOnTheWay: { x, y } } : {}) });
+            }
+        }
+    });
+    return moves;
+}
+
+
+function isTileOccupied(x, y, piecesArray) {
+    return piecesArray.some(piece => piece.x === x && piece.y === y && (piece.mpp_ps_id === 1 || piece.mpp_ps_id === 3 || piece.mpp_ps_id === 4));
+}
+
+
+function isTileOccupiedByOpponent(x, y, piecesArray, color) {
+    return piecesArray.some(piece => piece.x == x && piece.y == y && (piece.mpp_ps_id === 1 || piece.mpp_ps_id === 3 || piece.mpp_ps_id === 4) && piece.mp_pc_id !== color);
 }

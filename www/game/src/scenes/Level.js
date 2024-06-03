@@ -719,9 +719,6 @@ class Level extends Phaser.Scene {
 			xhttp.send();
 		}, TIME_BETWEEN_SYNC)
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		//Possibel way to get the board state from the server
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		var boardState;
 		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
 		setInterval(() => {
@@ -741,6 +738,8 @@ class Level extends Phaser.Scene {
 			xhttp.send();
 		}, TIME_BETWEEN_SYNC)
 
+		var possibleMoves;
+
 		// Loop through each tile in the 'tiles' array
 		for (let index = 0; index < this.tiles.length; index++) {
 			// Get the current tile element at the 'index' position
@@ -751,6 +750,7 @@ class Level extends Phaser.Scene {
 
 				// Extract the number from the tile's name using the 'extractNumberFromString' function
 				var numbFromImage = extractNumberFromString(element.name);
+
 				
 				for (let i = 0; i < boardState.length; i++) {
 					
@@ -759,18 +759,31 @@ class Level extends Phaser.Scene {
 
 					if(boardState[i].mpp_ps_id && k == numbFromImage)
 					{
-
+						////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 						//need validation to know if selected tile belong to a piece that the user has
+						////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-						var xPosition = boardState[i].x;
-						var yPosition = boardState[i].y;
-						var pieceType = boardState[i].mpp_piece_id;
-
-
-						console.log(getPossibleMoves(xPosition, yPosition, pieceType, boardState));
+						//check if a tiles was already pressed
+						if(!possibleMoves){ //if it was checks all the possible moves that the piece on the tiles selected can do
+							var xPosition = boardState[i].x;
+							var yPosition = boardState[i].y;
+							var pieceType = boardState[i].mpp_piece_id;
+							possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
+							console.log("1st Tile Selected: ", possibleMoves);
+							
+						}else{ //if not set the array back to null so he can select a new tile
+							// needs to see if the piece selected is part of the array in case it wants to take an enemies piece							
+							possibleMoves = undefined;
+							console.log("2nd Tile Selected: ", possibleMoves);
+							
+						}
 						break
 					}
-					
+					//check if the user selected a tile before
+					if(possibleMoves){
+						possibleMoves = undefined;
+						console.log("2nd Tile Selected: ", possibleMoves, numbFromImage);
+					}
 				}
 			});
 		}

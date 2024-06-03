@@ -612,6 +612,9 @@ class Level extends Phaser.Scene {
 
 		//idk
 
+		//var piecesOnBoard = [];
+		var piecesOnBoard = [...Array(64)].map(() => 0);
+
 		setInterval(() => {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
@@ -619,7 +622,7 @@ class Level extends Phaser.Scene {
 					// Parse the JSON response
 					var data = JSON.parse(xhttp.responseText);
 
-					for(let i = 0; i< data.length; i++){
+					for(let i = 0; i < data.length; i++){
 
 						//
 						switch(data[i]){
@@ -636,9 +639,13 @@ class Level extends Phaser.Scene {
 								//data[i] = '♕';
 								break;
 							case 'wPa':     //White Pawn
-								this.chessboard[i].scaleX = 1;
-								this.chessboard[i].scaleY = 1;
-								this.chessboard[i].setTexture("worm");
+								
+								var coordintates = this.chessboard[i].getCenter();
+
+								piecesOnBoard[i] = this.add.image(coordintates.x, coordintates.y, "worm");
+								//this.chessboard[i].scaleX = 1;
+								//this.chessboard[i].scaleY = 1;
+								//this.chessboard[i].setTexture("worm");
 								break;
 							case 'wKi':     //White King
 								//data[i] = "♔";
@@ -656,28 +663,43 @@ class Level extends Phaser.Scene {
 								//data[i] = '♛';
 								break;
 							case 'bPa':     //Black Pawn ♟️
-								this.chessboard[i].scaleX = 1;
-								this.chessboard[i].scaleY = 1;
-								this.chessboard[i].setTint(0xFF00FF);
-								this.chessboard[i].setTexture("worm");
+								
+								var coordintates = this.chessboard[i].getCenter();
+
+								piecesOnBoard[i] = this.add.image(coordintates.x, coordintates.y, "worm");
+								piecesOnBoard[i].setTint(0xFF00FF);
 								break;
 							case 'bKi':     //Black King
 
 								break;
 							default:
-								if(i == whiteTilesId[i]){   
-									this.chessboard[i].scaleX = 7;
-									this.chessboard[i].scaleY = 7;
-									this.chessboard[i].setTexture("whiteTile");
-								}else if(i == blackTilesId[i]){
-									this.chessboard[i].scaleX = 7;
-									this.chessboard[i].scaleY = 7;
-									this.chessboard[i].setTexture("blackTile");
+								//console.log(i);
+								if(whiteTilesId.includes(i)){   
+									//console.log(i + ": to be emptyed")
+									//var coordintates = this.chessboard[i].getCenter();
+									if(piecesOnBoard[i]){
+										piecesOnBoard[i].destroy();
+									}
+									// this.chessboard[i].scaleX = 7;
+									// this.chessboard[i].scaleY = 7;
+									//this.piecesOnBoard[i].setTexture("whiteTile");
+
+
+								}else if(blackTilesId.includes(i)){
+									// this.chessboard[i].scaleX = 7;
+									// this.chessboard[i].scaleY = 7;
+									//this.piecesOnBoard[i].setTexture("blackTile");
+									//console.log(i + ": to be emptyed")
+									
+									if(piecesOnBoard[i]){
+										piecesOnBoard[i].destroy();
+									}
+									
 								}
 							}
 
 					}	
-
+					console.log(piecesOnBoard);
 				}
 			};
 

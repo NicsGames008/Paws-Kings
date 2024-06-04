@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawns & Kings - Lobby</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo.png">
+    <link rel="stylesheet" href="./style/main.css">
     <title>Document</title>
 </head>
 <body>
     <div id="searchMatch" style="display: inline;">
-        <button onclick="createMatch()"> Create Match
+        <button onclick="EnterQueue()"> Create Match
     </div>
     <div id="waitingMatch" style="display: none;">
         Waiting for match...
         <br>
     </div>
-    <div id="leaveMatch">
+    <div id="leaveMatch" style="display: none;">
         <button onclick="leaveQueue()"> Leave Queue
     </div>
     
@@ -29,12 +32,18 @@
 			xhttp.onreadystatechange = () => {
 				if (xhttp.readyState == 4) {
                     var data = JSON.parse(xhttp.responseText);
-                     if (xhttp.status == 406) {
+                    if (xhttp.status == 403) {
                         document.getElementById("message").innerText = data.error;
-                        document.getElementById("searchMatch").style.display="inline";
+                        //show button to login
+                    }
+                    else if (xhttp.status == 406) {
+                        //display message and hides the button due to unasibilty
+                        document.getElementById("message").innerText = data.error;
+                        document.getElementById("searchMatch").style.display="block";
                     }
                     else if (xhttp.status == 200) {
                         document.getElementById("message").innerText = data.message;
+                        document.getElementById("searchMatch").style.display="block";
                         document.getElementById("leaveMatch").style.display="none";
                     }
 				}
@@ -45,6 +54,12 @@
 			xhttp.send();
     }
 
+    function EnterQueue(){
+        setInterval(() => {
+            console.log("Checking");
+            findMatchState()}, 2000);
+    }
+
     function findMatchState() {
         var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
@@ -52,21 +67,27 @@
                     var data = JSON.parse(xhttp.responseText);
                     if (xhttp.status == 403) {
                         document.getElementById("message").innerText = data.error;
+                        //show button to login
                     }
-                    else if (xhttp.status == 406) {
+                    else if (xhttp.status == 406) {//already searching
                         document.getElementById("message").innerText = data.error;
+                        //document.getElementById("searchMatch").style.display="none";
+                        document.getElementById("leaveMatch").style.display="block";
+                        
                     }
-                    else if (xhttp.status == 200) {
+                    else if (xhttp.status == 201) {//successful creation
                         document.getElementById("message").innerText = data.message;
+                        document.getElementById("searchMatch").style.display="blcok";
+                        document.getElementById("leaveMatch").style.display="block";
                     }
 				}
 			};
 
 			// Send a GET request to the server (just testing with /match/11 endpoint)
-			xhttp.open("POST", "/lobby/create", true);
+			xhttp.open("POST", "/lobby/search", true);
 			xhttp.send();
     }
 
-    setInterval(findMatchState(), 2000);
+    //create an endpoint to fetch the "searching fro a mathc" state.
 </script>
 </html>

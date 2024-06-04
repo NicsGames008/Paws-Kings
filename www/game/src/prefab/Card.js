@@ -21,6 +21,9 @@ class Card extends Phaser.GameObjects.Image {
 		/* END-USER-CTR-CODE */
 	}
 
+	/** @type {number} */
+	playerOwner = 0;
+
 	/* START-USER-CODE */
 
 	// Write your code here.

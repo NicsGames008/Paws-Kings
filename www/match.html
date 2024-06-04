@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="searchMatch" style="display: inline;">
+        <button onclick="createMatch()"> Create Match
+    </div>
+    <div id="waitingMatch" style="display: none;">
+        Waiting for match...
+        <br>
+    </div>
+    <div id="leaveMatch">
+        <button onclick="leaveQueue()"> Leave Queue
+    </div>
+    
+    <div id="message">
+
+    </div>
+    </button>
+</body>
+
+<script>
+    function leaveQueue(){
+        var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+                    var data = JSON.parse(xhttp.responseText);
+                     if (xhttp.status == 406) {
+                        document.getElementById("message").innerText = data.error;
+                        document.getElementById("searchMatch").style.display="inline";
+                    }
+                    else if (xhttp.status == 200) {
+                        document.getElementById("message").innerText = data.message;
+                        document.getElementById("leaveMatch").style.display="none";
+                    }
+				}
+			};
+
+			// Send a GET request to the server (just testing with /match/11 endpoint)
+			xhttp.open("PUT", "/lobby/leave", true);
+			xhttp.send();
+    }
+
+    function findMatchState() {
+        var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+                    var data = JSON.parse(xhttp.responseText);
+                    if (xhttp.status == 403) {
+                        document.getElementById("message").innerText = data.error;
+                    }
+                    else if (xhttp.status == 406) {
+                        document.getElementById("message").innerText = data.error;
+                    }
+                    else if (xhttp.status == 200) {
+                        document.getElementById("message").innerText = data.message;
+                    }
+				}
+			};
+
+			// Send a GET request to the server (just testing with /match/11 endpoint)
+			xhttp.open("POST", "/lobby/create", true);
+			xhttp.send();
+    }
+
+    setInterval(findMatchState(), 2000);
+</script>
+</html>

@@ -22,8 +22,7 @@ router.post('/search', (request, response) => {
                 response.send(err);
             }else{
                 if(results.length == 0){
-                    console.log("no one is searching for a match");
-                    response.send("none is searching for a match");
+                    response.status(200).send("none is searching for a match");
                 }else if(results[0].mp_player_id == p1){
                     response.send("you cannot play a match against yourself, you silly goose");
                 }else{
@@ -258,16 +257,16 @@ function AllocatingShards(matchPlayerId, cardId){
 
 router.post('/create', (request, response) => {
     // Get the data from the request
-    var p1 = request.body.p1;
-    var colorOpponent;
-
-    //should check if player exist as ab actual player, retrieving his information
-
-    // if the vars are empty is gives an error message
-    if (!p1){
-        response.send(" Missing data!");
+    if (!request.session.playerID){
+        response.status(403).send({
+            "error": "Not logged in"
+        });
         return;
     }
+
+    var p1 = request.session.playerID;
+
+    //should check if player exist as ab actual player, retrieving his information
 
     // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
     connection.execute('SELECT match_id, mp_player_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id WHERE match_ms_id = 3;',
@@ -276,16 +275,14 @@ router.post('/create', (request, response) => {
                 response.send(err);
             }else{
                 if(results.length == 0){
-
                     console.log("Creating The lobby");
-
                     //creates a match whihc state is 3(in search of a opponent)
                     CreateMatchAsFirst(request, response, p1);
-                
                     console.log("Lobby creata");
                 }else{
-                    response.send("you cannot search for a second match, you goofy goober");
-
+                    response.status(406).send({
+                        "error": "Already searching for a match!"
+                    });
                 }}
         });
 });
@@ -311,7 +308,6 @@ function CreateMatchAsFirst(request, response, playerId){
 }
 
 function MatchDataRetrieval(request, response, playerId, chosenColor){
-    var matchId
 
     connection.execute('SELECT match_id FROM `Match` WHERE match_ms_id = 3;',
         function (err, results, fields) {
@@ -343,7 +339,10 @@ function CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorUse
             
             //now to fill the board with pieces.
             //RetrieveDataForFillBoard(request, response, matchId, colorUser);
-            response.send("Successfully Searching for a match");
+            request.session.matchID = matchId;
+            response.status(200).send({
+                "message": "Created a match."
+            });
         }
     });
 }
@@ -354,34 +353,34 @@ function CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorUse
 
 router.put('/leave', (request, response) => {
     // Get the data from the request
-    var p1 = request.body.p1;
+
+    if (!request.session.playerID){
+        response.status(403).send({
+            "error": "Not logged in"
+        });
+        return;
+    }
+
+    var p1 = request.session.playerID;
     var matchId;
 
     //should check if player exist as ab actual player, retrieving his information
 
-    // if the vars are empty is gives an error message
-    if (!p1){
-        response.send(" Missing data!");
-        return;
-    }
-
     // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
-    connection.execute('SELECT match_id, mp_player_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id WHERE match_ms_id = 3;',
+    connection.execute('SELECT match_id, mp_player_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id WHERE match_ms_id = 3 AND mp_player_id = ?;',
+        [p1],
         function (err, results, fields) {
             if (err){
                 response.send(err);
             }else{
                 if(results.length == 0){
-                    console.log("gotta start searching for a match before stopping")
-                    response.send("gotta start searching for a match before stopping");
-                }else if(results[0].mp_player_id == p1){
-                    matchId = results[0].match_id;
-                    console.log("Stopped searching for a match aaaaaaaaaaaaaaaaaa");
-                    LeaveMatchPlayer(request, response, matchId);
+                    response.status(406).send({
+                        "error": "gotta start searching for a match before stopping"
+                    });
                 }else{
-
+                    matchId = results[0].match_id;
+                    LeaveMatchPlayer(request, response, matchId);
                 }
-
             }
 
         });
@@ -397,9 +396,9 @@ function LeaveMatchPlayer(request, response, matchId) {
         if (err) {
             response.send(err);
         } else {
-            //console.log("p1: " + p1 + " matchId: " + matchId + " color opponent: " + colorOpponent);
-            console.log("Stopped searching for a match bbbbbbbbbbbbbbbbbbbb");
-            response.send("Stopped searching for a match");
+            response.status(200).send({
+                "message" : "Stopped searching for a match"
+            });
         }
     });
 }

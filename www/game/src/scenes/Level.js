@@ -398,6 +398,10 @@ class Level extends Phaser.Scene {
 		const cardPlaceholder_4 = this.add.image(1200, 400, "worm");
 		cardPlaceholder_4.scaleX = 2;
 
+		// card_5
+		const card_5 = new Card(this, 748, 571);
+		this.add.existing(card_5);
+
 		// lists
 		const chessboard = [tile_64, tile_63, tile_62, tile_61, tile_60, tile_59, tile_58, tile_57, tile_56, tile_55, tile_54, tile_53, tile_52, tile_51, tile_50, tile_49, tile_48, tile_47, tile_46, tile_45, tile_44, tile_43, tile_42, tile_41, tile_40, tile_39, tile_38, tile_37, tile_36, tile_35, tile_34, tile_33, tile_32, tile_31, tile_30, tile_29, tile_28, tile_27, tile_26, tile_25, tile_24, tile_23, tile_22, tile_21, tile_20, tile_19, tile_18, tile_17, tile_16, tile_15, tile_14, tile_13, tile_12, tile_11, tile_10, tile_9, tile_8, tile_7, tile_6, tile_5, tile_4, tile_3, tile_2, tile_1];
 		const shard = [shard_3, shard_4, shard_1, shard_2];

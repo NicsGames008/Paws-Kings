@@ -690,6 +690,18 @@ class Level extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
+		var playerID = -1;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = () => {
+			if (xhttp.readyState == 4) {
+				playerID = parseInt(xhttp.responseText);
+
+			}
+		};
+
+		// Send a GET request to the server (just testing with /match/11 endpoint)
+		xhttp.open("GET", "/playerID", true);
+		xhttp.send();
 
 		// Sync the game state every 2 seconds
 		var TIME_BETWEEN_SYNC = 2000;
@@ -733,7 +745,7 @@ class Level extends Phaser.Scene {
 				}
 			};
 
-			// Send a GET request to the server (just testing with /match/11 endpoint)
+			// Send a GET request to the server (just testing with /match/1 endpoint)
 			xhttp.open("GET", "../state/boardR/1", true);
 			xhttp.send();
 		}, TIME_BETWEEN_SYNC)
@@ -757,12 +769,8 @@ class Level extends Phaser.Scene {
 					var k = i;
 					k++;
 
-					if(boardState[i].mpp_ps_id && k == numbFromImage)
+					if(boardState[i].mpp_ps_id && k == numbFromImage && boardState[i].playerID == playerID)
 					{
-						////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-						//need validation to know if selected tile belong to a piece that the user has
-						////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 						//check if a tiles was already pressed
 						if(!possibleMoves){ //if it was checks all the possible moves that the piece on the tiles selected can do
 							var xPosition = boardState[i].x;
@@ -773,16 +781,14 @@ class Level extends Phaser.Scene {
 							
 						}else{ //if not set the array back to null so he can select a new tile
 							// needs to see if the piece selected is part of the array in case it wants to take an enemies piece							
-							possibleMoves = undefined;
-							console.log("2nd Tile Selected: ", possibleMoves);
-							
+
+							possibleMoves = aaaaa(possibleMoves, numbFromImage);
 						}
 						break
 					}
 					//check if the user selected a tile before
 					if(possibleMoves){
-						possibleMoves = undefined;
-						console.log("2nd Tile Selected: ", possibleMoves, numbFromImage);
+						possibleMoves = aaaaa(possibleMoves, numbFromImage);
 					}
 				}
 			});
@@ -805,6 +811,18 @@ class Level extends Phaser.Scene {
 /* END OF COMPILED CODE */
 
 // You can write more code here
+
+
+function aaaaa(possibleMoves, numbFromImage) {
+	var a = numberToCoordinates(numbFromImage);
+	for (let i = 0; i < possibleMoves.length; i++) {
+		//console.log(possibleMoves[i].x , possibleMoves[i].y)
+		if(possibleMoves[i].x == a.x && possibleMoves[i].y == a.y){
+            console.log("2nd Tile Selected: ", possibleMoves, numbFromImage);
+            return possibleMoves = undefined;
+        }
+	}
+}
 
 function extractNumberFromString(str) {
     // Use a regular expression to match the numeric part of the string

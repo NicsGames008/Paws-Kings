@@ -12,6 +12,11 @@
                 "type": "image"
             },
             {
+                "url": "assets/promotionPlaceholder.png",
+                "type": "image",
+                "key": "promotionPlaceholder"
+            },
+            {
                 "url": "assets/whiteTile.png",
                 "type": "image",
                 "key": "whiteTile"

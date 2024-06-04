@@ -885,6 +885,142 @@
             "tintTopRight": "#f63a3a",
             "tintBottomLeft": "#000000",
             "tintBottomRight": "#000000"
+        },
+        {
+            "type": "Image",
+            "id": "0185d7a4-9b49-4116-8483-65452615bb3a",
+            "label": "shard_1",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 750,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "b587310d-4039-4809-a8f5-92bf7b50ed94",
+            "label": "shard_2",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 900,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "7b3ff420-bff8-489c-9ff8-26a7165adda2",
+            "label": "shard_3",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1050,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "6e08f459-ccd3-42bb-bbc3-136b8baab876",
+            "label": "shard_4",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1200,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "148f52b7-33b6-412b-9828-d3e44fe71fad",
+            "label": "card_1",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 750,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "6922dc4e-01d2-4a94-b351-9f781afdc2cf",
+            "label": "card_2",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 900,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "29ad56c6-324e-41af-a5b3-b300b4e3d567",
+            "label": "card_3",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1050,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "1fe03cf8-1623-490d-927f-206794fb109f",
+            "label": "card_4",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1200,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "8b355b63-646c-4b6f-a1d1-be07483c362a",
+            "label": "cardPlaceholder_1",
+            "scope": "CLASS",
+            "texture": {
+                "key": "worm"
+            },
+            "x": 750,
+            "y": 400,
+            "scaleX": 2
+        },
+        {
+            "type": "Image",
+            "id": "bbd7dfdb-4e3d-40ab-8040-1d70914eac63",
+            "label": "cardPlaceholder_2",
+            "scope": "CLASS",
+            "texture": {
+                "key": "worm"
+            },
+            "x": 900,
+            "y": 400,
+            "scaleX": 2
+        },
+        {
+            "type": "Image",
+            "id": "9da172d6-1d83-43bf-beeb-8cc64c5a5ec4",
+            "label": "cardPlaceholder_3",
+            "scope": "CLASS",
+            "texture": {
+                "key": "worm"
+            },
+            "x": 1050,
+            "y": 400,
+            "scaleX": 2
+        },
+        {
+            "type": "Image",
+            "id": "7e95613f-b016-4836-a8a8-10fc002a4b03",
+            "label": "cardPlaceholder_4",
+            "scope": "CLASS",
+            "texture": {
+                "key": "worm"
+            },
+            "x": 1200,
+            "y": 400,
+            "scaleX": 2
         }
     ],
     "plainObjects": [],
@@ -963,6 +1099,36 @@
                 "4dcff1bd-d5dd-4226-b5c3-9877ebaf887c",
                 "68aa4a7a-e99d-4c7b-8fb5-bc3f4f5b54a2",
                 "a4bf025c-b4d0-4690-86a6-41e546844071"
+            ]
+        },
+        {
+            "id": "10f860e4-b9fc-4a40-84fb-b4adeffb7829",
+            "label": "shard",
+            "objectIds": [
+                "7b3ff420-bff8-489c-9ff8-26a7165adda2",
+                "6e08f459-ccd3-42bb-bbc3-136b8baab876",
+                "0185d7a4-9b49-4116-8483-65452615bb3a",
+                "b587310d-4039-4809-a8f5-92bf7b50ed94"
+            ]
+        },
+        {
+            "id": "da48f49e-3602-453e-a4d7-700426fbff9d",
+            "label": "card",
+            "objectIds": [
+                "148f52b7-33b6-412b-9828-d3e44fe71fad",
+                "6922dc4e-01d2-4a94-b351-9f781afdc2cf",
+                "29ad56c6-324e-41af-a5b3-b300b4e3d567",
+                "1fe03cf8-1623-490d-927f-206794fb109f"
+            ]
+        },
+        {
+            "id": "2f41308a-a48d-481c-b60d-69ce5bf1897e",
+            "label": "cardPlaceHolder",
+            "objectIds": [
+                "8b355b63-646c-4b6f-a1d1-be07483c362a",
+                "bbd7dfdb-4e3d-40ab-8040-1d70914eac63",
+                "9da172d6-1d83-43bf-beeb-8cc64c5a5ec4",
+                "7e95613f-b016-4836-a8a8-10fc002a4b03"
             ]
         }
     ]

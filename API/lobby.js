@@ -65,7 +65,7 @@ function CreateMatchAsFirst(request, response, playerId){
             response.send(err);
         } else {
             matchId = results.insertId;
-            
+            request.session.matchID = matchId;
             //console.log(results.insertId);
 
             CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorId)
@@ -81,7 +81,7 @@ function CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorUse
         if (err) {
             response.send(err);
         } else {
-            request.session.matchID = matchId;
+            
             response.status(201).send({
                 "message": "Created a match as first."
             });
@@ -227,7 +227,8 @@ function ReadyMatch(request, response, matchId){
         if (err) {
             response.send( err);
         } else {
-            response.status(201).send({
+            request.session.matchID = matchId;
+            response.status(200).send({
                 "message": "match joined succesfully, everything ready!"
             });
             //redirecting to game page
@@ -284,6 +285,9 @@ function LeaveMatchPlayer(request, response, matchId) {
         if (err) {
             response.send(err);
         } else {
+            //asking cesar ggs
+            //-----------------------------------------------------------------------------------------------------------------------------------------------------
+            request.session.matchID = undefined;
             response.status(200).send({
                 "message" : "Stopped searching for a match"
             });

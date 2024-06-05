@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="searchMatch" style="display: inline;">
-        <button onclick="EnterQueue()"> Create Match
+        <button onclick="EnterQueue()"> Search a Match
     </div>
     <div id="waitingMatch" style="display: none;">
         Waiting for match...
@@ -35,6 +35,10 @@
                     var data = JSON.parse(xhttp.responseText);
                     if (xhttp.status == 403) {
                         document.getElementById("message").innerText = data.error;
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/login.html');
+                        }, 2000)
                         //show button to login
                     }
                     else if (xhttp.status == 406) {
@@ -54,6 +58,7 @@
 			xhttp.send();
     }
 
+    var intervalQueueStatus;
     //joining a queue
     function EnterQueue() {
         var xhttp = new XMLHttpRequest();
@@ -62,6 +67,10 @@
                     var data = JSON.parse(xhttp.responseText);
                     if (xhttp.status == 403) {
                         document.getElementById("message").innerText = data.error;
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/login.html');
+                        }, 2000)
                         //show button to login
                     }
                     else if (xhttp.status == 406) {//already searching
@@ -72,8 +81,18 @@
                     }
                     else if (xhttp.status == 201) {//successful creation
                         document.getElementById("message").innerText = data.message;
-                        document.getElementById("searchMatch").style.display="blcok";
+                        document.getElementById("searchMatch").style.display="block";
                         document.getElementById("leaveMatch").style.display="block";
+                    }
+                    else if (xhttp.status == 200) {//successful creation
+                        document.getElementById("message").innerText = data.message;
+                        document.getElementById("searchMatch").style.display="block";
+                        document.getElementById("leaveMatch").style.display="block";
+
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/game');
+                        }, 2000);
                     }
 				}
 			};
@@ -82,24 +101,25 @@
             xhttp.open("POST", "/lobby/search", true);
             xhttp.send();
 
-            setInterval(() => {
+            intervalQueueStatus = setInterval(() => {
                 console.log("Checking");
-                FindMatchState()}, 2000);
+                FindMatchState()
+            }, 2000);
     }
 
-    //fetching teh queue status
+    //fetching the queue status
     function FindMatchState(){
         var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
 				if (xhttp.readyState == 4) {
                     var data = JSON.parse(xhttp.responseText);
-                    if (xhttp.status == 406) {
+                    if (xhttp.status == 400) {
                         //document.getElementById("message").innerText = data.error;
-                        document.getElementById("message").innerText = 400;
+                        document.getElementById("message").innerText = data.error;
                     }
                     else if (xhttp.status == 204) {//already searching
                         //document.getElementById("message").innerText = data.error;
-                        document.getElementById("message").innerText = 204;
+                        document.getElementById("message").innerText = data.message;
                         //document.getElementById("searchMatch").style.display="none";
                         //document.getElementById("leaveMatch").style.display="block";
                         
@@ -112,17 +132,18 @@
 
                         // document.getElementById("message").innerHTML = message;
 
-                        document.getElementById("message").innerText = 201;
+                        document.getElementById("message").innerText = data.message;
+
                         setTimeout(() => {
                             //window.location.replace("/game");
                             window.location.assign('/game');
                         }, 2000)
-                        //document.getElementById("searchMatch").style.display="blcok";
+                        //document.getElementById("searchMatch").style.display="block";
                         //document.getElementById("leaveMatch").style.display="block";
                     }
 				}
 			};
-
+            clearInterval(intervalQueueStatus);
             // Send a POST request to the server
             xhttp.open("GET", "/lobby/status", true);
             xhttp.send();

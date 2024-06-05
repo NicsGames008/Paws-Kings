@@ -15,14 +15,12 @@ router.post('/search', (request, response) => {
 
     // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
     connection.execute('SELECT match_id, mp_player_id, mp_pc_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id WHERE match_ms_id = 3',
-    [p1],
         function (err, results, fields) {
             if (err){
                 response.send(err);
             }else{
                 if(results.length == 0){ // no Match to join
-                    //console.log("No match found, creating one");
-                    //creates a match whihc state is 3(in search of a opponent)
+
                     CreateMatchAsFirst(request, response, p1);
                     
                 }else{// match to join as long as you are against not yourself
@@ -45,7 +43,7 @@ router.post('/search', (request, response) => {
 
                         }else{
                             response.status(406).send({
-                                "error": "Already searching for a match!"
+                                "message": "Already searching for a match!"
                             });
                         }
                     }
@@ -67,7 +65,9 @@ function CreateMatchAsFirst(request, response, playerId){
             response.send(err);
         } else {
             matchId = results.insertId;
+            
             //console.log(results.insertId);
+
             CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorId)
         }
     });
@@ -291,9 +291,41 @@ function LeaveMatchPlayer(request, response, matchId) {
     });
 }
 
-//---------------------------------another try---------------------------------------------
+//---------------------------------ask for queue status---------------------------------------------
 
+router.get('/status', (request, response) => {
+    // Get the data from the request
+    if (!request.session.playerID){
+        response.status(403).send({
+            "error": "Not logged in"
+        });
+        return;
+    }
 
+    var p1 = request.session.playerID;
+    var matchId = request.session.matchID;
+
+    // Executes the query to see if somebody is searching for a match and joins it, if it has an error, it will send the error message
+    connection.execute('SELECT match_id FROM `Match` WHERE match_ms_id = 1 AND match_id = ?',
+    [matchId],
+    function (err, results, fields) {
+        if (err){//not searhcing for anything
+            response.status(400).send({
+                "error": "Not searching for a match!"
+            });
+        }else{
+            if(results.length == 0){//User is not searching any matches
+                response.status(204).send({
+                    "message": "Still searching for a match"
+                });
+            }else{//User is searching for a match
+                response.status(201).send({
+                    "message": "Match found, redirecting the user"
+                });
+            }
+        }
+    });
+});
 
 
 module.exports = router;

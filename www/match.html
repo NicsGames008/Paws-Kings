@@ -27,6 +27,7 @@
 </body>
 
 <script>
+    //leaving the queue
     function leaveQueue(){
         var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
@@ -49,18 +50,12 @@
 				}
 			};
 
-			// Send a GET request to the server (just testing with /match/11 endpoint)
 			xhttp.open("PUT", "/lobby/leave", true);
 			xhttp.send();
     }
 
-    function EnterQueue(){
-        setInterval(() => {
-            console.log("Checking");
-            findMatchState()}, 2000);
-    }
-
-    function findMatchState() {
+    //joining a queue
+    function EnterQueue() {
         var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
 				if (xhttp.readyState == 4) {
@@ -83,11 +78,55 @@
 				}
 			};
 
-			// Send a GET request to the server (just testing with /match/11 endpoint)
-			xhttp.open("POST", "/lobby/search", true);
-			xhttp.send();
+            // Send a POST request to the server
+            xhttp.open("POST", "/lobby/search", true);
+            xhttp.send();
+
+            setInterval(() => {
+                console.log("Checking");
+                FindMatchState()}, 2000);
     }
 
-    //create an endpoint to fetch the "searching fro a mathc" state.
+    //fetching teh queue status
+    function FindMatchState(){
+        var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+                    var data = JSON.parse(xhttp.responseText);
+                    if (xhttp.status == 406) {
+                        //document.getElementById("message").innerText = data.error;
+                        document.getElementById("message").innerText = 400;
+                    }
+                    else if (xhttp.status == 204) {//already searching
+                        //document.getElementById("message").innerText = data.error;
+                        document.getElementById("message").innerText = 204;
+                        //document.getElementById("searchMatch").style.display="none";
+                        //document.getElementById("leaveMatch").style.display="block";
+                        
+                    }
+                    else if (xhttp.status == 201) {//successful creation
+                        // var message = document.getElementById("message");
+                        // message.innerHTML = data.message;
+                        // message.innerHTML += "<br>Redirecting to game page in 2 seconds...";
+                        // message.style.color = "green";
+
+                        // document.getElementById("message").innerHTML = message;
+
+                        document.getElementById("message").innerText = 201;
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/game');
+                        }, 2000)
+                        //document.getElementById("searchMatch").style.display="blcok";
+                        //document.getElementById("leaveMatch").style.display="block";
+                    }
+				}
+			};
+
+            // Send a POST request to the server
+            xhttp.open("GET", "/lobby/status", true);
+            xhttp.send();
+    }
 </script>
 </html>
+

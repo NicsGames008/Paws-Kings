@@ -2,14 +2,39 @@
     "section1": {
         "files": [
             {
+                "url": "prefabs/BlackPawn.js",
+                "type": "script",
+                "key": "BlackPawn"
+            },
+            {
                 "url": "assets/blackTile.png",
                 "type": "image",
                 "key": "blackTile"
             },
             {
+                "url": "assets/DarkPawn.png",
+                "type": "image",
+                "key": "DarkPawn"
+            },
+            {
                 "url": "assets/dino.png",
                 "key": "dino",
                 "type": "image"
+            },
+            {
+                "url": "assets/LightPawn.png",
+                "type": "image",
+                "key": "LightPawn"
+            },
+            {
+                "url": "prefabs/Pawn.js",
+                "type": "script",
+                "key": "Pawn"
+            },
+            {
+                "url": "prefabs/WhitePawn.js",
+                "type": "script",
+                "key": "WhitePawn"
             },
             {
                 "url": "assets/whiteTile.png",

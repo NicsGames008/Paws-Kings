@@ -903,6 +903,8 @@ class Level extends Phaser.Scene {
 		}else if(cardAmmount <= 0){//assures that a change in card has appened
 
 			//allows it to be hidden, or it could make it gray; not necessarily changing it's size
+			
+			//nelio is a portuGUESS man
 			cardReference.scaleX = 0;
 		}
 

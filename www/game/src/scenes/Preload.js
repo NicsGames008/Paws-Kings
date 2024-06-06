@@ -47,6 +47,9 @@ class Preload extends Phaser.Scene {
 		worm.scaleX = 2;
 		worm.scaleY = 2;
 
+		// worm_1
+		this.add.image(688, 413, "worm");
+
 		this.loadingText = loadingText;
 
 		this.events.emit("scene-awake");

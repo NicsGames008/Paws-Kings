@@ -7,7 +7,7 @@
                 "key": "blackTile"
             },
             {
-                "url": "src/prefab/Card.js",
+                "url": "src/prefabs/Card.js",
                 "type": "script",
                 "key": "Card"
             },

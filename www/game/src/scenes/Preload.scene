@@ -66,6 +66,16 @@
             "y": 359,
             "scaleX": 2,
             "scaleY": 2
+        },
+        {
+            "type": "Image",
+            "id": "42efadd5-cf0e-4846-aed5-001a4868e786",
+            "label": "worm_1",
+            "texture": {
+                "key": "worm"
+            },
+            "x": 688,
+            "y": 413
         }
     ],
     "plainObjects": [],

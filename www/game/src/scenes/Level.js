@@ -757,7 +757,7 @@ class Level extends Phaser.Scene {
 
 	// Write more your code here
 
-	updateGameState(playerID, callback){
+	updateGameState(playerID, callback, callback2){
 
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
@@ -784,7 +784,7 @@ class Level extends Phaser.Scene {
 						}
 					}
 				}
-				callback(gameState);
+				callback(gameState, callback2);
 			}
 		};
 
@@ -793,7 +793,7 @@ class Level extends Phaser.Scene {
 		xhttp.send();		
 	}
 
-	updateBoardState(callback){
+	updateBoardState(gameState, callback){
 		var boardState
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
@@ -801,6 +801,8 @@ class Level extends Phaser.Scene {
 				// Parse the JSON response
 				var data = JSON.parse(xhttp.responseText);
 				boardState = data;
+				
+				console.log(this.tiles.length);
 
 				for (let i = 0; i < boardState.length; i++) {
 					for (let k = 0; k < this.tiles.length; k++) {
@@ -942,11 +944,13 @@ class Level extends Phaser.Scene {
 		};
 
 		// Send a GET request to the server (just testing with /match/11 endpoint)
-		xhttp.open("GET", "/playerID", true);
-		xhttp.send();
+		// xhttp.open("GET", "/playerID", true);
+		// xhttp.send();
 
 		// Sync the game state every 2 seconds
 		var TIME_BETWEEN_SYNC = 2000;
+
+		this.updateGameState(playerID, this.updateBoardState, this.tileClicked);
 
 		// // call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
 		// setInterval(() => {
@@ -987,7 +991,7 @@ class Level extends Phaser.Scene {
 
 		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
 		//setInterval(this.updateGameState, TIME_BETWEEN_SYNC) 
-		this.updateGameState(playerID, this.updateBoardState(this.tileClicked));
+		
 
 		
 	}

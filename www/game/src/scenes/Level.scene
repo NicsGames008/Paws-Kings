@@ -10,1094 +10,6 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "2aa3c14e-e2fb-4871-98b1-33b2aa4553b2",
-            "label": "Tile_64",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 590,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "dff27dc4-2788-4809-a002-9290cdd7a2cc",
-            "label": "Tile_63",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 520,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "0f359195-6733-403b-afe0-6a7b655dfab6",
-            "label": "Tile_62",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 450,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "2d331970-a9c7-496c-a98b-678a9ed5331a",
-            "label": "Tile_61",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 380,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "88d75ae4-5071-4659-9975-4a21c06266b3",
-            "label": "Tile_60",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 310,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "2183dffe-960e-4a3c-becd-63059071082f",
-            "label": "Tile_59",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 240,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "0a9e690d-2955-4c25-8a0c-80b1e071d2a8",
-            "label": "Tile_58",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 170,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "e8e504f9-9876-4d15-a02a-7d58166d894a",
-            "label": "Tile_57",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 100,
-            "y": 80,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "fd215c4f-4b67-49a8-bc14-a567022aacc5",
-            "label": "Tile_56",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 590,
-            "y": 150,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "93759862-e273-4ff8-8f90-e1bad7297fb6",
-            "label": "Tile_55",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 520,
-            "y": 150,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "4b7ad195-c27e-4e12-914b-66684c014e0b",
-            "label": "Tile_54",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 450,
-            "y": 150,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "0be0514c-ca4a-421c-9ab3-dc733e9c2be4",
-            "label": "Tile_53",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 380,
-            "y": 150,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "1980f960-f73a-4e8a-b08b-c9cabd9adaca",
-            "label": "Tile_52",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 310,
-            "y": 150,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "b0bf7f99-2d59-41b0-a8c0-d229a79ea410",
-            "label": "Tile_51",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 240,
-            "y": 149,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "269d4412-9d66-4d79-bdec-ead46ed5ac15",
-            "label": "Tile_50",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 170,
-            "y": 150,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "e2b720b9-3722-493e-93ee-3e5e7d5504dd",
-            "label": "Tile_49",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 100,
-            "y": 150,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "1bd58399-4d11-443f-9dfd-08a78aa8992c",
-            "label": "Tile_48",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 590,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "fa5556e2-2164-4da8-a739-fa1f20b05678",
-            "label": "Tile_47",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 520,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "ee36153c-18d1-4a7b-9c29-3c90f92f0915",
-            "label": "Tile_46",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 450,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "4f3b08b4-691a-484a-b20f-5335048d64ce",
-            "label": "Tile_45",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 380,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "a576e683-ac66-4975-8559-58f36c4bdddb",
-            "label": "Tile_44",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 310,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "31a3222a-59dd-4b45-b8e3-78b6b6f0a3bf",
-            "label": "Tile_43",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 240,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "252eb180-01d7-414a-a574-9290888fdac7",
-            "label": "Tile_42",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 170,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "6fe37cde-831a-48bc-9c86-d29be7de0434",
-            "label": "Tile_41",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 100,
-            "y": 220,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "2a761ce1-df68-43f9-87d3-b510c94ab8a8",
-            "label": "Tile_40",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 590,
-            "y": 290,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "f09f3f1e-39c6-471b-ae8c-fb86ab761ece",
-            "label": "Tile_39",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 520,
-            "y": 290,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "1db96b7f-e05a-430a-8e30-b1c6b5e5517b",
-            "label": "Tile_38",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 450,
-            "y": 290,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "95bc2d32-a641-4ad4-b039-74970f0ea968",
-            "label": "Tile_37",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 380,
-            "y": 290,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "a9f46c20-efe2-4975-ab6c-5524211e9888",
-            "label": "Tile_36",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 310,
-            "y": 290,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "d250e61f-e639-41ad-af1f-9e93399b8dfc",
-            "label": "Tile_35",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 240,
-            "y": 289,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "e2f6d188-f53d-44fa-9004-99271b909e1a",
-            "label": "Tile_34",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 170,
-            "y": 290,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "ab4ed52c-a4e6-4e31-8d61-268f73869bcd",
-            "label": "Tile_33",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 100,
-            "y": 290,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "cc895e0d-4252-4d9e-a8cc-b8cf281af13f",
-            "label": "Tile_32",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 590,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "1b6410da-a440-4706-b551-fef845352be8",
-            "label": "Tile_31",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 520,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "35e5e42b-53fd-44f0-9080-ec6c08f2404f",
-            "label": "Tile_30",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 450,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "7270331e-301c-4f34-af22-4904ae53b0b5",
-            "label": "Tile_29",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 380,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "2bebf8df-367a-4c44-84ce-e95157d3910e",
-            "label": "Tile_28",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 310,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "26a5413b-ec29-40b9-8c1e-5ef52a6063a3",
-            "label": "Tile_27",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 240,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "1da14c84-bc36-49df-9682-01c005eeedcf",
-            "label": "Tile_26",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 170,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "b50d5c4c-9bbb-4fa7-8eea-52e92f179144",
-            "label": "Tile_25",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 100,
-            "y": 360,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "a874ce75-0eb8-457d-b3cd-6c8cd040e289",
-            "label": "Tile_24",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 590,
-            "y": 430,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "89273260-8edf-435a-8145-2743bdd7a82e",
-            "label": "Tile_23",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 520,
-            "y": 430,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "90e30a86-e60d-4e66-8a11-0b8460f8aa83",
-            "label": "Tile_22",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 450,
-            "y": 430,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "7cdf08c2-8b55-4ab0-94f7-0cafeff3aa8b",
-            "label": "Tile_21",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 380,
-            "y": 430,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "b5d63f3a-0383-4814-9f1e-65e1168b1257",
-            "label": "Tile_20",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 310,
-            "y": 430,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "13f5c26d-22c1-4e2a-95b8-dc73e9d067f1",
-            "label": "Tile_19",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 240,
-            "y": 429,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "3a7c67f5-ef79-4cbf-87d4-47432c7061a4",
-            "label": "Tile_18",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 170,
-            "y": 430,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "e27eafa8-a68d-4cf0-9f9a-1442da55ff7a",
-            "label": "Tile_17",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 100,
-            "y": 430,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "4c77333d-d998-410b-9dbd-a95c4355dff1",
-            "label": "Tile_16",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 590,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "e561c648-d90d-4541-8533-75d56a1a77b3",
-            "label": "Tile_15",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 520,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "f6352401-d11c-4e08-a7ef-94a4e0a0ba6d",
-            "label": "Tile_14",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 450,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "c1933f55-3933-4a8d-b5ab-6f12208d02cb",
-            "label": "Tile_13",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 380,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "52e4be2f-005c-44df-ba33-c39e8b3dfa69",
-            "label": "Tile_12",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 310,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "fabab487-d121-4d47-94fe-242e8e829f44",
-            "label": "Tile_11",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 240,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "687a9c6b-f17b-4755-8158-cc33fb0ec205",
-            "label": "Tile_10",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 170,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "0db5ecfa-37b2-4de5-8f66-334a4b7007c8",
-            "label": "Tile_9",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 100,
-            "y": 500,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "58c54ed3-b7eb-4e57-a84d-d41b83f44847",
-            "label": "Tile_8",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 590,
-            "y": 570,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "34c4cee9-ba00-4919-9df2-3324a82756ec",
-            "label": "Tile_7",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 520,
-            "y": 570,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "9f566656-0bcd-4841-bf04-32db41041651",
-            "label": "Tile_6",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 450,
-            "y": 570,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "431abaf8-6f23-4bfe-a061-5499a024a3cd",
-            "label": "Tile_5",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 380,
-            "y": 570,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "ddf1b16d-2ff3-4b98-b68c-4c0470009c7d",
-            "label": "Tile_4",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 310,
-            "y": 570,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "4dcff1bd-d5dd-4226-b5c3-9877ebaf887c",
-            "label": "Tile_3",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 240,
-            "y": 569,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "68aa4a7a-e99d-4c7b-8fb5-bc3f4f5b54a2",
-            "label": "Tile_2",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "whiteTile"
-            },
-            "x": 170,
-            "y": 570,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
-            "type": "Image",
-            "id": "a4bf025c-b4d0-4690-86a6-41e546844071",
-            "label": "Tile_1",
-            "useGameObjectName": true,
-            "scope": "CLASS",
-            "hitArea.shape": "RECTANGLE",
-            "hitArea.width": 10,
-            "hitArea.height": 10,
-            "texture": {
-                "key": "blackTile"
-            },
-            "x": 100,
-            "y": 570,
-            "scaleX": 7,
-            "scaleY": 7
-        },
-        {
             "type": "Text",
             "id": "91182f95-726e-4862-9abc-400a60c6c0fa",
             "label": "advName",
@@ -1117,6 +29,1104 @@
             "y": 630,
             "text": "%userName%",
             "fontSize": "24px"
+        },
+        {
+            "type": "Container",
+            "id": "3822b812-6390-478b-a3e9-b9bf0eaac728",
+            "label": "tilesContainer",
+            "scope": "CLASS",
+            "x": 322,
+            "y": 325,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "2aa3c14e-e2fb-4871-98b1-33b2aa4553b2",
+                    "label": "Tile_64",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 245,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "dff27dc4-2788-4809-a002-9290cdd7a2cc",
+                    "label": "Tile_63",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 175,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "0f359195-6733-403b-afe0-6a7b655dfab6",
+                    "label": "Tile_62",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 105,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "2d331970-a9c7-496c-a98b-678a9ed5331a",
+                    "label": "Tile_61",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 35,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "88d75ae4-5071-4659-9975-4a21c06266b3",
+                    "label": "Tile_60",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -35,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "2183dffe-960e-4a3c-becd-63059071082f",
+                    "label": "Tile_59",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -105,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "0a9e690d-2955-4c25-8a0c-80b1e071d2a8",
+                    "label": "Tile_58",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -175,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "e8e504f9-9876-4d15-a02a-7d58166d894a",
+                    "label": "Tile_57",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -245,
+                    "y": -245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "fd215c4f-4b67-49a8-bc14-a567022aacc5",
+                    "label": "Tile_56",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 245,
+                    "y": -175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "93759862-e273-4ff8-8f90-e1bad7297fb6",
+                    "label": "Tile_55",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 175,
+                    "y": -175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "4b7ad195-c27e-4e12-914b-66684c014e0b",
+                    "label": "Tile_54",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 105,
+                    "y": -175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "0be0514c-ca4a-421c-9ab3-dc733e9c2be4",
+                    "label": "Tile_53",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 35,
+                    "y": -175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "1980f960-f73a-4e8a-b08b-c9cabd9adaca",
+                    "label": "Tile_52",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -35,
+                    "y": -175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "b0bf7f99-2d59-41b0-a8c0-d229a79ea410",
+                    "label": "Tile_51",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -105,
+                    "y": -176,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "269d4412-9d66-4d79-bdec-ead46ed5ac15",
+                    "label": "Tile_50",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -175,
+                    "y": -175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "e2b720b9-3722-493e-93ee-3e5e7d5504dd",
+                    "label": "Tile_49",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -245,
+                    "y": -175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "1bd58399-4d11-443f-9dfd-08a78aa8992c",
+                    "label": "Tile_48",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 245,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "fa5556e2-2164-4da8-a739-fa1f20b05678",
+                    "label": "Tile_47",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 175,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "ee36153c-18d1-4a7b-9c29-3c90f92f0915",
+                    "label": "Tile_46",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 105,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "4f3b08b4-691a-484a-b20f-5335048d64ce",
+                    "label": "Tile_45",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 35,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "a576e683-ac66-4975-8559-58f36c4bdddb",
+                    "label": "Tile_44",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -35,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "31a3222a-59dd-4b45-b8e3-78b6b6f0a3bf",
+                    "label": "Tile_43",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -105,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "252eb180-01d7-414a-a574-9290888fdac7",
+                    "label": "Tile_42",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -175,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "6fe37cde-831a-48bc-9c86-d29be7de0434",
+                    "label": "Tile_41",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -245,
+                    "y": -105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "2a761ce1-df68-43f9-87d3-b510c94ab8a8",
+                    "label": "Tile_40",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 245,
+                    "y": -35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "f09f3f1e-39c6-471b-ae8c-fb86ab761ece",
+                    "label": "Tile_39",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 175,
+                    "y": -35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "1db96b7f-e05a-430a-8e30-b1c6b5e5517b",
+                    "label": "Tile_38",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 105,
+                    "y": -35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "95bc2d32-a641-4ad4-b039-74970f0ea968",
+                    "label": "Tile_37",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 35,
+                    "y": -35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "a9f46c20-efe2-4975-ab6c-5524211e9888",
+                    "label": "Tile_36",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -35,
+                    "y": -35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "d250e61f-e639-41ad-af1f-9e93399b8dfc",
+                    "label": "Tile_35",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -105,
+                    "y": -36,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "e2f6d188-f53d-44fa-9004-99271b909e1a",
+                    "label": "Tile_34",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -175,
+                    "y": -35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "ab4ed52c-a4e6-4e31-8d61-268f73869bcd",
+                    "label": "Tile_33",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -245,
+                    "y": -35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "cc895e0d-4252-4d9e-a8cc-b8cf281af13f",
+                    "label": "Tile_32",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 245,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "1b6410da-a440-4706-b551-fef845352be8",
+                    "label": "Tile_31",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 175,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "35e5e42b-53fd-44f0-9080-ec6c08f2404f",
+                    "label": "Tile_30",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 105,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "7270331e-301c-4f34-af22-4904ae53b0b5",
+                    "label": "Tile_29",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 35,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "2bebf8df-367a-4c44-84ce-e95157d3910e",
+                    "label": "Tile_28",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -35,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "26a5413b-ec29-40b9-8c1e-5ef52a6063a3",
+                    "label": "Tile_27",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -105,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "1da14c84-bc36-49df-9682-01c005eeedcf",
+                    "label": "Tile_26",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -175,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "b50d5c4c-9bbb-4fa7-8eea-52e92f179144",
+                    "label": "Tile_25",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -245,
+                    "y": 35,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "a874ce75-0eb8-457d-b3cd-6c8cd040e289",
+                    "label": "Tile_24",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 245,
+                    "y": 105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "89273260-8edf-435a-8145-2743bdd7a82e",
+                    "label": "Tile_23",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 175,
+                    "y": 105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "90e30a86-e60d-4e66-8a11-0b8460f8aa83",
+                    "label": "Tile_22",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 105,
+                    "y": 105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "7cdf08c2-8b55-4ab0-94f7-0cafeff3aa8b",
+                    "label": "Tile_21",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 35,
+                    "y": 105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "b5d63f3a-0383-4814-9f1e-65e1168b1257",
+                    "label": "Tile_20",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -35,
+                    "y": 105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "13f5c26d-22c1-4e2a-95b8-dc73e9d067f1",
+                    "label": "Tile_19",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -105,
+                    "y": 104,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "3a7c67f5-ef79-4cbf-87d4-47432c7061a4",
+                    "label": "Tile_18",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -175,
+                    "y": 105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "e27eafa8-a68d-4cf0-9f9a-1442da55ff7a",
+                    "label": "Tile_17",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -245,
+                    "y": 105,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "4c77333d-d998-410b-9dbd-a95c4355dff1",
+                    "label": "Tile_16",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 245,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "e561c648-d90d-4541-8533-75d56a1a77b3",
+                    "label": "Tile_15",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 175,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "f6352401-d11c-4e08-a7ef-94a4e0a0ba6d",
+                    "label": "Tile_14",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 105,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "c1933f55-3933-4a8d-b5ab-6f12208d02cb",
+                    "label": "Tile_13",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 35,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "52e4be2f-005c-44df-ba33-c39e8b3dfa69",
+                    "label": "Tile_12",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -35,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "fabab487-d121-4d47-94fe-242e8e829f44",
+                    "label": "Tile_11",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -105,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "687a9c6b-f17b-4755-8158-cc33fb0ec205",
+                    "label": "Tile_10",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -175,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "0db5ecfa-37b2-4de5-8f66-334a4b7007c8",
+                    "label": "Tile_9",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -245,
+                    "y": 175,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "58c54ed3-b7eb-4e57-a84d-d41b83f44847",
+                    "label": "Tile_8",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 245,
+                    "y": 245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "34c4cee9-ba00-4919-9df2-3324a82756ec",
+                    "label": "Tile_7",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 175,
+                    "y": 245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "9f566656-0bcd-4841-bf04-32db41041651",
+                    "label": "Tile_6",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": 105,
+                    "y": 245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "431abaf8-6f23-4bfe-a061-5499a024a3cd",
+                    "label": "Tile_5",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": 35,
+                    "y": 245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "ddf1b16d-2ff3-4b98-b68c-4c0470009c7d",
+                    "label": "Tile_4",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -35,
+                    "y": 245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "4dcff1bd-d5dd-4226-b5c3-9877ebaf887c",
+                    "label": "Tile_3",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -105,
+                    "y": 244,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "68aa4a7a-e99d-4c7b-8fb5-bc3f4f5b54a2",
+                    "label": "Tile_2",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "x": -175,
+                    "y": 245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                },
+                {
+                    "type": "Image",
+                    "id": "a4bf025c-b4d0-4690-86a6-41e546844071",
+                    "label": "Tile_1",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 10,
+                    "hitArea.height": 10,
+                    "texture": {
+                        "key": "blackTile"
+                    },
+                    "x": -245,
+                    "y": 245,
+                    "scaleX": 7,
+                    "scaleY": 7
+                }
+            ]
         }
     ],
     "plainObjects": [],

@@ -10,14 +10,20 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "c2540878-1924-4b11-961a-ead34ca8a4d7",
-            "label": "darkPawn",
-            "texture": {
-                "key": "DarkPawn"
-            },
-            "scaleX": 0.2,
-            "scaleY": 0.2
+            "type": "Container",
+            "id": "12e00266-5fef-48cc-ac19-3c0689ded6e3",
+            "label": "container_1",
+            "x": -11,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "a7190fc8-39d9-475e-830f-574ffd1d34f0",
+                    "label": "blackPawn",
+                    "texture": {
+                        "key": "blackPawn"
+                    }
+                }
+            ]
         }
     ],
     "plainObjects": [],

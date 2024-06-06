@@ -3,14 +3,16 @@
 
 /* START OF COMPILED CODE */
 
-class BlackPawn extends Phaser.GameObjects.Container {
+class redSquare extends Phaser.GameObjects.Rectangle {
 
-	constructor(scene, x, y) {
-		super(scene, x ?? -11, y ?? 0);
+	constructor(scene, x, y, width, height) {
+		super(scene, x ?? 0, y ?? 0, width ?? 128, height ?? 128);
 
-		// blackPawn
-		const blackPawn = scene.add.image(0, 0, "blackPawn");
-		this.add(blackPawn);
+		this.scaleX = 0.545;
+		this.scaleY = 0.545;
+		this.isFilled = true;
+		this.fillColor = 16739331;
+		this.fillAlpha = 0.5;
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.

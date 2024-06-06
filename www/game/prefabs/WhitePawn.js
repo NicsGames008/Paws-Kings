@@ -3,13 +3,14 @@
 
 /* START OF COMPILED CODE */
 
-class WhitePawn extends Phaser.GameObjects.Image {
+class WhitePawn extends Phaser.GameObjects.Container {
 
-	constructor(scene, x, y, texture, frame) {
-		super(scene, x ?? 0, y ?? 0, texture || "LightPawn", frame);
+	constructor(scene, x, y) {
+		super(scene, x ?? 0, y ?? 0);
 
-		this.scaleX = 0.2;
-		this.scaleY = 0.2;
+		// whitePawn
+		const whitePawn = scene.add.image(0, 0, "whitePawn");
+		this.add(whitePawn);
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.

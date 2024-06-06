@@ -17,7 +17,7 @@ function tryLogin() {
                 // Redirect to game page in 2 seconds
                 setTimeout(() => {
 
-                    window.location.replace("/match.html");
+                    window.location.replace("/game");
                 }, 2000)
             } else {
                 // If the login is not successful, we show an error message.

@@ -50,7 +50,7 @@ router.get('/card/:matchId/:playerId', (request, response) => {
     }
 
     //returns the card's name and ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT card_name, mpc_ammount FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Card.mpc_card_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
+    connection.execute('SELECT card_name, mpc_ammount, mp_pc_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Card.mpc_card_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
         [matchId, playerId],
         function (err, results, fields) {
             if (err){

@@ -2,6 +2,7 @@
     "id": "01aefa93-6044-4159-8358-7e91310aa05f",
     "sceneType": "SCENE",
     "settings": {
+        "displayName": "",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "Level",
@@ -934,8 +935,8 @@
             "id": "f4af0060-bf75-476f-9eaa-ba451d29ad34",
             "label": "boardData",
             "scope": "CLASS",
-            "x": 702,
-            "y": 46,
+            "x": 961,
+            "y": 50,
             "text": "%boardData%",
             "fontSize": "24px"
         },
@@ -949,9 +950,9 @@
             "x": 892,
             "y": 61,
             "tintTopLeft": "#000000",
-            "tintTopRight": "#f63a3a",
-            "tintBottomLeft": "#000000",
-            "tintBottomRight": "#000000"
+            "tintTopRight": "#000000",
+            "tintBottomLeft": "#bdbbbb",
+            "tintBottomRight": "#bdbbbb"
         },
         {
             "type": "Image",
@@ -961,7 +962,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 750,
+            "x": 916,
             "y": 200
         },
         {
@@ -972,7 +973,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 900,
+            "x": 1016,
             "y": 200
         },
         {
@@ -983,7 +984,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1050,
+            "x": 1116,
             "y": 200
         },
         {
@@ -994,7 +995,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1200,
+            "x": 1216,
             "y": 200
         },
         {
@@ -1005,7 +1006,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 750,
+            "x": 916,
             "y": 400
         },
         {
@@ -1016,7 +1017,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 900,
+            "x": 1016,
             "y": 400
         },
         {
@@ -1027,7 +1028,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1050,
+            "x": 1116,
             "y": 400
         },
         {
@@ -1038,56 +1039,99 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1200,
+            "x": 1216,
             "y": 400
         },
         {
-            "type": "Image",
-            "id": "8b355b63-646c-4b6f-a1d1-be07483c362a",
-            "label": "cardPlaceholder_1",
-            "scope": "CLASS",
-            "texture": {
-                "key": "worm"
-            },
-            "x": 750,
-            "y": 400,
-            "scaleX": 2
-        },
-        {
-            "type": "Image",
-            "id": "bbd7dfdb-4e3d-40ab-8040-1d70914eac63",
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "5ec6e9d0-4526-43a9-9e5f-378420f08604",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner",
+                "tintTopRight"
+            ],
             "label": "cardPlaceholder_2",
             "scope": "CLASS",
-            "texture": {
-                "key": "worm"
-            },
-            "x": 900,
+            "x": 1017,
             "y": 400,
-            "scaleX": 2
+            "tintTopRight": "#fb0404"
         },
         {
-            "type": "Image",
-            "id": "9da172d6-1d83-43bf-beeb-8cc64c5a5ec4",
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "d7c3e228-ad9e-474c-9145-c6bc540cc53b",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner",
+                "tintTopRight"
+            ],
             "label": "cardPlaceholder_3",
             "scope": "CLASS",
-            "texture": {
-                "key": "worm"
-            },
-            "x": 1050,
+            "x": 1118,
             "y": 400,
-            "scaleX": 2
+            "tintTopRight": "#bcc500"
+        },
+        {
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "2b94f4c2-eb58-4a0b-8fc7-c434283cd00f",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner",
+                "tintTopRight"
+            ],
+            "label": "cardPlaceholder_4",
+            "scope": "CLASS",
+            "x": 1216,
+            "y": 400,
+            "tintTopRight": "#000000"
+        },
+        {
+            "type": "Text",
+            "id": "b1fe4384-577c-4421-a439-9f3767f38c5c",
+            "label": "cardText_1",
+            "scope": "CLASS",
+            "x": 851,
+            "y": 487,
+            "text": "%Bishop Number%"
+        },
+        {
+            "type": "Text",
+            "id": "8bcf46a9-a4c3-4aba-996e-43575944c036",
+            "label": "cardText_2",
+            "scope": "CLASS",
+            "x": 967,
+            "y": 517,
+            "text": "%Roock Number%"
+        },
+        {
+            "type": "Text",
+            "id": "86d30942-5907-475f-a6be-9acf383623ea",
+            "label": "cardText_3",
+            "scope": "CLASS",
+            "x": 1060,
+            "y": 487,
+            "text": "%Knight Number%"
+        },
+        {
+            "type": "Text",
+            "id": "a0ec4046-9503-4b8f-a3ed-82e135c801e2",
+            "label": "cardText_4",
+            "scope": "CLASS",
+            "x": 1147,
+            "y": 514,
+            "text": "%Qween Number%"
         },
         {
             "type": "Image",
-            "id": "7e95613f-b016-4836-a8a8-10fc002a4b03",
-            "label": "cardPlaceholder_4",
-            "scope": "CLASS",
+            "id": "47aa8f3a-a28b-4a04-9f69-2b79d2dbbdf5",
+            "label": "cardWhiteKnight",
             "texture": {
-                "key": "worm"
+                "key": "CardWhiteKnight"
             },
-            "x": 1200,
-            "y": 400,
-            "scaleX": 2
+            "x": 916,
+            "y": 200
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1097,10 +1141,20 @@
                 "y",
                 "playerOwner"
             ],
-            "label": "card_5",
-            "playerOwner": 1,
-            "x": 748,
-            "y": 571
+            "label": "cardPlaceholder_1",
+            "scope": "CLASS",
+            "x": 916,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "007c3d1f-bf6d-424b-aaef-d57a362baf1d",
+            "label": "pTBlack",
+            "texture": {
+                "key": "PTBlack"
+            },
+            "x": 739,
+            "y": 311
         }
     ],
     "plainObjects": [],
@@ -1185,15 +1239,25 @@
             "id": "10f860e4-b9fc-4a40-84fb-b4adeffb7829",
             "label": "shard",
             "objectIds": [
-                "7b3ff420-bff8-489c-9ff8-26a7165adda2",
-                "6e08f459-ccd3-42bb-bbc3-136b8baab876",
                 "0185d7a4-9b49-4116-8483-65452615bb3a",
-                "b587310d-4039-4809-a8f5-92bf7b50ed94"
+                "b587310d-4039-4809-a8f5-92bf7b50ed94",
+                "7b3ff420-bff8-489c-9ff8-26a7165adda2",
+                "6e08f459-ccd3-42bb-bbc3-136b8baab876"
             ]
         },
         {
             "id": "da48f49e-3602-453e-a4d7-700426fbff9d",
             "label": "card",
+            "objectIds": [
+                "6f435915-e641-49a9-9a71-69a01821108b",
+                "5ec6e9d0-4526-43a9-9e5f-378420f08604",
+                "d7c3e228-ad9e-474c-9145-c6bc540cc53b",
+                "2b94f4c2-eb58-4a0b-8fc7-c434283cd00f"
+            ]
+        },
+        {
+            "id": "2f41308a-a48d-481c-b60d-69ce5bf1897e",
+            "label": "cardPlaceHolder",
             "objectIds": [
                 "148f52b7-33b6-412b-9828-d3e44fe71fad",
                 "6922dc4e-01d2-4a94-b351-9f781afdc2cf",
@@ -1202,13 +1266,13 @@
             ]
         },
         {
-            "id": "2f41308a-a48d-481c-b60d-69ce5bf1897e",
-            "label": "cardPlaceHolder",
+            "id": "5892a655-f228-4605-b06e-5cfc9678fcda",
+            "label": "cardText",
             "objectIds": [
-                "8b355b63-646c-4b6f-a1d1-be07483c362a",
-                "bbd7dfdb-4e3d-40ab-8040-1d70914eac63",
-                "9da172d6-1d83-43bf-beeb-8cc64c5a5ec4",
-                "7e95613f-b016-4836-a8a8-10fc002a4b03"
+                "b1fe4384-577c-4421-a439-9f3767f38c5c",
+                "8bcf46a9-a4c3-4aba-996e-43575944c036",
+                "86d30942-5907-475f-a6be-9acf383623ea",
+                "a0ec4046-9503-4b8f-a3ed-82e135c801e2"
             ]
         }
     ]

@@ -44,8 +44,8 @@
     },
     "prefabProperties": [
         {
-            "name": "playerOwner",
-            "label": "PlayerOwner",
+            "name": "ammount",
+            "label": "Ammount",
             "tooltip": "",
             "defValue": 0,
             "customDefinition": false,

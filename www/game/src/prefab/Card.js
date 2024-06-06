@@ -22,7 +22,7 @@ class Card extends Phaser.GameObjects.Image {
 	}
 
 	/** @type {number} */
-	playerOwner = 0;
+	ammount = 0;
 
 	/* START-USER-CODE */
 

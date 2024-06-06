@@ -22,11 +22,6 @@ class Preload extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// guapen
-		const guapen = this.add.image(505.0120544433594, 360, "guapen");
-		guapen.scaleX = 0.32715486817515643;
-		guapen.scaleY = 0.32715486817515643;
-
 		// progressBar
 		const progressBar = this.add.rectangle(553.0120849609375, 361, 256, 20);
 		progressBar.setOrigin(0, 0);
@@ -47,14 +42,16 @@ class Preload extends Phaser.Scene {
 		loadingText.text = "Loading...";
 		loadingText.setStyle({ "color": "#e0e0e0", "fontFamily": "arial", "fontSize": "20px" });
 
-		this.guapen = guapen;
+		// worm
+		const worm = this.add.image(498, 359, "worm");
+		worm.scaleX = 2;
+		worm.scaleY = 2;
+
 		this.loadingText = loadingText;
 
 		this.events.emit("scene-awake");
 	}
 
-	/** @type {Phaser.GameObjects.Image} */
-	guapen;
 	/** @type {Phaser.GameObjects.Text} */
 	loadingText;
 
@@ -94,7 +91,7 @@ class Preload extends Phaser.Scene {
 					}
 			}
 		};
-		
+
 		xhttp.open("GET", "/signing/checkLogin", true);
 		xhttp.send();
 	}

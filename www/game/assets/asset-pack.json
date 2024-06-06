@@ -12,6 +12,11 @@
                 "key": "Card"
             },
             {
+                "url": "assets/cards/CardWhiteKnight.png",
+                "type": "image",
+                "key": "CardWhiteKnight"
+            },
+            {
                 "url": "assets/dino.png",
                 "key": "dino",
                 "type": "image"
@@ -22,6 +27,11 @@
                 "key": "promotionPlaceholder"
             },
             {
+                "url": "assets/promotionTiers/PTBlack.png",
+                "type": "image",
+                "key": "PTBlack"
+            },
+            {
                 "url": "assets/whiteTile.png",
                 "type": "image",
                 "key": "whiteTile"
@@ -30,11 +40,6 @@
                 "url": "assets/worm.png",
                 "type": "image",
                 "key": "worm"
-            },
-            {
-                "url": "src/prefabs/WPawn.js",
-                "type": "sceneFile",
-                "key": "WPawn"
             }
         ]
     },

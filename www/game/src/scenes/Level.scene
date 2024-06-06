@@ -1124,16 +1124,6 @@
             "text": "%Qween Number%"
         },
         {
-            "type": "Image",
-            "id": "47aa8f3a-a28b-4a04-9f69-2b79d2dbbdf5",
-            "label": "cardWhiteKnight",
-            "texture": {
-                "key": "CardWhiteKnight"
-            },
-            "x": 916,
-            "y": 200
-        },
-        {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
             "id": "6f435915-e641-49a9-9a71-69a01821108b",
             "unlock": [
@@ -1155,6 +1145,16 @@
             },
             "x": 739,
             "y": 311
+        },
+        {
+            "type": "Image",
+            "id": "3f07c0c0-16b4-4554-a8c4-b6424e411ccd",
+            "label": "cardWhiteKnight",
+            "texture": {
+                "key": "cardWhiteKnight"
+            },
+            "x": 916,
+            "y": 200
         }
     ],
     "plainObjects": [],

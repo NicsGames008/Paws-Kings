@@ -57,25 +57,38 @@
         },
         {
             "type": "Image",
-            "id": "00bfb16a-5615-42ae-9b6d-67b3c6178013",
-            "label": "worm",
+            "id": "82b1df32-2acb-4722-9228-d7b2303b9581",
+            "label": "guapen",
             "texture": {
-                "key": "worm"
+                "key": "guapen"
             },
-            "x": 498,
-            "y": 359,
-            "scaleX": 2,
-            "scaleY": 2
+            "x": 688,
+            "y": 462,
+            "scaleY": 3
         },
         {
             "type": "Image",
-            "id": "42efadd5-cf0e-4846-aed5-001a4868e786",
-            "label": "worm_1",
+            "id": "4998f040-482f-4d71-ad6b-5421ac052a54",
+            "label": "guapen_1",
             "texture": {
-                "key": "worm"
+                "key": "guapen"
             },
-            "x": 688,
-            "y": 413
+            "x": 412,
+            "y": 367,
+            "scaleX": 3,
+            "scaleY": 3
+        },
+        {
+            "type": "Image",
+            "id": "2da2275b-7dfe-421a-b353-c08856b7e1c1",
+            "label": "guapen_2",
+            "texture": {
+                "key": "guapen"
+            },
+            "x": 727,
+            "y": 291,
+            "scaleX": 8,
+            "scaleY": 2
         }
     ],
     "plainObjects": [],

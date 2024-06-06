@@ -42,13 +42,19 @@ class Preload extends Phaser.Scene {
 		loadingText.text = "Loading...";
 		loadingText.setStyle({ "color": "#e0e0e0", "fontFamily": "arial", "fontSize": "20px" });
 
-		// worm
-		const worm = this.add.image(498, 359, "worm");
-		worm.scaleX = 2;
-		worm.scaleY = 2;
+		// guapen
+		const guapen = this.add.image(688, 462, "guapen");
+		guapen.scaleY = 3;
 
-		// worm_1
-		this.add.image(688, 413, "worm");
+		// guapen_1
+		const guapen_1 = this.add.image(412, 367, "guapen");
+		guapen_1.scaleX = 3;
+		guapen_1.scaleY = 3;
+
+		// guapen_2
+		const guapen_2 = this.add.image(727, 291, "guapen");
+		guapen_2.scaleX = 8;
+		guapen_2.scaleY = 2;
 
 		this.loadingText = loadingText;
 

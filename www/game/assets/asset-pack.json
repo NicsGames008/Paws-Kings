@@ -12,9 +12,9 @@
                 "key": "Card"
             },
             {
-                "url": "assets/cards/CardWhiteKnight.png",
+                "url": "assets/cards/cardWhiteKnight.png",
                 "type": "image",
-                "key": "CardWhiteKnight"
+                "key": "cardWhiteKnight"
             },
             {
                 "url": "assets/dino.png",

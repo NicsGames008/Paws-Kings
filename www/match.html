@@ -112,6 +112,7 @@
         var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
 				if (xhttp.readyState == 4) {
+                    console.log(xhttp.responseText);
                     var data = JSON.parse(xhttp.responseText);
                     if (xhttp.status == 400) {
                         //document.getElementById("message").innerText = data.error;

@@ -7,9 +7,9 @@
                 "key": "blackPawn"
             },
             {
-                "url": "prefabs/BlackPawn.js",
+                "url": "src/prefabs/BlackPawn.js",
                 "type": "script",
-                "key": "BlackPawn"
+                "key": "BlackPawn_1"
             },
             {
                 "url": "assets/blackTile.png",
@@ -27,14 +27,14 @@
                 "type": "image"
             },
             {
-                "url": "prefabs/Dot.js",
+                "url": "src/prefabs/Dot.js",
                 "type": "script",
-                "key": "Dot"
+                "key": "Dot_1"
             },
             {
-                "url": "prefabs/redSquare.js",
+                "url": "src/prefabs/redSquare.js",
                 "type": "script",
-                "key": "redSquare"
+                "key": "redSquare_1"
             },
             {
                 "url": "assets/whitePawn.png",
@@ -42,9 +42,9 @@
                 "key": "whitePawn"
             },
             {
-                "url": "prefabs/WhitePawn.js",
+                "url": "src/prefabs/WhitePawn.js",
                 "type": "script",
-                "key": "WhitePawn"
+                "key": "WhitePawn_1"
             },
             {
                 "url": "assets/whiteTile.png",

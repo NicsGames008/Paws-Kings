@@ -757,124 +757,105 @@ class Level extends Phaser.Scene {
 
 	// Write more your code here
 
-	create() {
+	updateGameState(playerID, callback){
 
-		this.editorCreate();
-		var boardState;
-		var possibleMoves;
-		var gameState;
-		var playerID = -1;
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
-				playerID = parseInt(xhttp.responseText);
+				// Parse the JSON response
+				var gameState = JSON.parse(xhttp.responseText);
 
+				// Get the player names from the response
+				var player1Name = gameState[0].player_name
+				var player2Name = gameState[1].player_name
+
+				// Set the player names in the game
+				this.userName.text = player1Name;
+				this.advName.text = player2Name;
+
+
+				for (let i = 0; i < gameState.length; i++) {
+					if(playerID == gameState[i].player_id){
+						if(gameState[i].mp_pc_id == 1){
+							this.tilesContainer.angle = 0;
+						}
+						else if(gameState[i].mp_pc_id == 2){
+							this.tilesContainer.angle = -180;
+						}
+					}
+				}
+				callback(gameState);
 			}
 		};
 
 		// Send a GET request to the server (just testing with /match/11 endpoint)
-		xhttp.open("GET", "/playerID", true);
-		xhttp.send();
+		xhttp.open("GET", "../state/game/1", true);
+		xhttp.send();		
+	}
 
-		// Sync the game state every 2 seconds
-		var TIME_BETWEEN_SYNC = 2000;
+	updateBoardState(callback){
+		var boardState
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = () => {
+			if (xhttp.readyState == 4) {
+				// Parse the JSON response
+				var data = JSON.parse(xhttp.responseText);
+				boardState = data;
 
-		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
-		setInterval(() => {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = () => {
-				if (xhttp.readyState == 4) {
-					// Parse the JSON response
-					var data = JSON.parse(xhttp.responseText);
-					gameState = data;
-
-					// Get the player names from the response
-					var player1Name = gameState[0].player_name
-					var player2Name = gameState[1].player_name
-
-					// Set the player names in the game
-					this.userName.text = player1Name;
-					this.advName.text = player2Name;
-
-
-					for (let i = 0; i < gameState.length; i++) {
-						if(playerID == gameState[i].player_id){
-							if(gameState[i].mp_pc_id == 1){
-								this.tilesContainer.angle = 0;
-							}
-							else if(gameState[i].mp_pc_id == 2){
-								this.tilesContainer.angle = -180;
-							}
-						}
-					}
-				}
-			};
-
-			// Send a GET request to the server (just testing with /match/11 endpoint)
-			xhttp.open("GET", "../state/game/1", true);
-			xhttp.send();
-		}, TIME_BETWEEN_SYNC)
-
-
-		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
-		setInterval(() => {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = () => {
-				if (xhttp.readyState == 4) {
-					// Parse the JSON response
-					var data = JSON.parse(xhttp.responseText);
-					boardState = data;
-
-					for (let i = 0; i < boardState.length; i++) {
-						for (let k = 0; k < this.tiles.length; k++) {
-							// Get the current tile element at the 'index' position
-							const element = this.tiles[k];
-							// Extract the number from the tile's name using the 'extractNumberFromString' function
-							var numbFromImage = extractNumberFromString(element.name);
-							if(numbFromImage == boardState[i].tile_id){
-								switch (boardState[i].mpp_piece_id) {
-									case 5:			
-										if(boardState[i].mp_pc_id == 1){
-											const whitePawn = new WhitePawn(this, element.x, element.y);
-											this.add.existing(whitePawn);
-											this.tilesContainer.add(whitePawn);
-											for (let i = 0; i < gameState.length; i++) {
-												if(playerID == gameState[i].player_id){
-													if(gameState[i].mp_pc_id == 1){
-														whitePawn.angle = 0;
-													}
-													else if(gameState[i].mp_pc_id == 2){
-														whitePawn.angle = -180;
-													}
+				for (let i = 0; i < boardState.length; i++) {
+					for (let k = 0; k < this.tiles.length; k++) {
+						// Get the current tile element at the 'index' position
+						const element = this.tiles[k];
+						// Extract the number from the tile's name using the 'extractNumberFromString' function
+						var numbFromImage = extractNumberFromString(element.name);
+						if(numbFromImage == boardState[i].tile_id){
+							switch (boardState[i].mpp_piece_id) {
+								case 5:			
+									if(boardState[i].mp_pc_id == 1){
+										const whitePawn = new WhitePawn(this, element.x, element.y);
+										this.add.existing(whitePawn);
+										this.tilesContainer.add(whitePawn);
+										for (let i = 0; i < gameState.length; i++) {
+											if(playerID == gameState[i].player_id){
+												if(gameState[i].mp_pc_id == 1){
+													whitePawn.angle = 0;
 												}
-											}
-										}else{
-											const blackPawn = new BlackPawn(this, element.x, element.y);
-											this.add.existing(blackPawn);											
-											this.tilesContainer.add(blackPawn);
-											for (let i = 0; i < gameState.length; i++) {
-												if(playerID == gameState[i].player_id){
-													if(gameState[i].mp_pc_id == 1){
-														blackPawn.angle = 0;
-													}
-													else if(gameState[i].mp_pc_id == 2){
-														blackPawn.angle = -180;
-													}
+												else if(gameState[i].mp_pc_id == 2){
+													whitePawn.angle = -180;
 												}
 											}
 										}
-									break;
-								}
+									}else{
+										const blackPawn = new BlackPawn(this, element.x, element.y);
+										this.add.existing(blackPawn);											
+										this.tilesContainer.add(blackPawn);
+										for (let i = 0; i < gameState.length; i++) {
+											if(playerID == gameState[i].player_id){
+												if(gameState[i].mp_pc_id == 1){
+													blackPawn.angle = 0;
+												}
+												else if(gameState[i].mp_pc_id == 2){
+													blackPawn.angle = -180;
+												}
+											}
+										}
+									}
+								break;
 							}
 						}
 					}
 				}
-			};
+				callback(gameState);
+			}
+		};
 
-			// Send a GET request to the server (just testing with /match/1 endpoint)
-			xhttp.open("GET", "../state/boardR/1", true);
-			xhttp.send();
-		}, TIME_BETWEEN_SYNC)
+		// Send a GET request to the server (just testing with /match/1 endpoint)
+		xhttp.open("GET", "../state/boardR/1", true);
+		xhttp.send();
+	}
+
+	tileClicked(boardState){
+		var possibleMoves;
 
 		// Loop through each tile in the 'tiles' array
 		for (let index = 0; index < this.tiles.length; index++) {
@@ -886,8 +867,6 @@ class Level extends Phaser.Scene {
 
 				// Extract the number from the tile's name using the 'extractNumberFromString' function
 				var numbFromImage = extractNumberFromString(element.name);
-
-				console.log(element.name);
 
 				for (let i = 0; i < boardState.length; i++) {
 
@@ -944,6 +923,73 @@ class Level extends Phaser.Scene {
 				}
 			});
 		}
+	}
+
+
+	create() {
+
+		this.editorCreate();
+		var boardState;
+		var possibleMoves;
+		var gameState;
+		var playerID = -1;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = () => {
+			if (xhttp.readyState == 4) {
+				playerID = parseInt(xhttp.responseText);
+
+			}
+		};
+
+		// Send a GET request to the server (just testing with /match/11 endpoint)
+		xhttp.open("GET", "/playerID", true);
+		xhttp.send();
+
+		// Sync the game state every 2 seconds
+		var TIME_BETWEEN_SYNC = 2000;
+
+		// // call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
+		// setInterval(() => {
+		// 	var xhttp = new XMLHttpRequest();
+		// 	xhttp.onreadystatechange = () => {
+		// 		if (xhttp.readyState == 4) {
+		// 			// Parse the JSON response
+		// 			var data = JSON.parse(xhttp.responseText);
+		// 			gameState = data;
+
+		// 			// Get the player names from the response
+		// 			var player1Name = gameState[0].player_name
+		// 			var player2Name = gameState[1].player_name
+
+		// 			// Set the player names in the game
+		// 			this.userName.text = player1Name;
+		// 			this.advName.text = player2Name;
+
+
+		// 			for (let i = 0; i < gameState.length; i++) {
+		// 				if(playerID == gameState[i].player_id){
+		// 					if(gameState[i].mp_pc_id == 1){
+		// 						this.tilesContainer.angle = 0;
+		// 					}
+		// 					else if(gameState[i].mp_pc_id == 2){
+		// 						this.tilesContainer.angle = -180;
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	};
+
+		// 	// Send a GET request to the server (just testing with /match/11 endpoint)
+		// 	xhttp.open("GET", "../state/game/1", true);
+		// 	xhttp.send();
+		// }, TIME_BETWEEN_SYNC)
+
+
+		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
+		//setInterval(this.updateGameState, TIME_BETWEEN_SYNC) 
+		this.updateGameState(playerID, this.updateBoardState(this.tileClicked));
+
+		
 	}
 	/* END-USER-CODE */
 }

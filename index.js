@@ -36,12 +36,7 @@ app.use('/state', state);
 app.use('/piece', piece);
 app.use('/signing', signing);
 
-app.get('/playerID', (request, response) => {
-    if (request.session.playerID===undefined)
-        response.send("-1");
-    else
-        response.send(request.session.playerID.toString());
-});
+
 
 
 // Connect to database and check if it's working. Otherwise gives an error.

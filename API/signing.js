@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../database');
 
+router.get('/playerID', (request, response) => {
+    if (request.session.playerID===undefined)
+        response.send("-1");
+    else
+        response.send(request.session.playerID.toString());
+});
+
 router.post('/register', (req, res) => {
     var username = req.body.username;
     var password = req.body.password;

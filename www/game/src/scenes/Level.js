@@ -542,7 +542,7 @@ class Level extends Phaser.Scene {
 		tilesContainer.add(tile_1);
 
 		// lists
-		const tiles = [tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_42, tile_47, tile_48, tile_45, tile_46, tile_43, tile_44, tile_41, tile_59, tile_62, tile_61, tile_64, tile_63, tile_58, tile_56, tile_55, tile_54, tile_53, tile_52, tile_51, tile_50, tile_49, tile_57, tile_60, tile_28, tile_25, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_26, tile_31, tile_32, tile_29, tile_30, tile_27, tile_9, tile_12, tile_11, tile_14, tile_13, tile_16, tile_15, tile_10, tile_8, tile_7, tile_6, tile_5, tile_4, tile_3, tile_2, tile_1];
+		const tiles = [tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63, tile_64];
 
 		this.advName = advName;
 		this.userName = userName;
@@ -801,8 +801,6 @@ class Level extends Phaser.Scene {
 				// Parse the JSON response
 				var data = JSON.parse(xhttp.responseText);
 				boardState = data;
-				
-				console.log(this.tiles.length);
 
 				for (let i = 0; i < boardState.length; i++) {
 					for (let k = 0; k < this.tiles.length; k++) {
@@ -931,26 +929,22 @@ class Level extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
-		var boardState;
-		var possibleMoves;
-		var gameState;
 		var playerID = -1;
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
 
+				this.updateGameState(playerID, this.updateBoardState, this.tileClicked);
 			}
 		};
 
 		// Send a GET request to the server (just testing with /match/11 endpoint)
-		// xhttp.open("GET", "/playerID", true);
-		// xhttp.send();
+		xhttp.open("GET", "/signing/playerID", true);
+		xhttp.send();
 
 		// Sync the game state every 2 seconds
 		var TIME_BETWEEN_SYNC = 2000;
-
-		this.updateGameState(playerID, this.updateBoardState, this.tileClicked);
 
 		// // call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
 		// setInterval(() => {
@@ -991,9 +985,9 @@ class Level extends Phaser.Scene {
 
 		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
 		//setInterval(this.updateGameState, TIME_BETWEEN_SYNC) 
-		
 
-		
+
+
 	}
 	/* END-USER-CODE */
 }

@@ -754,47 +754,6 @@ class Level extends Phaser.Scene {
 	tiles;
 
 	/* START-USER-CODE */
-
-	// Write more your code here
-
-	// updateGameState(playerID) {
-	// 	return new Promise((resolve, reject) => {
-	// 		var xhttp = new XMLHttpRequest();
-	// 		xhttp.onreadystatechange = () => {
-	// 			if (xhttp.readyState == 4) {
-	// 				if (xhttp.status == 200) {
-	// 					// Parse the JSON response
-	// 					var gameState = JSON.parse(xhttp.responseText);
-	
-	// 					// Get the player names from the response
-	// 					var player1Name = gameState[0].player_name;
-	// 					var player2Name = gameState[1].player_name;
-	
-	// 					// Set the player names in the game
-	// 					this.userName.text = player1Name;
-	// 					this.advName.text = player2Name;
-	
-	// 					for (let i = 0; i < gameState.length; i++) {
-	// 						if (playerID == gameState[i].player_id) {
-	// 							if (gameState[i].mp_pc_id == 1) {
-	// 								this.tilesContainer.angle = 0;
-	// 							} else if (gameState[i].mp_pc_id == 2) {
-	// 								this.tilesContainer.angle = -180;
-	// 							}
-	// 						}
-	// 					}
-	// 					resolve(gameState);
-	// 				} else {
-	// 					reject('Error fetching game state');
-	// 				}
-	// 			}
-	// 		};
-	
-	// 		// Send a GET request to the server (just testing with /match/11 endpoint)
-	// 		xhttp.open("GET", "../state/game/1", true);
-	// 		xhttp.send();
-	// 	});
-	// }
 	
 	updateGameState(playerID, callback) {
 		var xhttp = new XMLHttpRequest();
@@ -832,72 +791,6 @@ class Level extends Phaser.Scene {
 		xhttp.open("GET", "../state/game/1", true);
 		xhttp.send();
 	}
-	
-
-	// updateBoardState(gameState, playerID) {
-	// 	return new Promise((resolve, reject) => {
-	// 		var boardState;
-	// 		var xhttp = new XMLHttpRequest();
-	// 		xhttp.onreadystatechange = () => {
-	// 			if (xhttp.readyState == 4) {
-	// 				if (xhttp.status == 200) {
-	// 					// Parse the JSON response
-	// 					var data = JSON.parse(xhttp.responseText);
-	// 					boardState = data;
-	
-	// 					for (let i = 0; i < boardState.length; i++) {
-	// 						for (let k = 0; k < this.tiles.length; k++) {
-	// 							// Get the current tile element at the 'index' position
-	// 							const element = this.tiles[k];
-	// 							// Extract the number from the tile's name using the 'extractNumberFromString' function
-	// 							var numbFromImage = extractNumberFromString(element.name);
-	// 							if (numbFromImage == boardState[i].tile_id) {
-	// 								switch (boardState[i].mpp_piece_id) {
-	// 									case 5:
-	// 										if (boardState[i].mp_pc_id == 1) {
-	// 											const whitePawn = new WhitePawn(this, element.x, element.y);
-	// 											this.add.existing(whitePawn);
-	// 											this.tilesContainer.add(whitePawn);
-	// 											for (let i = 0; i < gameState.length; i++) {
-	// 												if (playerID == gameState[i].player_id) {
-	// 													if (gameState[i].mp_pc_id == 1) {
-	// 														whitePawn.angle = 0;
-	// 													} else if (gameState[i].mp_pc_id == 2) {
-	// 														whitePawn.angle = -180;
-	// 													}
-	// 												}
-	// 											}
-	// 										} else {
-	// 											const blackPawn = new BlackPawn(this, element.x, element.y);
-	// 											this.add.existing(blackPawn);
-	// 											this.tilesContainer.add(blackPawn);
-	// 											for (let i = 0; i < gameState.length; i++) {
-	// 												if (playerID == gameState[i].player_id) {
-	// 													if (gameState[i].mp_pc_id == 1) {
-	// 														blackPawn.angle = 0;
-	// 													} else if (gameState[i].mp_pc_id == 2) {
-	// 														blackPawn.angle = -180;
-	// 													}
-	// 												}
-	// 											}
-	// 										}
-	// 										break;
-	// 								}
-	// 							}
-	// 						}
-	// 					}
-	// 					resolve(boardState);
-	// 				} else {
-	// 					reject('Error fetching board state');
-	// 				}
-	// 			}
-	// 		};
-	
-	// 		// Send a GET request to the server (just testing with /match/1 endpoint)
-	// 		xhttp.open("GET", "../state/boardR/1", true);
-	// 		xhttp.send();
-	// 	});
-	// }
 	
 	updateBoardState(gameState, playerID, callback) {
 		var xhttp = new XMLHttpRequest();
@@ -960,73 +853,6 @@ class Level extends Phaser.Scene {
 		xhttp.send();
 	}
 	
-
-
-	// tileClicked(boardState, playerID) {
-	// 	var possibleMoves;
-	
-	// 	// Loop through each tile in the 'tiles' array
-	// 	for (let index = 0; index < this.tiles.length; index++) {
-	// 		// Get the current tile element at the 'index' position
-	// 		const element = this.tiles[index];
-	
-	// 		// Add an event listener to the tile for the 'pointerdown' event
-	// 		element.on("pointerdown", event => {
-	// 			// Extract the number from the tile's name using the 'extractNumberFromString' function
-	// 			var numbFromImage = extractNumberFromString(element.name);
-	
-	// 			for (let i = 0; i < boardState.length; i++) {
-	// 				var k = i;
-	// 				k++;
-	
-	// 				if (boardState[i].mpp_ps_id && k == numbFromImage && boardState[i].playerID == playerID) {
-	// 					// Check if a tile was already pressed
-	// 					if (!possibleMoves) {
-	// 						// If it was, check all the possible moves that the piece on the tile selected can do
-	// 						var xPosition = boardState[i].x;
-	// 						var yPosition = boardState[i].y;
-	// 						var pieceType = boardState[i].mpp_piece_id;
-	// 						possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
-	
-	// 						for (let i = 0; i < possibleMoves.length; i++) {
-	// 							for (let k = 0; k < this.tiles.length; k++) {
-	// 								// Get the current tile element at the 'index' position
-	// 								const element = this.tiles[k];
-	// 								// Extract the number from the tile's name using the 'extractNumberFromString' function
-	// 								var numbFromImage = extractNumberFromString(element.name);
-	// 								var tilePossition = numberToCoordinates(numbFromImage);
-	// 								if (tilePossition.x == possibleMoves[i].x && tilePossition.y == possibleMoves[i].y) {
-	// 									console.log(possibleMoves);
-	// 									if (!possibleMoves[i].enemyOnTheWay) {
-	// 										const visualPossibleMoves = new Dot(this, element.x, element.y);
-	// 										this.add.existing(visualPossibleMoves);
-	// 										this.tilesContainer.add(visualPossibleMoves);
-	// 									} else {
-	// 										const killingArea = new redSquare(this, element.x, element.y);
-	// 										this.add.existing(killingArea);
-	// 										this.tilesContainer.add(killingArea);
-	// 									}
-	// 								}
-	// 							}
-	// 						}
-	
-	// 						possibleMoves.push({ x: xPosition, y: yPosition });
-	// 						console.log("1st Tile Selected: ", possibleMoves);
-	// 					} else {
-	// 						// If not, set the array back to null so a new tile can be selected
-	// 						possibleMoves = makeMove(possibleMoves, numbFromImage);
-	// 					}
-	// 					break;
-	// 				}
-	// 				// Check if the user selected a tile before
-	// 				if (possibleMoves) {
-	// 					possibleMoves = makeMove(possibleMoves, numbFromImage);
-	// 				}
-	// 			}
-	// 		});
-	// 	}
-	// }
-	
 	tileClicked(boardState, playerID) {
 		var possibleMoves;
 	
@@ -1079,21 +905,34 @@ class Level extends Phaser.Scene {
 							console.log("1st Tile Selected: ", possibleMoves);
 						} else {
 							// If not, set the array back to null so a new tile can be selected
-							possibleMoves = makeMove(possibleMoves, numbFromImage);
+							possibleMoves = this.makeMove(possibleMoves, numbFromImage, playerID);
 						}
 						break;
 					}
 					// Check if the user selected a tile before
 					if (possibleMoves) {
-						possibleMoves = makeMove(possibleMoves, numbFromImage);
+						possibleMoves = this.makeMove(possibleMoves, numbFromImage, playerID);
 					}
 				}
 			});
 		}
 	}
-	
-	
 
+	makeMove(possibleMoves, numbFromImage, playerID) {
+		var cordinates = numberToCoordinates(numbFromImage);
+		for (let i = 0; i < possibleMoves.length; i++) {
+			//console.log(possibleMoves[i].x , possibleMoves[i].y)
+			if(possibleMoves[i].x == cordinates.x && possibleMoves[i].y == cordinates.y){
+				console.log(possibleMoves);
+				console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y," to position ", cordinates.x, cordinates.y);
+				this.updateGameState(playerID, (gameState) => {
+					this.updateBoardState(gameState, playerID, (boardState) => {});
+				});
+				return possibleMoves = undefined;
+			}
+		}
+	}
+	
 	create() {
 
 		this.editorCreate();
@@ -1103,22 +942,7 @@ class Level extends Phaser.Scene {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
 
-				// this.updateGameState(playerID, this.updateBoardState, this.tileClicked);+
-				console.log(playerID);
-
-				// async function updateStates(playerID) {
-				// 	try {
-				// 		const gameState = await this.updateGameState(playerID);
-				// 		const boardState = await this.updateBoardState.call(this, gameState, playerID);
-				// 		this.tileClicked(boardState, playerID);
-				// 	} catch (error) {
-				// 		console.error(error);
-				// 	}
-				// }
-				
-				// // Assuming `this` context is correct, you can call it like this:
-				// updateStates.call(this, playerID);
-
+				//calls the board state
 				this.updateGameState(playerID, (gameState) => {
 					this.updateBoardState(gameState, playerID, (boardState) => {
 						this.tileClicked(boardState, playerID);
@@ -1131,52 +955,6 @@ class Level extends Phaser.Scene {
 		// Send a GET request to the server (just testing with /match/11 endpoint)
 		xhttp.open("GET", "/signing/playerID", true);
 		xhttp.send();
-
-		// Sync the game state every 2 seconds
-		var TIME_BETWEEN_SYNC = 2000;
-
-		// // call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
-		// setInterval(() => {
-		// 	var xhttp = new XMLHttpRequest();
-		// 	xhttp.onreadystatechange = () => {
-		// 		if (xhttp.readyState == 4) {
-		// 			// Parse the JSON response
-		// 			var data = JSON.parse(xhttp.responseText);
-		// 			gameState = data;
-
-		// 			// Get the player names from the response
-		// 			var player1Name = gameState[0].player_name
-		// 			var player2Name = gameState[1].player_name
-
-		// 			// Set the player names in the game
-		// 			this.userName.text = player1Name;
-		// 			this.advName.text = player2Name;
-
-
-		// 			for (let i = 0; i < gameState.length; i++) {
-		// 				if(playerID == gameState[i].player_id){
-		// 					if(gameState[i].mp_pc_id == 1){
-		// 						this.tilesContainer.angle = 0;
-		// 					}
-		// 					else if(gameState[i].mp_pc_id == 2){
-		// 						this.tilesContainer.angle = -180;
-		// 					}
-		// 				}
-		// 			}
-		// 		}
-		// 	};
-
-		// 	// Send a GET request to the server (just testing with /match/11 endpoint)
-		// 	xhttp.open("GET", "../state/game/1", true);
-		// 	xhttp.send();
-		// }, TIME_BETWEEN_SYNC)
-
-
-		// call function every 2 seconds (TIME_BETWEEN_SYNC milliseconds)
-		//setInterval(this.updateGameState, TIME_BETWEEN_SYNC) 
-
-
-
 	}
 	/* END-USER-CODE */
 }
@@ -1184,17 +962,7 @@ class Level extends Phaser.Scene {
 /* END OF COMPILED CODE */
 
 // You can write more code here
-function makeMove(possibleMoves, numbFromImage) {
-	var cordinates = numberToCoordinates(numbFromImage);
-	for (let i = 0; i < possibleMoves.length; i++) {
-		//console.log(possibleMoves[i].x , possibleMoves[i].y)
-		if(possibleMoves[i].x == cordinates.x && possibleMoves[i].y == cordinates.y){
-			console.log(possibleMoves);
-            console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y," to position ", cordinates.x, cordinates.y);
-            return possibleMoves = undefined;
-        }
-	}
-}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //Numbers transformations

@@ -757,174 +757,179 @@ class Level extends Phaser.Scene {
 
 	// Write more your code here
 
-	updateGameState(playerID, callback, callback2){
-
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = () => {
-			if (xhttp.readyState == 4) {
-				// Parse the JSON response
-				var gameState = JSON.parse(xhttp.responseText);
-
-				// Get the player names from the response
-				var player1Name = gameState[0].player_name
-				var player2Name = gameState[1].player_name
-
-				// Set the player names in the game
-				this.userName.text = player1Name;
-				this.advName.text = player2Name;
-
-
-				for (let i = 0; i < gameState.length; i++) {
-					if(playerID == gameState[i].player_id){
-						if(gameState[i].mp_pc_id == 1){
-							this.tilesContainer.angle = 0;
-						}
-						else if(gameState[i].mp_pc_id == 2){
-							this.tilesContainer.angle = -180;
-						}
-					}
-				}
-				callback(gameState, callback2);
-			}
-		};
-
-		// Send a GET request to the server (just testing with /match/11 endpoint)
-		xhttp.open("GET", "../state/game/1", true);
-		xhttp.send();		
-	}
-
-	updateBoardState(gameState, callback){
-		var boardState
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = () => {
-			if (xhttp.readyState == 4) {
-				// Parse the JSON response
-				var data = JSON.parse(xhttp.responseText);
-				boardState = data;
-
-				for (let i = 0; i < boardState.length; i++) {
-					for (let k = 0; k < this.tiles.length; k++) {
-						// Get the current tile element at the 'index' position
-						const element = this.tiles[k];
-						// Extract the number from the tile's name using the 'extractNumberFromString' function
-						var numbFromImage = extractNumberFromString(element.name);
-						if(numbFromImage == boardState[i].tile_id){
-							switch (boardState[i].mpp_piece_id) {
-								case 5:			
-									if(boardState[i].mp_pc_id == 1){
-										const whitePawn = new WhitePawn(this, element.x, element.y);
-										this.add.existing(whitePawn);
-										this.tilesContainer.add(whitePawn);
-										for (let i = 0; i < gameState.length; i++) {
-											if(playerID == gameState[i].player_id){
-												if(gameState[i].mp_pc_id == 1){
-													whitePawn.angle = 0;
-												}
-												else if(gameState[i].mp_pc_id == 2){
-													whitePawn.angle = -180;
-												}
-											}
-										}
-									}else{
-										const blackPawn = new BlackPawn(this, element.x, element.y);
-										this.add.existing(blackPawn);											
-										this.tilesContainer.add(blackPawn);
-										for (let i = 0; i < gameState.length; i++) {
-											if(playerID == gameState[i].player_id){
-												if(gameState[i].mp_pc_id == 1){
-													blackPawn.angle = 0;
-												}
-												else if(gameState[i].mp_pc_id == 2){
-													blackPawn.angle = -180;
-												}
-											}
-										}
-									}
-								break;
+	updateGameState(playerID) {
+		return new Promise((resolve, reject) => {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+					if (xhttp.status == 200) {
+						// Parse the JSON response
+						var gameState = JSON.parse(xhttp.responseText);
+	
+						// Get the player names from the response
+						var player1Name = gameState[0].player_name;
+						var player2Name = gameState[1].player_name;
+	
+						// Set the player names in the game
+						this.userName.text = player1Name;
+						this.advName.text = player2Name;
+	
+						for (let i = 0; i < gameState.length; i++) {
+							if (playerID == gameState[i].player_id) {
+								if (gameState[i].mp_pc_id == 1) {
+									this.tilesContainer.angle = 0;
+								} else if (gameState[i].mp_pc_id == 2) {
+									this.tilesContainer.angle = -180;
+								}
 							}
 						}
+						resolve(gameState);
+					} else {
+						reject('Error fetching game state');
 					}
 				}
-				callback(gameState);
-			}
-		};
-
-		// Send a GET request to the server (just testing with /match/1 endpoint)
-		xhttp.open("GET", "../state/boardR/1", true);
-		xhttp.send();
+			};
+	
+			// Send a GET request to the server (just testing with /match/11 endpoint)
+			xhttp.open("GET", "../state/game/1", true);
+			xhttp.send();
+		});
 	}
+	
 
-	tileClicked(boardState){
+	updateBoardState(gameState, playerID) {
+		return new Promise((resolve, reject) => {
+			var boardState;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+					if (xhttp.status == 200) {
+						// Parse the JSON response
+						var data = JSON.parse(xhttp.responseText);
+						boardState = data;
+	
+						for (let i = 0; i < boardState.length; i++) {
+							for (let k = 0; k < this.tiles.length; k++) {
+								// Get the current tile element at the 'index' position
+								const element = this.tiles[k];
+								// Extract the number from the tile's name using the 'extractNumberFromString' function
+								var numbFromImage = extractNumberFromString(element.name);
+								if (numbFromImage == boardState[i].tile_id) {
+									switch (boardState[i].mpp_piece_id) {
+										case 5:
+											if (boardState[i].mp_pc_id == 1) {
+												const whitePawn = new WhitePawn(this, element.x, element.y);
+												this.add.existing(whitePawn);
+												this.tilesContainer.add(whitePawn);
+												for (let i = 0; i < gameState.length; i++) {
+													if (playerID == gameState[i].player_id) {
+														if (gameState[i].mp_pc_id == 1) {
+															whitePawn.angle = 0;
+														} else if (gameState[i].mp_pc_id == 2) {
+															whitePawn.angle = -180;
+														}
+													}
+												}
+											} else {
+												const blackPawn = new BlackPawn(this, element.x, element.y);
+												this.add.existing(blackPawn);
+												this.tilesContainer.add(blackPawn);
+												for (let i = 0; i < gameState.length; i++) {
+													if (playerID == gameState[i].player_id) {
+														if (gameState[i].mp_pc_id == 1) {
+															blackPawn.angle = 0;
+														} else if (gameState[i].mp_pc_id == 2) {
+															blackPawn.angle = -180;
+														}
+													}
+												}
+											}
+											break;
+									}
+								}
+							}
+						}
+						resolve(boardState);
+					} else {
+						reject('Error fetching board state');
+					}
+				}
+			};
+	
+			// Send a GET request to the server (just testing with /match/1 endpoint)
+			xhttp.open("GET", "../state/boardR/1", true);
+			xhttp.send();
+		});
+	}
+	
+
+	tileClicked(boardState, playerID) {
 		var possibleMoves;
-
+	
 		// Loop through each tile in the 'tiles' array
 		for (let index = 0; index < this.tiles.length; index++) {
 			// Get the current tile element at the 'index' position
 			const element = this.tiles[index];
-
+	
 			// Add an event listener to the tile for the 'pointerdown' event
 			element.on("pointerdown", event => {
-
 				// Extract the number from the tile's name using the 'extractNumberFromString' function
 				var numbFromImage = extractNumberFromString(element.name);
-
+	
 				for (let i = 0; i < boardState.length; i++) {
-
 					var k = i;
 					k++;
-
-					if(boardState[i].mpp_ps_id && k == numbFromImage && boardState[i].playerID == playerID)
-					{
-						//check if a tiles was already pressed
-						if(!possibleMoves){ //if it was checks all the possible moves that the piece on the tiles selected can do
+	
+					if (boardState[i].mpp_ps_id && k == numbFromImage && boardState[i].playerID == playerID) {
+						// Check if a tile was already pressed
+						if (!possibleMoves) {
+							// If it was, check all the possible moves that the piece on the tile selected can do
 							var xPosition = boardState[i].x;
 							var yPosition = boardState[i].y;
 							var pieceType = boardState[i].mpp_piece_id;
 							possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
-
-
+	
 							for (let i = 0; i < possibleMoves.length; i++) {
 								for (let k = 0; k < this.tiles.length; k++) {
 									// Get the current tile element at the 'index' position
 									const element = this.tiles[k];
 									// Extract the number from the tile's name using the 'extractNumberFromString' function
 									var numbFromImage = extractNumberFromString(element.name);
-									var tilePossition = numberToCoordinates(numbFromImage)
-									if(tilePossition.x == possibleMoves[i].x && tilePossition.y == possibleMoves[i].y){
+									var tilePossition = numberToCoordinates(numbFromImage);
+									if (tilePossition.x == possibleMoves[i].x && tilePossition.y == possibleMoves[i].y) {
 										console.log(possibleMoves);
-										if(!possibleMoves[i].enemyOnTheWay){
+										if (!possibleMoves[i].enemyOnTheWay) {
 											const visualPossibleMoves = new Dot(this, element.x, element.y);
 											this.add.existing(visualPossibleMoves);
 											this.tilesContainer.add(visualPossibleMoves);
-										}
-										else{
+										} else {
 											const killingArea = new redSquare(this, element.x, element.y);
 											this.add.existing(killingArea);
 											this.tilesContainer.add(killingArea);
 										}
 									}
-
 								}
 							}
-
-							possibleMoves.push({ x: xPosition, y: yPosition});
+	
+							possibleMoves.push({ x: xPosition, y: yPosition });
 							console.log("1st Tile Selected: ", possibleMoves);
-
-						}else{ //if not set the array back to null so he can select a new tile
-							// needs to see if the piece selected is part of the array in case it wants to take an enemies piece							
+						} else {
+							// If not, set the array back to null so a new tile can be selected
 							possibleMoves = makeMove(possibleMoves, numbFromImage);
 						}
-						break
+						break;
 					}
-					//check if the user selected a tile before
-					if(possibleMoves){
+					// Check if the user selected a tile before
+					if (possibleMoves) {
 						possibleMoves = makeMove(possibleMoves, numbFromImage);
 					}
 				}
 			});
 		}
 	}
+	
 
+	
 
 	create() {
 
@@ -935,7 +940,21 @@ class Level extends Phaser.Scene {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
 
-				this.updateGameState(playerID, this.updateBoardState, this.tileClicked);
+				// this.updateGameState(playerID, this.updateBoardState, this.tileClicked);+
+				console.log(playerID);
+
+				async function updateStates(playerID) {
+					try {
+						const gameState = await this.updateGameState(playerID);
+						const boardState = await this.updateBoardState.call(this, gameState, playerID);
+						this.tileClicked(boardState, playerID);
+					} catch (error) {
+						console.error(error);
+					}
+				}
+				
+				// Assuming `this` context is correct, you can call it like this:
+				updateStates.call(this, playerID);
 			}
 		};
 

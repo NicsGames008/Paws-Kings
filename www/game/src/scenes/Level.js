@@ -1136,8 +1136,6 @@ class Level extends Phaser.Scene {
 			element.worm.on("pointerdown", event => {
 				// Extract the number from the tile's name using the 'extractNumberFromString' function
 				cardIdReturned = element.cardId;
-				//console.log(element);
-				console.log(cardIdReturned);
 				
 			});
 	}

@@ -966,7 +966,6 @@ class Level extends Phaser.Scene {
 				if (xhttp.status == 200) {
 					// Parse the JSON response
 					var boardState = JSON.parse(xhttp.responseText);
-					console.log(boardState);
 
 					boardState.forEach(state => {
 						const tileElement = this.tiles.find(tile => tile.tileId === state.tile_id);

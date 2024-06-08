@@ -1105,7 +1105,7 @@ class Level extends Phaser.Scene {
 		}
 		//idk
 
-		//var piecesOnBoard = [];
+
 		//save the coordinates and then eleborates them instes of increasigly create a new object
 		//legendary queer, get the piece and it's tile id, then it goes thoutght all of them and CHANGES their texture
 
@@ -1134,20 +1134,20 @@ class Level extends Phaser.Scene {
 						}
 
 						//Detecting the piecce type
-						switch(data[i].card_name){
-							case 'Bishop':     //Bishop
+						switch(data[i].card_id){
+							case 1:     //Bishop
 								cardAssetName += "Bishop";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 								break;
-							case 'Roock':     // Roock
+							case 2:     // Roock
 								cardAssetName += "Roock";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 								break;
-							case 'Knight':     // Knight
+							case 3:     // Knight
 								cardAssetName += "Knight";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 								break;
-							case 'Queen':     // Quween
+							case 4:     // Quween
 								cardAssetName += "Queen";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 								break;
@@ -1163,9 +1163,9 @@ class Level extends Phaser.Scene {
 			};
 
 			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
-			xhttp.open("GET", "../state/card/1/1", true);
+			xhttp.open("GET", "../state/card/1", true);
 			xhttp.send();
-		}, TIME_BETWEEN_SYNC)
+		}, 2000)
 
 
 		//Progressive tile generative prefab with properies in mind, idk tho
@@ -1244,7 +1244,9 @@ class Level extends Phaser.Scene {
 				if (xhttp.readyState == 4) {
 					// Parse the JSON response
 					var data = JSON.parse(xhttp.responseText);
+
 					var cardAssetName = "";
+					
 					for(let i = 0; i < data.length; i++){
 
 						//Constructing the name for the card prefab
@@ -1285,7 +1287,7 @@ class Level extends Phaser.Scene {
 			};
 
 			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
-			xhttp.open("GET", "../state/card/1/1", true);
+			xhttp.open("GET", "../state/card/1", true);
 			xhttp.send();
 		}, 2000)
 	}

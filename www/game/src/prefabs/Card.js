@@ -8,14 +8,12 @@ class Card extends Phaser.GameObjects.Container {
 	constructor(scene, x, y) {
 		super(scene, x ?? 0, y ?? 0);
 
-		// container
-		const container = scene.add.container(46, 17);
-		this.add(container);
-
+		
+		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, 100, 140), Phaser.Geom.Rectangle.Contains);
 		// worm
-		const worm = scene.add.image(0, 0, "worm");
+		const worm = scene.add.image(46, 16, "worm");
 		worm.scaleX = 2;
-		container.add(worm);
+		this.add(worm);
 
 		// onPointerDownScript
 		const onPointerDownScript = new OnPointerDownScript(worm);
@@ -26,13 +24,13 @@ class Card extends Phaser.GameObjects.Container {
 		this.worm = worm;
 
 		/* START-USER-CTR-CODE */
-		// worm.on('pointerdown', () => {
-		// 	//giving back the var "worm" to later be used as to change the texture
-		// 	console.log(worm.cardId);
-		// 	//this.print();
-		// 	//worm.alpha = 0;
-		// 	//fadeIntoScene();
-		// })
+		//worm.on('pointerdown', () => {
+			//giving back the var "worm" to later be used as to change the texture
+			//console.log(onPointerDownScript);
+			//this.print();
+			//worm.alpha = 0;
+			//fadeIntoScene();
+		//})
 		// Write your code here.
 
 		/* END-USER-CTR-CODE */
@@ -48,11 +46,6 @@ class Card extends Phaser.GameObjects.Container {
 	/* START-USER-CODE */
 
 	// Write your code here.
-
-	print(){
-		console.log("adoro diO");
-	}
-
 
 	//function fadeIntoScene(dur) {
 	//	scene.tweens.add({

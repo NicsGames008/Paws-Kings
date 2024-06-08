@@ -1127,25 +1127,18 @@ class Level extends Phaser.Scene {
 
 	}
 
-	cardClicled(cardIdReturned){
+	cardClicked(cardIdReturned){
 		for (let i = 0; i < this.card.length; i++) {
-			// Get the current tile element at the 'index' position
+			
+			// Get the current card element at the 'i' position
 			const element = this.card[i];
-
-			// Add an event listener to the tile for the 'pointerdown' event
-			element.setInteractive();
-			element.on("pointerdown", event => {
+			
+			element.worm.on("pointerdown", event => {
 				// Extract the number from the tile's name using the 'extractNumberFromString' function
 				cardIdReturned = element.cardId;
-				console.log("card Id: " + cardIdReturned);
-				// this.tiles.forEach(element => {
-				// 	const children = element.getAll();
-				// 	const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
-				// 	if (childToDestroyInHell) {
-				// 		childToDestroyInHell.destroy();
-				// 		element.remove(childToDestroyInHell);
-				// 	}
-				// });
+				//console.log(element);
+				console.log(cardIdReturned);
+				
 			});
 	}
 }
@@ -1177,7 +1170,7 @@ class Level extends Phaser.Scene {
 				var cardId = 0;
 				
 				// cycle trhought all the card and set the onPointerDown event
-				this.cardClicled(cardId);
+				this.cardClicked(cardId);
 				
 				//calls the board state
 				this.updateGameState(playerID, (gameState) => {
@@ -1250,38 +1243,32 @@ class Level extends Phaser.Scene {
 	}
 
 	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference, i){
-		//color necessary to be used to detected the rigth card
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
+		
 		cardReference.cardId = i;
 		cardReference.ammount = cardAmmount;
 
 
 		if(cardAmmount > 0){
 			//allows it to be shown, or it could make it not ; not necessarily changing it's size
-			//console.log(cardReference);
-
 			cardReference.worm.setTexture(cardArtReference);
-			//cardReference.worm.setSize(200,124);
 			cardReference.worm.scaleX = 1;
+
+			//changes the text on the bottom of each card
 			if(cardAmmount > 1){
 				cardText.text = "x" + cardAmmount;
 			}else{
 				cardText.text = "";
 			}
-
-			//cardReference.print();
-			//cardReference.fadeIntoScene(5000);
-
 		}else if(cardAmmount <= 0){//assures that a change in card has appened
 
 			//allows it to be hidden, or it could make it gray; not necessarily changing it's size
-
-			//nelio is a portuGUESS man
 			cardText.text = "";
 			cardReference.worm.scaleX = 0;
 		}
 
 	}
+
 	/* END-USER-CODE */
 }
 

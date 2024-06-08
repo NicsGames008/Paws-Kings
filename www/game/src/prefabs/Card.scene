@@ -15,33 +15,26 @@
             "label": "container_2",
             "list": [
                 {
-                    "type": "Container",
-                    "id": "5379dc11-0400-42fa-aa01-6afd872b03e0",
-                    "label": "container",
+                    "type": "Image",
+                    "id": "3746a3c4-f5ee-43bb-9c1b-ff48e8c1efb5",
+                    "label": "worm",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "worm"
+                    },
                     "x": 46,
-                    "y": 17,
+                    "y": 16,
+                    "scaleX": 2,
                     "list": [
                         {
-                            "type": "Image",
-                            "id": "3746a3c4-f5ee-43bb-9c1b-ff48e8c1efb5",
-                            "label": "worm",
-                            "scope": "CLASS",
-                            "texture": {
-                                "key": "worm"
-                            },
-                            "scaleX": 2,
+                            "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
+                            "id": "7c60386c-2801-4923-a45d-68d035d4f209",
+                            "label": "onPointerDownScript",
                             "list": [
                                 {
-                                    "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
-                                    "id": "7c60386c-2801-4923-a45d-68d035d4f209",
-                                    "label": "onPointerDownScript",
-                                    "list": [
-                                        {
-                                            "prefabId": "0e39177a-6e19-4b56-a7c2-2360a2e41505",
-                                            "id": "480a365d-7c8a-4f36-9a4c-78e89d7a6e0c",
-                                            "label": "pushActionScript"
-                                        }
-                                    ]
+                                    "prefabId": "0e39177a-6e19-4b56-a7c2-2360a2e41505",
+                                    "id": "480a365d-7c8a-4f36-9a4c-78e89d7a6e0c",
+                                    "label": "pushActionScript"
                                 }
                             ]
                         }

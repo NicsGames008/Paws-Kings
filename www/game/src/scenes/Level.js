@@ -1042,11 +1042,11 @@ class Level extends Phaser.Scene {
 	}
 	cardClicked(cardIdReturned) {
 		this.card.forEach(element => {
-			console.log(element);
+			//console.log(element);
 			element.worm.setInteractive(); // Ensure the element is interactive
 			element.worm.on("pointerdown", () => {
 				cardIdReturned = element.cardId;
-				console.log('Card Clicked: ', element.cardId); // Debugging line
+				console.log('Card Clicked: ' + cardIdReturned + " / card_id property: " + element.cardId); // Debugging line
 			});
 		});
 	}
@@ -1085,9 +1085,9 @@ class Level extends Phaser.Scene {
 
 						///////////////////////////////////////////
 						//possible promotion, selecting a card then a peice and console.log that it has been promoted
-
+						console.log("card Id selected: " + this.cardId);
 						//end promotion
-
+						//cardId = 0;
 
 
 						if (!possibleMoves) {
@@ -1157,11 +1157,12 @@ class Level extends Phaser.Scene {
 
 		this.editorCreate();
 		var playerID = -1;
+		var cardId = 0;
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
-				var cardId = 0;
+				
 				
 				this.cardClicked(cardId);
 				this.updateGameState(playerID, gameState => {
@@ -1236,7 +1237,7 @@ class Level extends Phaser.Scene {
 	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference, i){
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
 		
-		cardReference.cardId = i;
+		cardReference.cardId = i + 1;
 		cardReference.ammount = cardAmmount;
 
 

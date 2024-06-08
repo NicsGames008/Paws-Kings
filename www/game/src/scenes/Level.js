@@ -937,7 +937,7 @@ class Level extends Phaser.Scene {
 					// Set the player names in the game
 					this.userName.text = player1Name;
 					this.advName.text = player2Name;
-					
+
 					for (let i = 0; i < gameState.length; i++) {
 						if (playerID == gameState[i].player_id) {
 							if (gameState[i].mp_pc_id == 1) {
@@ -1256,20 +1256,20 @@ class Level extends Phaser.Scene {
 						}
 
 						//Detecting the piecce type
-						switch(data[i].card_name){
-							case 'Bishop':     //Bishop
+						switch(data[i].card_id){
+							case 1:     //Bishop
 								cardAssetName += "Bishop";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 							break;
-							case 'Roock':     // Roock
+							case 2:     // Roock
 								cardAssetName += "Roock";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 							break;
-							case 'Knight':     // Knight
+							case 3:     // Knight
 								cardAssetName += "Knight";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 							break;
-							case 'Queen':     // Quween
+							case 4:     // Quween
 								cardAssetName += "Queen";
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
 							break;

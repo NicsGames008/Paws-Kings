@@ -38,10 +38,10 @@ router.get('/game/:matchId', (request, response) => {
 
 //----------------------------CARD---------------------------------------------------
 
-router.get('/card/:matchId/:playerId', (request, response) => {
+router.get('/card/:matchId', (request, response) => {
     // Get the data from the request
     var matchId = request.params.matchId;
-    var playerId = request.params.playerId;
+    var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message
     if (!matchId){
@@ -50,7 +50,7 @@ router.get('/card/:matchId/:playerId', (request, response) => {
     }
 
     //returns the card's name and ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT card_name, mpc_ammount, mp_pc_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Card.mpc_card_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
+    connection.execute('SELECT card_id, card_name, mpc_ammount, mp_pc_id FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Card ON Match_Player_Card.mpc_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Card.mpc_card_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
         [matchId, playerId],
         function (err, results, fields) {
             if (err){
@@ -70,10 +70,10 @@ router.get('/card/:matchId/:playerId', (request, response) => {
 
 //----------------------------SHARD---------------------------------------------------
 
-router.get('/shard/:matchId/:playerId', (request, response) => {
+router.get('/shard/:matchId', (request, response) => {
     // Get the data from the request
     var matchId = request.params.matchId;
-    var playerId = request.params.playerId;
+    var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message
     if (!matchId){
@@ -211,16 +211,16 @@ function FillFleetingBoard(request, response, previusResults){
 }
 
 
-function ReverseHorizontally(array) {
-    let numRows = array.length / 8;
-    let reversedArray = [];
+// function ReverseHorizontally(array) {
+//     let numRows = array.length / 8;
+//     let reversedArray = [];
 
-    for (let i = numRows - 1; i >= 0; i--) {
-        let row = array.slice(i * 8, (i + 1) * 8);
-        reversedArray.push(...row);
-    }
+//     for (let i = numRows - 1; i >= 0; i--) {
+//         let row = array.slice(i * 8, (i + 1) * 8);
+//         reversedArray.push(...row);
+//     }
 
-    return reversedArray;
-}
+//     return reversedArray;
+// }
 
 module.exports = router;

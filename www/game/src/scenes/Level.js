@@ -1296,9 +1296,8 @@ class Level extends Phaser.Scene {
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
 
 		cardReference.ammount = cardAmmount;
-		//console.log("card: " + i + " numb: " + cardReference.ammount);
 
-		cardText.text = cardName + ": x" + cardAmmount;
+		
 		if(cardAmmount > 0){
 			//allows it to be shown, or it could make it not ; not necessarily changing it's size
 			//console.log(cardReference);
@@ -1306,6 +1305,11 @@ class Level extends Phaser.Scene {
 			cardReference.worm.setTexture(cardArtReference);
 			//cardReference.worm.setSize(200,124);
 			cardReference.worm.scaleX = 1;
+			if(cardAmmount > 1){
+				cardText.text = "x" + cardAmmount;
+			}else{
+				cardText.text = "";
+			}
 
 			//cardReference.print();
 			//cardReference.fadeIntoScene(5000);
@@ -1315,6 +1319,7 @@ class Level extends Phaser.Scene {
 			//allows it to be hidden, or it could make it gray; not necessarily changing it's size
 
 			//nelio is a portuGUESS man
+			cardText.text = "";
 			cardReference.worm.scaleX = 0;
 		}
 

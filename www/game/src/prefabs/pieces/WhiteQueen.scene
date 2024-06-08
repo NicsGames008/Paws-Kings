@@ -1,0 +1,28 @@
+{
+    "id": "da240cd7-ac3c-4e15-9040-bc29489439ba",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "fda17c50-7824-4330-ad73-8f76aa0dd0d1",
+            "label": "whiteQueen_1",
+            "texture": {
+                "key": "whiteQueen_1"
+            }
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

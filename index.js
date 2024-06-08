@@ -37,6 +37,8 @@ app.use('/piece', piece);
 app.use('/signing', signing);
 
 
+
+
 // Connect to database and check if it's working. Otherwise gives an error.
 connection.connect((err) => {
     if (err){

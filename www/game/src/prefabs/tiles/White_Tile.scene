@@ -1,0 +1,54 @@
+{
+    "id": "44640341-5893-4bd5-b297-b8e7ad3d1b36",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "c2ef185c-9f54-4812-8d83-a60779faa381",
+            "label": "container_2",
+            "hitArea.shape": "RECTANGLE",
+            "hitArea.x": -35,
+            "hitArea.y": -35,
+            "hitArea.width": 70,
+            "hitArea.height": 70,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "9e636f61-efe6-40dc-b3a4-f75aff82e8e8",
+                    "label": "whiteTile",
+                    "texture": {
+                        "key": "whiteTile"
+                    },
+                    "scaleX": 7,
+                    "scaleY": 7
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    },
+    "prefabProperties": [
+        {
+            "name": "tileId",
+            "label": "Tile_Id",
+            "tooltip": "",
+            "defValue": 0,
+            "customDefinition": true,
+            "type": {
+                "id": "number"
+            }
+        }
+    ]
+}

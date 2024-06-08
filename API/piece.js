@@ -9,7 +9,7 @@ router.post('/move', (request, response) => {
     var startY = request.body.startY;
     var endX = request.body.endX;
     var endY = request.body.endY;
-    var playerId = request.body.playerId;
+    var playerId = request.session.playerID;
     var matchId = request.body.matchId;
  
     // if the vars are empty is gives an error message
@@ -84,7 +84,7 @@ router.post('/move', (request, response) => {
                                     }
                                 }
                                 else // if all check send a message saying so
-                                    UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece,"Move with out piece on the way")
+                                    UpdatePiecePositionWithShard(request, response, startX, startY, endX, endY, matchId, playerId, piece,"Move without piece on the way")
                             } else // Send a response indicating that the move is not valid
                                 response.send("Move is not valid!");                            
                         });
@@ -234,12 +234,12 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
                 // Add a card and change the value of the shard to 0
                 ChangeShard(request, response, "0", matchId, playerId, shard);
                 AddCard(request, response, matchId, playerId, shard)
-                response.send(text + "- CARD added " + shard);
+                response.send(text + " - CARD added " + shard);
             }
             else{
                 // Adds a shard 
                 ChangeShard(request, response, shardAmount, matchId, playerId, shard);
-                response.send(text + "- SHARD added " + shard);
+                response.send(text + " - SHARD added " + shard);
             }
             
             //Changes who's turn is 

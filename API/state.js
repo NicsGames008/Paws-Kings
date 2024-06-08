@@ -136,7 +136,7 @@ function FillFleetingBoard(request, response, previusResults){
 
     var actualChessBoard = [];
 
-    connection.execute('SELECT t.tile_id, mpp.mpp_tile_id, mpp.mpp_piece_id, mpp_mp_id, mp_pc_id FROM Tile t LEFT JOIN Match_Player_Piece mpp ON mpp.mpp_tile_id = t.tile_id  AND (mpp.mpp_mp_id = ? OR mpp.mpp_mp_id = ?) AND mpp_ps_id != 2 LEFT JOIN Match_Player mp ON mp.mp_id = mpp.mpp_mp_id;',
+    connection.execute('SELECT t.tile_id, t.tile_x as x, t.tile_y as y, mpp.mpp_piece_id, mpp_mp_id, mp_pc_id, mpp_ps_id, mp.mp_player_id AS playerID FROM tile t LEFT JOIN match_player_piece mpp ON mpp.mpp_tile_id = t.tile_id AND (mpp.mpp_mp_id = ? OR mpp.mpp_mp_id = ?) AND mpp_ps_id != 2 LEFT JOIN match_player mp ON mp.mp_id = mpp.mpp_mp_id order by tile_id; ',
     [previusResults[0].mp_id, previusResults[1].mp_id],
     function (err, results, fields) {
         if (err){
@@ -145,66 +145,63 @@ function FillFleetingBoard(request, response, previusResults){
             if(results.length == 0){
                 response.send("MPPS for mps not found");
             }else{
-                //console.log("pieces founds!");
+                // //console.log("pieces founds!");
 
-                //printing th eboard to see if the id matches
-                let tileset = '';
-                for(let i = 0; i< results.length; i++){
-                    chessboard[i] = results[i].tile_id;
-                    tileset += chessboard[i] + '|'
-                    if((i+1)%8 == 0){
-                        tileset += '\n|';
-                    }
-                }
+                // //printing th eboard to see if the id matches
+                // let tileset = '';
+                // for(let i = 0; i< results.length; i++){
+                //     chessboard[i] = results[i].tile_id;
+                //     tileset += chessboard[i] + '|'
+                //     if((i+1)%8 == 0){
+                //         tileset += '\n|';
+                //     }
+                // }
 
 
-                //composing the chees board
-                for(let i = 0; i < results.length; i++){
+                // //composing the chees board
+                // for(let i = 0; i < results.length; i++){
 
-                    //If the pieece exist, we can start wokring on it
-                    if(results[i].mpp_piece_id != null){
+                //     //If the pieece exist, we can start wokring on it
+                //     if(results[i].mpp_piece_id != null){
 
-                        //Detecting the color
-                        if(results[i].mp_pc_id == 1){
-                            actualChessBoard[i] = 'w';
-                        }else{
-                            actualChessBoard[i] = 'b';
-                        }
+                //         //Detecting the color
+                //         if(results[i].mp_pc_id == 1){
+                //             actualChessBoard[i] = 'w';
+                //         }else{
+                //             actualChessBoard[i] = 'b';
+                //         }
 
-                        //Assinging the piece type
-                        switch(results[i].mpp_piece_id){
-                            case 1:     //Bishop
-                                actualChessBoard[i] += 'Bi';
-                                break;
-                            case 2:     //Roock
-                                actualChessBoard[i] += 'Ro';
-                                break;
-                            case 3:     //Knight
-                                actualChessBoard[i] += 'Kn';
-                                break;
-                            case 4:     //Quween
-                                actualChessBoard[i] += 'Qw';
-                                break;
-                            case 5:     //Pawn
-                                actualChessBoard[i] += 'Pa';
-                                break;
-                            case 6:     //King
-                                actualChessBoard[i] += 'Ki';
-                                break;
-                            default:
-                                console.log("roock is intentional btw");
-                        }
-                    }else{
-                        actualChessBoard[i] = ' '
-                    }
+                //         //Assinging the piece type
+                //         switch(results[i].mpp_piece_id){
+                //             case 1:     //Bishop
+                //                 actualChessBoard[i] += 'Bi';
+                //                 break;
+                //             case 2:     //Roock
+                //                 actualChessBoard[i] += 'Ro';
+                //                 break;
+                //             case 3:     //Knight
+                //                 actualChessBoard[i] += 'Kn';
+                //                 break;
+                //             case 4:     //Quween
+                //                 actualChessBoard[i] += 'Qw';
+                //                 break;
+                //             case 5:     //Pawn
+                //                 actualChessBoard[i] += 'Pa';
+                //                 break;
+                //             case 6:     //King
+                //                 actualChessBoard[i] += 'Ki';
+                //                 break;
+                //             default:
+                //                 console.log("roock is intentional btw");
+                //         }
+                //     }else{
+                //         actualChessBoard[i] = ' '
+                //     }
+                // }
 
-                    //console.log((i+1) + " " + actualChessBoard[i]);
-                }
+                // let horizontallyReversed = ReverseHorizontally(actualChessBoard);
 
-                let horizontallyReversed = ReverseHorizontally(actualChessBoard);
-
-                response.send(horizontallyReversed);
-                
+                response.send(results);
             }
             
         }

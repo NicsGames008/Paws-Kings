@@ -1010,8 +1010,76 @@ class Level extends Phaser.Scene {
 				}
 			});
 		}
+		//idk
+
+		//var piecesOnBoard = [];
+		//save the coordinates and then eleborates them instes of increasigly create a new object
+		//legendary queer, get the piece and it's tile id, then it goes thoutght all of them and CHANGES their texture
+
+
+		//CARDS
+		//either the placeholder raffigures a greyed out version of the card and when the number is higher than 0, it gets illuminated and we write how many in a text or we add many underlying copy
+		//or we have a common placeholder and when the number is > 0, the card appears and to show multiple copies we could stack some more or have a text to say that.
+
+
+
+		setInterval(() => {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+					// Parse the JSON response
+					var data = JSON.parse(xhttp.responseText);
+					var cardAssetName = "";
+					for(let i = 0; i < data.length; i++){
+
+						//Constructing the name for the card prefab
+						cardAssetName = "card"
+						if(data[i].mp_pc_id == 1){
+							cardAssetName += "White";
+						}else if(data[i].mp_pc_id == 2){
+							cardAssetName += "Black";
+						}
+
+						//Detecting the piecce type
+						switch(data[i].card_name){
+							case 'Bishop':     //Bishop
+								cardAssetName += "Bishop";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								break;
+							case 'Roock':     // Roock
+								cardAssetName += "Roock";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								break;
+							case 'Knight':     // Knight
+								cardAssetName += "Knight";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								break;
+							case 'Queen':     // Quween
+								cardAssetName += "Queen";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								break;
+							default:
+								console.log("gg i guess");
+							}
+
+							//resetting for the successive card
+							cardAssetName = "";
+						}	
+
+				}
+			};
+
+			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
+			xhttp.open("GET", "../state/card/1/1", true);
+			xhttp.send();
+		}, TIME_BETWEEN_SYNC)
+
+
 	}
 
+	update(){
+		//maybe "donkey" enpoint => asking if it's your turn to play.
+	}
 
 	makeMove(possibleMoves, numbFromImage, playerID) {
 		var cordinates = numberToCoordinates(numbFromImage);
@@ -1050,6 +1118,32 @@ class Level extends Phaser.Scene {
 		// Send a GET request to the server (just testing with /match/11 endpoint)
 		xhttp.open("GET", "/signing/playerID", true);
 		xhttp.send();
+	}
+	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference){
+		//color necessary to be used to detected the rigth card
+		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
+
+		cardReference.ammount = cardAmmount;
+		//console.log("card: " + i + " numb: " + cardReference.ammount);
+
+		cardText.text = cardName + ": x" + cardAmmount;
+		if(cardAmmount > 0){
+			if(cardArtReference == "cardWhiteKnight"){
+				console.log(cardReference);
+				cardReference.setTexture("cardWhiteKnight");
+				this.add.image(1200, 500, "cardWhiteKnight");
+			//allows it to be shown, or it could make it not ; not necessarily changing it's size
+			}
+			cardReference.scaleX = 1;
+
+		}else if(cardAmmount <= 0){//assures that a change in card has appened
+
+			//allows it to be hidden, or it could make it gray; not necessarily changing it's size
+
+			//nelio is a portuGUESS man
+			cardReference.scaleX = 0;
+		}
+
 	}
 	/* END-USER-CODE */
 }

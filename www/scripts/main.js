@@ -16,6 +16,7 @@ function tryLogin() {
 
                 // Redirect to game page in 2 seconds
                 setTimeout(() => {
+
                     window.location.replace("/game");
                 }, 2000)
             } else {
@@ -78,4 +79,31 @@ function register() {
     xhttp.open("POST", "/signing/register", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(data));
+}
+
+
+function FindMatchState(){
+    var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState == 4) {
+                var data = JSON.parse(xhttp.responseText);
+                if (xhttp.status == 400) {
+                    document.getElementById("message").innerText = data.error;
+                }
+                else if (xhttp.status == 204) {//already searching
+                    document.getElementById("message").innerText = data.message;
+                }
+                else if (xhttp.status == 201) {//successful creation
+                    document.getElementById("message").innerText = data.message;
+
+                    setTimeout(() => {
+                        //window.location.replace("/game");
+                        window.location.assign('/game');
+                    }, 2000)
+                }
+            }
+        };
+        // Send a POST request to the server
+        xhttp.open("GET", "/lobby/status", true);
+        xhttp.send();
 }

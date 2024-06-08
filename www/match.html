@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawns & Kings - Lobby</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo.png">
+    <link rel="stylesheet" href="./style/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="searchMatch" style="display: inline;">
+        <button onclick="EnterQueue()"> Search a Match
+    </div>
+    <div id="waitingMatch" style="display: none;">
+        Waiting for match...
+        <br>
+    </div>
+    <div id="leaveMatch" style="display: none;">
+        <button onclick="leaveQueue()"> Leave Queue
+    </div>
+    
+    <div id="message">
+
+    </div>
+    </button>
+</body>
+
+<script>
+    //leaving the queue
+    function leaveQueue(){
+        var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+                    var data = JSON.parse(xhttp.responseText);
+                    if (xhttp.status == 403) {
+                        document.getElementById("message").innerText = data.error;
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/login.html');
+                        }, 2000)
+                        //show button to login
+                    }
+                    else if (xhttp.status == 406) {
+                        //display message and hides the button due to unasibilty
+                        document.getElementById("message").innerText = data.error;
+                        document.getElementById("searchMatch").style.display="block";
+                    }
+                    else if (xhttp.status == 200) {
+                        document.getElementById("message").innerText = data.message;
+                        document.getElementById("searchMatch").style.display="block";
+                        document.getElementById("leaveMatch").style.display="none";
+                    }
+				}
+			};
+
+			xhttp.open("PUT", "/lobby/leave", true);
+			xhttp.send();
+    }
+
+    var intervalQueueStatus;
+    //joining a queue
+    function EnterQueue() {
+        var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+                    var data = JSON.parse(xhttp.responseText);
+                    if (xhttp.status == 403) {
+                        document.getElementById("message").innerText = data.error;
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/login.html');
+                        }, 2000)
+                        //show button to login
+                    }
+                    else if (xhttp.status == 406) {//already searching
+                        document.getElementById("message").innerText = data.error;
+                        //document.getElementById("searchMatch").style.display="none";
+                        document.getElementById("leaveMatch").style.display="block";
+                        
+                    }
+                    else if (xhttp.status == 201) {//successful creation
+                        document.getElementById("message").innerText = data.message;
+                        document.getElementById("searchMatch").style.display="block";
+                        document.getElementById("leaveMatch").style.display="block";
+                    }
+                    else if (xhttp.status == 200) {//successful creation
+                        document.getElementById("message").innerText = data.message;
+                        document.getElementById("searchMatch").style.display="block";
+                        document.getElementById("leaveMatch").style.display="block";
+
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/game');
+                        }, 2000);
+                    }
+				}
+			};
+
+            // Send a POST request to the server
+            xhttp.open("POST", "/lobby/search", true);
+            xhttp.send();
+
+            intervalQueueStatus = setInterval(() => {
+                console.log("Checking");
+                FindMatchState()
+            }, 2000);
+    }
+
+    //fetching the queue status
+    function FindMatchState(){
+        var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+                    console.log(xhttp.responseText);
+                    var data = JSON.parse(xhttp.responseText);
+                    if (xhttp.status == 400) {
+                        //document.getElementById("message").innerText = data.error;
+                        document.getElementById("message").innerText = data.error;
+                    }
+                    else if (xhttp.status == 204) {//already searching
+                        //document.getElementById("message").innerText = data.error;
+                        document.getElementById("message").innerText = data.message;
+                        //document.getElementById("searchMatch").style.display="none";
+                        //document.getElementById("leaveMatch").style.display="block";
+                        
+                    }
+                    else if (xhttp.status == 201) {//successful creation
+                        // var message = document.getElementById("message");
+                        // message.innerHTML = data.message;
+                        // message.innerHTML += "<br>Redirecting to game page in 2 seconds...";
+                        // message.style.color = "green";
+
+                        // document.getElementById("message").innerHTML = message;
+
+                        document.getElementById("message").innerText = data.message;
+
+                        setTimeout(() => {
+                            //window.location.replace("/game");
+                            window.location.assign('/game');
+                        }, 2000)
+                        //document.getElementById("searchMatch").style.display="block";
+                        //document.getElementById("leaveMatch").style.display="block";
+                    }
+				}
+			};
+            clearInterval(intervalQueueStatus);
+            // Send a POST request to the server
+            xhttp.open("GET", "/lobby/status", true);
+            xhttp.send();
+    }
+</script>
+</html>
+

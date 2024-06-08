@@ -2,12 +2,13 @@
             border: 0px;
             margin: 0px;
             background-color: black;
-            background-image: url('../img/wallpaper.jpg');
+            background-image: url('../img/Pawns-&-Kings-welcome-1.00.gif');
 
             /** Fullscreen background image without repeating. Adapt to the height of the screen */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            cursor: url('./www/img/worm.png'), auto;
         }
 
         #navbar {
@@ -15,6 +16,7 @@
             overflow: hidden;
             margin: 5px;
             padding: 5px;
+            
         }
 
         #navbar a {
@@ -34,6 +36,7 @@
         #gametitle {
             color: white;
             font-size: 3vw;
+            
         }
 
         .container {
@@ -87,3 +90,6 @@
             font-size: 2vw;
         }
 
+        div {
+            cursor: url('./www/img/worm.png'), auto;
+         }

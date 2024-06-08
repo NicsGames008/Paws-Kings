@@ -2,6 +2,7 @@
     "id": "01aefa93-6044-4159-8358-7e91310aa05f",
     "sceneType": "SCENE",
     "settings": {
+        "displayName": "",
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "Level",
@@ -1141,6 +1142,46 @@
                 "26d218d7-3f6d-492a-bdd9-d7b505233760",
                 "d2aec924-87c1-4b1c-a6d3-6b4f14bc6813",
                 "a3459538-dced-4dda-872f-2d38c4ec5b5d"
+            ]
+        },
+        {
+            "id": "10f860e4-b9fc-4a40-84fb-b4adeffb7829",
+            "label": "shard",
+            "objectIds": [
+                "0185d7a4-9b49-4116-8483-65452615bb3a",
+                "b587310d-4039-4809-a8f5-92bf7b50ed94",
+                "7b3ff420-bff8-489c-9ff8-26a7165adda2",
+                "6e08f459-ccd3-42bb-bbc3-136b8baab876"
+            ]
+        },
+        {
+            "id": "da48f49e-3602-453e-a4d7-700426fbff9d",
+            "label": "card",
+            "objectIds": [
+                "6f435915-e641-49a9-9a71-69a01821108b",
+                "5ec6e9d0-4526-43a9-9e5f-378420f08604",
+                "d7c3e228-ad9e-474c-9145-c6bc540cc53b",
+                "2b94f4c2-eb58-4a0b-8fc7-c434283cd00f"
+            ]
+        },
+        {
+            "id": "2f41308a-a48d-481c-b60d-69ce5bf1897e",
+            "label": "cardPlaceHolder",
+            "objectIds": [
+                "148f52b7-33b6-412b-9828-d3e44fe71fad",
+                "6922dc4e-01d2-4a94-b351-9f781afdc2cf",
+                "29ad56c6-324e-41af-a5b3-b300b4e3d567",
+                "1fe03cf8-1623-490d-927f-206794fb109f"
+            ]
+        },
+        {
+            "id": "5892a655-f228-4605-b06e-5cfc9678fcda",
+            "label": "cardText",
+            "objectIds": [
+                "b1fe4384-577c-4421-a439-9f3767f38c5c",
+                "8bcf46a9-a4c3-4aba-996e-43575944c036",
+                "86d30942-5907-475f-a6be-9acf383623ea",
+                "a0ec4046-9503-4b8f-a3ed-82e135c801e2"
             ]
         }
     ]

@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "src/prefabs/tiles/Black_Tile.js",
+                "type": "script",
+                "key": "Black_Tile"
+            },
+            {
                 "url": "assets/blackPawn.png",
                 "type": "image",
                 "key": "blackPawn"
@@ -35,6 +40,11 @@
                 "url": "src/prefabs/redSquare.js",
                 "type": "script",
                 "key": "redSquare_1"
+            },
+            {
+                "url": "src/prefabs/tiles/White_Tile.js",
+                "type": "script",
+                "key": "White_Tile"
             },
             {
                 "url": "assets/whitePawn.png",

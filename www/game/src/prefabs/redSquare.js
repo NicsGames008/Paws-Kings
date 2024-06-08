@@ -7,6 +7,7 @@ class redSquare extends Phaser.GameObjects.Rectangle {
 
 	constructor(scene, x, y, width, height) {
 		super(scene, x ?? 0, y ?? 0, width ?? 128, height ?? 128);
+		this.name = "redSquare";
 
 		this.scaleX = 0.545;
 		this.scaleY = 0.545;

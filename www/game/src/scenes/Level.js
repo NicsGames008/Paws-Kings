@@ -30,519 +30,551 @@ class Level extends Phaser.Scene {
 		const tilesContainer = this.add.container(322, 325);
 
 		// Tile_64
-		const tile_64 = this.add.image(245, -245, "blackTile");
+		const tile_64 = new Black_Tile(this, 245, -245);
 		tile_64.name = "Tile_64";
-		tile_64.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_64.scaleX = 7;
-		tile_64.scaleY = 7;
+		tile_64.angle = 0;
 		tilesContainer.add(tile_64);
 
 		// Tile_63
-		const tile_63 = this.add.image(175, -245, "whiteTile");
+		const tile_63 = new White_Tile(this, 175, -245);
 		tile_63.name = "Tile_63";
-		tile_63.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_63.scaleX = 7;
-		tile_63.scaleY = 7;
+		tile_63.angle = 0;
 		tilesContainer.add(tile_63);
 
 		// Tile_62
-		const tile_62 = this.add.image(105, -245, "blackTile");
+		const tile_62 = new Black_Tile(this, 105, -245);
 		tile_62.name = "Tile_62";
-		tile_62.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_62.scaleX = 7;
-		tile_62.scaleY = 7;
+		tile_62.angle = 0;
 		tilesContainer.add(tile_62);
 
 		// Tile_61
-		const tile_61 = this.add.image(35, -245, "whiteTile");
+		const tile_61 = new White_Tile(this, 35, -245);
 		tile_61.name = "Tile_61";
-		tile_61.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_61.scaleX = 7;
-		tile_61.scaleY = 7;
+		tile_61.angle = 0;
 		tilesContainer.add(tile_61);
 
 		// Tile_60
-		const tile_60 = this.add.image(-35, -245, "blackTile");
+		const tile_60 = new Black_Tile(this, -35, -245);
 		tile_60.name = "Tile_60";
-		tile_60.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_60.scaleX = 7;
-		tile_60.scaleY = 7;
+		tile_60.angle = 0;
 		tilesContainer.add(tile_60);
 
 		// Tile_59
-		const tile_59 = this.add.image(-105, -245, "whiteTile");
+		const tile_59 = new White_Tile(this, -105, -245);
 		tile_59.name = "Tile_59";
-		tile_59.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_59.scaleX = 7;
-		tile_59.scaleY = 7;
+		tile_59.angle = 0;
 		tilesContainer.add(tile_59);
 
 		// Tile_58
-		const tile_58 = this.add.image(-175, -245, "blackTile");
+		const tile_58 = new Black_Tile(this, -175, -245);
 		tile_58.name = "Tile_58";
-		tile_58.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_58.scaleX = 7;
-		tile_58.scaleY = 7;
+		tile_58.angle = 0;
 		tilesContainer.add(tile_58);
 
 		// Tile_57
-		const tile_57 = this.add.image(-245, -245, "whiteTile");
+		const tile_57 = new White_Tile(this, -245, -245);
 		tile_57.name = "Tile_57";
-		tile_57.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_57.scaleX = 7;
-		tile_57.scaleY = 7;
+		tile_57.angle = 0;
 		tilesContainer.add(tile_57);
 
 		// Tile_56
-		const tile_56 = this.add.image(245, -175, "whiteTile");
+		const tile_56 = new White_Tile(this, 245, -173);
 		tile_56.name = "Tile_56";
-		tile_56.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_56.scaleX = 7;
-		tile_56.scaleY = 7;
 		tilesContainer.add(tile_56);
 
 		// Tile_55
-		const tile_55 = this.add.image(175, -175, "blackTile");
+		const tile_55 = new Black_Tile(this, 175, -173);
 		tile_55.name = "Tile_55";
-		tile_55.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_55.scaleX = 7;
-		tile_55.scaleY = 7;
 		tilesContainer.add(tile_55);
 
 		// Tile_54
-		const tile_54 = this.add.image(105, -175, "whiteTile");
+		const tile_54 = new White_Tile(this, 105, -174);
 		tile_54.name = "Tile_54";
-		tile_54.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_54.scaleX = 7;
-		tile_54.scaleY = 7;
 		tilesContainer.add(tile_54);
 
 		// Tile_53
-		const tile_53 = this.add.image(35, -175, "blackTile");
+		const tile_53 = new Black_Tile(this, 35, -174);
 		tile_53.name = "Tile_53";
-		tile_53.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_53.scaleX = 7;
-		tile_53.scaleY = 7;
 		tilesContainer.add(tile_53);
 
 		// Tile_52
-		const tile_52 = this.add.image(-35, -175, "whiteTile");
+		const tile_52 = new White_Tile(this, -35, -174);
 		tile_52.name = "Tile_52";
-		tile_52.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_52.scaleX = 7;
-		tile_52.scaleY = 7;
 		tilesContainer.add(tile_52);
 
 		// Tile_51
-		const tile_51 = this.add.image(-105, -176, "blackTile");
+		const tile_51 = new Black_Tile(this, -105, -174);
 		tile_51.name = "Tile_51";
-		tile_51.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_51.scaleX = 7;
-		tile_51.scaleY = 7;
 		tilesContainer.add(tile_51);
 
 		// Tile_50
-		const tile_50 = this.add.image(-175, -175, "whiteTile");
+		const tile_50 = new White_Tile(this, -175, -175);
 		tile_50.name = "Tile_50";
-		tile_50.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_50.scaleX = 7;
-		tile_50.scaleY = 7;
 		tilesContainer.add(tile_50);
 
 		// Tile_49
-		const tile_49 = this.add.image(-245, -175, "blackTile");
+		const tile_49 = new Black_Tile(this, -245, -175);
 		tile_49.name = "Tile_49";
-		tile_49.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_49.scaleX = 7;
-		tile_49.scaleY = 7;
 		tilesContainer.add(tile_49);
 
 		// Tile_48
-		const tile_48 = this.add.image(245, -105, "blackTile");
+		const tile_48 = new Black_Tile(this, 245, -105);
 		tile_48.name = "Tile_48";
-		tile_48.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_48.scaleX = 7;
-		tile_48.scaleY = 7;
+		tile_48.angle = 0;
 		tilesContainer.add(tile_48);
 
 		// Tile_47
-		const tile_47 = this.add.image(175, -105, "whiteTile");
+		const tile_47 = new White_Tile(this, 175, -105);
 		tile_47.name = "Tile_47";
-		tile_47.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_47.scaleX = 7;
-		tile_47.scaleY = 7;
+		tile_47.angle = 0;
 		tilesContainer.add(tile_47);
 
 		// Tile_46
-		const tile_46 = this.add.image(105, -105, "blackTile");
+		const tile_46 = new Black_Tile(this, 105, -105);
 		tile_46.name = "Tile_46";
-		tile_46.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_46.scaleX = 7;
-		tile_46.scaleY = 7;
+		tile_46.angle = 0;
 		tilesContainer.add(tile_46);
 
 		// Tile_45
-		const tile_45 = this.add.image(35, -105, "whiteTile");
+		const tile_45 = new White_Tile(this, 35, -105);
 		tile_45.name = "Tile_45";
-		tile_45.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_45.scaleX = 7;
-		tile_45.scaleY = 7;
+		tile_45.angle = 0;
 		tilesContainer.add(tile_45);
 
 		// Tile_44
-		const tile_44 = this.add.image(-35, -105, "blackTile");
+		const tile_44 = new Black_Tile(this, -35, -105);
 		tile_44.name = "Tile_44";
-		tile_44.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_44.scaleX = 7;
-		tile_44.scaleY = 7;
+		tile_44.angle = 0;
 		tilesContainer.add(tile_44);
 
 		// Tile_43
-		const tile_43 = this.add.image(-105, -105, "whiteTile");
+		const tile_43 = new White_Tile(this, -105, -105);
 		tile_43.name = "Tile_43";
-		tile_43.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_43.scaleX = 7;
-		tile_43.scaleY = 7;
+		tile_43.angle = 0;
 		tilesContainer.add(tile_43);
 
 		// Tile_42
-		const tile_42 = this.add.image(-175, -105, "blackTile");
+		const tile_42 = new Black_Tile(this, -175, -105);
 		tile_42.name = "Tile_42";
-		tile_42.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_42.scaleX = 7;
-		tile_42.scaleY = 7;
+		tile_42.angle = 0;
 		tilesContainer.add(tile_42);
 
 		// Tile_41
-		const tile_41 = this.add.image(-245, -105, "whiteTile");
+		const tile_41 = new White_Tile(this, -245, -105);
 		tile_41.name = "Tile_41";
-		tile_41.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_41.scaleX = 7;
-		tile_41.scaleY = 7;
+		tile_41.angle = 0;
 		tilesContainer.add(tile_41);
 
 		// Tile_40
-		const tile_40 = this.add.image(245, -35, "whiteTile");
+		const tile_40 = new White_Tile(this, 245, -35);
 		tile_40.name = "Tile_40";
-		tile_40.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_40.scaleX = 7;
-		tile_40.scaleY = 7;
 		tilesContainer.add(tile_40);
 
 		// Tile_39
-		const tile_39 = this.add.image(175, -35, "blackTile");
+		const tile_39 = new Black_Tile(this, 175, -35);
 		tile_39.name = "Tile_39";
-		tile_39.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_39.scaleX = 7;
-		tile_39.scaleY = 7;
 		tilesContainer.add(tile_39);
 
 		// Tile_38
-		const tile_38 = this.add.image(105, -35, "whiteTile");
+		const tile_38 = new White_Tile(this, 105, -35);
 		tile_38.name = "Tile_38";
-		tile_38.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_38.scaleX = 7;
-		tile_38.scaleY = 7;
 		tilesContainer.add(tile_38);
 
 		// Tile_37
-		const tile_37 = this.add.image(35, -35, "blackTile");
+		const tile_37 = new Black_Tile(this, 35, -35);
 		tile_37.name = "Tile_37";
-		tile_37.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_37.scaleX = 7;
-		tile_37.scaleY = 7;
 		tilesContainer.add(tile_37);
 
 		// Tile_36
-		const tile_36 = this.add.image(-35, -35, "whiteTile");
+		const tile_36 = new White_Tile(this, -35, -35);
 		tile_36.name = "Tile_36";
-		tile_36.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_36.scaleX = 7;
-		tile_36.scaleY = 7;
 		tilesContainer.add(tile_36);
 
 		// Tile_35
-		const tile_35 = this.add.image(-105, -36, "blackTile");
+		const tile_35 = new Black_Tile(this, -105, -35);
 		tile_35.name = "Tile_35";
-		tile_35.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_35.scaleX = 7;
-		tile_35.scaleY = 7;
 		tilesContainer.add(tile_35);
 
 		// Tile_34
-		const tile_34 = this.add.image(-175, -35, "whiteTile");
+		const tile_34 = new White_Tile(this, -175, -35);
 		tile_34.name = "Tile_34";
-		tile_34.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_34.scaleX = 7;
-		tile_34.scaleY = 7;
 		tilesContainer.add(tile_34);
 
 		// Tile_33
-		const tile_33 = this.add.image(-245, -35, "blackTile");
+		const tile_33 = new Black_Tile(this, -245, -35);
 		tile_33.name = "Tile_33";
-		tile_33.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_33.scaleX = 7;
-		tile_33.scaleY = 7;
 		tilesContainer.add(tile_33);
 
 		// Tile_32
-		const tile_32 = this.add.image(245, 35, "blackTile");
+		const tile_32 = new Black_Tile(this, 245, 35);
 		tile_32.name = "Tile_32";
-		tile_32.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_32.scaleX = 7;
-		tile_32.scaleY = 7;
+		tile_32.angle = 0;
 		tilesContainer.add(tile_32);
 
 		// Tile_31
-		const tile_31 = this.add.image(175, 35, "whiteTile");
+		const tile_31 = new White_Tile(this, 175, 35);
 		tile_31.name = "Tile_31";
-		tile_31.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_31.scaleX = 7;
-		tile_31.scaleY = 7;
+		tile_31.angle = 0;
 		tilesContainer.add(tile_31);
 
 		// Tile_30
-		const tile_30 = this.add.image(105, 35, "blackTile");
+		const tile_30 = new Black_Tile(this, 105, 35);
 		tile_30.name = "Tile_30";
-		tile_30.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_30.scaleX = 7;
-		tile_30.scaleY = 7;
+		tile_30.angle = 0;
 		tilesContainer.add(tile_30);
 
 		// Tile_29
-		const tile_29 = this.add.image(35, 35, "whiteTile");
+		const tile_29 = new White_Tile(this, 35, 35);
 		tile_29.name = "Tile_29";
-		tile_29.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_29.scaleX = 7;
-		tile_29.scaleY = 7;
+		tile_29.angle = 0;
 		tilesContainer.add(tile_29);
 
 		// Tile_28
-		const tile_28 = this.add.image(-35, 35, "blackTile");
+		const tile_28 = new Black_Tile(this, -35, 35);
 		tile_28.name = "Tile_28";
-		tile_28.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_28.scaleX = 7;
-		tile_28.scaleY = 7;
+		tile_28.angle = 0;
 		tilesContainer.add(tile_28);
 
 		// Tile_27
-		const tile_27 = this.add.image(-105, 35, "whiteTile");
+		const tile_27 = new White_Tile(this, -105, 35);
 		tile_27.name = "Tile_27";
-		tile_27.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_27.scaleX = 7;
-		tile_27.scaleY = 7;
+		tile_27.angle = 0;
 		tilesContainer.add(tile_27);
 
 		// Tile_26
-		const tile_26 = this.add.image(-175, 35, "blackTile");
+		const tile_26 = new Black_Tile(this, -175, 35);
 		tile_26.name = "Tile_26";
-		tile_26.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_26.scaleX = 7;
-		tile_26.scaleY = 7;
+		tile_26.angle = 0;
 		tilesContainer.add(tile_26);
 
 		// Tile_25
-		const tile_25 = this.add.image(-245, 35, "whiteTile");
+		const tile_25 = new White_Tile(this, -245, 35);
 		tile_25.name = "Tile_25";
-		tile_25.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_25.scaleX = 7;
-		tile_25.scaleY = 7;
+		tile_25.angle = 0;
 		tilesContainer.add(tile_25);
 
 		// Tile_24
-		const tile_24 = this.add.image(245, 105, "whiteTile");
+		const tile_24 = new White_Tile(this, 245, 105);
 		tile_24.name = "Tile_24";
-		tile_24.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_24.scaleX = 7;
-		tile_24.scaleY = 7;
 		tilesContainer.add(tile_24);
 
 		// Tile_23
-		const tile_23 = this.add.image(175, 105, "blackTile");
+		const tile_23 = new Black_Tile(this, 175, 105);
 		tile_23.name = "Tile_23";
-		tile_23.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_23.scaleX = 7;
-		tile_23.scaleY = 7;
 		tilesContainer.add(tile_23);
 
 		// Tile_22
-		const tile_22 = this.add.image(105, 105, "whiteTile");
+		const tile_22 = new White_Tile(this, 105, 105);
 		tile_22.name = "Tile_22";
-		tile_22.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_22.scaleX = 7;
-		tile_22.scaleY = 7;
 		tilesContainer.add(tile_22);
 
 		// Tile_21
-		const tile_21 = this.add.image(35, 105, "blackTile");
+		const tile_21 = new Black_Tile(this, 35, 105);
 		tile_21.name = "Tile_21";
-		tile_21.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_21.scaleX = 7;
-		tile_21.scaleY = 7;
 		tilesContainer.add(tile_21);
 
 		// Tile_20
-		const tile_20 = this.add.image(-35, 105, "whiteTile");
+		const tile_20 = new White_Tile(this, -35, 105);
 		tile_20.name = "Tile_20";
-		tile_20.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_20.scaleX = 7;
-		tile_20.scaleY = 7;
 		tilesContainer.add(tile_20);
 
 		// Tile_19
-		const tile_19 = this.add.image(-105, 104, "blackTile");
+		const tile_19 = new Black_Tile(this, -105, 105);
 		tile_19.name = "Tile_19";
-		tile_19.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_19.scaleX = 7;
-		tile_19.scaleY = 7;
 		tilesContainer.add(tile_19);
 
 		// Tile_18
-		const tile_18 = this.add.image(-175, 105, "whiteTile");
+		const tile_18 = new White_Tile(this, -175, 105);
 		tile_18.name = "Tile_18";
-		tile_18.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_18.scaleX = 7;
-		tile_18.scaleY = 7;
 		tilesContainer.add(tile_18);
 
 		// Tile_17
-		const tile_17 = this.add.image(-245, 105, "blackTile");
+		const tile_17 = new Black_Tile(this, -245, 105);
 		tile_17.name = "Tile_17";
-		tile_17.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_17.scaleX = 7;
-		tile_17.scaleY = 7;
 		tilesContainer.add(tile_17);
 
 		// Tile_16
-		const tile_16 = this.add.image(245, 175, "blackTile");
+		const tile_16 = new Black_Tile(this, 245, 175);
 		tile_16.name = "Tile_16";
-		tile_16.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_16.scaleX = 7;
-		tile_16.scaleY = 7;
+		tile_16.angle = 0;
 		tilesContainer.add(tile_16);
 
 		// Tile_15
-		const tile_15 = this.add.image(175, 175, "whiteTile");
+		const tile_15 = new White_Tile(this, 175, 175);
 		tile_15.name = "Tile_15";
-		tile_15.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_15.scaleX = 7;
-		tile_15.scaleY = 7;
+		tile_15.angle = 0;
 		tilesContainer.add(tile_15);
 
 		// Tile_14
-		const tile_14 = this.add.image(105, 175, "blackTile");
+		const tile_14 = new Black_Tile(this, 105, 175);
 		tile_14.name = "Tile_14";
-		tile_14.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_14.scaleX = 7;
-		tile_14.scaleY = 7;
+		tile_14.angle = 0;
 		tilesContainer.add(tile_14);
 
 		// Tile_13
-		const tile_13 = this.add.image(35, 175, "whiteTile");
+		const tile_13 = new White_Tile(this, 35, 175);
 		tile_13.name = "Tile_13";
-		tile_13.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_13.scaleX = 7;
-		tile_13.scaleY = 7;
+		tile_13.angle = 0;
 		tilesContainer.add(tile_13);
 
 		// Tile_12
-		const tile_12 = this.add.image(-35, 175, "blackTile");
+		const tile_12 = new Black_Tile(this, -35, 175);
 		tile_12.name = "Tile_12";
-		tile_12.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_12.scaleX = 7;
-		tile_12.scaleY = 7;
+		tile_12.angle = 0;
 		tilesContainer.add(tile_12);
 
 		// Tile_11
-		const tile_11 = this.add.image(-105, 175, "whiteTile");
+		const tile_11 = new White_Tile(this, -105, 175);
 		tile_11.name = "Tile_11";
-		tile_11.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_11.scaleX = 7;
-		tile_11.scaleY = 7;
+		tile_11.angle = 0;
 		tilesContainer.add(tile_11);
 
 		// Tile_10
-		const tile_10 = this.add.image(-175, 175, "blackTile");
+		const tile_10 = new Black_Tile(this, -175, 175);
 		tile_10.name = "Tile_10";
-		tile_10.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_10.scaleX = 7;
-		tile_10.scaleY = 7;
+		tile_10.angle = 0;
 		tilesContainer.add(tile_10);
 
 		// Tile_9
-		const tile_9 = this.add.image(-245, 175, "whiteTile");
+		const tile_9 = new White_Tile(this, -245, 175);
 		tile_9.name = "Tile_9";
-		tile_9.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_9.scaleX = 7;
-		tile_9.scaleY = 7;
+		tile_9.angle = 0;
 		tilesContainer.add(tile_9);
 
 		// Tile_8
-		const tile_8 = this.add.image(245, 245, "whiteTile");
+		const tile_8 = new White_Tile(this, 245, 245);
 		tile_8.name = "Tile_8";
-		tile_8.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_8.scaleX = 7;
-		tile_8.scaleY = 7;
 		tilesContainer.add(tile_8);
 
 		// Tile_7
-		const tile_7 = this.add.image(175, 245, "blackTile");
+		const tile_7 = new Black_Tile(this, 175, 245);
 		tile_7.name = "Tile_7";
-		tile_7.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_7.scaleX = 7;
-		tile_7.scaleY = 7;
 		tilesContainer.add(tile_7);
 
 		// Tile_6
-		const tile_6 = this.add.image(105, 245, "whiteTile");
+		const tile_6 = new White_Tile(this, 105, 245);
 		tile_6.name = "Tile_6";
-		tile_6.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_6.scaleX = 7;
-		tile_6.scaleY = 7;
 		tilesContainer.add(tile_6);
 
 		// Tile_5
-		const tile_5 = this.add.image(35, 245, "blackTile");
+		const tile_5 = new Black_Tile(this, 35, 245);
 		tile_5.name = "Tile_5";
-		tile_5.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_5.scaleX = 7;
-		tile_5.scaleY = 7;
 		tilesContainer.add(tile_5);
 
 		// Tile_4
-		const tile_4 = this.add.image(-35, 245, "whiteTile");
+		const tile_4 = new White_Tile(this, -35, 245);
 		tile_4.name = "Tile_4";
-		tile_4.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_4.scaleX = 7;
-		tile_4.scaleY = 7;
 		tilesContainer.add(tile_4);
 
 		// Tile_3
-		const tile_3 = this.add.image(-105, 244, "blackTile");
+		const tile_3 = new Black_Tile(this, -105, 245);
 		tile_3.name = "Tile_3";
-		tile_3.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_3.scaleX = 7;
-		tile_3.scaleY = 7;
 		tilesContainer.add(tile_3);
 
 		// Tile_2
-		const tile_2 = this.add.image(-175, 245, "whiteTile");
+		const tile_2 = new White_Tile(this, -175, 245);
 		tile_2.name = "Tile_2";
-		tile_2.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_2.scaleX = 7;
-		tile_2.scaleY = 7;
 		tilesContainer.add(tile_2);
 
 		// Tile_1
-		const tile_1 = this.add.image(-245, 245, "blackTile");
+		const tile_1 = new Black_Tile(this, -245, 245);
 		tile_1.name = "Tile_1";
-		tile_1.setInteractive(new Phaser.Geom.Rectangle(0, 0, 10, 10), Phaser.Geom.Rectangle.Contains);
-		tile_1.scaleX = 7;
-		tile_1.scaleY = 7;
 		tilesContainer.add(tile_1);
 
 		// lists
-		const tiles = [tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63, tile_64];
+		const tiles = [tile_64, tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63];
+
+		// tile_64 (prefab fields)
+		tile_64.tileId = 64;
+
+		// tile_63 (prefab fields)
+		tile_63.tileId = 63;
+
+		// tile_62 (prefab fields)
+		tile_62.tileId = 62;
+
+		// tile_61 (prefab fields)
+		tile_61.tileId = 61;
+
+		// tile_60 (prefab fields)
+		tile_60.tileId = 60;
+
+		// tile_59 (prefab fields)
+		tile_59.tileId = 59;
+
+		// tile_58 (prefab fields)
+		tile_58.tileId = 58;
+
+		// tile_57 (prefab fields)
+		tile_57.tileId = 57;
+
+		// tile_56 (prefab fields)
+		tile_56.tileId = 56;
+
+		// tile_55 (prefab fields)
+		tile_55.tileId = 55;
+
+		// tile_54 (prefab fields)
+		tile_54.tileId = 54;
+
+		// tile_53 (prefab fields)
+		tile_53.tileId = 53;
+
+		// tile_52 (prefab fields)
+		tile_52.tileId = 52;
+
+		// tile_51 (prefab fields)
+		tile_51.tileId = 51;
+
+		// tile_50 (prefab fields)
+		tile_50.tileId = 50;
+
+		// tile_49 (prefab fields)
+		tile_49.tileId = 49;
+
+		// tile_48 (prefab fields)
+		tile_48.tileId = 48;
+
+		// tile_47 (prefab fields)
+		tile_47.tileId = 47;
+
+		// tile_46 (prefab fields)
+		tile_46.tileId = 46;
+
+		// tile_45 (prefab fields)
+		tile_45.tileId = 45;
+
+		// tile_44 (prefab fields)
+		tile_44.tileId = 44;
+
+		// tile_43 (prefab fields)
+		tile_43.tileId = 43;
+
+		// tile_42 (prefab fields)
+		tile_42.tileId = 42;
+
+		// tile_41 (prefab fields)
+		tile_41.tileId = 41;
+
+		// tile_40 (prefab fields)
+		tile_40.tileId = 40;
+
+		// tile_39 (prefab fields)
+		tile_39.tileId = 39;
+
+		// tile_38 (prefab fields)
+		tile_38.tileId = 38;
+
+		// tile_37 (prefab fields)
+		tile_37.tileId = 37;
+
+		// tile_36 (prefab fields)
+		tile_36.tileId = 36;
+
+		// tile_35 (prefab fields)
+		tile_35.tileId = 35;
+
+		// tile_34 (prefab fields)
+		tile_34.tileId = 34;
+
+		// tile_33 (prefab fields)
+		tile_33.tileId = 33;
+
+		// tile_32 (prefab fields)
+		tile_32.tileId = 32;
+
+		// tile_31 (prefab fields)
+		tile_31.tileId = 31;
+
+		// tile_30 (prefab fields)
+		tile_30.tileId = 30;
+
+		// tile_29 (prefab fields)
+		tile_29.tileId = 29;
+
+		// tile_28 (prefab fields)
+		tile_28.tileId = 28;
+
+		// tile_27 (prefab fields)
+		tile_27.tileId = 27;
+
+		// tile_26 (prefab fields)
+		tile_26.tileId = 26;
+
+		// tile_25 (prefab fields)
+		tile_25.tileId = 25;
+
+		// tile_24 (prefab fields)
+		tile_24.tileId = 24;
+
+		// tile_23 (prefab fields)
+		tile_23.tileId = 23;
+
+		// tile_22 (prefab fields)
+		tile_22.tileId = 22;
+
+		// tile_21 (prefab fields)
+		tile_21.tileId = 21;
+
+		// tile_20 (prefab fields)
+		tile_20.tileId = 20;
+
+		// tile_19 (prefab fields)
+		tile_19.tileId = 19;
+
+		// tile_18 (prefab fields)
+		tile_18.tileId = 18;
+
+		// tile_17 (prefab fields)
+		tile_17.tileId = 17;
+
+		// tile_16 (prefab fields)
+		tile_16.tileId = 16;
+
+		// tile_15 (prefab fields)
+		tile_15.tileId = 15;
+
+		// tile_14 (prefab fields)
+		tile_14.tileId = 14;
+
+		// tile_13 (prefab fields)
+		tile_13.tileId = 13;
+
+		// tile_12 (prefab fields)
+		tile_12.tileId = 12;
+
+		// tile_11 (prefab fields)
+		tile_11.tileId = 11;
+
+		// tile_10 (prefab fields)
+		tile_10.tileId = 10;
+
+		// tile_9 (prefab fields)
+		tile_9.tileId = 9;
+
+		// tile_8 (prefab fields)
+		tile_8.tileId = 8;
+
+		// tile_7 (prefab fields)
+		tile_7.tileId = 7;
+
+		// tile_6 (prefab fields)
+		tile_6.tileId = 6;
+
+		// tile_5 (prefab fields)
+		tile_5.tileId = 5;
+
+		// tile_4 (prefab fields)
+		tile_4.tileId = 4;
+
+		// tile_3 (prefab fields)
+		tile_3.tileId = 3;
+
+		// tile_2 (prefab fields)
+		tile_2.tileId = 2;
+
+		// tile_1 (prefab fields)
+		tile_1.tileId = 1;
 
 		this.advName = advName;
 		this.userName = userName;
@@ -620,141 +652,141 @@ class Level extends Phaser.Scene {
 	advName;
 	/** @type {Phaser.GameObjects.Text} */
 	userName;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_64;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_63;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_62;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_61;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_60;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_59;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_58;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_57;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_56;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_55;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_54;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_53;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_52;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_51;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_50;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_49;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_48;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_47;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_46;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_45;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_44;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_43;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_42;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_41;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_40;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_39;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_38;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_37;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_36;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_35;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_34;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_33;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_32;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_31;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_30;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_29;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_28;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_27;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_26;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_25;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_24;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_23;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_22;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_21;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_20;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_19;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_18;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_17;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_16;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_15;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_14;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_13;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_12;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_11;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_10;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_9;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_8;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_7;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_6;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_5;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_4;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_3;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {White_Tile} */
 	tile_2;
-	/** @type {Phaser.GameObjects.Image} */
+	/** @type {Black_Tile} */
 	tile_1;
 	/** @type {Phaser.GameObjects.Container} */
 	tilesContainer;
-	/** @type {Phaser.GameObjects.Image[]} */
+	/** @type {Array<Black_Tile|White_Tile>} */
 	tiles;
 
 	/* START-USER-CODE */
-	
+
 	updateGameState(playerID, callback) {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
@@ -762,15 +794,15 @@ class Level extends Phaser.Scene {
 				if (xhttp.status == 200) {
 					// Parse the JSON response
 					var gameState = JSON.parse(xhttp.responseText);
-	
+
 					// Get the player names from the response
 					var player1Name = gameState[0].player_name;
 					var player2Name = gameState[1].player_name;
-	
+
 					// Set the player names in the game
 					this.userName.text = player1Name;
 					this.advName.text = player2Name;
-	
+
 					for (let i = 0; i < gameState.length; i++) {
 						if (playerID == gameState[i].player_id) {
 							if (gameState[i].mp_pc_id == 1) {
@@ -786,12 +818,12 @@ class Level extends Phaser.Scene {
 				}
 			}
 		};
-	
+
 		// Send a GET request to the server (just testing with /match/11 endpoint)
 		xhttp.open("GET", "../state/game/1", true);
 		xhttp.send();
 	}
-	
+
 	updateBoardState(gameState, playerID, callback) {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
@@ -799,78 +831,106 @@ class Level extends Phaser.Scene {
 				if (xhttp.status == 200) {
 					// Parse the JSON response
 					var boardState = JSON.parse(xhttp.responseText);
-	
-					for (let i = 0; i < boardState.length; i++) {
-						for (let k = 0; k < this.tiles.length; k++) {
-							// Get the current tile element at the 'index' position
-							const element = this.tiles[k];
-							// Extract the number from the tile's name using the 'extractNumberFromString' function
-							var numbFromImage = extractNumberFromString(element.name);
-							if (numbFromImage == boardState[i].tile_id) {
-								switch (boardState[i].mpp_piece_id) {
-									case 5:
-										if (boardState[i].mp_pc_id == 1) {
-											const whitePawn = new WhitePawn(this, element.x, element.y);
-											this.add.existing(whitePawn);
-											this.tilesContainer.add(whitePawn);
-											for (let i = 0; i < gameState.length; i++) {
-												if (playerID == gameState[i].player_id) {
-													if (gameState[i].mp_pc_id == 1) {
-														whitePawn.angle = 0;
-													} else if (gameState[i].mp_pc_id == 2) {
-														whitePawn.angle = -180;
-													}
-												}
-											}
-										} else {
-											const blackPawn = new BlackPawn(this, element.x, element.y);
-											this.add.existing(blackPawn);
-											this.tilesContainer.add(blackPawn);
-											for (let i = 0; i < gameState.length; i++) {
-												if (playerID == gameState[i].player_id) {
-													if (gameState[i].mp_pc_id == 1) {
-														blackPawn.angle = 0;
-													} else if (gameState[i].mp_pc_id == 2) {
-														blackPawn.angle = -180;
-													}
-												}
-											}
-										}
-										break;
-								}
+
+					// for (let i = 0; i < boardState.length; i++) {
+					// 	for (let k = 0; k < this.tiles.length; k++) {
+					// 		// Get the current tile element at the 'index' position
+					// 		const element = this.tiles[k];
+					// 		// Extract the number from the tile's name using the 'extractNumberFromString' function
+					// 		var tileId = element.tileId;
+					// 		if (tileId == boardState[i].tile_id) {
+					// 			switch (boardState[i].mpp_piece_id) {
+					// 				case 5:
+					// 					if (boardState[i].mp_pc_id == 1) {
+					// 						const whitePawn = new WhitePawn(this, element.x, element.y);
+					// 						this.add.existing(whitePawn);
+					// 						this.tilesContainer.add(whitePawn);
+					// 						for (let i = 0; i < gameState.length; i++) {
+					// 							if (playerID == gameState[i].player_id) {
+					// 								if (gameState[i].mp_pc_id == 1) {
+					// 									whitePawn.angle = 0;
+					// 								} else if (gameState[i].mp_pc_id == 2) {
+					// 									whitePawn.angle = -180;
+					// 								}
+					// 							}
+					// 						}
+					// 					} else {
+					// 						const blackPawn = new BlackPawn(this, element.x, element.y);
+					// 						this.add.existing(blackPawn);
+					// 						this.tilesContainer.add(blackPawn);
+					// 						for (let i = 0; i < gameState.length; i++) {
+					// 							if (playerID == gameState[i].player_id) {
+					// 								if (gameState[i].mp_pc_id == 1) {
+					// 									blackPawn.angle = 0;
+					// 								} else if (gameState[i].mp_pc_id == 2) {
+					// 									blackPawn.angle = -180;
+					// 								}
+					// 							}
+					// 						}
+					// 					}
+					// 					break;
+					// 			}
+					// 		}
+					// 	}
+					// }
+
+					boardState.forEach(state => {
+						const tileElement = this.tiles.find(tile => tile.tileId === state.tile_id);
+						if (tileElement) {
+							switch (state.mpp_piece_id) {
+								case 5:
+									if (state.mp_pc_id === 1) {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, WhitePawn);
+									} else {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackPawn);
+									}
+									break;
+								// Add other cases here
 							}
 						}
-					}
+					});
+
 					callback(boardState);
 				} else {
 					console.error('Error fetching board state');
 				}
 			}
 		};
-	
+
 		// Send a GET request to the server (just testing with /match/1 endpoint)
 		xhttp.open("GET", "../state/boardR/1", true);
 		xhttp.send();
 	}
-	
+
 	tileClicked(boardState, playerID) {
-		var possibleMoves;
-	
+		let possibleMoves;
+
 		// Loop through each tile in the 'tiles' array
 		for (let index = 0; index < this.tiles.length; index++) {
 			// Get the current tile element at the 'index' position
 			const element = this.tiles[index];
-	
+
 			// Add an event listener to the tile for the 'pointerdown' event
+			element.setInteractive();
 			element.on("pointerdown", event => {
 				// Extract the number from the tile's name using the 'extractNumberFromString' function
-				var numbFromImage = extractNumberFromString(element.name);
-	
+				var tileId = element.tileId;
+
+
+				this.tiles.forEach(element => {
+					const children = element.getAll();
+					const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
+					if (childToDestroyInHell) {
+						childToDestroyInHell.destroy();
+						element.remove(childToDestroyInHell);
+					}
+				});
+				
+
 				for (let i = 0; i < boardState.length; i++) {
-					var k = i;
-					k++;
-	
-					if (boardState[i].mpp_ps_id && k == numbFromImage && boardState[i].playerID == playerID) {
+					var k = i + 1;
+
+					if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID) {
 						// Check if a tile was already pressed
 						if (!possibleMoves) {
 							// If it was, check all the possible moves that the piece on the tile selected can do
@@ -878,45 +938,46 @@ class Level extends Phaser.Scene {
 							var yPosition = boardState[i].y;
 							var pieceType = boardState[i].mpp_piece_id;
 							possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
-	
+
 							for (let i = 0; i < possibleMoves.length; i++) {
 								for (let k = 0; k < this.tiles.length; k++) {
 									// Get the current tile element at the 'index' position
 									const element = this.tiles[k];
+
 									// Extract the number from the tile's name using the 'extractNumberFromString' function
-									var numbFromImage = extractNumberFromString(element.name);
-									var tilePossition = numberToCoordinates(numbFromImage);
-									if (tilePossition.x == possibleMoves[i].x && tilePossition.y == possibleMoves[i].y) {
-										console.log(possibleMoves);
+									var tileId = element.tileId;
+									var tilePosition = numberToCoordinates(tileId);
+									if (tilePosition.x == possibleMoves[i].x && tilePosition.y == possibleMoves[i].y) {
 										if (!possibleMoves[i].enemyOnTheWay) {
-											const visualPossibleMoves = new Dot(this, element.x, element.y);
+											const visualPossibleMoves = new Dot(this, 0, 0);
 											this.add.existing(visualPossibleMoves);
-											this.tilesContainer.add(visualPossibleMoves);
+											element.add(visualPossibleMoves);
 										} else {
-											const killingArea = new redSquare(this, element.x, element.y);
+											const killingArea = new redSquare(this, 0, 0);
 											this.add.existing(killingArea);
-											this.tilesContainer.add(killingArea);
+											element.add(killingArea);
 										}
 									}
 								}
 							}
-	
+
 							possibleMoves.push({ x: xPosition, y: yPosition });
 							console.log("1st Tile Selected: ", possibleMoves);
 						} else {
 							// If not, set the array back to null so a new tile can be selected
-							possibleMoves = this.makeMove(possibleMoves, numbFromImage, playerID);
+							possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
 						}
 						break;
 					}
 					// Check if the user selected a tile before
 					if (possibleMoves) {
-						possibleMoves = this.makeMove(possibleMoves, numbFromImage, playerID);
+						possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
 					}
 				}
 			});
 		}
 	}
+
 
 	makeMove(possibleMoves, numbFromImage, playerID) {
 		var cordinates = numberToCoordinates(numbFromImage);
@@ -932,7 +993,7 @@ class Level extends Phaser.Scene {
 			}
 		}
 	}
-	
+
 	create() {
 
 		this.editorCreate();
@@ -948,7 +1009,7 @@ class Level extends Phaser.Scene {
 						this.tileClicked(boardState, playerID);
 					});
 				});
-				
+
 			}
 		};
 
@@ -963,6 +1024,16 @@ class Level extends Phaser.Scene {
 
 // You can write more code here
 
+function placePawn(boardState, gameState, playerID, tileElement, PawnClass) {
+    const pawn = new PawnClass(this, tileElement.x, tileElement.y);
+    this.add.existing(pawn);
+    this.tilesContainer.add(pawn);
+
+    const playerGameState = gameState.find(state => state.player_id === playerID);
+    if (playerGameState) {
+        pawn.angle = playerGameState.mp_pc_id === 1 ? 0 : -180;
+    }
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //Numbers transformations

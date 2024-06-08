@@ -67,6 +67,16 @@
             "type": {
                 "id": "number"
             }
+        },
+        {
+            "name": "cardId",
+            "label": "Card_Id",
+            "tooltip": "",
+            "defValue": 0,
+            "customDefinition": false,
+            "type": {
+                "id": "number"
+            }
         }
     ]
 }

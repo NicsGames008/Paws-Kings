@@ -651,6 +651,18 @@ class Level extends Phaser.Scene {
 		// tile_1 (prefab fields)
 		tile_1.tileId = 1;
 
+		// cardPlaceholder_1 (prefab fields)
+		cardPlaceholder_1.cardId = 1;
+
+		// cardPlaceholder_2 (prefab fields)
+		cardPlaceholder_2.cardId = 2;
+
+		// cardPlaceholder_3 (prefab fields)
+		cardPlaceholder_3.cardId = 3;
+
+		// cardPlaceholder_4 (prefab fields)
+		cardPlaceholder_4.cardId = 4;
+
 		this.advName = advName;
 		this.userName = userName;
 		this.tile_64 = tile_64;
@@ -1029,7 +1041,7 @@ class Level extends Phaser.Scene {
 		xhttp.send();
 	}
 
-	tileClicked(boardState, playerID) {
+	tileClicked(boardState, playerID, cardId) {
 		let possibleMoves;
 
 		// Loop through each tile in the 'tiles' array
@@ -1059,6 +1071,15 @@ class Level extends Phaser.Scene {
 
 					if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID) {
 						// Check if a tile was already pressed
+
+
+						///////////////////////////////////////////
+						//possible promotion, selecting a card then a peice and console.log that it has been promoted
+
+						//end promotion
+
+
+
 						if (!possibleMoves) {
 							// If it was, check all the possible moves that the piece on the tile selected can do
 							var xPosition = boardState[i].x;
@@ -1103,53 +1124,32 @@ class Level extends Phaser.Scene {
 				}
 			});
 		}
-		//idk
-
-
-		//save the coordinates and then eleborates them instes of increasigly create a new object
-		//legendary queer, get the piece and it's tile id, then it goes thoutght all of them and CHANGES their texture
-
-
-		//CARDS
-		//either the placeholder raffigures a greyed out version of the card and when the number is higher than 0, it gets illuminated and we write how many in a text or we add many underlying copy
-		//or we have a common placeholder and when the number is > 0, the card appears and to show multiple copies we could stack some more or have a text to say that.
-
-
-
-		
-
-
-		//Progressive tile generative prefab with properies in mind, idk tho
-
-		// var arrTiles = [];
-		// var tileSprite = "";
-		// var originX = 0;
-		// var originY = 0;
-
-		// for (let i = 0; i < 64; i++){
-		// 	tileName += i;
-
-		// 	if(whiteTilesId.includes(i)){
-		// 		tileSprite = "whiteTile";
-		// 	}else if(blackTilesId.includes(i)){
-		// 		tileSprite = "blackTile";
-		// 	}
-		// 	arrTiles[`tile_${i+1}`] = new Tiles(originX, originY, tileSprite);
-		// 	arrTiles[`tile_${i+1}`].name = `Tile_${i+1}`;
-		// 	arrTiles[`tile_${i+1}`].scaleX = 7;
-		// 	arrTiles[`tile_${i+1}`].scaleY = 7;
-
-		// 	this.add.existing(`tile_${i+1}`);
-
-		// 	originX += 70;
-		// 	originY += 70;
-		// }
 
 	}
 
-	update(){
-		//maybe "donkey" enpoint => asking if it's your turn to play.
+	cardClicled(cardIdReturned){
+		for (let i = 0; i < this.card.length; i++) {
+			// Get the current tile element at the 'index' position
+			const element = this.card[i];
+
+			// Add an event listener to the tile for the 'pointerdown' event
+			element.setInteractive();
+			element.on("pointerdown", event => {
+				// Extract the number from the tile's name using the 'extractNumberFromString' function
+				cardIdReturned = element.cardId;
+				console.log("card Id: " + cardIdReturned);
+				// this.tiles.forEach(element => {
+				// 	const children = element.getAll();
+				// 	const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
+				// 	if (childToDestroyInHell) {
+				// 		childToDestroyInHell.destroy();
+				// 		element.remove(childToDestroyInHell);
+				// 	}
+				// });
+			});
 	}
+}
+
 
 	makeMove(possibleMoves, numbFromImage, playerID) {
 		var cordinates = numberToCoordinates(numbFromImage);
@@ -1174,13 +1174,19 @@ class Level extends Phaser.Scene {
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
-
+				var cardId = 0;
+				
+				// cycle trhought all the card and set the onPointerDown event
+				this.cardClicled(cardId);
+				
 				//calls the board state
 				this.updateGameState(playerID, (gameState) => {
 					this.updateBoardState(gameState, playerID, (boardState) => {
-						this.tileClicked(boardState, playerID);
+						this.tileClicked(boardState, playerID. cardId);
 					});
 				});
+
+				
 
 			}
 		};
@@ -1197,7 +1203,7 @@ class Level extends Phaser.Scene {
 					var data = JSON.parse(xhttp.responseText);
 
 					var cardAssetName = "";
-					
+
 					for(let i = 0; i < data.length; i++){
 
 						//Constructing the name for the card prefab
@@ -1212,19 +1218,19 @@ class Level extends Phaser.Scene {
 						switch(data[i].card_id){
 							case 1:     //Bishop
 								cardAssetName += "Bishop";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName, i);
 							break;
 							case 2:     // Roock
 								cardAssetName += "Roock";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName, i);
 							break;
 							case 3:     // Knight
 								cardAssetName += "Knight";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName, i);
 							break;
 							case 4:     // Quween
 								cardAssetName += "Queen";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName, i);
 							break;
 							default:
 								console.log("gg i guess");
@@ -1242,13 +1248,14 @@ class Level extends Phaser.Scene {
 			xhttp.send();
 		}, 2000)
 	}
-	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference){
+
+	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference, i){
 		//color necessary to be used to detected the rigth card
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
-
+		cardReference.cardId = i;
 		cardReference.ammount = cardAmmount;
 
-		
+
 		if(cardAmmount > 0){
 			//allows it to be shown, or it could make it not ; not necessarily changing it's size
 			//console.log(cardReference);

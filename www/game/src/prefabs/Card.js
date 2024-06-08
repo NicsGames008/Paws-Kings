@@ -26,13 +26,13 @@ class Card extends Phaser.GameObjects.Container {
 		this.worm = worm;
 
 		/* START-USER-CTR-CODE */
-		worm.on('pointerdown', () => {
-			//giving back the var "worm" to later be used as to change the texture
-			console.log(worm.displayWidth + worm.displayHeight);
-			//this.print();
-			//worm.alpha = 0;
-			//fadeIntoScene();
-		})
+		// worm.on('pointerdown', () => {
+		// 	//giving back the var "worm" to later be used as to change the texture
+		// 	console.log(worm.cardId);
+		// 	//this.print();
+		// 	//worm.alpha = 0;
+		// 	//fadeIntoScene();
+		// })
 		// Write your code here.
 
 		/* END-USER-CTR-CODE */
@@ -42,6 +42,8 @@ class Card extends Phaser.GameObjects.Container {
 	worm;
 	/** @type {number} */
 	ammount = 0;
+	/** @type {number} */
+	cardId = 0;
 
 	/* START-USER-CODE */
 

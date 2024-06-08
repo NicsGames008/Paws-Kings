@@ -1173,10 +1173,12 @@
             "unlock": [
                 "x",
                 "y",
-                "playerOwner"
+                "playerOwner",
+                "cardId"
             ],
             "label": "cardPlaceholder_1",
             "scope": "CLASS",
+            "cardId": 1,
             "x": 866,
             "y": 374
         },
@@ -1187,10 +1189,12 @@
                 "x",
                 "y",
                 "playerOwner",
-                "tintTopRight"
+                "tintTopRight",
+                "cardId"
             ],
             "label": "cardPlaceholder_2",
             "scope": "CLASS",
+            "cardId": 2,
             "x": 966,
             "y": 384
         },
@@ -1201,10 +1205,12 @@
                 "x",
                 "y",
                 "playerOwner",
-                "tintTopRight"
+                "tintTopRight",
+                "cardId"
             ],
             "label": "cardPlaceholder_3",
             "scope": "CLASS",
+            "cardId": 3,
             "x": 1070,
             "y": 383
         },
@@ -1215,10 +1221,12 @@
                 "x",
                 "y",
                 "playerOwner",
-                "tintTopRight"
+                "tintTopRight",
+                "cardId"
             ],
             "label": "cardPlaceholder_4",
             "scope": "CLASS",
+            "cardId": 4,
             "x": 1166,
             "y": 380
         },

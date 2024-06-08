@@ -934,7 +934,9 @@ class Level extends Phaser.Scene {
 
 	/* START-USER-CODE */
 
-	updateGameState(playerID, callback) {
+	
+
+	updateGameState(playerID, cardId, callback) {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
@@ -959,6 +961,7 @@ class Level extends Phaser.Scene {
 							}
 						}
 					}
+					console.log("updateGameState: " + cardId);
 					callback(gameState);
 				} else {
 					console.error('Error fetching game state');
@@ -971,7 +974,7 @@ class Level extends Phaser.Scene {
 		xhttp.send();
 	}
 
-	updateBoardState(gameState, playerID, callback) {
+	updateBoardState(gameState, playerID, cardId, callback) {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
@@ -1085,7 +1088,7 @@ class Level extends Phaser.Scene {
 
 						///////////////////////////////////////////
 						//possible promotion, selecting a card then a peice and console.log that it has been promoted
-						console.log("card Id selected: " + this.cardId);
+						console.log("card Id selected: " + cardId);
 						//end promotion
 						//cardId = 0;
 
@@ -1158,15 +1161,17 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 		var playerID = -1;
 		var cardId = 0;
+		this.cardClicked(cardId);
+		
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
 				
 				
-				this.cardClicked(cardId);
-				this.updateGameState(playerID, gameState => {
-					this.updateBoardState(gameState, playerID, boardState => {
+				
+				this.updateGameState(playerID, cardId, gameState => {
+					this.updateBoardState(gameState, playerID, cardId, boardState => {
 						this.tileClicked(boardState, playerID, cardId);
 					});
 				});

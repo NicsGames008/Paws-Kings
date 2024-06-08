@@ -1064,6 +1064,224 @@
                     "y": 245
                 }
             ]
+        },
+        {
+            "type": "Image",
+            "id": "e4840c8e-6f9e-4bbf-aa50-377285579373",
+            "label": "worm",
+            "texture": {
+                "key": "worm"
+            },
+            "x": 892,
+            "y": 61,
+            "tintTopLeft": "#000000",
+            "tintTopRight": "#000000",
+            "tintBottomLeft": "#bdbbbb",
+            "tintBottomRight": "#bdbbbb"
+        },
+        {
+            "type": "Image",
+            "id": "0185d7a4-9b49-4116-8483-65452615bb3a",
+            "label": "shardBackground_1",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 916,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "b587310d-4039-4809-a8f5-92bf7b50ed94",
+            "label": "shardBackground_2",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1016,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "7b3ff420-bff8-489c-9ff8-26a7165adda2",
+            "label": "shardBackground_3",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1116,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "6e08f459-ccd3-42bb-bbc3-136b8baab876",
+            "label": "shardBackground_4",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1216,
+            "y": 200
+        },
+        {
+            "type": "Image",
+            "id": "148f52b7-33b6-412b-9828-d3e44fe71fad",
+            "label": "cardBackground_1",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 916,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "6922dc4e-01d2-4a94-b351-9f781afdc2cf",
+            "label": "cardBackground_2",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1016,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "29ad56c6-324e-41af-a5b3-b300b4e3d567",
+            "label": "cardBackground_3",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1116,
+            "y": 400
+        },
+        {
+            "type": "Image",
+            "id": "1fe03cf8-1623-490d-927f-206794fb109f",
+            "label": "cardBackground_4",
+            "scope": "CLASS",
+            "texture": {
+                "key": "promotionPlaceholder"
+            },
+            "x": 1216,
+            "y": 400
+        },
+        {
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "6f435915-e641-49a9-9a71-69a01821108b",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner"
+            ],
+            "label": "cardPlaceholder_1",
+            "scope": "CLASS",
+            "x": 917,
+            "y": 396
+        },
+        {
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "5ec6e9d0-4526-43a9-9e5f-378420f08604",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner",
+                "tintTopRight"
+            ],
+            "label": "cardPlaceholder_2",
+            "scope": "CLASS",
+            "x": 966,
+            "y": 384,
+            "tintTopRight": "#ffffff"
+        },
+        {
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "d7c3e228-ad9e-474c-9145-c6bc540cc53b",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner",
+                "tintTopRight"
+            ],
+            "label": "cardPlaceholder_3",
+            "scope": "CLASS",
+            "x": 1064,
+            "y": 299,
+            "tintTopRight": "#ffffff"
+        },
+        {
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "2b94f4c2-eb58-4a0b-8fc7-c434283cd00f",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner",
+                "tintTopRight"
+            ],
+            "label": "cardPlaceholder_4",
+            "scope": "CLASS",
+            "x": 1166,
+            "y": 380,
+            "tintTopRight": "#ffffff"
+        },
+        {
+            "type": "Text",
+            "id": "b1fe4384-577c-4421-a439-9f3767f38c5c",
+            "label": "cardText_1",
+            "scope": "CLASS",
+            "x": 851,
+            "y": 487,
+            "text": "%Bishop Number%"
+        },
+        {
+            "type": "Text",
+            "id": "8bcf46a9-a4c3-4aba-996e-43575944c036",
+            "label": "cardText_2",
+            "scope": "CLASS",
+            "x": 967,
+            "y": 517,
+            "text": "%Roock Number%"
+        },
+        {
+            "type": "Text",
+            "id": "86d30942-5907-475f-a6be-9acf383623ea",
+            "label": "cardText_3",
+            "scope": "CLASS",
+            "x": 1060,
+            "y": 487,
+            "text": "%Knight Number%"
+        },
+        {
+            "type": "Text",
+            "id": "a0ec4046-9503-4b8f-a3ed-82e135c801e2",
+            "label": "cardText_4",
+            "scope": "CLASS",
+            "x": 1147,
+            "y": 514,
+            "text": "%Qween Number%"
+        },
+        {
+            "type": "Image",
+            "id": "007c3d1f-bf6d-424b-aaef-d57a362baf1d",
+            "label": "pTBlack",
+            "texture": {
+                "key": "PTBlack"
+            },
+            "x": 739,
+            "y": 311
+        },
+        {
+            "type": "Image",
+            "id": "3f07c0c0-16b4-4554-a8c4-b6424e411ccd",
+            "label": "cardWhiteKnight",
+            "texture": {
+                "key": "cardWhiteKnight"
+            },
+            "x": 916,
+            "y": 200,
+            "tintTopLeft": "#fe24fc",
+            "tintTopRight": "#a10101"
         }
     ],
     "plainObjects": [],

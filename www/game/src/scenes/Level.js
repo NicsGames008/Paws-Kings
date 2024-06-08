@@ -381,8 +381,86 @@ class Level extends Phaser.Scene {
 		tile_1.name = "Tile_1";
 		tilesContainer.add(tile_1);
 
+		// worm
+		const worm = this.add.image(892, 61, "worm");
+		worm.tintTopLeft = 0;
+		worm.tintTopRight = 0;
+		worm.tintBottomLeft = 12434363;
+		worm.tintBottomRight = 12434363;
+
+		// shardBackground_1
+		const shardBackground_1 = this.add.image(916, 200, "promotionPlaceholder");
+
+		// shardBackground_2
+		const shardBackground_2 = this.add.image(1016, 200, "promotionPlaceholder");
+
+		// shardBackground_3
+		const shardBackground_3 = this.add.image(1116, 200, "promotionPlaceholder");
+
+		// shardBackground_4
+		const shardBackground_4 = this.add.image(1216, 200, "promotionPlaceholder");
+
+		// cardBackground_1
+		const cardBackground_1 = this.add.image(916, 400, "promotionPlaceholder");
+
+		// cardBackground_2
+		const cardBackground_2 = this.add.image(1016, 400, "promotionPlaceholder");
+
+		// cardBackground_3
+		const cardBackground_3 = this.add.image(1116, 400, "promotionPlaceholder");
+
+		// cardBackground_4
+		const cardBackground_4 = this.add.image(1216, 400, "promotionPlaceholder");
+
+		// cardPlaceholder_1
+		const cardPlaceholder_1 = new Card(this, 917, 396);
+		this.add.existing(cardPlaceholder_1);
+
+		// cardPlaceholder_2
+		const cardPlaceholder_2 = new Card(this, 966, 384);
+		this.add.existing(cardPlaceholder_2);
+		cardPlaceholder_2.tintTopRight = 16777215;
+
+		// cardPlaceholder_3
+		const cardPlaceholder_3 = new Card(this, 1064, 299);
+		this.add.existing(cardPlaceholder_3);
+		cardPlaceholder_3.tintTopRight = 16777215;
+
+		// cardPlaceholder_4
+		const cardPlaceholder_4 = new Card(this, 1166, 380);
+		this.add.existing(cardPlaceholder_4);
+		cardPlaceholder_4.tintTopRight = 16777215;
+
+		// cardText_1
+		const cardText_1 = this.add.text(851, 487, "", {});
+		cardText_1.text = "%Bishop Number%";
+
+		// cardText_2
+		const cardText_2 = this.add.text(967, 517, "", {});
+		cardText_2.text = "%Roock Number%";
+
+		// cardText_3
+		const cardText_3 = this.add.text(1060, 487, "", {});
+		cardText_3.text = "%Knight Number%";
+
+		// cardText_4
+		const cardText_4 = this.add.text(1147, 514, "", {});
+		cardText_4.text = "%Qween Number%";
+
+		// pTBlack
+		this.add.image(739, 311, "PTBlack");
+
+		// cardWhiteKnight
+		const cardWhiteKnight = this.add.image(916, 200, "cardWhiteKnight");
+		cardWhiteKnight.tintTopLeft = 16655612;
+		cardWhiteKnight.tintTopRight = 10551553;
+
 		// lists
 		const tiles = [tile_64, tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63];
+		const shard = [shardBackground_1, shardBackground_2, shardBackground_3, shardBackground_4];
+		const card = [cardPlaceholder_1, cardPlaceholder_2, cardPlaceholder_3, cardPlaceholder_4];
+		const cardPlaceHolder = [cardBackground_1, cardBackground_2, cardBackground_3, cardBackground_4];
+		const cardText = [cardText_1, cardText_2, cardText_3, cardText_4];
 
 		// tile_64 (prefab fields)
 		tile_64.tileId = 64;
@@ -643,7 +721,27 @@ class Level extends Phaser.Scene {
 		this.tile_2 = tile_2;
 		this.tile_1 = tile_1;
 		this.tilesContainer = tilesContainer;
+		this.shardBackground_1 = shardBackground_1;
+		this.shardBackground_2 = shardBackground_2;
+		this.shardBackground_3 = shardBackground_3;
+		this.shardBackground_4 = shardBackground_4;
+		this.cardBackground_1 = cardBackground_1;
+		this.cardBackground_2 = cardBackground_2;
+		this.cardBackground_3 = cardBackground_3;
+		this.cardBackground_4 = cardBackground_4;
+		this.cardPlaceholder_1 = cardPlaceholder_1;
+		this.cardPlaceholder_2 = cardPlaceholder_2;
+		this.cardPlaceholder_3 = cardPlaceholder_3;
+		this.cardPlaceholder_4 = cardPlaceholder_4;
+		this.cardText_1 = cardText_1;
+		this.cardText_2 = cardText_2;
+		this.cardText_3 = cardText_3;
+		this.cardText_4 = cardText_4;
 		this.tiles = tiles;
+		this.shard = shard;
+		this.card = card;
+		this.cardPlaceHolder = cardPlaceHolder;
+		this.cardText = cardText;
 
 		this.events.emit("scene-awake");
 	}
@@ -782,8 +880,48 @@ class Level extends Phaser.Scene {
 	tile_1;
 	/** @type {Phaser.GameObjects.Container} */
 	tilesContainer;
+	/** @type {Phaser.GameObjects.Image} */
+	shardBackground_1;
+	/** @type {Phaser.GameObjects.Image} */
+	shardBackground_2;
+	/** @type {Phaser.GameObjects.Image} */
+	shardBackground_3;
+	/** @type {Phaser.GameObjects.Image} */
+	shardBackground_4;
+	/** @type {Phaser.GameObjects.Image} */
+	cardBackground_1;
+	/** @type {Phaser.GameObjects.Image} */
+	cardBackground_2;
+	/** @type {Phaser.GameObjects.Image} */
+	cardBackground_3;
+	/** @type {Phaser.GameObjects.Image} */
+	cardBackground_4;
+	/** @type {Card} */
+	cardPlaceholder_1;
+	/** @type {Card} */
+	cardPlaceholder_2;
+	/** @type {Card} */
+	cardPlaceholder_3;
+	/** @type {Card} */
+	cardPlaceholder_4;
+	/** @type {Phaser.GameObjects.Text} */
+	cardText_1;
+	/** @type {Phaser.GameObjects.Text} */
+	cardText_2;
+	/** @type {Phaser.GameObjects.Text} */
+	cardText_3;
+	/** @type {Phaser.GameObjects.Text} */
+	cardText_4;
 	/** @type {Array<Black_Tile|White_Tile>} */
 	tiles;
+	/** @type {Phaser.GameObjects.Image[]} */
+	shard;
+	/** @type {Card[]} */
+	card;
+	/** @type {Phaser.GameObjects.Image[]} */
+	cardPlaceHolder;
+	/** @type {Phaser.GameObjects.Text[]} */
+	cardText;
 
 	/* START-USER-CODE */
 
@@ -832,92 +970,50 @@ class Level extends Phaser.Scene {
 					// Parse the JSON response
 					var boardState = JSON.parse(xhttp.responseText);
 
-					// for (let i = 0; i < boardState.length; i++) {
-					// 	for (let k = 0; k < this.tiles.length; k++) {
-					// 		// Get the current tile element at the 'index' position
-					// 		const element = this.tiles[k];
-					// 		// Extract the number from the tile's name using the 'extractNumberFromString' function
-					// 		var tileId = element.tileId;
-					// 		if (tileId == boardState[i].tile_id) {
-					// 			switch (boardState[i].mpp_piece_id) {
-					// 				case 5:
-					// 					if (boardState[i].mp_pc_id == 1) {
-					// 						const whitePawn = new WhitePawn(this, element.x, element.y);
-					// 						this.add.existing(whitePawn);
-					// 						this.tilesContainer.add(whitePawn);
-					// 						for (let i = 0; i < gameState.length; i++) {
-					// 							if (playerID == gameState[i].player_id) {
-					// 								if (gameState[i].mp_pc_id == 1) {
-					// 									whitePawn.angle = 0;
-					// 								} else if (gameState[i].mp_pc_id == 2) {
-					// 									whitePawn.angle = -180;
-					// 								}
-					// 							}
-					// 						}
-					// 					} else {
-					// 						const blackPawn = new BlackPawn(this, element.x, element.y);
-					// 						this.add.existing(blackPawn);
-					// 						this.tilesContainer.add(blackPawn);
-					// 						for (let i = 0; i < gameState.length; i++) {
-					// 							if (playerID == gameState[i].player_id) {
-					// 								if (gameState[i].mp_pc_id == 1) {
-					// 									blackPawn.angle = 0;
-					// 								} else if (gameState[i].mp_pc_id == 2) {
-					// 									blackPawn.angle = -180;
-					// 								}
-					// 							}
-					// 						}
-					// 					}
-					// 					break;
-					// 			}
-					// 		}
-					// 	}
-					// }
-
 					boardState.forEach(state => {
 						const tileElement = this.tiles.find(tile => tile.tileId === state.tile_id);
 						if (tileElement) {
 							switch (state.mpp_piece_id) {
 								case 1:
 									if (state.mp_pc_id === 1) {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteBishop);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteBishop);
 									} else {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackBishop);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackBishop);
 									}
 									break;
 								case 2:
 									if (state.mp_pc_id === 1) {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteRook);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteRook);
 									} else {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackRook);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackRook);
 									}
 									break;
 								case 3:
 									if (state.mp_pc_id === 1) {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteKnight);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKnight);
 									} else {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackKnight);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKnight);
 									}
 									break;
 								case 4:
 									if (state.mp_pc_id === 1) {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteQueen);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteQueen);
 									} else {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackQueen);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackQueen);
 									}
 									break;
 								case 5:
 									if (state.mp_pc_id === 1) {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, WhitePawn);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, WhitePawn);
 									} else {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackPawn);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackPawn);
 									}
 									break;
 								case 6:
 									if (state.mp_pc_id === 1) {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteKing);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKing);
 									} else {
-										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackKing);
+										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKing);
 									}
 									break;
 							}
@@ -1118,6 +1214,57 @@ class Level extends Phaser.Scene {
 		// Send a GET request to the server (just testing with /match/11 endpoint)
 		xhttp.open("GET", "/signing/playerID", true);
 		xhttp.send();
+
+		setInterval(() => {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+					// Parse the JSON response
+					var data = JSON.parse(xhttp.responseText);
+					var cardAssetName = "";
+					for(let i = 0; i < data.length; i++){
+
+						//Constructing the name for the card prefab
+						cardAssetName = "card"
+						if(data[i].mp_pc_id == 1){
+							cardAssetName += "White";
+						}else if(data[i].mp_pc_id == 2){
+							cardAssetName += "Black";
+						}
+
+						//Detecting the piecce type
+						switch(data[i].card_name){
+							case 'Bishop':     //Bishop
+								cardAssetName += "Bishop";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+							break;
+							case 'Roock':     // Roock
+								cardAssetName += "Roock";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+							break;
+							case 'Knight':     // Knight
+								cardAssetName += "Knight";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+							break;
+							case 'Queen':     // Quween
+								cardAssetName += "Queen";
+								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
+							break;
+							default:
+								console.log("gg i guess");
+						}
+
+						//resetting for the successive card
+						cardAssetName = "";
+					}
+
+				}
+			};
+
+			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
+			xhttp.open("GET", "../state/card/1/1", true);
+			xhttp.send();
+		}, 2000)
 	}
 	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference){
 		//color necessary to be used to detected the rigth card
@@ -1152,14 +1299,14 @@ class Level extends Phaser.Scene {
 
 // You can write more code here
 
-function placePawn(boardState, gameState, playerID, tileElement, PawnClass) {
-    const pawn = new PawnClass(this, tileElement.x, tileElement.y);
-    this.add.existing(pawn);
-    this.tilesContainer.add(pawn);
+function placePiece(boardState, gameState, playerID, tileElement, PieceClass) {
+    const piece = new PieceClass(this, tileElement.x, tileElement.y);
+    this.add.existing(piece);
+    this.tilesContainer.add(piece);
 
     const playerGameState = gameState.find(state => state.player_id === playerID);
     if (playerGameState) {
-        pawn.angle = playerGameState.mp_pc_id === 1 ? 0 : -180;
+        piece.angle = playerGameState.mp_pc_id === 1 ? 0 : -180;
     }
 }
 

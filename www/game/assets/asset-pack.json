@@ -72,19 +72,54 @@
                 "key": "blackTile"
             },
             {
-                "url": "assets/Circle.png",
-                "type": "image",
-                "key": "Circle"
-            },
-            {
                 "url": "src/prefabs/Card.js",
                 "type": "script",
                 "key": "Card"
             },
             {
+                "url": "assets/cards/cardBlackBishop.png",
+                "type": "image",
+                "key": "cardBlackBishop"
+            },
+            {
+                "url": "assets/cards/cardBlackKnight.png",
+                "type": "image",
+                "key": "cardBlackKnight"
+            },
+            {
+                "url": "assets/cards/cardBlackQueen.png",
+                "type": "image",
+                "key": "cardBlackQueen"
+            },
+            {
+                "url": "assets/cards/cardBlackRoock.png",
+                "type": "image",
+                "key": "cardBlackRoock"
+            },
+            {
+                "url": "assets/cards/cardWhiteBishop.png",
+                "type": "image",
+                "key": "cardWhiteBishop"
+            },
+            {
                 "url": "assets/cards/cardWhiteKnight.png",
                 "type": "image",
                 "key": "cardWhiteKnight"
+            },
+            {
+                "url": "assets/cards/cardWhiteQueen.png",
+                "type": "image",
+                "key": "cardWhiteQueen"
+            },
+            {
+                "url": "assets/cards/cardWhiteRoock.png",
+                "type": "image",
+                "key": "cardWhiteRoock"
+            },
+            {
+                "url": "assets/Circle.png",
+                "type": "image",
+                "key": "Circle"
             },
             {
                 "url": "assets/dino.png",
@@ -95,6 +130,56 @@
                 "url": "src/prefabs/Dot.js",
                 "type": "script",
                 "key": "Dot_1"
+            },
+            {
+                "url": "assets/promotionPlaceholder.png",
+                "type": "image",
+                "key": "promotionPlaceholder"
+            },
+            {
+                "url": "assets/promotionTiers/PTBlack.png",
+                "type": "image",
+                "key": "PTBlack"
+            },
+            {
+                "url": "assets/promotionTiers/PTBlackBishop.png",
+                "type": "image",
+                "key": "PTBlackBishop"
+            },
+            {
+                "url": "assets/promotionTiers/PTBlackKnight.png",
+                "type": "image",
+                "key": "PTBlackKnight"
+            },
+            {
+                "url": "assets/promotionTiers/PTBlackQueen.png",
+                "type": "image",
+                "key": "PTBlackQueen"
+            },
+            {
+                "url": "assets/promotionTiers/PTBlackRoock.png",
+                "type": "image",
+                "key": "PTBlackRoock"
+            },
+            {
+                "url": "assets/promotionTiers/PTWhiteBishop.png",
+                "type": "image",
+                "key": "PTWhiteBishop"
+            },
+            {
+                "url": "assets/promotionTiers/PTWhiteKnight.png",
+                "type": "image",
+                "key": "PTWhiteKnight"
+            },
+            {
+                "url": "assets/promotionTiers/PTWhiteQueen.png",
+                "type": "image",
+                "key": "PTWhiteQueen"
+            },
+            {
+                "url": "assets/promotionTiers/PTWhiteRoock.png",
+                "type": "image",
+                "key": "PTWhiteRoock"
             },
             {
                 "url": "src/prefabs/redSquare.js",
@@ -165,16 +250,6 @@
                 "url": "assets/pieces/whiteRook.png",
                 "type": "image",
                 "key": "whiteRook_1"
-            },
-            {
-                "url": "assets/promotionPlaceholder.png",
-                "type": "image",
-                "key": "promotionPlaceholder"
-            },
-            {
-                "url": "assets/promotionTiers/PTBlack.png",
-                "type": "image",
-                "key": "PTBlack"
             },
             {
                 "url": "assets/whiteTile.png",

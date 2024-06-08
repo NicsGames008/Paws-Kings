@@ -957,7 +957,7 @@
         {
             "type": "Image",
             "id": "0185d7a4-9b49-4116-8483-65452615bb3a",
-            "label": "shard_1",
+            "label": "shardBackground_1",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
@@ -968,7 +968,7 @@
         {
             "type": "Image",
             "id": "b587310d-4039-4809-a8f5-92bf7b50ed94",
-            "label": "shard_2",
+            "label": "shardBackground_2",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
@@ -979,7 +979,7 @@
         {
             "type": "Image",
             "id": "7b3ff420-bff8-489c-9ff8-26a7165adda2",
-            "label": "shard_3",
+            "label": "shardBackground_3",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
@@ -990,7 +990,7 @@
         {
             "type": "Image",
             "id": "6e08f459-ccd3-42bb-bbc3-136b8baab876",
-            "label": "shard_4",
+            "label": "shardBackground_4",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
@@ -1001,7 +1001,7 @@
         {
             "type": "Image",
             "id": "148f52b7-33b6-412b-9828-d3e44fe71fad",
-            "label": "card_1",
+            "label": "cardBackground_1",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
@@ -1012,7 +1012,7 @@
         {
             "type": "Image",
             "id": "6922dc4e-01d2-4a94-b351-9f781afdc2cf",
-            "label": "card_2",
+            "label": "cardBackground_2",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
@@ -1023,7 +1023,7 @@
         {
             "type": "Image",
             "id": "29ad56c6-324e-41af-a5b3-b300b4e3d567",
-            "label": "card_3",
+            "label": "cardBackground_3",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
@@ -1034,13 +1034,26 @@
         {
             "type": "Image",
             "id": "1fe03cf8-1623-490d-927f-206794fb109f",
-            "label": "card_4",
+            "label": "cardBackground_4",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
             },
             "x": 1216,
             "y": 400
+        },
+        {
+            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
+            "id": "6f435915-e641-49a9-9a71-69a01821108b",
+            "unlock": [
+                "x",
+                "y",
+                "playerOwner"
+            ],
+            "label": "cardPlaceholder_1",
+            "scope": "CLASS",
+            "x": 866,
+            "y": 374
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1053,9 +1066,8 @@
             ],
             "label": "cardPlaceholder_2",
             "scope": "CLASS",
-            "x": 1017,
-            "y": 400,
-            "tintTopRight": "#fb0404"
+            "x": 966,
+            "y": 384
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1068,9 +1080,8 @@
             ],
             "label": "cardPlaceholder_3",
             "scope": "CLASS",
-            "x": 1118,
-            "y": 400,
-            "tintTopRight": "#bcc500"
+            "x": 1070,
+            "y": 383
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1083,9 +1094,8 @@
             ],
             "label": "cardPlaceholder_4",
             "scope": "CLASS",
-            "x": 1216,
-            "y": 400,
-            "tintTopRight": "#000000"
+            "x": 1166,
+            "y": 380
         },
         {
             "type": "Text",
@@ -1124,19 +1134,6 @@
             "text": "%Qween Number%"
         },
         {
-            "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
-            "id": "6f435915-e641-49a9-9a71-69a01821108b",
-            "unlock": [
-                "x",
-                "y",
-                "playerOwner"
-            ],
-            "label": "cardPlaceholder_1",
-            "scope": "CLASS",
-            "x": 916,
-            "y": 400
-        },
-        {
             "type": "Image",
             "id": "007c3d1f-bf6d-424b-aaef-d57a362baf1d",
             "label": "pTBlack",
@@ -1154,7 +1151,9 @@
                 "key": "cardWhiteKnight"
             },
             "x": 916,
-            "y": 200
+            "y": 200,
+            "tintTopLeft": "#fe24fc",
+            "tintTopRight": "#a10101"
         }
     ],
     "plainObjects": [],
@@ -1237,7 +1236,7 @@
         },
         {
             "id": "10f860e4-b9fc-4a40-84fb-b4adeffb7829",
-            "label": "shard",
+            "label": "shardBackground",
             "objectIds": [
                 "0185d7a4-9b49-4116-8483-65452615bb3a",
                 "b587310d-4039-4809-a8f5-92bf7b50ed94",
@@ -1257,7 +1256,7 @@
         },
         {
             "id": "2f41308a-a48d-481c-b60d-69ce5bf1897e",
-            "label": "cardPlaceHolder",
+            "label": "cardBackground",
             "objectIds": [
                 "148f52b7-33b6-412b-9828-d3e44fe71fad",
                 "6922dc4e-01d2-4a94-b351-9f781afdc2cf",

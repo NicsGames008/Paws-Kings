@@ -423,44 +423,45 @@ class Level extends Phaser.Scene {
 		worm.tintBottomLeft = 12434363;
 		worm.tintBottomRight = 12434363;
 
-		// shard_1
-		const shard_1 = this.add.image(916, 200, "promotionPlaceholder");
+		// shardBackground_1
+		const shardBackground_1 = this.add.image(916, 200, "promotionPlaceholder");
 
-		// shard_2
-		const shard_2 = this.add.image(1016, 200, "promotionPlaceholder");
+		// shardBackground_2
+		const shardBackground_2 = this.add.image(1016, 200, "promotionPlaceholder");
 
-		// shard_3
-		const shard_3 = this.add.image(1116, 200, "promotionPlaceholder");
+		// shardBackground_3
+		const shardBackground_3 = this.add.image(1116, 200, "promotionPlaceholder");
 
-		// shard_4
-		const shard_4 = this.add.image(1216, 200, "promotionPlaceholder");
+		// shardBackground_4
+		const shardBackground_4 = this.add.image(1216, 200, "promotionPlaceholder");
 
-		// card_1
-		const card_1 = this.add.image(916, 400, "promotionPlaceholder");
+		// cardBackground_1
+		const cardBackground_1 = this.add.image(916, 400, "promotionPlaceholder");
 
-		// card_2
-		const card_2 = this.add.image(1016, 400, "promotionPlaceholder");
+		// cardBackground_2
+		const cardBackground_2 = this.add.image(1016, 400, "promotionPlaceholder");
 
-		// card_3
-		const card_3 = this.add.image(1116, 400, "promotionPlaceholder");
+		// cardBackground_3
+		const cardBackground_3 = this.add.image(1116, 400, "promotionPlaceholder");
 
-		// card_4
-		const card_4 = this.add.image(1216, 400, "promotionPlaceholder");
+		// cardBackground_4
+		const cardBackground_4 = this.add.image(1216, 400, "promotionPlaceholder");
+
+		// cardPlaceholder_1
+		const cardPlaceholder_1 = new Card(this, 866, 374);
+		this.add.existing(cardPlaceholder_1);
 
 		// cardPlaceholder_2
-		const cardPlaceholder_2 = new Card(this, 1017, 400);
+		const cardPlaceholder_2 = new Card(this, 966, 384);
 		this.add.existing(cardPlaceholder_2);
-		cardPlaceholder_2.tintTopRight = 16450564;
 
 		// cardPlaceholder_3
-		const cardPlaceholder_3 = new Card(this, 1118, 400);
+		const cardPlaceholder_3 = new Card(this, 1070, 383);
 		this.add.existing(cardPlaceholder_3);
-		cardPlaceholder_3.tintTopRight = 12371200;
 
 		// cardPlaceholder_4
-		const cardPlaceholder_4 = new Card(this, 1216, 400);
+		const cardPlaceholder_4 = new Card(this, 1166, 380);
 		this.add.existing(cardPlaceholder_4);
-		cardPlaceholder_4.tintTopRight = 0;
 
 		// cardText_1
 		const cardText_1 = this.add.text(851, 487, "", {});
@@ -478,21 +479,19 @@ class Level extends Phaser.Scene {
 		const cardText_4 = this.add.text(1147, 514, "", {});
 		cardText_4.text = "%Qween Number%";
 
-		// cardPlaceholder_1
-		const cardPlaceholder_1 = new Card(this, 916, 400);
-		this.add.existing(cardPlaceholder_1);
-
 		// pTBlack
 		this.add.image(739, 311, "PTBlack");
 
 		// cardWhiteKnight
-		this.add.image(916, 200, "cardWhiteKnight");
+		const cardWhiteKnight = this.add.image(916, 200, "cardWhiteKnight");
+		cardWhiteKnight.tintTopLeft = 16655612;
+		cardWhiteKnight.tintTopRight = 10551553;
 
 		// lists
 		const chessboard = [tile_64, tile_63, tile_62, tile_61, tile_60, tile_59, tile_58, tile_57, tile_56, tile_55, tile_54, tile_53, tile_52, tile_51, tile_50, tile_49, tile_48, tile_47, tile_46, tile_45, tile_44, tile_43, tile_42, tile_41, tile_40, tile_39, tile_38, tile_37, tile_36, tile_35, tile_34, tile_33, tile_32, tile_31, tile_30, tile_29, tile_28, tile_27, tile_26, tile_25, tile_24, tile_23, tile_22, tile_21, tile_20, tile_19, tile_18, tile_17, tile_16, tile_15, tile_14, tile_13, tile_12, tile_11, tile_10, tile_9, tile_8, tile_7, tile_6, tile_5, tile_4, tile_3, tile_2, tile_1];
-		const shard = [shard_1, shard_2, shard_3, shard_4];
+		const shardBackground = [shardBackground_1, shardBackground_2, shardBackground_3, shardBackground_4];
 		const card = [cardPlaceholder_1, cardPlaceholder_2, cardPlaceholder_3, cardPlaceholder_4];
-		const cardPlaceHolder = [card_1, card_2, card_3, card_4];
+		const cardBackground = [cardBackground_1, cardBackground_2, cardBackground_3, cardBackground_4];
 		const cardText = [cardText_1, cardText_2, cardText_3, cardText_4];
 
 		this.tile_1 = tile_1;
@@ -562,14 +561,15 @@ class Level extends Phaser.Scene {
 		this.advName = advName;
 		this.userName = userName;
 		this.boardData = boardData;
-		this.shard_1 = shard_1;
-		this.shard_2 = shard_2;
-		this.shard_3 = shard_3;
-		this.shard_4 = shard_4;
-		this.card_1 = card_1;
-		this.card_2 = card_2;
-		this.card_3 = card_3;
-		this.card_4 = card_4;
+		this.shardBackground_1 = shardBackground_1;
+		this.shardBackground_2 = shardBackground_2;
+		this.shardBackground_3 = shardBackground_3;
+		this.shardBackground_4 = shardBackground_4;
+		this.cardBackground_1 = cardBackground_1;
+		this.cardBackground_2 = cardBackground_2;
+		this.cardBackground_3 = cardBackground_3;
+		this.cardBackground_4 = cardBackground_4;
+		this.cardPlaceholder_1 = cardPlaceholder_1;
 		this.cardPlaceholder_2 = cardPlaceholder_2;
 		this.cardPlaceholder_3 = cardPlaceholder_3;
 		this.cardPlaceholder_4 = cardPlaceholder_4;
@@ -577,11 +577,10 @@ class Level extends Phaser.Scene {
 		this.cardText_2 = cardText_2;
 		this.cardText_3 = cardText_3;
 		this.cardText_4 = cardText_4;
-		this.cardPlaceholder_1 = cardPlaceholder_1;
 		this.chessboard = chessboard;
-		this.shard = shard;
+		this.shardBackground = shardBackground;
 		this.card = card;
-		this.cardPlaceHolder = cardPlaceHolder;
+		this.cardBackground = cardBackground;
 		this.cardText = cardText;
 
 		this.events.emit("scene-awake");
@@ -722,21 +721,23 @@ class Level extends Phaser.Scene {
 	/** @type {Phaser.GameObjects.Text} */
 	boardData;
 	/** @type {Phaser.GameObjects.Image} */
-	shard_1;
+	shardBackground_1;
 	/** @type {Phaser.GameObjects.Image} */
-	shard_2;
+	shardBackground_2;
 	/** @type {Phaser.GameObjects.Image} */
-	shard_3;
+	shardBackground_3;
 	/** @type {Phaser.GameObjects.Image} */
-	shard_4;
+	shardBackground_4;
 	/** @type {Phaser.GameObjects.Image} */
-	card_1;
+	cardBackground_1;
 	/** @type {Phaser.GameObjects.Image} */
-	card_2;
+	cardBackground_2;
 	/** @type {Phaser.GameObjects.Image} */
-	card_3;
+	cardBackground_3;
 	/** @type {Phaser.GameObjects.Image} */
-	card_4;
+	cardBackground_4;
+	/** @type {Card} */
+	cardPlaceholder_1;
 	/** @type {Card} */
 	cardPlaceholder_2;
 	/** @type {Card} */
@@ -751,16 +752,14 @@ class Level extends Phaser.Scene {
 	cardText_3;
 	/** @type {Phaser.GameObjects.Text} */
 	cardText_4;
-	/** @type {Card} */
-	cardPlaceholder_1;
 	/** @type {Phaser.GameObjects.Image[]} */
 	chessboard;
 	/** @type {Phaser.GameObjects.Image[]} */
-	shard;
+	shardBackground;
 	/** @type {Card[]} */
 	card;
 	/** @type {Phaser.GameObjects.Image[]} */
-	cardPlaceHolder;
+	cardBackground;
 	/** @type {Phaser.GameObjects.Text[]} */
 	cardText;
 
@@ -772,6 +771,14 @@ class Level extends Phaser.Scene {
 
 
 		this.editorCreate();
+
+		// for(let i = 0; i < this.card.length; i++){
+		// 	this.card[i].on('pointerdown', () => {
+		// 		console.log("amogus");
+		// 			//console.log(this.card[i]);
+		// 		})
+
+		// }
 
 		// this.pawnArray = []
 
@@ -880,6 +887,32 @@ class Level extends Phaser.Scene {
 		}, TIME_BETWEEN_SYNC)
 
 
+		//Progressive tile generative prefab with properies in mind, idk tho
+
+		// var arrTiles = [];
+		// var tileSprite = "";
+		// var originX = 0;
+		// var originY = 0;
+
+		// for (let i = 0; i < 64; i++){
+		// 	tileName += i;
+
+		// 	if(whiteTilesId.includes(i)){
+		// 		tileSprite = "whiteTile";
+		// 	}else if(blackTilesId.includes(i)){
+		// 		tileSprite = "blackTile";
+		// 	}
+		// 	arrTiles[`tile_${i+1}`] = new Tiles(originX, originY, tileSprite);
+		// 	arrTiles[`tile_${i+1}`].name = `Tile_${i+1}`;
+		// 	arrTiles[`tile_${i+1}`].scaleX = 7;
+		// 	arrTiles[`tile_${i+1}`].scaleY = 7;
+
+		// 	this.add.existing(`tile_${i+1}`);
+
+		// 	originX += 70;
+		// 	originY += 70;
+		// }
+
 	}
 
 	update(){
@@ -895,20 +928,22 @@ class Level extends Phaser.Scene {
 
 		cardText.text = cardName + ": x" + cardAmmount;
 		if(cardAmmount > 0){
-			if(cardArtReference == "cardWhiteKnight"){
-				console.log(cardReference);
-				cardReference.setTexture("cardWhiteKnight");
-				this.add.image(1200, 500, "cardWhiteKnight");
 			//allows it to be shown, or it could make it not ; not necessarily changing it's size
-			}
-			cardReference.scaleX = 1;
+			//console.log(cardReference);
+
+			cardReference.worm.setTexture(cardArtReference);
+			//cardReference.worm.setSize(200,124);
+			cardReference.worm.scaleX = 1;
+
+			//cardReference.print();
+			//cardReference.fadeIntoScene(5000);
 
 		}else if(cardAmmount <= 0){//assures that a change in card has appened
 
 			//allows it to be hidden, or it could make it gray; not necessarily changing it's size
 
 			//nelio is a portuGUESS man
-			cardReference.scaleX = 0;
+			cardReference.worm.scaleX = 0;
 		}
 
 	}

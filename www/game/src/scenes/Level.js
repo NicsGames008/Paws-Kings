@@ -454,9 +454,9 @@ class Level extends Phaser.Scene {
 
 		// lists
 		const tiles = [tile_64, tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63];
-		const shard = [shardBackground_1, shardBackground_2, shardBackground_3, shardBackground_4];
+		const shardBackground = [shardBackground_1, shardBackground_2, shardBackground_3, shardBackground_4];
 		const card = [cardPlaceholder_1, cardPlaceholder_2, cardPlaceholder_3, cardPlaceholder_4];
-		const cardPlaceHolder = [cardBackground_1, cardBackground_2, cardBackground_3, cardBackground_4];
+		const cardBackground = [cardBackground_1, cardBackground_2, cardBackground_3, cardBackground_4];
 		const cardText = [cardText_1, cardText_2, cardText_3, cardText_4];
 
 		// tile_64 (prefab fields)
@@ -735,7 +735,7 @@ class Level extends Phaser.Scene {
 		this.cardText_3 = cardText_3;
 		this.cardText_4 = cardText_4;
 		this.tiles = tiles;
-		this.shard = shard;
+		this.shardBackground = shardBackground;
 		this.card = card;
 		this.cardBackground = cardBackground;
 		this.cardText = cardText;
@@ -912,7 +912,7 @@ class Level extends Phaser.Scene {
 	/** @type {Array<Black_Tile|White_Tile>} */
 	tiles;
 	/** @type {Phaser.GameObjects.Image[]} */
-	shard;
+	shardBackground;
 	/** @type {Card[]} */
 	card;
 	/** @type {Phaser.GameObjects.Image[]} */
@@ -937,7 +937,7 @@ class Level extends Phaser.Scene {
 					// Set the player names in the game
 					this.userName.text = player1Name;
 					this.advName.text = player2Name;
-
+					
 					for (let i = 0; i < gameState.length; i++) {
 						if (playerID == gameState[i].player_id) {
 							if (gameState[i].mp_pc_id == 1) {

@@ -7,14 +7,64 @@
                 "key": "Black_Tile"
             },
             {
-                "url": "assets/blackPawn.png",
-                "type": "image",
-                "key": "blackPawn"
+                "url": "src/prefabs/pieces/BlackBishop.js",
+                "type": "script",
+                "key": "BlackBishop"
             },
             {
-                "url": "src/prefabs/BlackPawn.js",
+                "url": "assets/pieces/blackBishop.png",
+                "type": "image",
+                "key": "blackBishop_1"
+            },
+            {
+                "url": "src/prefabs/pieces/BlackKing.js",
                 "type": "script",
-                "key": "BlackPawn_1"
+                "key": "BlackKing"
+            },
+            {
+                "url": "assets/pieces/blackKing.png",
+                "type": "image",
+                "key": "blackKing_1"
+            },
+            {
+                "url": "src/prefabs/pieces/BlackKnight.js",
+                "type": "script",
+                "key": "BlackKnight"
+            },
+            {
+                "url": "assets/pieces/blacknight.png",
+                "type": "image",
+                "key": "blacknight_1"
+            },
+            {
+                "url": "src/prefabs/pieces/BlackPawn.js",
+                "type": "script",
+                "key": "BlackPawn"
+            },
+            {
+                "url": "assets/pieces/blackPawn.png",
+                "type": "image",
+                "key": "blackPawn_1"
+            },
+            {
+                "url": "src/prefabs/pieces/BlackQueen.js",
+                "type": "script",
+                "key": "BlackQueen"
+            },
+            {
+                "url": "assets/pieces/blackQueen.png",
+                "type": "image",
+                "key": "blackQueen_1"
+            },
+            {
+                "url": "src/prefabs/pieces/BlackRook.js",
+                "type": "script",
+                "key": "BlackRook"
+            },
+            {
+                "url": "assets/pieces/blackRook.png",
+                "type": "image",
+                "key": "blackRook_1"
             },
             {
                 "url": "assets/blackTile.png",
@@ -47,14 +97,64 @@
                 "key": "White_Tile"
             },
             {
-                "url": "assets/whitePawn.png",
-                "type": "image",
-                "key": "whitePawn"
+                "url": "src/prefabs/pieces/WhiteBishop.js",
+                "type": "script",
+                "key": "WhiteBishop"
             },
             {
-                "url": "src/prefabs/WhitePawn.js",
+                "url": "assets/pieces/whiteBishop.png",
+                "type": "image",
+                "key": "whiteBishop_1"
+            },
+            {
+                "url": "src/prefabs/pieces/WhiteKing.js",
                 "type": "script",
-                "key": "WhitePawn_1"
+                "key": "WhiteKing"
+            },
+            {
+                "url": "assets/pieces/whiteKing.png",
+                "type": "image",
+                "key": "whiteKing_1"
+            },
+            {
+                "url": "src/prefabs/pieces/WhiteKnight.js",
+                "type": "script",
+                "key": "WhiteKnight"
+            },
+            {
+                "url": "assets/pieces/whiteKnight.png",
+                "type": "image",
+                "key": "whiteKnight_1"
+            },
+            {
+                "url": "src/prefabs/pieces/WhitePawn.js",
+                "type": "script",
+                "key": "WhitePawn"
+            },
+            {
+                "url": "assets/pieces/whitePawn.png",
+                "type": "image",
+                "key": "whitePawn_1"
+            },
+            {
+                "url": "src/prefabs/pieces/WhiteQueen.js",
+                "type": "script",
+                "key": "WhiteQueen"
+            },
+            {
+                "url": "assets/pieces/whiteQueen.png",
+                "type": "image",
+                "key": "whiteQueen_1"
+            },
+            {
+                "url": "src/prefabs/pieces/WhiteRook.js",
+                "type": "script",
+                "key": "WhiteRook"
+            },
+            {
+                "url": "assets/pieces/whiteRook.png",
+                "type": "image",
+                "key": "whiteRook_1"
             },
             {
                 "url": "assets/whiteTile.png",

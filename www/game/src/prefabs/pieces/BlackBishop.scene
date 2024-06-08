@@ -1,5 +1,5 @@
 {
-    "id": "dd9e339b-0f2f-42c0-b849-b1caa18777c3",
+    "id": "194213dc-3d4f-464e-826e-08bb9333cbba",
     "sceneType": "PREFAB",
     "settings": {
         "preloadMethodName": "",
@@ -11,16 +11,15 @@
     "displayList": [
         {
             "type": "Container",
-            "id": "12e00266-5fef-48cc-ac19-3c0689ded6e3",
+            "id": "d4e6f994-9f3f-4733-a877-e4c949241ba3",
             "label": "container_1",
-            "x": -11,
             "list": [
                 {
                     "type": "Image",
-                    "id": "a7190fc8-39d9-475e-830f-574ffd1d34f0",
-                    "label": "blackPawn",
+                    "id": "8c39c4ef-6700-4fee-a6d3-deee4198192a",
+                    "label": "blackBishop_1",
                     "texture": {
-                        "key": "blackPawn"
+                        "key": "blackBishop_1"
                     }
                 }
             ]

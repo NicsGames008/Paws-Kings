@@ -878,6 +878,34 @@ class Level extends Phaser.Scene {
 						const tileElement = this.tiles.find(tile => tile.tileId === state.tile_id);
 						if (tileElement) {
 							switch (state.mpp_piece_id) {
+								case 1:
+									if (state.mp_pc_id === 1) {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteBishop);
+									} else {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackBishop);
+									}
+									break;
+								case 2:
+									if (state.mp_pc_id === 1) {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteRook);
+									} else {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackRook);
+									}
+									break;
+								case 3:
+									if (state.mp_pc_id === 1) {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteKnight);
+									} else {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackKnight);
+									}
+									break;
+								case 4:
+									if (state.mp_pc_id === 1) {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteQueen);
+									} else {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackQueen);
+									}
+									break;
 								case 5:
 									if (state.mp_pc_id === 1) {
 										placePawn.call(this, boardState, gameState, playerID, tileElement, WhitePawn);
@@ -885,7 +913,13 @@ class Level extends Phaser.Scene {
 										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackPawn);
 									}
 									break;
-								// Add other cases here
+								case 6:
+									if (state.mp_pc_id === 1) {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, WhiteKing);
+									} else {
+										placePawn.call(this, boardState, gameState, playerID, tileElement, BlackKing);
+									}
+									break;
 							}
 						}
 					});
@@ -925,7 +959,7 @@ class Level extends Phaser.Scene {
 						element.remove(childToDestroyInHell);
 					}
 				});
-				
+
 
 				for (let i = 0; i < boardState.length; i++) {
 					var k = i + 1;

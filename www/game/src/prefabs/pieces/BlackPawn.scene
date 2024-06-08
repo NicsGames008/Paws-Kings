@@ -1,5 +1,5 @@
 {
-    "id": "b91d35af-d0d4-4eb3-9885-5a3d597bb43c",
+    "id": "dd9e339b-0f2f-42c0-b849-b1caa18777c3",
     "sceneType": "PREFAB",
     "settings": {
         "preloadMethodName": "",
@@ -11,15 +11,16 @@
     "displayList": [
         {
             "type": "Container",
-            "id": "0213408d-a57a-4b73-bbc1-0d0ab964e801",
+            "id": "12e00266-5fef-48cc-ac19-3c0689ded6e3",
             "label": "container_1",
+            "x": -11,
             "list": [
                 {
                     "type": "Image",
-                    "id": "47cb45dc-d2ed-4ca7-9adf-9b6189a8da6b",
-                    "label": "whitePawn",
+                    "id": "cdaeccdc-661b-49d5-9be4-4bfe4ac6cd02",
+                    "label": "blackPawn_1",
                     "texture": {
-                        "key": "whitePawn"
+                        "key": "blackPawn_1"
                     }
                 }
             ]

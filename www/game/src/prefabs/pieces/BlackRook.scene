@@ -1,0 +1,28 @@
+{
+    "id": "cb5a51eb-9bb5-4613-8306-ae1eecbcb1a5",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "44ed7320-678d-478f-a4ad-024d28346431",
+            "label": "blackRook_1",
+            "texture": {
+                "key": "blackRook_1"
+            }
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

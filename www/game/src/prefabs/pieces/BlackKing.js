@@ -3,14 +3,10 @@
 
 /* START OF COMPILED CODE */
 
-class BlackPawn extends Phaser.GameObjects.Container {
+class BlackKing extends Phaser.GameObjects.Image {
 
-	constructor(scene, x, y) {
-		super(scene, x ?? -11, y ?? 0);
-
-		// blackPawn
-		const blackPawn = scene.add.image(0, 0, "blackPawn");
-		this.add(blackPawn);
+	constructor(scene, x, y, texture, frame) {
+		super(scene, x ?? 0, y ?? 0, texture || "blackKing_1", frame);
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.

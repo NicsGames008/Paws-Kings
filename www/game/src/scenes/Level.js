@@ -1116,56 +1116,7 @@ class Level extends Phaser.Scene {
 
 
 
-		setInterval(() => {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = () => {
-				if (xhttp.readyState == 4) {
-					// Parse the JSON response
-					var data = JSON.parse(xhttp.responseText);
-					var cardAssetName = "";
-					for(let i = 0; i < data.length; i++){
-
-						//Constructing the name for the card prefab
-						cardAssetName = "card"
-						if(data[i].mp_pc_id == 1){
-							cardAssetName += "White";
-						}else if(data[i].mp_pc_id == 2){
-							cardAssetName += "Black";
-						}
-
-						//Detecting the piecce type
-						switch(data[i].card_id){
-							case 1:     //Bishop
-								cardAssetName += "Bishop";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							case 2:     // Roock
-								cardAssetName += "Roock";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							case 3:     // Knight
-								cardAssetName += "Knight";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							case 4:     // Quween
-								cardAssetName += "Queen";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							default:
-								console.log("gg i guess");
-							}
-
-							//resetting for the successive card
-							cardAssetName = "";
-						}	
-
-				}
-			};
-
-			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
-			xhttp.open("GET", "../state/card/1", true);
-			xhttp.send();
-		}, 2000)
+		
 
 
 		//Progressive tile generative prefab with properies in mind, idk tho

@@ -1042,74 +1042,101 @@ class Level extends Phaser.Scene {
 	}
 	cardClicked(cardIdReturned) {
 		this.card.forEach(element => {
+			console.log(element);
 			element.worm.setInteractive(); // Ensure the element is interactive
 			element.worm.on("pointerdown", () => {
 				cardIdReturned = element.cardId;
-				console.log('Card Clicked: ', cardIdReturned); // Debugging line
+				console.log('Card Clicked: ', element.cardId); // Debugging line
 			});
 		});
 	}
 	
 	tileClicked(boardState, playerID, cardId) {
 		let possibleMoves;
-	
-		this.tiles.forEach(element => {
-			element.setInteractive(); // Ensure the element is interactive
-			element.on("pointerdown", () => {
+
+		// Loop through each tile in the 'tiles' array
+		for (let index = 0; index < this.tiles.length; index++) {
+			// Get the current tile element at the 'index' position
+			const element = this.tiles[index];
+
+			// Add an event listener to the tile for the 'pointerdown' event
+			element.setInteractive();
+			element.on("pointerdown", event => {
+				// Extract the number from the tile's name using the 'extractNumberFromString' function
 				var tileId = element.tileId;
-	
-				// Clear previous visual indicators
-				this.tiles.forEach(el => {
-					const children = el.getAll();
+
+
+				this.tiles.forEach(element => {
+					const children = element.getAll();
 					const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
 					if (childToDestroyInHell) {
 						childToDestroyInHell.destroy();
-						el.remove(childToDestroyInHell);
+						element.remove(childToDestroyInHell);
 					}
 				});
-	
-				boardState.forEach((state, i) => {
+
+
+				for (let i = 0; i < boardState.length; i++) {
 					var k = i + 1;
-	
-					if (state.mpp_ps_id && k == tileId && state.playerID == playerID) {
+
+					if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID) {
+						// Check if a tile was already pressed
+
+
+						///////////////////////////////////////////
+						//possible promotion, selecting a card then a peice and console.log that it has been promoted
+
+						//end promotion
+
+
+
 						if (!possibleMoves) {
-							var xPosition = state.x;
-							var yPosition = state.y;
-							var pieceType = state.mpp_piece_id;
+							// If it was, check all the possible moves that the piece on the tile selected can do
+							var xPosition = boardState[i].x;
+							var yPosition = boardState[i].y;
+							var pieceType = boardState[i].mpp_piece_id;
 							possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
-	
-							possibleMoves.forEach(move => {
-								this.tiles.forEach(tile => {
-									var tileId = tile.tileId;
+
+							for (let i = 0; i < possibleMoves.length; i++) {
+								for (let k = 0; k < this.tiles.length; k++) {
+									// Get the current tile element at the 'index' position
+									const element = this.tiles[k];
+
+									// Extract the number from the tile's name using the 'extractNumberFromString' function
+									var tileId = element.tileId;
 									var tilePosition = numberToCoordinates(tileId);
-									if (tilePosition.x == move.x && tilePosition.y == move.y) {
-										if (!move.enemyOnTheWay) {
+									if (tilePosition.x == possibleMoves[i].x && tilePosition.y == possibleMoves[i].y) {
+										if (!possibleMoves[i].enemyOnTheWay) {
 											const visualPossibleMoves = new Dot(this, 0, 0);
 											this.add.existing(visualPossibleMoves);
-											tile.add(visualPossibleMoves);
+											element.add(visualPossibleMoves);
 										} else {
 											const killingArea = new redSquare(this, 0, 0);
 											this.add.existing(killingArea);
-											tile.add(killingArea);
+											element.add(killingArea);
 										}
 									}
-								});
-							});
-	
+								}
+							}
+
 							possibleMoves.push({ x: xPosition, y: yPosition });
-							console.log("1st Tile Selected: ", possibleMoves); // Debugging line
+							console.log("1st Tile Selected: ", possibleMoves);
 						} else {
+							// If not, set the array back to null so a new tile can be selected
 							possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
 						}
+						break;
 					}
-				});
-	
-				if (possibleMoves) {
-					possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
+					// Check if the user selected a tile before
+					if (possibleMoves) {
+						possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
+					}
 				}
 			});
-		});
+		}
+
 	}
+
 
 
 	makeMove(possibleMoves, numbFromImage, playerID) {
@@ -1117,7 +1144,6 @@ class Level extends Phaser.Scene {
 		for (let i = 0; i < possibleMoves.length; i++) {
 			//console.log(possibleMoves[i].x , possibleMoves[i].y)
 			if(possibleMoves[i].x == cordinates.x && possibleMoves[i].y == cordinates.y){
-				console.log(possibleMoves);
 				console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y," to position ", cordinates.x, cordinates.y);
 				this.updateGameState(playerID, (gameState) => {
 					this.updateBoardState(gameState, playerID, (boardState) => {});

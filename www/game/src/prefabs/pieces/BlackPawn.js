@@ -12,6 +12,8 @@ class BlackPawn extends Phaser.GameObjects.Container {
 		const blackPawn_1 = scene.add.image(0, 0, "blackPawn_1");
 		this.add(blackPawn_1);
 
+		this.name = "blackPawn";
+
 		/* START-USER-CTR-CODE */
 		// Write your code here.
 		/* END-USER-CTR-CODE */

@@ -1029,170 +1029,88 @@ class Level extends Phaser.Scene {
 		xhttp.send();
 	}
 
-	tileClicked(boardState, playerID) {
+	tileClicked(boardState,  playerID) {
 		let possibleMoves;
 
-		// Loop through each tile in the 'tiles' array
-		for (let index = 0; index < this.tiles.length; index++) {
-			// Get the current tile element at the 'index' position
-			const element = this.tiles[index];
+		this.updateGameState(playerID, (gameState) => {
 
-			// Add an event listener to the tile for the 'pointerdown' event
-			element.setInteractive();
-			element.on("pointerdown", event => {
-				// Extract the number from the tile's name using the 'extractNumberFromString' function
-				var tileId = element.tileId;
+			// Loop through each tile in the 'tiles' array
+			for (let index = 0; index < this.tiles.length; index++) {
+				// Get the current tile element at the 'index' position
+				const element = this.tiles[index];
 
-
-				this.tiles.forEach(element => {
-					const children = element.getAll();
-					const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
-					if (childToDestroyInHell) {
-						childToDestroyInHell.destroy();
-						element.remove(childToDestroyInHell);
-					}
-				});
+				// Add an event listener to the tile for the 'pointerdown' event
+				element.setInteractive();
+				element.on("pointerdown", event => {
+					// Extract the number from the tile's name using the 'extractNumberFromString' function
+					var tileId = element.tileId;
 
 
-				for (let i = 0; i < boardState.length; i++) {
-					var k = i + 1;
+					this.tiles.forEach(element => {
+						const children = element.getAll();
+						const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
+						if (childToDestroyInHell) {
+							childToDestroyInHell.destroy();
+							element.remove(childToDestroyInHell);
+						}
+					});
 
-					if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID) {
-						// Check if a tile was already pressed
-						if (!possibleMoves) {
-							// If it was, check all the possible moves that the piece on the tile selected can do
-							var xPosition = boardState[i].x;
-							var yPosition = boardState[i].y;
-							var pieceType = boardState[i].mpp_piece_id;
-							possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
+								
+						for (let i = 0; i < boardState.length; i++) {
+							var k = i + 1;
+							
+							//console.log(gameState);
+							var a = gameState.find(state => state.player_id == playerID);
 
-							for (let i = 0; i < possibleMoves.length; i++) {
-								for (let k = 0; k < this.tiles.length; k++) {
-									// Get the current tile element at the 'index' position
-									const element = this.tiles[k];
+							if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID && a.match_pc_id == a.mp_pc_id) {
+								
+								// Check if a tile was already pressed
+								if (!possibleMoves) {
+									// If it was, check all the possible moves that the piece on the tile selected can do
+									var xPosition = boardState[i].x;
+									var yPosition = boardState[i].y;
+									var pieceType = boardState[i].mpp_piece_id;
+									possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
 
-									// Extract the number from the tile's name using the 'extractNumberFromString' function
-									var tileId = element.tileId;
-									var tilePosition = numberToCoordinates(tileId);
-									if (tilePosition.x == possibleMoves[i].x && tilePosition.y == possibleMoves[i].y) {
-										if (!possibleMoves[i].enemyOnTheWay) {
-											const visualPossibleMoves = new Dot(this, 0, 0);
-											this.add.existing(visualPossibleMoves);
-											element.add(visualPossibleMoves);
-										} else {
-											const killingArea = new redSquare(this, 0, 0);
-											this.add.existing(killingArea);
-											element.add(killingArea);
+									for (let i = 0; i < possibleMoves.length; i++) {
+										for (let k = 0; k < this.tiles.length; k++) {
+											// Get the current tile element at the 'index' position
+											const element = this.tiles[k];
+
+											// Extract the number from the tile's name using the 'extractNumberFromString' function
+											var tileId = element.tileId;
+											var tilePosition = numberToCoordinates(tileId);
+											if (tilePosition.x == possibleMoves[i].x && tilePosition.y == possibleMoves[i].y) {
+												if (!possibleMoves[i].enemyOnTheWay) {
+													const visualPossibleMoves = new Dot(this, 0, 0);
+													this.add.existing(visualPossibleMoves);
+													element.add(visualPossibleMoves);
+												} else {
+													const killingArea = new redSquare(this, 0, 0);
+													this.add.existing(killingArea);
+													element.add(killingArea);
+												}
+											}
 										}
 									}
+
+									possibleMoves.push({ x: xPosition, y: yPosition });
+									console.log("1st Tile Selected: ", possibleMoves);
+								} else {
+									// If not, set the array back to null so a new tile can be selected
+									possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
 								}
+								break;
 							}
-
-							possibleMoves.push({ x: xPosition, y: yPosition });
-							console.log("1st Tile Selected: ", possibleMoves);
-						} else {
-							// If not, set the array back to null so a new tile can be selected
-							possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
-						}
-						break;
-					}
-					// Check if the user selected a tile before
-					if (possibleMoves) {
-						possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
-					}
-				}
-			});
-		}
-		//idk
-
-
-		//save the coordinates and then eleborates them instes of increasigly create a new object
-		//legendary queer, get the piece and it's tile id, then it goes thoutght all of them and CHANGES their texture
-
-
-		//CARDS
-		//either the placeholder raffigures a greyed out version of the card and when the number is higher than 0, it gets illuminated and we write how many in a text or we add many underlying copy
-		//or we have a common placeholder and when the number is > 0, the card appears and to show multiple copies we could stack some more or have a text to say that.
-
-
-
-		setInterval(() => {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = () => {
-				if (xhttp.readyState == 4) {
-					// Parse the JSON response
-					var data = JSON.parse(xhttp.responseText);
-					var cardAssetName = "";
-					for(let i = 0; i < data.length; i++){
-
-						//Constructing the name for the card prefab
-						cardAssetName = "card"
-						if(data[i].mp_pc_id == 1){
-							cardAssetName += "White";
-						}else if(data[i].mp_pc_id == 2){
-							cardAssetName += "Black";
+							// Check if the user selected a tile before
+							if (possibleMoves) {
+								possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
+							}
 						}
 
-						//Detecting the piecce type
-						switch(data[i].card_id){
-							case 1:     //Bishop
-								cardAssetName += "Bishop";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							case 2:     // Roock
-								cardAssetName += "Roock";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							case 3:     // Knight
-								cardAssetName += "Knight";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							case 4:     // Quween
-								cardAssetName += "Queen";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, data[i].card_name, cardAssetName);
-								break;
-							default:
-								console.log("gg i guess");
-							}
-
-							//resetting for the successive card
-							cardAssetName = "";
-						}	
-
-				}
-			};
-
-			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
-			xhttp.open("GET", "../state/card/1", true);
-			xhttp.send();
-		}, 2000)
-
-
-		//Progressive tile generative prefab with properies in mind, idk tho
-
-		// var arrTiles = [];
-		// var tileSprite = "";
-		// var originX = 0;
-		// var originY = 0;
-
-		// for (let i = 0; i < 64; i++){
-		// 	tileName += i;
-
-		// 	if(whiteTilesId.includes(i)){
-		// 		tileSprite = "whiteTile";
-		// 	}else if(blackTilesId.includes(i)){
-		// 		tileSprite = "blackTile";
-		// 	}
-		// 	arrTiles[`tile_${i+1}`] = new Tiles(originX, originY, tileSprite);
-		// 	arrTiles[`tile_${i+1}`].name = `Tile_${i+1}`;
-		// 	arrTiles[`tile_${i+1}`].scaleX = 7;
-		// 	arrTiles[`tile_${i+1}`].scaleY = 7;
-
-		// 	this.add.existing(`tile_${i+1}`);
-
-		// 	originX += 70;
-		// 	originY += 70;
-		// }
+				});
+			}
+		});
 
 	}
 
@@ -1203,17 +1121,57 @@ class Level extends Phaser.Scene {
 	makeMove(possibleMoves, numbFromImage, playerID) {
 		var cordinates = numberToCoordinates(numbFromImage);
 		for (let i = 0; i < possibleMoves.length; i++) {
-			//console.log(possibleMoves[i].x , possibleMoves[i].y)
-			if(possibleMoves[i].x == cordinates.x && possibleMoves[i].y == cordinates.y){
-				console.log(possibleMoves);
-				console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y," to position ", cordinates.x, cordinates.y);
-				this.updateGameState(playerID, (gameState) => {
-					this.updateBoardState(gameState, playerID, (boardState) => {});
-				});
-				return possibleMoves = undefined;
+			// console.log(possibleMoves[i].x , possibleMoves[i].y)
+			if (possibleMoves[i].x == cordinates.x && possibleMoves[i].y == cordinates.y && (possibleMoves[possibleMoves.length - 1].x != cordinates.x || possibleMoves[possibleMoves.length - 1].y != cordinates.y)) {
+
+				// Construct JSON object with form data
+				var data = {
+					startX: possibleMoves[possibleMoves.length - 1].x,
+					startY: possibleMoves[possibleMoves.length - 1].y,
+					endX: cordinates.x,
+					endY: cordinates.y,
+					matchId: 1
+				};
+
+				// Create an XMLHttpRequest object
+				var xhttp = new XMLHttpRequest();
+				// Define the callback function to handle the response
+				xhttp.onreadystatechange = () => { // Use arrow function to maintain `this` context
+					if (xhttp.readyState == 4) { // When the request is complete
+						if (xhttp.status == 200) { // If the request was successful
+							// Get the response from the server
+							var response = xhttp.responseText;
+							
+							this.tilesContainer.list
+							.filter(child => !child.name.startsWith('Tile_')) // Ignore 'Tile_X' elements
+							.forEach(child => {
+								child.destroy();
+								// Ensure you have a reference to the parent container to remove the child
+								this.tilesContainer.remove(child);
+								
+							});			
+
+							this.updateGameState(playerID, (gameState) => {
+								this.updateBoardState(gameState, playerID, (boardState) => {});
+								});
+
+							console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y, " to position ", cordinates.x, cordinates.y);
+							console.log(response);
+							return possibleMoves = undefined;
+
+						}
+					}
+				};
+
+				// Configure the XMLHttpRequest object
+				xhttp.open("POST", "/piece/move", true); // Specify the method and URL
+				xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
+				xhttp.send(JSON.stringify(data)); // Send JSON data to the server
+
 			}
 		}
 	}
+
 
 	create() {
 
@@ -1238,6 +1196,14 @@ class Level extends Phaser.Scene {
 		xhttp.open("GET", "/signing/playerID", true);
 		xhttp.send();
 
+		//save the coordinates and then eleborates them instes of increasigly create a new object
+		//legendary queer, get the piece and it's tile id, then it goes thoutght all of them and CHANGES their texture
+
+
+		//CARDS
+		//either the placeholder raffigures a greyed out version of the card and when the number is higher than 0, it gets illuminated and we write how many in a text or we add many underlying copy
+		//or we have a common placeholder and when the number is > 0, the card appears and to show multiple copies we could stack some more or have a text to say that.
+
 		setInterval(() => {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
@@ -1246,7 +1212,7 @@ class Level extends Phaser.Scene {
 					var data = JSON.parse(xhttp.responseText);
 
 					var cardAssetName = "";
-					
+
 					for(let i = 0; i < data.length; i++){
 
 						//Constructing the name for the card prefab
@@ -1291,13 +1257,14 @@ class Level extends Phaser.Scene {
 			xhttp.send();
 		}, 2000)
 	}
+
 	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference){
 		//color necessary to be used to detected the rigth card
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
 
 		cardReference.ammount = cardAmmount;
 
-		
+
 		if(cardAmmount > 0){
 			//allows it to be shown, or it could make it not ; not necessarily changing it's size
 			//console.log(cardReference);

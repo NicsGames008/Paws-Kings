@@ -29,8 +29,6 @@ router.post('/move', (request, response) => {
         response.send("Same position!");
         return ;
     }
-
-
     // Execute the query
     connection.execute('SELECT ms.ms_description AS match_state, pc1.pc_name AS player_color, pc2.pc_name AS color_playing FROM Match_Player mp INNER JOIN Player_Color pc1 ON mp.mp_pc_id = pc1.pc_id INNER JOIN `Match` m ON mp.mp_match_id = m.match_id INNER JOIN Match_State ms ON ms.ms_id = m.match_ms_id INNER JOIN Player_Color pc2 ON m.match_pc_id = pc2.pc_id WHERE m.match_id = ? AND mp.mp_player_id = ?; ',
     [matchId, playerId], 
@@ -50,7 +48,6 @@ router.post('/move', (request, response) => {
                 
                 // Check if the match state is "On-going"
                 if (matchState === "On-going") {
-
                     // Call the CheckIfPieceExists function with specified parameters
                     CheckIfPieceExists(request, response, startX, startY, matchId, function(piece){
                         // Once the callback function is called, send the result back in the response
@@ -58,7 +55,7 @@ router.post('/move', (request, response) => {
                             // Check if the move is valid by calling the IsValidMove function
                             //get the return value of the IsValidMove validation
                             var moveIsValide = IsValidMove(startX, startY, endX, endY, piece.pieceType, boardState)  
-                            //check if the move is valid                
+                            //check if the move is valid   
                             if (moveIsValide[0] && (piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying) {
                                 //if its valid but has a pice on the way....
                                 if(moveIsValide[1]){ //if there is an enemy on the way....
@@ -387,7 +384,7 @@ function ChangeWhoIsPlaying(request, response, matchId){
 // Function to check if a piece exists at a specified position in a match
 function CheckIfPieceExists(request, response, startX, startY, matchId, callback) {
     // Database query to select the piece name from the Match_Player_Piece table
-    connection.execute('SELECT Piece.piece_name AS pieceType, ps.ps_description AS pieceState, Match_Player.mp_player_id AS playerID, pc.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece_State ps ON  Match_Player_Piece.mpp_ps_id = ps_id JOIN Player_Color pc ON Match_Player.mp_pc_id = pc.pc_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ? AND ps.ps_description = "Alive";',
+    connection.execute('SELECT Piece.piece_name AS pieceType, ps.ps_description AS pieceState, Match_Player.mp_player_id AS playerID, pc.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece_State ps ON  Match_Player_Piece.mpp_ps_id = ps_id JOIN Player_Color pc ON Match_Player.mp_pc_id = pc.pc_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ? AND ps.ps_description = "Alive" OR ps.ps_description = "Has not moved yet";',
         [startX, startY, matchId], // Array of values to replace placeholders in the query
         function (err, results, fields) {
             // Check if there was an error during the query execution

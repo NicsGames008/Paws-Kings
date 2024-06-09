@@ -10,6 +10,8 @@ class BlackBishop extends Phaser.GameObjects.Container {
 
 		// blackBishop_1
 		const blackBishop_1 = scene.add.image(0, 0, "blackBishop_1");
+		this.name = "blackBishop";
+
 		this.add(blackBishop_1);
 
 		/* START-USER-CTR-CODE */

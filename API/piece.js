@@ -148,7 +148,7 @@ router.post('/promote',(request, response)=>{
                                         GetBoardState(request, response, matchId, function(boardState) {   
                                             //check if the move is valid 
                                             if ((piece.pieceState == 'Alive' || piece.pieceState == 'Has not moved yet') && piece.playerID == playerId && piece.color_piece == colorPlaying && validateCardExists && validadePromoten && validateUpgradeTier && canPromote && piece.pieceType == 'Pawn') {
-                                                UpdatePieceType(request, response, cardId, startX, startY);
+                                                UpdatePieceType(request, response, cardId, startX, startY, matchId);
                                                 ChangePieceState(request, response, startX, startY, matchId, 3);
                                                 UpdateCanPromoteState(request, response, matchId, playerId, 0);
                                                 UpdateCard(request, response, cardId, playerId);
@@ -205,7 +205,7 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
     //if the pawnn gewt to the last row it promotes to a random piece
     if ((endY == 8 && piece.color_piece == 'White') || (endY == 1 && piece.color_piece == 'Black')) {
         var promotionPiece = RandomShardGenerator();
-        UpdatePieceType(request, response, promotionPiece, startX, startY);
+        UpdatePieceType(request, response, promotionPiece, startX, startY, matchId);
     }
 
     //makes the pawn go get the state that he cant move 2 tile after 1st move
@@ -387,7 +387,7 @@ function ChangeWhoIsPlaying(request, response, matchId){
 // Function to check if a piece exists at a specified position in a match
 function CheckIfPieceExists(request, response, startX, startY, matchId, callback) {
     // Database query to select the piece name from the Match_Player_Piece table
-    connection.execute('SELECT Piece.piece_name AS pieceType, ps.ps_description AS pieceState, Match_Player.mp_player_id AS playerID, pc.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Piece_State ps ON  Match_Player_Piece.mpp_ps_id = ps_id JOIN Player_Color pc ON Match_Player.mp_pc_id = pc.pc_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ? AND ps.ps_description = "Alive";',
+    connection.execute('SELECT Piece.piece_name AS pieceType, Piece_State.ps_description AS pieceState, Match_Player.mp_player_id AS playerID, Player_Color.pc_name AS color_piece FROM Match_Player_Piece JOIN Piece ON Match_Player_Piece.mpp_piece_id = Piece.piece_id JOIN Piece_State ON Match_Player_Piece.mpp_ps_id = Piece_State.ps_id JOIN Match_Player ON Match_Player_Piece.mpp_mp_id = Match_Player.mp_id JOIN Player_Color ON Match_Player.mp_pc_id = Player_Color.pc_id JOIN Tile ON Match_Player_Piece.mpp_tile_id = Tile.tile_id JOIN `Match` ON Match_Player.mp_match_id = `Match`.match_id WHERE Tile.tile_x = ? AND Tile.tile_y = ? AND `Match`.match_id = ?;',
         [startX, startY, matchId], // Array of values to replace placeholders in the query
         function (err, results, fields) {
             // Check if there was an error during the query execution
@@ -420,7 +420,7 @@ function UpdatePieceType(request, response, cardId, startX, startY, matchId) {
         }else{
             mppId = results[0].mpp_id;
 
-            PromoteSaidPiece(request, response, endX, endY, mppId)
+            PromoteSaidPiece(request, response, cardId, mppId)
         }
     });
 

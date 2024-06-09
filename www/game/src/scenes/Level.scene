@@ -11,26 +11,51 @@
     },
     "displayList": [
         {
+            "type": "Image",
+            "id": "aef84ce8-fea7-4f24-8900-d3ec556ea93d",
+            "label": "background",
+            "texture": {
+                "key": "whiteTile"
+            },
+            "x": -126,
+            "y": -75,
+            "scaleX": 150,
+            "scaleY": 100,
+            "originX": 0,
+            "originY": 0,
+            "tintTopLeft": "#0E1529",
+            "tintTopRight": "#0E1529",
+            "tintBottomLeft": "#0E1529",
+            "tintBottomRight": "#0E1529"
+        },
+        {
             "type": "Text",
             "id": "91182f95-726e-4862-9abc-400a60c6c0fa",
             "label": "advName",
             "scope": "CLASS",
-            "x": 50,
+            "x": 43,
             "y": 10,
             "text": "%adversaryName%",
             "fontSize": "24px",
-            "color": "#9d38feff"
+            "color": "#9d38feff",
+            "shadow.offsetX": 10,
+            "shadow.offsetY": -10,
+            "shadow.fill": true
         },
         {
             "type": "Text",
             "id": "0e89a02f-b279-4f44-81ce-a4f2c569e5a2",
             "label": "userName",
             "scope": "CLASS",
-            "x": 50,
-            "y": 653,
+            "x": 43,
+            "y": 650,
             "text": "%userName%",
             "fontSize": "24px",
-            "color": "#fff7bbff"
+            "color": "#fff7bbff",
+            "shadow.offsetX": 10,
+            "shadow.offsetY": 10,
+            "shadow.fill": true,
+            "shadow.blur": 1
         },
         {
             "type": "Container",
@@ -189,7 +214,7 @@
                     "scope": "CLASS",
                     "tileId": 56,
                     "x": 245,
-                    "y": -173
+                    "y": -175
                 },
                 {
                     "prefabId": "d7c92a76-0eb3-463e-b213-e9aa8bf1df50",
@@ -204,7 +229,7 @@
                     "scope": "CLASS",
                     "tileId": 55,
                     "x": 175,
-                    "y": -173
+                    "y": -175
                 },
                 {
                     "prefabId": "44640341-5893-4bd5-b297-b8e7ad3d1b36",
@@ -219,7 +244,7 @@
                     "scope": "CLASS",
                     "tileId": 54,
                     "x": 105,
-                    "y": -174
+                    "y": -175
                 },
                 {
                     "prefabId": "d7c92a76-0eb3-463e-b213-e9aa8bf1df50",
@@ -234,7 +259,7 @@
                     "scope": "CLASS",
                     "tileId": 53,
                     "x": 35,
-                    "y": -174
+                    "y": -175
                 },
                 {
                     "prefabId": "44640341-5893-4bd5-b297-b8e7ad3d1b36",
@@ -249,7 +274,7 @@
                     "scope": "CLASS",
                     "tileId": 52,
                     "x": -35,
-                    "y": -174
+                    "y": -175
                 },
                 {
                     "prefabId": "d7c92a76-0eb3-463e-b213-e9aa8bf1df50",
@@ -264,7 +289,7 @@
                     "scope": "CLASS",
                     "tileId": 51,
                     "x": -105,
-                    "y": -174
+                    "y": -175
                 },
                 {
                     "prefabId": "44640341-5893-4bd5-b297-b8e7ad3d1b36",
@@ -1068,27 +1093,13 @@
         },
         {
             "type": "Image",
-            "id": "e4840c8e-6f9e-4bbf-aa50-377285579373",
-            "label": "worm",
-            "texture": {
-                "key": "worm"
-            },
-            "x": 688,
-            "y": 62,
-            "tintTopLeft": "#000000",
-            "tintTopRight": "#000000",
-            "tintBottomLeft": "#bdbbbb",
-            "tintBottomRight": "#bdbbbb"
-        },
-        {
-            "type": "Image",
             "id": "0185d7a4-9b49-4116-8483-65452615bb3a",
             "label": "shardBackground_1",
             "scope": "CLASS",
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 916,
+            "x": 876,
             "y": 200
         },
         {
@@ -1099,7 +1110,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1016,
+            "x": 989,
             "y": 200
         },
         {
@@ -1110,7 +1121,7 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1116,
+            "x": 1102,
             "y": 200
         },
         {
@@ -1132,8 +1143,8 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 916,
-            "y": 400
+            "x": 876,
+            "y": 450
         },
         {
             "type": "Image",
@@ -1143,8 +1154,8 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1016,
-            "y": 400
+            "x": 989,
+            "y": 450
         },
         {
             "type": "Image",
@@ -1154,8 +1165,8 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1116,
-            "y": 400
+            "x": 1102,
+            "y": 450
         },
         {
             "type": "Image",
@@ -1165,8 +1176,8 @@
             "texture": {
                 "key": "promotionPlaceholder"
             },
-            "x": 1216,
-            "y": 400
+            "x": 1215,
+            "y": 450
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1180,8 +1191,8 @@
             "label": "cardPlaceholder_1",
             "scope": "CLASS",
             "cardId": 1,
-            "x": 869,
-            "y": 384
+            "x": 830,
+            "y": 434
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1196,8 +1207,8 @@
             "label": "cardPlaceholder_2",
             "scope": "CLASS",
             "cardId": 2,
-            "x": 966,
-            "y": 384
+            "x": 943,
+            "y": 434
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1212,8 +1223,8 @@
             "label": "cardPlaceholder_3",
             "scope": "CLASS",
             "cardId": 3,
-            "x": 1068,
-            "y": 384
+            "x": 1055,
+            "y": 434
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1229,15 +1240,15 @@
             "scope": "CLASS",
             "cardId": 4,
             "x": 1169,
-            "y": 380
+            "y": 434
         },
         {
             "type": "Text",
             "id": "b1fe4384-577c-4421-a439-9f3767f38c5c",
             "label": "cardText_1",
             "scope": "CLASS",
-            "x": 892,
-            "y": 482,
+            "x": 876,
+            "y": 528,
             "text": "%Bishop Number%"
         },
         {
@@ -1245,8 +1256,8 @@
             "id": "8bcf46a9-a4c3-4aba-996e-43575944c036",
             "label": "cardText_2",
             "scope": "CLASS",
-            "x": 997,
-            "y": 508,
+            "x": 989,
+            "y": 528,
             "text": "%Roock Number%"
         },
         {
@@ -1254,8 +1265,8 @@
             "id": "86d30942-5907-475f-a6be-9acf383623ea",
             "label": "cardText_3",
             "scope": "CLASS",
-            "x": 1100,
-            "y": 485,
+            "x": 1102,
+            "y": 528,
             "text": "%Knight Number%"
         },
         {
@@ -1263,8 +1274,8 @@
             "id": "a0ec4046-9503-4b8f-a3ed-82e135c801e2",
             "label": "cardText_4",
             "scope": "CLASS",
-            "x": 1207,
-            "y": 508,
+            "x": 1215,
+            "y": 528,
             "text": "%Qween Number%"
         },
         {
@@ -1276,6 +1287,7 @@
             },
             "x": 1216,
             "y": 42,
+            "visible": false,
             "tintTopLeft": "#fe24fc",
             "tintTopRight": "#a10101"
         },
@@ -1283,8 +1295,9 @@
             "type": "Text",
             "id": "81efd813-000c-4477-aa8d-6313711bef8e",
             "label": "text_1",
-            "x": 65,
+            "x": 77,
             "y": 609,
+            "originX": 0.5,
             "text": "A",
             "fontSize": "36px"
         },
@@ -1292,8 +1305,9 @@
             "type": "Text",
             "id": "66a66846-b7cf-4672-80be-6d48ef3dca92",
             "label": "text",
-            "x": 137,
-            "y": 612,
+            "x": 147,
+            "y": 609,
+            "originX": 0.5,
             "text": "B",
             "fontSize": "36px"
         },
@@ -1301,8 +1315,9 @@
             "type": "Text",
             "id": "d9f01d0e-ec39-4688-8bfe-2b369f45bd80",
             "label": "text_2",
-            "x": 202,
-            "y": 612,
+            "x": 217,
+            "y": 609,
+            "originX": 0.5,
             "text": "C",
             "fontSize": "36px"
         },
@@ -1310,8 +1325,9 @@
             "type": "Text",
             "id": "cf84bdc2-8a36-48a0-9b64-dee591cb7b21",
             "label": "text_3",
-            "x": 274,
-            "y": 611,
+            "x": 287,
+            "y": 609,
+            "originX": 0.5,
             "text": "D",
             "fontSize": "36px"
         },
@@ -1319,8 +1335,9 @@
             "type": "Text",
             "id": "089304f4-2658-4035-8854-1762e977e137",
             "label": "text_4",
-            "x": 340,
-            "y": 613,
+            "x": 357,
+            "y": 609,
+            "originX": 0.5,
             "text": "E",
             "fontSize": "36px"
         },
@@ -1328,8 +1345,9 @@
             "type": "Text",
             "id": "5a850fb1-55c0-4d63-a0ab-60252c4c8071",
             "label": "text_5",
-            "x": 412.220184281125,
-            "y": 623.0113570809795,
+            "x": 427,
+            "y": 609,
+            "originX": 0.5,
             "text": "F",
             "fontSize": "36px"
         },
@@ -1337,8 +1355,9 @@
             "type": "Text",
             "id": "afd1d7b2-2bc3-42b5-ba7f-b76963310bde",
             "label": "text_6",
-            "x": 500.0201393402889,
-            "y": 619.5816713364809,
+            "x": 497,
+            "y": 609,
+            "originX": 0.5,
             "text": "G",
             "fontSize": "36px"
         },
@@ -1346,8 +1365,9 @@
             "type": "Text",
             "id": "61852434-ac95-4078-87e9-bc2e5e81f65d",
             "label": "text_7",
-            "x": 559.6966712945645,
-            "y": 618.2097970386815,
+            "x": 567,
+            "y": 609,
+            "originX": 0.5,
             "text": "H",
             "fontSize": "36px"
         },
@@ -1355,8 +1375,10 @@
             "type": "Text",
             "id": "c291b551-9d72-44f1-8c0d-d845c9e53b6b",
             "label": "text_15",
-            "x": 15.594745873527899,
-            "y": 563.4477026977744,
+            "x": 22,
+            "y": 570,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "1",
             "fontSize": "36px"
         },
@@ -1364,8 +1386,10 @@
             "type": "Text",
             "id": "773032b3-006c-4fff-a807-e294a1ab128c",
             "label": "text_14",
-            "x": 11,
-            "y": 485,
+            "x": 22,
+            "y": 500,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "2",
             "fontSize": "36px"
         },
@@ -1373,8 +1397,10 @@
             "type": "Text",
             "id": "d3491b82-7e4f-4f5e-a0cd-1ea4f0656d3e",
             "label": "text_13",
-            "x": 8,
-            "y": 419,
+            "x": 22,
+            "y": 430,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "3",
             "fontSize": "36px"
         },
@@ -1382,8 +1408,10 @@
             "type": "Text",
             "id": "8fb81587-5725-4ed3-bae4-c7a671a4ccc9",
             "label": "text_12",
-            "x": 13,
-            "y": 344,
+            "x": 22,
+            "y": 360,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "4",
             "fontSize": "36px"
         },
@@ -1391,8 +1419,10 @@
             "type": "Text",
             "id": "8489ee9c-cc37-4491-9e21-7d9df87e0b2d",
             "label": "text_11",
-            "x": 16,
-            "y": 271,
+            "x": 22,
+            "y": 290,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "5",
             "fontSize": "36px"
         },
@@ -1400,8 +1430,10 @@
             "type": "Text",
             "id": "243c7630-81da-4a74-9cca-671b4b3109c1",
             "label": "text_10",
-            "x": 14,
-            "y": 207,
+            "x": 22,
+            "y": 220,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "6",
             "fontSize": "36px"
         },
@@ -1409,8 +1441,10 @@
             "type": "Text",
             "id": "aef53b12-fa11-4ad6-a423-f663cf5fafce",
             "label": "text_9",
-            "x": 14,
-            "y": 135,
+            "x": 22,
+            "y": 150,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "7",
             "fontSize": "36px"
         },
@@ -1418,10 +1452,24 @@
             "type": "Text",
             "id": "519b2f76-0c6b-4d64-ae50-823737a70449",
             "label": "text_8",
-            "x": 11,
-            "y": 72,
+            "x": 22,
+            "y": 80,
+            "originX": 0.5,
+            "originY": 0.5,
             "text": "8",
             "fontSize": "36px"
+        },
+        {
+            "prefabId": "48c31d59-c3a1-4234-bffb-0b69b3b3e3da",
+            "id": "96b2fdb3-f7c9-45d4-a9d1-bf19aa1d5b0e",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "cardIdVar",
+            "scope": "CLASS",
+            "x": 1264,
+            "y": 16
         },
         {
             "prefabId": "161e7197-fa06-4e6e-b19c-8456c1978802",
@@ -1434,8 +1482,8 @@
             ],
             "label": "pTBlackBishop",
             "scope": "CLASS",
-            "x": 768,
-            "y": 451,
+            "x": 721,
+            "y": 480,
             "scaleX": 0,
             "scaleY": 1
         },
@@ -1450,8 +1498,8 @@
             ],
             "label": "pTBlackRoock",
             "scope": "CLASS",
-            "x": 768,
-            "y": 353,
+            "x": 721,
+            "y": 382,
             "scaleX": 0,
             "scaleY": 1
         },
@@ -1466,8 +1514,8 @@
             ],
             "label": "pTBlackKnight",
             "scope": "CLASS",
-            "x": 768,
-            "y": 255,
+            "x": 721,
+            "y": 284,
             "scaleX": 0,
             "scaleY": 1
         },
@@ -1482,22 +1530,10 @@
             ],
             "label": "pTBlackQueen",
             "scope": "CLASS",
-            "x": 768,
-            "y": 149,
+            "x": 721,
+            "y": 178,
             "scaleX": 0,
             "scaleY": 1
-        },
-        {
-            "prefabId": "48c31d59-c3a1-4234-bffb-0b69b3b3e3da",
-            "id": "96b2fdb3-f7c9-45d4-a9d1-bf19aa1d5b0e",
-            "unlock": [
-                "x",
-                "y"
-            ],
-            "label": "cardIdVar",
-            "scope": "CLASS",
-            "x": 618,
-            "y": 589
         },
         {
             "prefabId": "293a23a1-08dd-466f-acd8-f2164503d250",
@@ -1510,24 +1546,8 @@
             ],
             "label": "pTWhiteBishop",
             "scope": "CLASS",
-            "x": 768,
-            "y": 451,
-            "scaleX": 0,
-            "scaleY": 1
-        },
-        {
-            "prefabId": "72d903ef-71a2-4dcd-b756-36ed47d3fccb",
-            "id": "d97af7f3-ed18-44b9-88b5-35610c1c18d8",
-            "unlock": [
-                "x",
-                "y",
-                "scaleX",
-                "scaleY"
-            ],
-            "label": "pTWhiteKnight",
-            "scope": "CLASS",
-            "x": 768,
-            "y": 255,
+            "x": 721,
+            "y": 480,
             "scaleX": 0,
             "scaleY": 1
         },
@@ -1542,8 +1562,24 @@
             ],
             "label": "pTWhiteRoock",
             "scope": "CLASS",
-            "x": 768,
-            "y": 353,
+            "x": 721,
+            "y": 382,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "72d903ef-71a2-4dcd-b756-36ed47d3fccb",
+            "id": "d97af7f3-ed18-44b9-88b5-35610c1c18d8",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTWhiteKnight",
+            "scope": "CLASS",
+            "x": 721,
+            "y": 284,
             "scaleX": 0,
             "scaleY": 1
         },
@@ -1558,8 +1594,8 @@
             ],
             "label": "pTWhiteQueen",
             "scope": "CLASS",
-            "x": 768,
-            "y": 149,
+            "x": 721,
+            "y": 178,
             "scaleX": 0,
             "scaleY": 1
         },
@@ -1571,10 +1607,10 @@
             "texture": {
                 "key": "blackTile"
             },
-            "x": 768,
-            "y": 451,
+            "x": 721,
+            "y": 480,
             "scaleX": 15.600415167885103,
-            "scaleY": 9.781727169244308,
+            "scaleY": 9.85,
             "alpha": 0.6,
             "alphaTopLeft": 0.6,
             "alphaTopRight": 0.6,
@@ -1589,8 +1625,8 @@
             "texture": {
                 "key": "blackTile"
             },
-            "x": 768,
-            "y": 353,
+            "x": 721,
+            "y": 382,
             "scaleX": 15.600415167885103,
             "scaleY": 9.781727169244308,
             "alpha": 0.6,
@@ -1607,8 +1643,8 @@
             "texture": {
                 "key": "blackTile"
             },
-            "x": 768,
-            "y": 255,
+            "x": 721,
+            "y": 284,
             "scaleX": 15.600415167885103,
             "scaleY": 9.781727169244308,
             "alpha": 0.6,
@@ -1625,8 +1661,8 @@
             "texture": {
                 "key": "blackTile"
             },
-            "x": 768,
-            "y": 149,
+            "x": 721,
+            "y": 178,
             "scaleX": 15.600415167885103,
             "scaleY": 11.450615277574254,
             "alpha": 0.6,
@@ -1640,8 +1676,8 @@
             "id": "4e342a68-bdb6-4bac-bbf3-afee6427420b",
             "label": "text_16",
             "scope": "CLASS",
-            "x": 881,
-            "y": 195,
+            "x": 865,
+            "y": 194,
             "text": "%Bishop%"
         },
         {
@@ -1649,8 +1685,8 @@
             "id": "76da54cb-080d-4717-9595-eb0e9bc74e31",
             "label": "text_17",
             "scope": "CLASS",
-            "x": 974,
-            "y": 195,
+            "x": 978,
+            "y": 194,
             "text": "%Roock%"
         },
         {
@@ -1658,7 +1694,7 @@
             "id": "5b3d4b3f-f227-45a4-9822-41cbd2f850dc",
             "label": "text_18",
             "scope": "CLASS",
-            "x": 1079,
+            "x": 1089,
             "y": 194,
             "text": "%Knight%"
         },
@@ -1667,8 +1703,8 @@
             "id": "9952af37-53d8-40f1-8569-053542be4544",
             "label": "text_19",
             "scope": "CLASS",
-            "x": 1177,
-            "y": 193,
+            "x": 1204,
+            "y": 194,
             "text": "%Queen%"
         }
     ],

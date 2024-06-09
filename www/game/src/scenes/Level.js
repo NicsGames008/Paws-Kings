@@ -16,15 +16,25 @@ class Level extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
+		// background
+		const background = this.add.image(-126, -75, "whiteTile");
+		background.scaleX = 150;
+		background.scaleY = 100;
+		background.setOrigin(0, 0);
+		background.tintTopLeft = 922921;
+		background.tintTopRight = 922921;
+		background.tintBottomLeft = 922921;
+		background.tintBottomRight = 922921;
+
 		// advName
-		const advName = this.add.text(50, 10, "", {});
+		const advName = this.add.text(43, 10, "", {});
 		advName.text = "%adversaryName%";
-		advName.setStyle({ "color": "#9d38feff", "fontSize": "24px" });
+		advName.setStyle({ "color": "#9d38feff", "fontSize": "24px", "shadow.offsetX":10,"shadow.offsetY":-10,"shadow.fill":true});
 
 		// userName
-		const userName = this.add.text(50, 653, "", {});
+		const userName = this.add.text(43, 650, "", {});
 		userName.text = "%userName%";
-		userName.setStyle({ "color": "#fff7bbff", "fontSize": "24px" });
+		userName.setStyle({ "color": "#fff7bbff", "fontSize": "24px", "shadow.offsetX":10,"shadow.offsetY":10,"shadow.blur":1,"shadow.fill":true});
 
 		// tilesContainer
 		const tilesContainer = this.add.container(322, 325);
@@ -78,32 +88,32 @@ class Level extends Phaser.Scene {
 		tilesContainer.add(tile_57);
 
 		// Tile_56
-		const tile_56 = new White_Tile(this, 245, -173);
+		const tile_56 = new White_Tile(this, 245, -175);
 		tile_56.name = "Tile_56";
 		tilesContainer.add(tile_56);
 
 		// Tile_55
-		const tile_55 = new Black_Tile(this, 175, -173);
+		const tile_55 = new Black_Tile(this, 175, -175);
 		tile_55.name = "Tile_55";
 		tilesContainer.add(tile_55);
 
 		// Tile_54
-		const tile_54 = new White_Tile(this, 105, -174);
+		const tile_54 = new White_Tile(this, 105, -175);
 		tile_54.name = "Tile_54";
 		tilesContainer.add(tile_54);
 
 		// Tile_53
-		const tile_53 = new Black_Tile(this, 35, -174);
+		const tile_53 = new Black_Tile(this, 35, -175);
 		tile_53.name = "Tile_53";
 		tilesContainer.add(tile_53);
 
 		// Tile_52
-		const tile_52 = new White_Tile(this, -35, -174);
+		const tile_52 = new White_Tile(this, -35, -175);
 		tile_52.name = "Tile_52";
 		tilesContainer.add(tile_52);
 
 		// Tile_51
-		const tile_51 = new Black_Tile(this, -105, -174);
+		const tile_51 = new Black_Tile(this, -105, -175);
 		tile_51.name = "Tile_51";
 		tilesContainer.add(tile_51);
 
@@ -381,210 +391,220 @@ class Level extends Phaser.Scene {
 		tile_1.name = "Tile_1";
 		tilesContainer.add(tile_1);
 
-		// worm
-		const worm = this.add.image(688, 62, "worm");
-		worm.tintTopLeft = 0;
-		worm.tintTopRight = 0;
-		worm.tintBottomLeft = 12434363;
-		worm.tintBottomRight = 12434363;
-
 		// shardBackground_1
-		const shardBackground_1 = this.add.image(916, 200, "promotionPlaceholder");
+		const shardBackground_1 = this.add.image(876, 200, "promotionPlaceholder");
 
 		// shardBackground_2
-		const shardBackground_2 = this.add.image(1016, 200, "promotionPlaceholder");
+		const shardBackground_2 = this.add.image(989, 200, "promotionPlaceholder");
 
 		// shardBackground_3
-		const shardBackground_3 = this.add.image(1116, 200, "promotionPlaceholder");
+		const shardBackground_3 = this.add.image(1102, 200, "promotionPlaceholder");
 
 		// shardBackground_4
 		const shardBackground_4 = this.add.image(1216, 200, "promotionPlaceholder");
 
 		// cardBackground_1
-		const cardBackground_1 = this.add.image(916, 400, "promotionPlaceholder");
+		const cardBackground_1 = this.add.image(876, 450, "promotionPlaceholder");
 
 		// cardBackground_2
-		const cardBackground_2 = this.add.image(1016, 400, "promotionPlaceholder");
+		const cardBackground_2 = this.add.image(989, 450, "promotionPlaceholder");
 
 		// cardBackground_3
-		const cardBackground_3 = this.add.image(1116, 400, "promotionPlaceholder");
+		const cardBackground_3 = this.add.image(1102, 450, "promotionPlaceholder");
 
 		// cardBackground_4
-		const cardBackground_4 = this.add.image(1216, 400, "promotionPlaceholder");
+		const cardBackground_4 = this.add.image(1215, 450, "promotionPlaceholder");
 
 		// cardPlaceholder_1
-		const cardPlaceholder_1 = new Card(this, 869, 384);
+		const cardPlaceholder_1 = new Card(this, 830, 434);
 		this.add.existing(cardPlaceholder_1);
 
 		// cardPlaceholder_2
-		const cardPlaceholder_2 = new Card(this, 966, 384);
+		const cardPlaceholder_2 = new Card(this, 943, 434);
 		this.add.existing(cardPlaceholder_2);
 
 		// cardPlaceholder_3
-		const cardPlaceholder_3 = new Card(this, 1068, 384);
+		const cardPlaceholder_3 = new Card(this, 1055, 434);
 		this.add.existing(cardPlaceholder_3);
 
 		// cardPlaceholder_4
-		const cardPlaceholder_4 = new Card(this, 1169, 380);
+		const cardPlaceholder_4 = new Card(this, 1169, 434);
 		this.add.existing(cardPlaceholder_4);
 
 		// cardText_1
-		const cardText_1 = this.add.text(892, 482, "", {});
+		const cardText_1 = this.add.text(876, 528, "", {});
 		cardText_1.text = "%Bishop Number%";
 
 		// cardText_2
-		const cardText_2 = this.add.text(997, 508, "", {});
+		const cardText_2 = this.add.text(989, 528, "", {});
 		cardText_2.text = "%Roock Number%";
 
 		// cardText_3
-		const cardText_3 = this.add.text(1100, 485, "", {});
+		const cardText_3 = this.add.text(1102, 528, "", {});
 		cardText_3.text = "%Knight Number%";
 
 		// cardText_4
-		const cardText_4 = this.add.text(1207, 508, "", {});
+		const cardText_4 = this.add.text(1215, 528, "", {});
 		cardText_4.text = "%Qween Number%";
 
 		// cardWhiteKnight
 		const cardWhiteKnight = this.add.image(1216, 42, "cardWhiteKnight");
+		cardWhiteKnight.visible = false;
 		cardWhiteKnight.tintTopLeft = 16655612;
 		cardWhiteKnight.tintTopRight = 10551553;
 
 		// text_1
-		const text_1 = this.add.text(65, 609, "", {});
+		const text_1 = this.add.text(77, 609, "", {});
+		text_1.setOrigin(0.5, 0);
 		text_1.text = "A";
 		text_1.setStyle({ "fontSize": "36px" });
 
 		// text
-		const text = this.add.text(137, 612, "", {});
+		const text = this.add.text(147, 609, "", {});
+		text.setOrigin(0.5, 0);
 		text.text = "B";
 		text.setStyle({ "fontSize": "36px" });
 
 		// text_2
-		const text_2 = this.add.text(202, 612, "", {});
+		const text_2 = this.add.text(217, 609, "", {});
+		text_2.setOrigin(0.5, 0);
 		text_2.text = "C";
 		text_2.setStyle({ "fontSize": "36px" });
 
 		// text_3
-		const text_3 = this.add.text(274, 611, "", {});
+		const text_3 = this.add.text(287, 609, "", {});
+		text_3.setOrigin(0.5, 0);
 		text_3.text = "D";
 		text_3.setStyle({ "fontSize": "36px" });
 
 		// text_4
-		const text_4 = this.add.text(340, 613, "", {});
+		const text_4 = this.add.text(357, 609, "", {});
+		text_4.setOrigin(0.5, 0);
 		text_4.text = "E";
 		text_4.setStyle({ "fontSize": "36px" });
 
 		// text_5
-		const text_5 = this.add.text(412.220184281125, 623.0113570809795, "", {});
+		const text_5 = this.add.text(427, 609, "", {});
+		text_5.setOrigin(0.5, 0);
 		text_5.text = "F";
 		text_5.setStyle({ "fontSize": "36px" });
 
 		// text_6
-		const text_6 = this.add.text(500.0201393402889, 619.5816713364809, "", {});
+		const text_6 = this.add.text(497, 609, "", {});
+		text_6.setOrigin(0.5, 0);
 		text_6.text = "G";
 		text_6.setStyle({ "fontSize": "36px" });
 
 		// text_7
-		const text_7 = this.add.text(559.6966712945645, 618.2097970386815, "", {});
+		const text_7 = this.add.text(567, 609, "", {});
+		text_7.setOrigin(0.5, 0);
 		text_7.text = "H";
 		text_7.setStyle({ "fontSize": "36px" });
 
 		// text_15
-		const text_15 = this.add.text(15.594745873527899, 563.4477026977744, "", {});
+		const text_15 = this.add.text(22, 570, "", {});
+		text_15.setOrigin(0.5, 0.5);
 		text_15.text = "1";
 		text_15.setStyle({ "fontSize": "36px" });
 
 		// text_14
-		const text_14 = this.add.text(11, 485, "", {});
+		const text_14 = this.add.text(22, 500, "", {});
+		text_14.setOrigin(0.5, 0.5);
 		text_14.text = "2";
 		text_14.setStyle({ "fontSize": "36px" });
 
 		// text_13
-		const text_13 = this.add.text(8, 419, "", {});
+		const text_13 = this.add.text(22, 430, "", {});
+		text_13.setOrigin(0.5, 0.5);
 		text_13.text = "3";
 		text_13.setStyle({ "fontSize": "36px" });
 
 		// text_12
-		const text_12 = this.add.text(13, 344, "", {});
+		const text_12 = this.add.text(22, 360, "", {});
+		text_12.setOrigin(0.5, 0.5);
 		text_12.text = "4";
 		text_12.setStyle({ "fontSize": "36px" });
 
 		// text_11
-		const text_11 = this.add.text(16, 271, "", {});
+		const text_11 = this.add.text(22, 290, "", {});
+		text_11.setOrigin(0.5, 0.5);
 		text_11.text = "5";
 		text_11.setStyle({ "fontSize": "36px" });
 
 		// text_10
-		const text_10 = this.add.text(14, 207, "", {});
+		const text_10 = this.add.text(22, 220, "", {});
+		text_10.setOrigin(0.5, 0.5);
 		text_10.text = "6";
 		text_10.setStyle({ "fontSize": "36px" });
 
 		// text_9
-		const text_9 = this.add.text(14, 135, "", {});
+		const text_9 = this.add.text(22, 150, "", {});
+		text_9.setOrigin(0.5, 0.5);
 		text_9.text = "7";
 		text_9.setStyle({ "fontSize": "36px" });
 
 		// text_8
-		const text_8 = this.add.text(11, 72, "", {});
+		const text_8 = this.add.text(22, 80, "", {});
+		text_8.setOrigin(0.5, 0.5);
 		text_8.text = "8";
 		text_8.setStyle({ "fontSize": "36px" });
 
+		// cardIdVar
+		const cardIdVar = new CardIdVar(this, 1264, 16);
+		this.add.existing(cardIdVar);
+
 		// pTBlackBishop
-		const pTBlackBishop = new PTBlackBishop(this, 768, 451);
+		const pTBlackBishop = new PTBlackBishop(this, 721, 480);
 		this.add.existing(pTBlackBishop);
 		pTBlackBishop.scaleX = 0;
 		pTBlackBishop.scaleY = 1;
 
 		// pTBlackRoock
-		const pTBlackRoock = new PTBlackRoock(this, 768, 353);
+		const pTBlackRoock = new PTBlackRoock(this, 721, 382);
 		this.add.existing(pTBlackRoock);
 		pTBlackRoock.scaleX = 0;
 		pTBlackRoock.scaleY = 1;
 
 		// pTBlackKnight
-		const pTBlackKnight = new PTBlackKnight(this, 768, 255);
+		const pTBlackKnight = new PTBlackKnight(this, 721, 284);
 		this.add.existing(pTBlackKnight);
 		pTBlackKnight.scaleX = 0;
 		pTBlackKnight.scaleY = 1;
 
 		// pTBlackQueen
-		const pTBlackQueen = new PTBlackQueen(this, 768, 149);
+		const pTBlackQueen = new PTBlackQueen(this, 721, 178);
 		this.add.existing(pTBlackQueen);
 		pTBlackQueen.scaleX = 0;
 		pTBlackQueen.scaleY = 1;
 
-		// cardIdVar
-		const cardIdVar = new CardIdVar(this, 618, 589);
-		this.add.existing(cardIdVar);
-
 		// pTWhiteBishop
-		const pTWhiteBishop = new PTWhiteBishop(this, 768, 451);
+		const pTWhiteBishop = new PTWhiteBishop(this, 721, 480);
 		this.add.existing(pTWhiteBishop);
 		pTWhiteBishop.scaleX = 0;
 		pTWhiteBishop.scaleY = 1;
 
-		// pTWhiteKnight
-		const pTWhiteKnight = new PTWhiteKnight(this, 768, 255);
-		this.add.existing(pTWhiteKnight);
-		pTWhiteKnight.scaleX = 0;
-		pTWhiteKnight.scaleY = 1;
-
 		// pTWhiteRoock
-		const pTWhiteRoock = new PTWhiteRoock(this, 768, 353);
+		const pTWhiteRoock = new PTWhiteRoock(this, 721, 382);
 		this.add.existing(pTWhiteRoock);
 		pTWhiteRoock.scaleX = 0;
 		pTWhiteRoock.scaleY = 1;
 
+		// pTWhiteKnight
+		const pTWhiteKnight = new PTWhiteKnight(this, 721, 284);
+		this.add.existing(pTWhiteKnight);
+		pTWhiteKnight.scaleX = 0;
+		pTWhiteKnight.scaleY = 1;
+
 		// pTWhiteQueen
-		const pTWhiteQueen = new PTWhiteQueen(this, 768, 149);
+		const pTWhiteQueen = new PTWhiteQueen(this, 721, 178);
 		this.add.existing(pTWhiteQueen);
 		pTWhiteQueen.scaleX = 0;
 		pTWhiteQueen.scaleY = 1;
 
 		// blackTile_1
-		const blackTile_1 = this.add.image(768, 451, "blackTile");
+		const blackTile_1 = this.add.image(721, 480, "blackTile");
 		blackTile_1.scaleX = 15.600415167885103;
-		blackTile_1.scaleY = 9.781727169244308;
+		blackTile_1.scaleY = 9.85;
 		blackTile_1.alpha = 0.6;
 		blackTile_1.alphaTopLeft = 0.6;
 		blackTile_1.alphaTopRight = 0.6;
@@ -592,7 +612,7 @@ class Level extends Phaser.Scene {
 		blackTile_1.alphaBottomRight = 0.6;
 
 		// blackTile_2
-		const blackTile_2 = this.add.image(768, 353, "blackTile");
+		const blackTile_2 = this.add.image(721, 382, "blackTile");
 		blackTile_2.scaleX = 15.600415167885103;
 		blackTile_2.scaleY = 9.781727169244308;
 		blackTile_2.alpha = 0.6;
@@ -602,7 +622,7 @@ class Level extends Phaser.Scene {
 		blackTile_2.alphaBottomRight = 0.6;
 
 		// blackTile_3
-		const blackTile_3 = this.add.image(768, 255, "blackTile");
+		const blackTile_3 = this.add.image(721, 284, "blackTile");
 		blackTile_3.scaleX = 15.600415167885103;
 		blackTile_3.scaleY = 9.781727169244308;
 		blackTile_3.alpha = 0.6;
@@ -612,7 +632,7 @@ class Level extends Phaser.Scene {
 		blackTile_3.alphaBottomRight = 0.6;
 
 		// blackTile_4
-		const blackTile_4 = this.add.image(768, 149, "blackTile");
+		const blackTile_4 = this.add.image(721, 178, "blackTile");
 		blackTile_4.scaleX = 15.600415167885103;
 		blackTile_4.scaleY = 11.450615277574254;
 		blackTile_4.alpha = 0.6;
@@ -622,19 +642,19 @@ class Level extends Phaser.Scene {
 		blackTile_4.alphaBottomRight = 0.6;
 
 		// text_16
-		const text_16 = this.add.text(881, 195, "", {});
+		const text_16 = this.add.text(865, 194, "", {});
 		text_16.text = "%Bishop%";
 
 		// text_17
-		const text_17 = this.add.text(974, 195, "", {});
+		const text_17 = this.add.text(978, 194, "", {});
 		text_17.text = "%Roock%";
 
 		// text_18
-		const text_18 = this.add.text(1079, 194, "", {});
+		const text_18 = this.add.text(1089, 194, "", {});
 		text_18.text = "%Knight%";
 
 		// text_19
-		const text_19 = this.add.text(1177, 193, "", {});
+		const text_19 = this.add.text(1204, 194, "", {});
 		text_19.text = "%Queen%";
 
 		// lists
@@ -937,14 +957,14 @@ class Level extends Phaser.Scene {
 		this.cardText_2 = cardText_2;
 		this.cardText_3 = cardText_3;
 		this.cardText_4 = cardText_4;
+		this.cardIdVar = cardIdVar;
 		this.pTBlackBishop = pTBlackBishop;
 		this.pTBlackRoock = pTBlackRoock;
 		this.pTBlackKnight = pTBlackKnight;
 		this.pTBlackQueen = pTBlackQueen;
-		this.cardIdVar = cardIdVar;
 		this.pTWhiteBishop = pTWhiteBishop;
-		this.pTWhiteKnight = pTWhiteKnight;
 		this.pTWhiteRoock = pTWhiteRoock;
+		this.pTWhiteKnight = pTWhiteKnight;
 		this.pTWhiteQueen = pTWhiteQueen;
 		this.blackTile_1 = blackTile_1;
 		this.blackTile_2 = blackTile_2;
@@ -1135,6 +1155,8 @@ class Level extends Phaser.Scene {
 	cardText_3;
 	/** @type {Phaser.GameObjects.Text} */
 	cardText_4;
+	/** @type {CardIdVar} */
+	cardIdVar;
 	/** @type {PTBlackBishop} */
 	pTBlackBishop;
 	/** @type {PTBlackRoock} */
@@ -1143,14 +1165,12 @@ class Level extends Phaser.Scene {
 	pTBlackKnight;
 	/** @type {PTBlackQueen} */
 	pTBlackQueen;
-	/** @type {CardIdVar} */
-	cardIdVar;
 	/** @type {PTWhiteBishop} */
 	pTWhiteBishop;
-	/** @type {PTWhiteKnight} */
-	pTWhiteKnight;
 	/** @type {PTWhiteRoock} */
 	pTWhiteRoock;
+	/** @type {PTWhiteKnight} */
+	pTWhiteKnight;
 	/** @type {PTWhiteQueen} */
 	pTWhiteQueen;
 	/** @type {Phaser.GameObjects.Image} */
@@ -1375,13 +1395,13 @@ class Level extends Phaser.Scene {
 							}
 						});
 
-									
+
 						for (let i = 0; i < boardState.length; i++) {
 							var k = i + 1;
-							
+
 							//console.log(gameState);
 							var gameStateForPlayer = gameState.find(state => state.player_id == playerID);
-								
+
 							if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID && gameStateForPlayer.match_pc_id == gameStateForPlayer.mp_pc_id) {
 
 								//Promotion section
@@ -1389,7 +1409,7 @@ class Level extends Phaser.Scene {
 								if (cardId != 0) {
 									var coordinates = numberToCoordinates(tileId)
 									this.promotion(coordinates.x, coordinates.y, cardId, playerID);
-									
+
 									this.cardIdVar.cardId = 0;
 									break;
 									//highlight all the other cards
@@ -1397,9 +1417,9 @@ class Level extends Phaser.Scene {
 									console.log("no promotion. SELECT a Card first.");
 								}
 								this.cardIdVar.cardId = 0;
-								
+
 								//end promotion section
-								
+
 
 								//Movement section
 								if (!possibleMoves) {
@@ -1474,14 +1494,14 @@ class Level extends Phaser.Scene {
 						if (xhttp.status == 200) { // If the request was successful
 							// Get the response from the server
 							var response = xhttp.responseText;
-							
+
 							this.tilesContainer.list
 							.filter(child => !child.name.startsWith('Tile_')) // Ignore 'Tile_X' elements
 							.forEach(child => {
 								child.destroy();
 								// Ensure you have a reference to the parent container to remove the child
 								this.tilesContainer.remove(child);
-								
+
 							});			
 
 							this.updateGameState(playerID, (gameState) => {
@@ -1531,7 +1551,7 @@ class Level extends Phaser.Scene {
 					this.updateGameState(playerID, (gameState) => {
 						this.updateBoardState(gameState, playerID, (boardState) => {});
 					});
-					
+
 					console.log("Piece Promoted to: " + cardId + " on Position(" + currentX + ", " + currentY + ").");
 				}
 			};

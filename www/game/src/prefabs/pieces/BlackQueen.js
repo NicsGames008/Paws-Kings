@@ -8,6 +8,8 @@ class BlackQueen extends Phaser.GameObjects.Image {
 	constructor(scene, x, y, texture, frame) {
 		super(scene, x ?? 0, y ?? 0, texture || "blackQueen_1", frame);
 
+		this.name = "blackQueen";
+
 		/* START-USER-CTR-CODE */
 		// Write your code here.
 		/* END-USER-CTR-CODE */

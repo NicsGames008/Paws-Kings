@@ -10,6 +10,7 @@ class WhitePawn extends Phaser.GameObjects.Container {
 
 		// whitePawn_1
 		const whitePawn_1 = scene.add.image(0, 0, "whitePawn_1");
+		this.name = "whitePawn";
 		this.add(whitePawn_1);
 
 		/* START-USER-CTR-CODE */

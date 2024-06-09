@@ -18,6 +18,7 @@
                     "type": "Image",
                     "id": "676dc398-aad6-421d-9a36-46acddaf03d9",
                     "label": "whitePawn_1",
+                    "useGameObjectName": true,
                     "texture": {
                         "key": "whitePawn_1"
                     }

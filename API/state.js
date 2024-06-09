@@ -134,7 +134,7 @@ function FillFleetingBoard(request, response, previusResults){
 
     var actualChessBoard = [];
 
-    connection.execute('SELECT t.tile_id, t.tile_x as x, t.tile_y as y, mpp.mpp_piece_id, mpp_mp_id, mp_pc_id, mpp_ps_id, mp.mp_player_id AS playerID FROM tile t LEFT JOIN match_player_piece mpp ON mpp.mpp_tile_id = t.tile_id AND (mpp.mpp_mp_id = ? OR mpp.mpp_mp_id = ?) AND mpp_ps_id != 2 LEFT JOIN match_player mp ON mp.mp_id = mpp.mpp_mp_id order by tile_id; ',
+    connection.execute('SELECT t.tile_id, t.tile_x as x, t.tile_y as y, mpp.mpp_piece_id, mpp_mp_id, mp_pc_id, mpp_ps_id, mp.mp_player_id AS playerID FROM Tile t LEFT JOIN Match_Player_Piece mpp ON mpp.mpp_tile_id = t.tile_id AND (mpp.mpp_mp_id = ? OR mpp.mpp_mp_id = ?) AND mpp_ps_id != 2  LEFT JOIN Match_Player mp ON mp.mp_id = mpp.mpp_mp_id order by tile_id; ',
     [previusResults[0].mp_id, previusResults[1].mp_id],
     function (err, results, fields) {
         if (err){

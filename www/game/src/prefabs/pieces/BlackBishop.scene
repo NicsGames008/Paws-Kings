@@ -18,6 +18,7 @@
                     "type": "Image",
                     "id": "8c39c4ef-6700-4fee-a6d3-deee4198192a",
                     "label": "blackBishop_1",
+                    "useGameObjectName": true,
                     "texture": {
                         "key": "blackBishop_1"
                     }

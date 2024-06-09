@@ -1348,7 +1348,7 @@ class Level extends Phaser.Scene {
 		});
 	}
 
-	tileClicked(boardState, playerID) {
+	tileClicked(playerID) {
 		let possibleMoves;
 		let cardId = 0;
 
@@ -1360,93 +1360,93 @@ class Level extends Phaser.Scene {
 			// Add an event listener to the tile for the 'pointerdown' event
 			element.setInteractive();
 			element.on("pointerdown", event => {
-				// Extract the number from the tile's name using the 'extractNumberFromString' function
-				var tileId = element.tileId;
+				this.updateGameState(playerID, (gameState) => {
+					this.updateBoardState(gameState, playerID, (boardState) => {
+						// Extract the number from the tile's name using the 'extractNumberFromString' function
+						var tileId = element.tileId;
 
 
-				this.tiles.forEach(element => {
-					const children = element.getAll();
-					const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
-					if (childToDestroyInHell) {
-						childToDestroyInHell.destroy();
-						element.remove(childToDestroyInHell);
-					}
-				});
+						this.tiles.forEach(element => {
+							const children = element.getAll();
+							const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
+							if (childToDestroyInHell) {
+								childToDestroyInHell.destroy();
+								element.remove(childToDestroyInHell);
+							}
+						});
 
-
-				for (let i = 0; i < boardState.length; i++) {
-					var k = i + 1;
-
-					if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID) {
-						// Check if a tile was already pressed
-
-
-						///////////////////////////////////////////
-						//possible promotion, selecting a card then a peice and console.log that it has been promoted
-						
-						cardId = this.cardIdVar.cardId;
-						if (cardId != 0) {
-							var coordinates = numberToCoordinates(tileId)
-							this.promotion(coordinates.x, coordinates.y, cardId, playerID);
+									
+						for (let i = 0; i < boardState.length; i++) {
+							var k = i + 1;
 							
-							this.cardIdVar.cardId = 0;
-							break;
-							//highlight all the other cards
-						}else{
-							console.log("no promotion. SELECT a Card first.");
-						}
-						//console.log("card Id selected: " + cardId);
-						this.cardIdVar.cardId = 0;
-						
-						//end promotion
-						
+							//console.log(gameState);
+							var gameStateForPlayer = gameState.find(state => state.player_id == playerID);
+								
+							if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID && gameStateForPlayer.match_pc_id == gameStateForPlayer.mp_pc_id) {
 
+								//Promotion section
+								cardId = this.cardIdVar.cardId;
+								if (cardId != 0) {
+									var coordinates = numberToCoordinates(tileId)
+									this.promotion(coordinates.x, coordinates.y, cardId, playerID);
+									
+									this.cardIdVar.cardId = 0;
+									break;
+									//highlight all the other cards
+								}else{
+									console.log("no promotion. SELECT a Card first.");
+								}
+								this.cardIdVar.cardId = 0;
+								
+								//end promotion section
+								
 
-						if (!possibleMoves) {
-							// If it was, check all the possible moves that the piece on the tile selected can do
-							var xPosition = boardState[i].x;
-							var yPosition = boardState[i].y;
-							var pieceType = boardState[i].mpp_piece_id;
-							possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
+								//Movement section
+								if (!possibleMoves) {
+									// If it was, check all the possible moves that the piece on the tile selected can do
+									var xPosition = boardState[i].x;
+									var yPosition = boardState[i].y;
+									var pieceType = boardState[i].mpp_piece_id;
+									possibleMoves = getPossibleMoves(xPosition, yPosition, pieceType, boardState);
+									for (let i = 0; i < possibleMoves.length; i++) {
+										for (let k = 0; k < this.tiles.length; k++) {
+											// Get the current tile element at the 'index' position
+											const element = this.tiles[k];
 
-							for (let i = 0; i < possibleMoves.length; i++) {
-								for (let k = 0; k < this.tiles.length; k++) {
-									// Get the current tile element at the 'index' position
-									const element = this.tiles[k];
-
-									// Extract the number from the tile's name using the 'extractNumberFromString' function
-									var tileId = element.tileId;
-									var tilePosition = numberToCoordinates(tileId);
-									if (tilePosition.x == possibleMoves[i].x && tilePosition.y == possibleMoves[i].y) {
-										if (!possibleMoves[i].enemyOnTheWay) {
-											const visualPossibleMoves = new Dot(this, 0, 0);
-											this.add.existing(visualPossibleMoves);
-											element.add(visualPossibleMoves);
-										} else {
-											const killingArea = new redSquare(this, 0, 0);
-											this.add.existing(killingArea);
-											element.add(killingArea);
+											// Extract the number from the tile's name using the 'extractNumberFromString' function
+											var tileId = element.tileId;
+											var tilePosition = numberToCoordinates(tileId);
+											if (tilePosition.x == possibleMoves[i].x && tilePosition.y == possibleMoves[i].y) {
+												if (!possibleMoves[i].enemyOnTheWay) {
+													const visualPossibleMoves = new Dot(this, 0, 0);
+													this.add.existing(visualPossibleMoves);
+													element.add(visualPossibleMoves);
+												} else {
+													const killingArea = new redSquare(this, 0, 0);
+													this.add.existing(killingArea);
+													element.add(killingArea);
+												}
+											}
 										}
 									}
-								}
-							}
 
-							possibleMoves.push({ x: xPosition, y: yPosition });
-							console.log("1st Tile Selected: ", possibleMoves);
-						} else {
-							// If not, set the array back to null so a new tile can be selected
-							possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
+									possibleMoves.push({ x: xPosition, y: yPosition });
+									console.log("1st Tile Selected: ", possibleMoves);
+								} else {
+									// If not, set the array back to null so a new tile can be selected
+										possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
+								}
+								break;
+							}
+							// Check if the user selected a tile before
+							if (possibleMoves) {
+								possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
+							}
 						}
-						break;
-					}
-					// Check if the user selected a tile before
-					if (possibleMoves) {
-						possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
-					}
-				}
+					});
+				});
 			});
 		}
-
 	}
 
 
@@ -1454,13 +1454,53 @@ class Level extends Phaser.Scene {
 	makeMove(possibleMoves, numbFromImage, playerID) {
 		var cordinates = numberToCoordinates(numbFromImage);
 		for (let i = 0; i < possibleMoves.length; i++) {
-			//console.log(possibleMoves[i].x , possibleMoves[i].y)
-			if(possibleMoves[i].x == cordinates.x && possibleMoves[i].y == cordinates.y){
-				console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y," to position ", cordinates.x, cordinates.y);
-				this.updateGameState(playerID, (gameState) => {
-					this.updateBoardState(gameState, playerID, (boardState) => {});
-				});
-				return possibleMoves = undefined;
+			// console.log(possibleMoves[i].x , possibleMoves[i].y)
+			if (possibleMoves[i].x == cordinates.x && possibleMoves[i].y == cordinates.y && (possibleMoves[possibleMoves.length - 1].x != cordinates.x || possibleMoves[possibleMoves.length - 1].y != cordinates.y)) {
+
+				// Construct JSON object with form data
+				var data = {
+					startX: possibleMoves[possibleMoves.length - 1].x,
+					startY: possibleMoves[possibleMoves.length - 1].y,
+					endX: cordinates.x,
+					endY: cordinates.y,
+					matchId: 1
+				};
+
+				// Create an XMLHttpRequest object
+				var xhttp = new XMLHttpRequest();
+				// Define the callback function to handle the response
+				xhttp.onreadystatechange = () => { // Use arrow function to maintain `this` context
+					if (xhttp.readyState == 4) { // When the request is complete
+						if (xhttp.status == 200) { // If the request was successful
+							// Get the response from the server
+							var response = xhttp.responseText;
+							
+							this.tilesContainer.list
+							.filter(child => !child.name.startsWith('Tile_')) // Ignore 'Tile_X' elements
+							.forEach(child => {
+								child.destroy();
+								// Ensure you have a reference to the parent container to remove the child
+								this.tilesContainer.remove(child);
+								
+							});			
+
+							this.updateGameState(playerID, (gameState) => {
+								this.updateBoardState(gameState, playerID, (boardState) => {});
+								});
+
+							console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y, " to position ", cordinates.x, cordinates.y);
+							console.log(response);
+							return possibleMoves = undefined;
+
+						}
+					}
+				};
+
+				// Configure the XMLHttpRequest object
+				xhttp.open("POST", "/piece/move", true); // Specify the method and URL
+				xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
+				xhttp.send(JSON.stringify(data)); // Send JSON data to the server
+
 			}
 		}
 	}
@@ -1518,9 +1558,9 @@ class Level extends Phaser.Scene {
 				this.shardRequest();
 				//this.pTsetElements();
 
-				this.updateGameState(playerID, gameState => {
-					this.updateBoardState(gameState, playerID, boardState => {
-						this.tileClicked(boardState, playerID);
+				this.updateGameState(playerID, (gameState) => {
+					this.updateBoardState(gameState, playerID, (boardState) => {
+						this.tileClicked(playerID);
 					});
 				});
 
@@ -1533,13 +1573,6 @@ class Level extends Phaser.Scene {
 		xhttp.open("GET", "/signing/playerID", true);
 		xhttp.send();
 
-
-
-
-		//stop beign called each and single second
-		setInterval(() => {
-			//this.cardRequest();
-		}, 2000)
 	}
 
 	cardRequest(){
@@ -1601,7 +1634,6 @@ class Level extends Phaser.Scene {
 		cardReference.cardId = i + 1;
 		cardReference.ammount = cardAmmount;
 		cardReference.worm.scaleX = 1;
-
 
 		if(cardAmmount > 0){
 			//allows it to be shown, or it could make it not ; not necessarily changing it's size

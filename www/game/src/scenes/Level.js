@@ -1393,8 +1393,7 @@ class Level extends Phaser.Scene {
 							break;
 							//highlight all the other cards
 						}else{
-							
-							console.log("no promotion, XD. SELECT a Card first. Card id:" + cardId);
+							console.log("no promotion. SELECT a Card first.");
 						}
 						//console.log("card Id selected: " + cardId);
 						this.cardIdVar.cardId = 0;
@@ -1468,8 +1467,6 @@ class Level extends Phaser.Scene {
 
 	promotion(currentX, currentY, cardId, playerID){
 
-		console.log(currentX, currentY, cardId);
-
 		var promotionData = {
 			startX: currentX,
 			startY: currentY,
@@ -1494,7 +1491,7 @@ class Level extends Phaser.Scene {
 					this.updateGameState(playerID, (gameState) => {
 						this.updateBoardState(gameState, playerID, (boardState) => {});
 					});
-					console.log(xhttp.responseText);
+					
 					console.log("Piece Promoted to: " + cardId + " on Position(" + currentX + ", " + currentY + ").");
 				}
 			};

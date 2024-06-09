@@ -202,7 +202,7 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
     //if the pawnn gewt to the last row it promotes to a random piece
     if ((endY == 8 && piece.color_piece == 'White') || (endY == 1 && piece.color_piece == 'Black')) {
         var promotionPiece = RandomShardGenerator();
-        UpdatePieceType(request, response, promotionPiece, startX, startY);
+        UpdatePieceType(request, response, promotionPiece, startX, startY, matchId);
     }
 
     //makes the pawn go get the state that he cant move 2 tile after 1st move
@@ -417,7 +417,7 @@ function UpdatePieceType(request, response, cardId, startX, startY, matchId) {
         }else{
             mppId = results[0].mpp_id;
 
-            PromoteSaidPiece(request, response, endX, endY, mppId)
+            PromoteSaidPiece(request, response, cardId, mppId)
         }
     });
 

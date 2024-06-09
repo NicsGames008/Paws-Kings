@@ -15,21 +15,22 @@
             "id": "91182f95-726e-4862-9abc-400a60c6c0fa",
             "label": "advName",
             "scope": "CLASS",
-            "x": 67,
+            "x": 50,
             "y": 10,
             "text": "%adversaryName%",
             "fontSize": "24px",
-            "color": "#955757ff"
+            "color": "#9d38feff"
         },
         {
             "type": "Text",
             "id": "0e89a02f-b279-4f44-81ce-a4f2c569e5a2",
             "label": "userName",
             "scope": "CLASS",
-            "x": 70,
-            "y": 630,
+            "x": 50,
+            "y": 653,
             "text": "%userName%",
-            "fontSize": "24px"
+            "fontSize": "24px",
+            "color": "#fff7bbff"
         },
         {
             "type": "Container",
@@ -1072,8 +1073,8 @@
             "texture": {
                 "key": "worm"
             },
-            "x": 892,
-            "y": 61,
+            "x": 688,
+            "y": 62,
             "tintTopLeft": "#000000",
             "tintTopRight": "#000000",
             "tintBottomLeft": "#bdbbbb",
@@ -1179,8 +1180,8 @@
             "label": "cardPlaceholder_1",
             "scope": "CLASS",
             "cardId": 1,
-            "x": 866,
-            "y": 374
+            "x": 869,
+            "y": 384
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1211,8 +1212,8 @@
             "label": "cardPlaceholder_3",
             "scope": "CLASS",
             "cardId": 3,
-            "x": 1070,
-            "y": 383
+            "x": 1068,
+            "y": 384
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1227,7 +1228,7 @@
             "label": "cardPlaceholder_4",
             "scope": "CLASS",
             "cardId": 4,
-            "x": 1166,
+            "x": 1169,
             "y": 380
         },
         {
@@ -1235,8 +1236,8 @@
             "id": "b1fe4384-577c-4421-a439-9f3767f38c5c",
             "label": "cardText_1",
             "scope": "CLASS",
-            "x": 851,
-            "y": 487,
+            "x": 892,
+            "y": 482,
             "text": "%Bishop Number%"
         },
         {
@@ -1244,8 +1245,8 @@
             "id": "8bcf46a9-a4c3-4aba-996e-43575944c036",
             "label": "cardText_2",
             "scope": "CLASS",
-            "x": 967,
-            "y": 517,
+            "x": 997,
+            "y": 508,
             "text": "%Roock Number%"
         },
         {
@@ -1253,8 +1254,8 @@
             "id": "86d30942-5907-475f-a6be-9acf383623ea",
             "label": "cardText_3",
             "scope": "CLASS",
-            "x": 1060,
-            "y": 487,
+            "x": 1100,
+            "y": 485,
             "text": "%Knight Number%"
         },
         {
@@ -1262,19 +1263,9 @@
             "id": "a0ec4046-9503-4b8f-a3ed-82e135c801e2",
             "label": "cardText_4",
             "scope": "CLASS",
-            "x": 1147,
-            "y": 514,
+            "x": 1207,
+            "y": 508,
             "text": "%Qween Number%"
-        },
-        {
-            "type": "Image",
-            "id": "007c3d1f-bf6d-424b-aaef-d57a362baf1d",
-            "label": "pTBlack",
-            "texture": {
-                "key": "PTBlack"
-            },
-            "x": 739,
-            "y": 311
         },
         {
             "type": "Image",
@@ -1283,10 +1274,402 @@
             "texture": {
                 "key": "cardWhiteKnight"
             },
-            "x": 916,
-            "y": 200,
+            "x": 1216,
+            "y": 42,
             "tintTopLeft": "#fe24fc",
             "tintTopRight": "#a10101"
+        },
+        {
+            "type": "Text",
+            "id": "81efd813-000c-4477-aa8d-6313711bef8e",
+            "label": "text_1",
+            "x": 65,
+            "y": 609,
+            "text": "A",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "66a66846-b7cf-4672-80be-6d48ef3dca92",
+            "label": "text",
+            "x": 137,
+            "y": 612,
+            "text": "B",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "d9f01d0e-ec39-4688-8bfe-2b369f45bd80",
+            "label": "text_2",
+            "x": 202,
+            "y": 612,
+            "text": "C",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "cf84bdc2-8a36-48a0-9b64-dee591cb7b21",
+            "label": "text_3",
+            "x": 274,
+            "y": 611,
+            "text": "D",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "089304f4-2658-4035-8854-1762e977e137",
+            "label": "text_4",
+            "x": 340,
+            "y": 613,
+            "text": "E",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "5a850fb1-55c0-4d63-a0ab-60252c4c8071",
+            "label": "text_5",
+            "x": 412.220184281125,
+            "y": 623.0113570809795,
+            "text": "F",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "afd1d7b2-2bc3-42b5-ba7f-b76963310bde",
+            "label": "text_6",
+            "x": 500.0201393402889,
+            "y": 619.5816713364809,
+            "text": "G",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "61852434-ac95-4078-87e9-bc2e5e81f65d",
+            "label": "text_7",
+            "x": 559.6966712945645,
+            "y": 618.2097970386815,
+            "text": "H",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "c291b551-9d72-44f1-8c0d-d845c9e53b6b",
+            "label": "text_15",
+            "x": 15.594745873527899,
+            "y": 563.4477026977744,
+            "text": "1",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "773032b3-006c-4fff-a807-e294a1ab128c",
+            "label": "text_14",
+            "x": 11,
+            "y": 485,
+            "text": "2",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "d3491b82-7e4f-4f5e-a0cd-1ea4f0656d3e",
+            "label": "text_13",
+            "x": 8,
+            "y": 419,
+            "text": "3",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "8fb81587-5725-4ed3-bae4-c7a671a4ccc9",
+            "label": "text_12",
+            "x": 13,
+            "y": 344,
+            "text": "4",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "8489ee9c-cc37-4491-9e21-7d9df87e0b2d",
+            "label": "text_11",
+            "x": 16,
+            "y": 271,
+            "text": "5",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "243c7630-81da-4a74-9cca-671b4b3109c1",
+            "label": "text_10",
+            "x": 14,
+            "y": 207,
+            "text": "6",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "aef53b12-fa11-4ad6-a423-f663cf5fafce",
+            "label": "text_9",
+            "x": 14,
+            "y": 135,
+            "text": "7",
+            "fontSize": "36px"
+        },
+        {
+            "type": "Text",
+            "id": "519b2f76-0c6b-4d64-ae50-823737a70449",
+            "label": "text_8",
+            "x": 11,
+            "y": 72,
+            "text": "8",
+            "fontSize": "36px"
+        },
+        {
+            "prefabId": "161e7197-fa06-4e6e-b19c-8456c1978802",
+            "id": "ad4fc078-aa27-4f59-9996-3ea839ece82b",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTBlackBishop",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 451,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "57afd008-1443-44d6-9006-be8cdb520cdb",
+            "id": "3cee279a-4213-46c6-8a46-7d4b76af92f1",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTBlackRoock",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 353,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "98fa45d8-4499-410d-ab3e-bcba6ea7d1e3",
+            "id": "c02027a4-ccd7-4633-ba49-468980c6931e",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTBlackKnight",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 255,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "048f929f-a4d3-421d-9182-4ae7425f55d9",
+            "id": "2266bde3-f91e-4338-9776-081314f77640",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTBlackQueen",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 149,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "48c31d59-c3a1-4234-bffb-0b69b3b3e3da",
+            "id": "96b2fdb3-f7c9-45d4-a9d1-bf19aa1d5b0e",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "cardIdVar",
+            "scope": "CLASS",
+            "x": 618,
+            "y": 589
+        },
+        {
+            "prefabId": "293a23a1-08dd-466f-acd8-f2164503d250",
+            "id": "1a6a9073-8d9e-4bae-a1d5-331806777998",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTWhiteBishop",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 451,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "72d903ef-71a2-4dcd-b756-36ed47d3fccb",
+            "id": "d97af7f3-ed18-44b9-88b5-35610c1c18d8",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTWhiteKnight",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 255,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "47ac8e89-b02c-4033-8efe-a458fa716229",
+            "id": "2d5fe926-202f-4dad-bab7-6e35d20dcccb",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTWhiteRoock",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 353,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "prefabId": "01202b63-0b01-4813-93c8-e78f70dfff53",
+            "id": "4587d27f-7e5f-47ec-939e-b826588b1939",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "pTWhiteQueen",
+            "scope": "CLASS",
+            "x": 768,
+            "y": 149,
+            "scaleX": 0,
+            "scaleY": 1
+        },
+        {
+            "type": "Image",
+            "id": "4919480c-781c-4d46-9476-b1a2184d112f",
+            "label": "blackTile_1",
+            "scope": "CLASS",
+            "texture": {
+                "key": "blackTile"
+            },
+            "x": 768,
+            "y": 451,
+            "scaleX": 15.600415167885103,
+            "scaleY": 9.781727169244308,
+            "alpha": 0.6,
+            "alphaTopLeft": 0.6,
+            "alphaTopRight": 0.6,
+            "alphaBottomLeft": 0.6,
+            "alphaBottomRight": 0.6
+        },
+        {
+            "type": "Image",
+            "id": "6d367ee6-ca77-4171-97d4-1675ba3a152a",
+            "label": "blackTile_2",
+            "scope": "CLASS",
+            "texture": {
+                "key": "blackTile"
+            },
+            "x": 768,
+            "y": 353,
+            "scaleX": 15.600415167885103,
+            "scaleY": 9.781727169244308,
+            "alpha": 0.6,
+            "alphaTopLeft": 0.6,
+            "alphaTopRight": 0.6,
+            "alphaBottomLeft": 0.6,
+            "alphaBottomRight": 0.6
+        },
+        {
+            "type": "Image",
+            "id": "d4294cb3-2170-4373-ac36-7a65f806502a",
+            "label": "blackTile_3",
+            "scope": "CLASS",
+            "texture": {
+                "key": "blackTile"
+            },
+            "x": 768,
+            "y": 255,
+            "scaleX": 15.600415167885103,
+            "scaleY": 9.781727169244308,
+            "alpha": 0.6,
+            "alphaTopLeft": 0.6,
+            "alphaTopRight": 0.6,
+            "alphaBottomLeft": 0.6,
+            "alphaBottomRight": 0.6
+        },
+        {
+            "type": "Image",
+            "id": "b86cd053-32ed-4faa-af6a-2803f92a3551",
+            "label": "blackTile_4",
+            "scope": "CLASS",
+            "texture": {
+                "key": "blackTile"
+            },
+            "x": 768,
+            "y": 149,
+            "scaleX": 15.600415167885103,
+            "scaleY": 11.450615277574254,
+            "alpha": 0.6,
+            "alphaTopLeft": 0.6,
+            "alphaTopRight": 0.6,
+            "alphaBottomLeft": 0.6,
+            "alphaBottomRight": 0.6
+        },
+        {
+            "type": "Text",
+            "id": "4e342a68-bdb6-4bac-bbf3-afee6427420b",
+            "label": "text_16",
+            "scope": "CLASS",
+            "x": 881,
+            "y": 195,
+            "text": "%Bishop%"
+        },
+        {
+            "type": "Text",
+            "id": "76da54cb-080d-4717-9595-eb0e9bc74e31",
+            "label": "text_17",
+            "scope": "CLASS",
+            "x": 974,
+            "y": 195,
+            "text": "%Roock%"
+        },
+        {
+            "type": "Text",
+            "id": "5b3d4b3f-f227-45a4-9822-41cbd2f850dc",
+            "label": "text_18",
+            "scope": "CLASS",
+            "x": 1079,
+            "y": 194,
+            "text": "%Knight%"
+        },
+        {
+            "type": "Text",
+            "id": "9952af37-53d8-40f1-8569-053542be4544",
+            "label": "text_19",
+            "scope": "CLASS",
+            "x": 1177,
+            "y": 193,
+            "text": "%Queen%"
         }
     ],
     "plainObjects": [],
@@ -1405,6 +1788,74 @@
                 "8bcf46a9-a4c3-4aba-996e-43575944c036",
                 "86d30942-5907-475f-a6be-9acf383623ea",
                 "a0ec4046-9503-4b8f-a3ed-82e135c801e2"
+            ]
+        },
+        {
+            "id": "8c0eeddd-9e39-4112-9325-6b5b31ddc1f5",
+            "label": "letters",
+            "objectIds": [
+                "81efd813-000c-4477-aa8d-6313711bef8e",
+                "61852434-ac95-4078-87e9-bc2e5e81f65d",
+                "afd1d7b2-2bc3-42b5-ba7f-b76963310bde",
+                "5a850fb1-55c0-4d63-a0ab-60252c4c8071",
+                "089304f4-2658-4035-8854-1762e977e137",
+                "cf84bdc2-8a36-48a0-9b64-dee591cb7b21",
+                "d9f01d0e-ec39-4688-8bfe-2b369f45bd80",
+                "66a66846-b7cf-4672-80be-6d48ef3dca92"
+            ]
+        },
+        {
+            "id": "c88fcbe9-3ed5-409b-8c29-01413e547e78",
+            "label": "numbers",
+            "objectIds": [
+                "c291b551-9d72-44f1-8c0d-d845c9e53b6b",
+                "773032b3-006c-4fff-a807-e294a1ab128c",
+                "d3491b82-7e4f-4f5e-a0cd-1ea4f0656d3e",
+                "8fb81587-5725-4ed3-bae4-c7a671a4ccc9",
+                "8489ee9c-cc37-4491-9e21-7d9df87e0b2d",
+                "243c7630-81da-4a74-9cca-671b4b3109c1",
+                "aef53b12-fa11-4ad6-a423-f663cf5fafce",
+                "519b2f76-0c6b-4d64-ae50-823737a70449"
+            ]
+        },
+        {
+            "id": "1c582277-8657-4f2d-9952-6d35ae7d27f8",
+            "label": "promotionTiersBlack",
+            "objectIds": [
+                "ad4fc078-aa27-4f59-9996-3ea839ece82b",
+                "3cee279a-4213-46c6-8a46-7d4b76af92f1",
+                "c02027a4-ccd7-4633-ba49-468980c6931e",
+                "2266bde3-f91e-4338-9776-081314f77640"
+            ]
+        },
+        {
+            "id": "c475f95c-e8fd-45fd-b186-87f894c190df",
+            "label": "promotionTiersWhite",
+            "objectIds": [
+                "1a6a9073-8d9e-4bae-a1d5-331806777998",
+                "2d5fe926-202f-4dad-bab7-6e35d20dcccb",
+                "d97af7f3-ed18-44b9-88b5-35610c1c18d8",
+                "4587d27f-7e5f-47ec-939e-b826588b1939"
+            ]
+        },
+        {
+            "id": "6560ed91-d73c-4c92-9afc-90e1d2cb71a8",
+            "label": "promotionTiersBackground",
+            "objectIds": [
+                "4919480c-781c-4d46-9476-b1a2184d112f",
+                "6d367ee6-ca77-4171-97d4-1675ba3a152a",
+                "d4294cb3-2170-4373-ac36-7a65f806502a",
+                "b86cd053-32ed-4faa-af6a-2803f92a3551"
+            ]
+        },
+        {
+            "id": "8277fb24-29ab-47eb-a897-d02550026f15",
+            "label": "shards",
+            "objectIds": [
+                "4e342a68-bdb6-4bac-bbf3-afee6427420b",
+                "76da54cb-080d-4717-9595-eb0e9bc74e31",
+                "5b3d4b3f-f227-45a4-9822-41cbd2f850dc",
+                "9952af37-53d8-40f1-8569-053542be4544"
             ]
         }
     ]

@@ -103,7 +103,7 @@ router.post('/promote',(request, response)=>{
 
     var startX = request.body.startX;
     var startY = request.body.startY;
-    var playerId = request.body.playerId;
+    var playerId = request.session.playerID;
     var matchId = request.body.matchId;
     var cardId = request.body.cardId
 
@@ -228,12 +228,12 @@ function UpdatePiecePositionWithShard(request, response, startX, startY, endX, e
         } else {
             var shardAmount = results[0].mps_shard_ammount + 1;
             var shardNeeded = results[0].shard_ammount_needed;
-                        
+            
             // Check if the shard amount is equal to the shard needed
             if(shardAmount === shardNeeded) {
                 // Add a card and change the value of the shard to 0
                 ChangeShard(request, response, "0", matchId, playerId, shard);
-                AddCard(request, response, matchId, playerId, shard)
+                AddCard(request, response, matchId, playerId, shard);
                 response.send(text + " - CARD added " + shard);
             }
             else{

@@ -47,14 +47,15 @@ class Card extends Phaser.GameObjects.Container {
 
 	// Write your code here.
 
-	//function fadeIntoScene(dur) {
-	//	scene.tweens.add({
-	//		targets: this,
-	//		alpha: 1,
-	//		duration: dur,
-	//		ease: 'Power2'
-	//});
-
+	fadeIntoScene(imgRef, dur) {
+		imgRef.alpha = 0;
+		scene.tweens.add({
+			targets: imgRef,
+			alpha: 1,
+			duration: dur,
+			ease: 'Power2'
+		});
+	}
 
 
 	/* END-USER-CODE */

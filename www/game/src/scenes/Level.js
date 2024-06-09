@@ -17,14 +17,14 @@ class Level extends Phaser.Scene {
 	editorCreate() {
 
 		// advName
-		const advName = this.add.text(67, 10, "", {});
+		const advName = this.add.text(50, 10, "", {});
 		advName.text = "%adversaryName%";
-		advName.setStyle({ "color": "#955757ff", "fontSize": "24px" });
+		advName.setStyle({ "color": "#9d38feff", "fontSize": "24px" });
 
 		// userName
-		const userName = this.add.text(70, 630, "", {});
+		const userName = this.add.text(50, 653, "", {});
 		userName.text = "%userName%";
-		userName.setStyle({ "fontSize": "24px" });
+		userName.setStyle({ "color": "#fff7bbff", "fontSize": "24px" });
 
 		// tilesContainer
 		const tilesContainer = this.add.container(322, 325);
@@ -382,7 +382,7 @@ class Level extends Phaser.Scene {
 		tilesContainer.add(tile_1);
 
 		// worm
-		const worm = this.add.image(892, 61, "worm");
+		const worm = this.add.image(688, 62, "worm");
 		worm.tintTopLeft = 0;
 		worm.tintTopRight = 0;
 		worm.tintBottomLeft = 12434363;
@@ -413,7 +413,7 @@ class Level extends Phaser.Scene {
 		const cardBackground_4 = this.add.image(1216, 400, "promotionPlaceholder");
 
 		// cardPlaceholder_1
-		const cardPlaceholder_1 = new Card(this, 866, 374);
+		const cardPlaceholder_1 = new Card(this, 869, 384);
 		this.add.existing(cardPlaceholder_1);
 
 		// cardPlaceholder_2
@@ -421,36 +421,221 @@ class Level extends Phaser.Scene {
 		this.add.existing(cardPlaceholder_2);
 
 		// cardPlaceholder_3
-		const cardPlaceholder_3 = new Card(this, 1070, 383);
+		const cardPlaceholder_3 = new Card(this, 1068, 384);
 		this.add.existing(cardPlaceholder_3);
 
 		// cardPlaceholder_4
-		const cardPlaceholder_4 = new Card(this, 1166, 380);
+		const cardPlaceholder_4 = new Card(this, 1169, 380);
 		this.add.existing(cardPlaceholder_4);
 
 		// cardText_1
-		const cardText_1 = this.add.text(851, 487, "", {});
+		const cardText_1 = this.add.text(892, 482, "", {});
 		cardText_1.text = "%Bishop Number%";
 
 		// cardText_2
-		const cardText_2 = this.add.text(967, 517, "", {});
+		const cardText_2 = this.add.text(997, 508, "", {});
 		cardText_2.text = "%Roock Number%";
 
 		// cardText_3
-		const cardText_3 = this.add.text(1060, 487, "", {});
+		const cardText_3 = this.add.text(1100, 485, "", {});
 		cardText_3.text = "%Knight Number%";
 
 		// cardText_4
-		const cardText_4 = this.add.text(1147, 514, "", {});
+		const cardText_4 = this.add.text(1207, 508, "", {});
 		cardText_4.text = "%Qween Number%";
 
-		// pTBlack
-		this.add.image(739, 311, "PTBlack");
-
 		// cardWhiteKnight
-		const cardWhiteKnight = this.add.image(916, 200, "cardWhiteKnight");
+		const cardWhiteKnight = this.add.image(1216, 42, "cardWhiteKnight");
 		cardWhiteKnight.tintTopLeft = 16655612;
 		cardWhiteKnight.tintTopRight = 10551553;
+
+		// text_1
+		const text_1 = this.add.text(65, 609, "", {});
+		text_1.text = "A";
+		text_1.setStyle({ "fontSize": "36px" });
+
+		// text
+		const text = this.add.text(137, 612, "", {});
+		text.text = "B";
+		text.setStyle({ "fontSize": "36px" });
+
+		// text_2
+		const text_2 = this.add.text(202, 612, "", {});
+		text_2.text = "C";
+		text_2.setStyle({ "fontSize": "36px" });
+
+		// text_3
+		const text_3 = this.add.text(274, 611, "", {});
+		text_3.text = "D";
+		text_3.setStyle({ "fontSize": "36px" });
+
+		// text_4
+		const text_4 = this.add.text(340, 613, "", {});
+		text_4.text = "E";
+		text_4.setStyle({ "fontSize": "36px" });
+
+		// text_5
+		const text_5 = this.add.text(412.220184281125, 623.0113570809795, "", {});
+		text_5.text = "F";
+		text_5.setStyle({ "fontSize": "36px" });
+
+		// text_6
+		const text_6 = this.add.text(500.0201393402889, 619.5816713364809, "", {});
+		text_6.text = "G";
+		text_6.setStyle({ "fontSize": "36px" });
+
+		// text_7
+		const text_7 = this.add.text(559.6966712945645, 618.2097970386815, "", {});
+		text_7.text = "H";
+		text_7.setStyle({ "fontSize": "36px" });
+
+		// text_15
+		const text_15 = this.add.text(15.594745873527899, 563.4477026977744, "", {});
+		text_15.text = "1";
+		text_15.setStyle({ "fontSize": "36px" });
+
+		// text_14
+		const text_14 = this.add.text(11, 485, "", {});
+		text_14.text = "2";
+		text_14.setStyle({ "fontSize": "36px" });
+
+		// text_13
+		const text_13 = this.add.text(8, 419, "", {});
+		text_13.text = "3";
+		text_13.setStyle({ "fontSize": "36px" });
+
+		// text_12
+		const text_12 = this.add.text(13, 344, "", {});
+		text_12.text = "4";
+		text_12.setStyle({ "fontSize": "36px" });
+
+		// text_11
+		const text_11 = this.add.text(16, 271, "", {});
+		text_11.text = "5";
+		text_11.setStyle({ "fontSize": "36px" });
+
+		// text_10
+		const text_10 = this.add.text(14, 207, "", {});
+		text_10.text = "6";
+		text_10.setStyle({ "fontSize": "36px" });
+
+		// text_9
+		const text_9 = this.add.text(14, 135, "", {});
+		text_9.text = "7";
+		text_9.setStyle({ "fontSize": "36px" });
+
+		// text_8
+		const text_8 = this.add.text(11, 72, "", {});
+		text_8.text = "8";
+		text_8.setStyle({ "fontSize": "36px" });
+
+		// pTBlackBishop
+		const pTBlackBishop = new PTBlackBishop(this, 768, 451);
+		this.add.existing(pTBlackBishop);
+		pTBlackBishop.scaleX = 0;
+		pTBlackBishop.scaleY = 1;
+
+		// pTBlackRoock
+		const pTBlackRoock = new PTBlackRoock(this, 768, 353);
+		this.add.existing(pTBlackRoock);
+		pTBlackRoock.scaleX = 0;
+		pTBlackRoock.scaleY = 1;
+
+		// pTBlackKnight
+		const pTBlackKnight = new PTBlackKnight(this, 768, 255);
+		this.add.existing(pTBlackKnight);
+		pTBlackKnight.scaleX = 0;
+		pTBlackKnight.scaleY = 1;
+
+		// pTBlackQueen
+		const pTBlackQueen = new PTBlackQueen(this, 768, 149);
+		this.add.existing(pTBlackQueen);
+		pTBlackQueen.scaleX = 0;
+		pTBlackQueen.scaleY = 1;
+
+		// cardIdVar
+		const cardIdVar = new CardIdVar(this, 618, 589);
+		this.add.existing(cardIdVar);
+
+		// pTWhiteBishop
+		const pTWhiteBishop = new PTWhiteBishop(this, 768, 451);
+		this.add.existing(pTWhiteBishop);
+		pTWhiteBishop.scaleX = 0;
+		pTWhiteBishop.scaleY = 1;
+
+		// pTWhiteKnight
+		const pTWhiteKnight = new PTWhiteKnight(this, 768, 255);
+		this.add.existing(pTWhiteKnight);
+		pTWhiteKnight.scaleX = 0;
+		pTWhiteKnight.scaleY = 1;
+
+		// pTWhiteRoock
+		const pTWhiteRoock = new PTWhiteRoock(this, 768, 353);
+		this.add.existing(pTWhiteRoock);
+		pTWhiteRoock.scaleX = 0;
+		pTWhiteRoock.scaleY = 1;
+
+		// pTWhiteQueen
+		const pTWhiteQueen = new PTWhiteQueen(this, 768, 149);
+		this.add.existing(pTWhiteQueen);
+		pTWhiteQueen.scaleX = 0;
+		pTWhiteQueen.scaleY = 1;
+
+		// blackTile_1
+		const blackTile_1 = this.add.image(768, 451, "blackTile");
+		blackTile_1.scaleX = 15.600415167885103;
+		blackTile_1.scaleY = 9.781727169244308;
+		blackTile_1.alpha = 0.6;
+		blackTile_1.alphaTopLeft = 0.6;
+		blackTile_1.alphaTopRight = 0.6;
+		blackTile_1.alphaBottomLeft = 0.6;
+		blackTile_1.alphaBottomRight = 0.6;
+
+		// blackTile_2
+		const blackTile_2 = this.add.image(768, 353, "blackTile");
+		blackTile_2.scaleX = 15.600415167885103;
+		blackTile_2.scaleY = 9.781727169244308;
+		blackTile_2.alpha = 0.6;
+		blackTile_2.alphaTopLeft = 0.6;
+		blackTile_2.alphaTopRight = 0.6;
+		blackTile_2.alphaBottomLeft = 0.6;
+		blackTile_2.alphaBottomRight = 0.6;
+
+		// blackTile_3
+		const blackTile_3 = this.add.image(768, 255, "blackTile");
+		blackTile_3.scaleX = 15.600415167885103;
+		blackTile_3.scaleY = 9.781727169244308;
+		blackTile_3.alpha = 0.6;
+		blackTile_3.alphaTopLeft = 0.6;
+		blackTile_3.alphaTopRight = 0.6;
+		blackTile_3.alphaBottomLeft = 0.6;
+		blackTile_3.alphaBottomRight = 0.6;
+
+		// blackTile_4
+		const blackTile_4 = this.add.image(768, 149, "blackTile");
+		blackTile_4.scaleX = 15.600415167885103;
+		blackTile_4.scaleY = 11.450615277574254;
+		blackTile_4.alpha = 0.6;
+		blackTile_4.alphaTopLeft = 0.6;
+		blackTile_4.alphaTopRight = 0.6;
+		blackTile_4.alphaBottomLeft = 0.6;
+		blackTile_4.alphaBottomRight = 0.6;
+
+		// text_16
+		const text_16 = this.add.text(881, 195, "", {});
+		text_16.text = "%Bishop%";
+
+		// text_17
+		const text_17 = this.add.text(974, 195, "", {});
+		text_17.text = "%Roock%";
+
+		// text_18
+		const text_18 = this.add.text(1079, 194, "", {});
+		text_18.text = "%Knight%";
+
+		// text_19
+		const text_19 = this.add.text(1177, 193, "", {});
+		text_19.text = "%Queen%";
 
 		// lists
 		const tiles = [tile_64, tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63];
@@ -458,6 +643,12 @@ class Level extends Phaser.Scene {
 		const card = [cardPlaceholder_1, cardPlaceholder_2, cardPlaceholder_3, cardPlaceholder_4];
 		const cardBackground = [cardBackground_1, cardBackground_2, cardBackground_3, cardBackground_4];
 		const cardText = [cardText_1, cardText_2, cardText_3, cardText_4];
+		const letters = [text_1, text_7, text_6, text_5, text_4, text_3, text_2, text];
+		const numbers = [text_15, text_14, text_13, text_12, text_11, text_10, text_9, text_8];
+		const promotionTiersBlack = [pTBlackBishop, pTBlackRoock, pTBlackKnight, pTBlackQueen];
+		const promotionTiersWhite = [pTWhiteBishop, pTWhiteRoock, pTWhiteKnight, pTWhiteQueen];
+		const promotionTiersBackground = [blackTile_1, blackTile_2, blackTile_3, blackTile_4];
+		const shards = [text_16, text_17, text_18, text_19];
 
 		// tile_64 (prefab fields)
 		tile_64.tileId = 64;
@@ -746,11 +937,34 @@ class Level extends Phaser.Scene {
 		this.cardText_2 = cardText_2;
 		this.cardText_3 = cardText_3;
 		this.cardText_4 = cardText_4;
+		this.pTBlackBishop = pTBlackBishop;
+		this.pTBlackRoock = pTBlackRoock;
+		this.pTBlackKnight = pTBlackKnight;
+		this.pTBlackQueen = pTBlackQueen;
+		this.cardIdVar = cardIdVar;
+		this.pTWhiteBishop = pTWhiteBishop;
+		this.pTWhiteKnight = pTWhiteKnight;
+		this.pTWhiteRoock = pTWhiteRoock;
+		this.pTWhiteQueen = pTWhiteQueen;
+		this.blackTile_1 = blackTile_1;
+		this.blackTile_2 = blackTile_2;
+		this.blackTile_3 = blackTile_3;
+		this.blackTile_4 = blackTile_4;
+		this.text_16 = text_16;
+		this.text_17 = text_17;
+		this.text_18 = text_18;
+		this.text_19 = text_19;
 		this.tiles = tiles;
 		this.shardBackground = shardBackground;
 		this.card = card;
 		this.cardBackground = cardBackground;
 		this.cardText = cardText;
+		this.letters = letters;
+		this.numbers = numbers;
+		this.promotionTiersBlack = promotionTiersBlack;
+		this.promotionTiersWhite = promotionTiersWhite;
+		this.promotionTiersBackground = promotionTiersBackground;
+		this.shards = shards;
 
 		this.events.emit("scene-awake");
 	}
@@ -921,6 +1135,40 @@ class Level extends Phaser.Scene {
 	cardText_3;
 	/** @type {Phaser.GameObjects.Text} */
 	cardText_4;
+	/** @type {PTBlackBishop} */
+	pTBlackBishop;
+	/** @type {PTBlackRoock} */
+	pTBlackRoock;
+	/** @type {PTBlackKnight} */
+	pTBlackKnight;
+	/** @type {PTBlackQueen} */
+	pTBlackQueen;
+	/** @type {CardIdVar} */
+	cardIdVar;
+	/** @type {PTWhiteBishop} */
+	pTWhiteBishop;
+	/** @type {PTWhiteKnight} */
+	pTWhiteKnight;
+	/** @type {PTWhiteRoock} */
+	pTWhiteRoock;
+	/** @type {PTWhiteQueen} */
+	pTWhiteQueen;
+	/** @type {Phaser.GameObjects.Image} */
+	blackTile_1;
+	/** @type {Phaser.GameObjects.Image} */
+	blackTile_2;
+	/** @type {Phaser.GameObjects.Image} */
+	blackTile_3;
+	/** @type {Phaser.GameObjects.Image} */
+	blackTile_4;
+	/** @type {Phaser.GameObjects.Text} */
+	text_16;
+	/** @type {Phaser.GameObjects.Text} */
+	text_17;
+	/** @type {Phaser.GameObjects.Text} */
+	text_18;
+	/** @type {Phaser.GameObjects.Text} */
+	text_19;
 	/** @type {Array<Black_Tile|White_Tile>} */
 	tiles;
 	/** @type {Phaser.GameObjects.Image[]} */
@@ -931,12 +1179,24 @@ class Level extends Phaser.Scene {
 	cardBackground;
 	/** @type {Phaser.GameObjects.Text[]} */
 	cardText;
+	/** @type {Phaser.GameObjects.Text[]} */
+	letters;
+	/** @type {Phaser.GameObjects.Text[]} */
+	numbers;
+	/** @type {Array<PTBlackBishop|PTBlackRoock|PTBlackKnight|PTBlackQueen>} */
+	promotionTiersBlack;
+	/** @type {Array<PTWhiteBishop|PTWhiteRoock|PTWhiteKnight|PTWhiteQueen>} */
+	promotionTiersWhite;
+	/** @type {Phaser.GameObjects.Image[]} */
+	promotionTiersBackground;
+	/** @type {Phaser.GameObjects.Text[]} */
+	shards;
 
 	/* START-USER-CODE */
 
-	
 
-	updateGameState(playerID, cardId, callback) {
+
+	updateGameState(playerID, callback) {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
@@ -944,24 +1204,49 @@ class Level extends Phaser.Scene {
 					// Parse the JSON response
 					var gameState = JSON.parse(xhttp.responseText);
 
-					// Get the player names from the response
-					var player1Name = gameState[0].player_name;
-					var player2Name = gameState[1].player_name;
-
-					// Set the player names in the game
-					this.userName.text = player1Name;
-					this.advName.text = player2Name;
-
+					//Defines the player color and assigns it it's defined assets or rotation
 					for (let i = 0; i < gameState.length; i++) {
 						if (playerID == gameState[i].player_id) {
 							if (gameState[i].mp_pc_id == 1) {
+								//Functions for the white
 								this.tilesContainer.angle = 0;
+
+								//sets up the name according to position
+								//top = black
+								this.advName.text = gameState[1].player_name;
+								this.advName.setColor("#9d38feff");
+
+								//bot = white
+								this.userName.text = gameState[0].player_name;
+								this.userName.setColor("#fff7bbff");
+
+
+								//Display Promotion Tiers
+								//begins with initializing the id and it's img
+								this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersWhite);
+
+
 							} else if (gameState[i].mp_pc_id == 2) {
+								//Functions for the black
 								this.tilesContainer.angle = -180;
+
+								//sets up the name accordingly to position
+								//top = white
+								this.advName.text = gameState[0].player_name;
+								this.advName.setColor("#fff7bbff");
+
+								//bottom = black
+								this.userName.text = gameState[1].player_name;
+								this.userName.setColor("#9d38feff");
+
+
+								//Display Promotion Tiers
+								//begins with initializing the id and it's img
+								this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersBlack);
 							}
 						}
 					}
-					console.log("updateGameState: " + cardId);
+
 					callback(gameState);
 				} else {
 					console.error('Error fetching game state');
@@ -974,7 +1259,7 @@ class Level extends Phaser.Scene {
 		xhttp.send();
 	}
 
-	updateBoardState(gameState, playerID, cardId, callback) {
+	updateBoardState(gameState, playerID, callback) {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
@@ -1043,19 +1328,29 @@ class Level extends Phaser.Scene {
 		xhttp.open("GET", "../state/boardR/1", true);
 		xhttp.send();
 	}
+
 	cardClicked(cardIdReturned) {
 		this.card.forEach(element => {
 			//console.log(element);
 			element.worm.setInteractive(); // Ensure the element is interactive
 			element.worm.on("pointerdown", () => {
+				//changes the value, but it's not used yet!
 				cardIdReturned = element.cardId;
-				console.log('Card Clicked: ' + cardIdReturned + " / card_id property: " + element.cardId); // Debugging line
+				this.cardIdVar.cardId = element.cardId;
+
+				//Not selected cards could be shadowed.
+
+
+				// Debugging lines
+				console.log('Card id saved on the beanz: ' + this.cardIdVar.cardId + " / card_id property: " + element.cardId); 
+				this.cardRequest();
 			});
 		});
 	}
-	
-	tileClicked(boardState, playerID, cardId) {
+
+	tileClicked(boardState, playerID) {
 		let possibleMoves;
+		let cardId = 0;
 
 		// Loop through each tile in the 'tiles' array
 		for (let index = 0; index < this.tiles.length; index++) {
@@ -1088,9 +1383,24 @@ class Level extends Phaser.Scene {
 
 						///////////////////////////////////////////
 						//possible promotion, selecting a card then a peice and console.log that it has been promoted
-						console.log("card Id selected: " + cardId);
+						
+						cardId = this.cardIdVar.cardId;
+						if (cardId != 0) {
+							var coordinates = numberToCoordinates(tileId)
+							this.promotion(coordinates.x, coordinates.y, cardId, playerID);
+							
+							this.cardIdVar.cardId = 0;
+							break;
+							//highlight all the other cards
+						}else{
+							
+							console.log("no promotion, XD. SELECT a Card first. Card id:" + cardId);
+						}
+						//console.log("card Id selected: " + cardId);
+						this.cardIdVar.cardId = 0;
+						
 						//end promotion
-						//cardId = 0;
+						
 
 
 						if (!possibleMoves) {
@@ -1156,27 +1466,68 @@ class Level extends Phaser.Scene {
 		}
 	}
 
+	promotion(currentX, currentY, cardId, playerID){
+
+		console.log(currentX, currentY, cardId);
+
+		var promotionData = {
+			startX: currentX,
+			startY: currentY,
+			cardId: cardId,
+			matchId: 1
+		}
+
+
+		var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+					// Parse the JSON response
+					this.tilesContainer.list
+						.filter(child => !child.name.startsWith('Tile_')) // Ignore 'Tile_X' elements
+						.forEach(child => {
+							child.destroy();
+							// Ensure you have a reference to the parent container to remove the child
+							this.tilesContainer.remove(child);
+
+					});
+
+					this.updateGameState(playerID, (gameState) => {
+						this.updateBoardState(gameState, playerID, (boardState) => {});
+					});
+					console.log(xhttp.responseText);
+					console.log("Piece Promoted to: " + cardId + " on Position(" + currentX + ", " + currentY + ").");
+				}
+			};
+
+			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
+			xhttp.open("POST", "/piece/promote", true);
+			xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); // Set the request header
+			xhttp.send(JSON.stringify(promotionData));
+	}
+
 	create() {
 
 		this.editorCreate();
 		var playerID = -1;
 		var cardId = 0;
 		this.cardClicked(cardId);
-		
+
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = () => {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
-				
-				
-				
-				this.updateGameState(playerID, cardId, gameState => {
-					this.updateBoardState(gameState, playerID, cardId, boardState => {
-						this.tileClicked(boardState, playerID, cardId);
+
+				this.cardRequest();
+				this.shardRequest();
+				//this.pTsetElements();
+
+				this.updateGameState(playerID, gameState => {
+					this.updateBoardState(gameState, playerID, boardState => {
+						this.tileClicked(boardState, playerID);
 					});
 				});
 
-				
+
 
 			}
 		};
@@ -1185,8 +1536,17 @@ class Level extends Phaser.Scene {
 		xhttp.open("GET", "/signing/playerID", true);
 		xhttp.send();
 
+
+
+
+		//stop beign called each and single second
 		setInterval(() => {
-			var xhttp = new XMLHttpRequest();
+			//this.cardRequest();
+		}, 2000)
+	}
+
+	cardRequest(){
+		var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
 				if (xhttp.readyState == 4) {
 					// Parse the JSON response
@@ -1236,20 +1596,25 @@ class Level extends Phaser.Scene {
 			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
 			xhttp.open("GET", "../state/card/1", true);
 			xhttp.send();
-		}, 2000)
 	}
 
 	CardDisplay(cardReference, cardText, cardAmmount, cardName, cardArtReference, i){
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
-		
+
 		cardReference.cardId = i + 1;
 		cardReference.ammount = cardAmmount;
+		cardReference.worm.scaleX = 1;
 
 
 		if(cardAmmount > 0){
 			//allows it to be shown, or it could make it not ; not necessarily changing it's size
 			cardReference.worm.setTexture(cardArtReference);
-			cardReference.worm.scaleX = 1;
+
+
+
+			this.fadeIntoScene(cardReference.worm, 1000);
+
+
 
 			//changes the text on the bottom of each card
 			if(cardAmmount > 1){
@@ -1259,10 +1624,77 @@ class Level extends Phaser.Scene {
 			}
 		}else if(cardAmmount <= 0){//assures that a change in card has appened
 
+			this.fadeOutOfScene(cardReference.worm, 1000);
 			//allows it to be hidden, or it could make it gray; not necessarily changing it's size
 			cardText.text = "";
-			cardReference.worm.scaleX = 0;
+			//cardReference.worm.scaleX = 0;
 		}
+
+	}
+
+	fadeIntoScene(imgRef, dur) {
+		//imgRef.alpha = 0;
+		this.tweens.add({
+			targets: imgRef,
+			alpha: 1,
+			duration: dur,
+			ease: 'Power2'
+		});
+	}
+
+	fadeOutOfScene(imgRef, dur) {
+		//imgRef.alpha = 1;
+		this.tweens.add({
+			targets: imgRef,
+			alpha: 0,
+			duration: dur,
+			ease: 'Power2'
+		});
+	}
+
+	shardRequest(){
+		var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = () => {
+				if (xhttp.readyState == 4) {
+					// Parse the JSON response
+					var data = JSON.parse(xhttp.responseText);
+
+					for(let i = 0; i < data.length; i++){
+						this.shards[i].text = data[i].mps_shard_ammount + "/" + data[i].shard_ammount_needed;
+
+						console.log(data[i]);
+					}
+
+				}
+			};
+
+			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
+			xhttp.open("GET", "../state/shard/1", true);
+			xhttp.send();
+	}
+
+	pTsetElements(pTList, index){
+
+		this.promotionTiersBackground[index].alpha = 0;
+
+	}
+
+	pTDisplay(ptIdSentDB, player_color_nane, pc_id, pTList){
+		//displays the right set of PT assets
+		for(let j = 0; j < pTList.length; j++){
+			pTList[j].scaleX = 1;
+		}
+
+		//based off the PT reached in the db, 0 the alpha of the bacjground
+		for(let i = 0; i < ptIdSentDB-1; i++){
+
+			pTList[i].PtId = i + 2;
+			this.promotionTiersBackground[i].alpha = 0;
+			//this.pTsetElements(pTList, ptIdSentDB-2);
+		}	
+	}
+
+	pTImageSelector(ptReference, ptAssetName){
 
 	}
 
@@ -1272,6 +1704,16 @@ class Level extends Phaser.Scene {
 /* END OF COMPILED CODE */
 
 // You can write more code here
+
+// function fadeIntoScene(imgRef, dur) {
+// 	scene.tweens.add({
+// 		targets: imgRef,
+// 		alpha: 1,
+// 		duration: dur,
+// 		ease: 'Power2'
+// 	})	
+// }
+
 
 function placePiece(boardState, gameState, playerID, tileElement, PieceClass) {
     const piece = new PieceClass(this, tileElement.x, tileElement.y);

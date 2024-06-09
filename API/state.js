@@ -26,7 +26,7 @@ router.get('/game/:matchId', (request, response) => {
                     response.send("no match existes with said id");
                 }else{
                     //console.log("match id found");
-                    console.log(matchId);
+                    //console.log(matchId);
                     response.send(results);
                     
                     
@@ -57,9 +57,8 @@ router.get('/card/:matchId', (request, response) => {
                 response.send(err);
             }else{
                 if(results.length == 0){
-                    response.send("no match existed with said id, cannot retrieve cards");
+                    response.send("no match existS with said id, ERGO cannot retrieve cards");
                 }else{
-                    //console.log("cards found");
                     response.send(results);
                     
                 }
@@ -82,16 +81,15 @@ router.get('/shard/:matchId', (request, response) => {
     }
 
     //returns the shard's ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT mps_shard_ammount FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Card ON Card.card_id = Match_Player_Shard.mps_shard_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
+    connection.execute('SELECT mps_shard_ammount, shard_ammount_needed FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Shard ON Shard.card_id = Match_Player_Shard.mps_shard_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
         [matchId, playerId],
         function (err, results, fields) {
             if (err){
                 response.send(err);
             }else{
                 if(results.length == 0){
-                    response.send("no match existed with said id, cannot retrieve shards");
+                    response.send("no match existS with said id, ERGO cannot retrieve shards");
                 }else{
-                    //console.log("shards found");
                     response.send(results);
                     
                 }

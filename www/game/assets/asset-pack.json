@@ -2,6 +2,11 @@
     "section1": {
         "files": [
             {
+                "url": "assets/beanStrong.png",
+                "type": "image",
+                "key": "beanStrong"
+            },
+            {
                 "url": "src/prefabs/tiles/Black_Tile.js",
                 "type": "script",
                 "key": "Black_Tile"
@@ -97,6 +102,11 @@
                 "key": "cardBlackRoock"
             },
             {
+                "url": "src/prefabs/CardIdVar.js",
+                "type": "script",
+                "key": "CardIdVar"
+            },
+            {
                 "url": "assets/cards/cardWhiteBishop.png",
                 "type": "image",
                 "key": "cardWhiteBishop"
@@ -142,43 +152,83 @@
                 "key": "PTBlack"
             },
             {
-                "url": "assets/promotionTiers/PTBlackBishop.png",
+                "url": "assets/promotionTiers/pTBlackBishop.png",
                 "type": "image",
+                "key": "pTBlackBishop"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTBlackBishop.js",
+                "type": "script",
                 "key": "PTBlackBishop"
             },
             {
-                "url": "assets/promotionTiers/PTBlackKnight.png",
+                "url": "assets/promotionTiers/pTBlackKnight.png",
                 "type": "image",
+                "key": "pTBlackKnight"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTBlackKnight.js",
+                "type": "script",
                 "key": "PTBlackKnight"
             },
             {
-                "url": "assets/promotionTiers/PTBlackQueen.png",
+                "url": "assets/promotionTiers/pTBlackQueen.png",
                 "type": "image",
+                "key": "pTBlackQueen"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTBlackQueen.js",
+                "type": "script",
                 "key": "PTBlackQueen"
             },
             {
-                "url": "assets/promotionTiers/PTBlackRoock.png",
+                "url": "assets/promotionTiers/pTBlackRoock.png",
                 "type": "image",
+                "key": "pTBlackRoock"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTBlackRoock.js",
+                "type": "script",
                 "key": "PTBlackRoock"
             },
             {
-                "url": "assets/promotionTiers/PTWhiteBishop.png",
+                "url": "assets/promotionTiers/pTWhiteBishop.png",
                 "type": "image",
+                "key": "pTWhiteBishop"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTWhiteBishop.js",
+                "type": "script",
                 "key": "PTWhiteBishop"
             },
             {
-                "url": "assets/promotionTiers/PTWhiteKnight.png",
+                "url": "assets/promotionTiers/pTWhiteKnight.png",
                 "type": "image",
+                "key": "pTWhiteKnight"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTWhiteKnight.js",
+                "type": "script",
                 "key": "PTWhiteKnight"
             },
             {
-                "url": "assets/promotionTiers/PTWhiteQueen.png",
+                "url": "assets/promotionTiers/pTWhiteQueen.png",
                 "type": "image",
+                "key": "pTWhiteQueen"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTWhiteQueen.js",
+                "type": "script",
                 "key": "PTWhiteQueen"
             },
             {
-                "url": "assets/promotionTiers/PTWhiteRoock.png",
+                "url": "assets/promotionTiers/pTWhiteRoock.png",
                 "type": "image",
+                "key": "pTWhiteRoock"
+            },
+            {
+                "url": "src/prefabs/promotionTiers/PTWhiteRoock.js",
+                "type": "script",
                 "key": "PTWhiteRoock"
             },
             {

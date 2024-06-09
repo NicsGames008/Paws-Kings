@@ -1029,40 +1029,40 @@ class Level extends Phaser.Scene {
 		xhttp.send();
 	}
 
-	tileClicked(boardState,  playerID) {
+	tileClicked(playerID) {
+
 		let possibleMoves;
+		// Loop through each tile in the 'tiles' array
+		for (let index = 0; index < this.tiles.length; index++) {
+			// Get the current tile element at the 'index' position
+			const element = this.tiles[index];
 
-		this.updateGameState(playerID, (gameState) => {
-
-			// Loop through each tile in the 'tiles' array
-			for (let index = 0; index < this.tiles.length; index++) {
-				// Get the current tile element at the 'index' position
-				const element = this.tiles[index];
-
-				// Add an event listener to the tile for the 'pointerdown' event
-				element.setInteractive();
-				element.on("pointerdown", event => {
-					// Extract the number from the tile's name using the 'extractNumberFromString' function
-					var tileId = element.tileId;
+			// Add an event listener to the tile for the 'pointerdown' event
+			element.setInteractive();
+			element.on("pointerdown", event => {
+				this.updateGameState(playerID, (gameState) => {
+					this.updateBoardState(gameState, playerID, (boardState) => {
+						// Extract the number from the tile's name using the 'extractNumberFromString' function
+						var tileId = element.tileId;
 
 
-					this.tiles.forEach(element => {
-						const children = element.getAll();
-						const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
-						if (childToDestroyInHell) {
-							childToDestroyInHell.destroy();
-							element.remove(childToDestroyInHell);
-						}
-					});
+						this.tiles.forEach(element => {
+							const children = element.getAll();
+							const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
+							if (childToDestroyInHell) {
+								childToDestroyInHell.destroy();
+								element.remove(childToDestroyInHell);
+							}
+						});
 
-								
+									
 						for (let i = 0; i < boardState.length; i++) {
 							var k = i + 1;
 							
 							//console.log(gameState);
-							var a = gameState.find(state => state.player_id == playerID);
+							var gameStateForPlayer = gameState.find(state => state.player_id == playerID);
 
-							if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID && a.match_pc_id == a.mp_pc_id) {
+							if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID && gameStateForPlayer.match_pc_id == gameStateForPlayer.mp_pc_id) {
 								
 								// Check if a tile was already pressed
 								if (!possibleMoves) {
@@ -1107,11 +1107,10 @@ class Level extends Phaser.Scene {
 								possibleMoves = this.makeMove(possibleMoves, tileId, playerID);
 							}
 						}
-
+					});
 				});
-			}
-		});
-
+			});
+		}
 	}
 
 	update(){
@@ -1182,10 +1181,9 @@ class Level extends Phaser.Scene {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
 
-				//calls the board state
 				this.updateGameState(playerID, (gameState) => {
 					this.updateBoardState(gameState, playerID, (boardState) => {
-						this.tileClicked(boardState, playerID);
+						this.tileClicked(playerID);
 					});
 				});
 

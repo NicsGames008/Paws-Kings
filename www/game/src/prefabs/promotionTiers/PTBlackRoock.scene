@@ -10,14 +10,22 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "d04581dd-0de4-4343-85a6-a39700bd00d3",
-            "label": "pTBlackRoock",
-            "texture": {
-                "key": "pTBlackRoock"
-            },
+            "type": "Container",
+            "id": "18b7f964-7515-40c5-be3c-168acb63e104",
+            "label": "container_1",
             "x": 78,
-            "y": 49
+            "y": 49,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "71efb31e-a03b-4a51-a15f-37828ec7e010",
+                    "label": "pTBlackRoock_1",
+                    "texture": {
+                        "key": "PTBlackRoock_1"
+                    },
+                    "y": 136
+                }
+            ]
         }
     ],
     "plainObjects": [],

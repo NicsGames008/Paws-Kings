@@ -3,10 +3,14 @@
 
 /* START OF COMPILED CODE */
 
-class PTBlackRoock extends Phaser.GameObjects.Image {
+class PTBlackRoock extends Phaser.GameObjects.Container {
 
-	constructor(scene, x, y, texture, frame) {
-		super(scene, x ?? 78, y ?? 49, texture || "pTBlackRoock", frame);
+	constructor(scene, x, y) {
+		super(scene, x ?? 78, y ?? 49);
+
+		// pTBlackRoock_1
+		const pTBlackRoock_1 = scene.add.image(0, 136, "PTBlackRoock_1");
+		this.add(pTBlackRoock_1);
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.

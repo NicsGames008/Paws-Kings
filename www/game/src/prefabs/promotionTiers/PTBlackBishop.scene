@@ -10,14 +10,21 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "accdd2eb-7a39-45f7-a057-d760a73f5fbb",
-            "label": "pTBlackBishop",
-            "texture": {
-                "key": "pTBlackBishop"
-            },
+            "type": "Container",
+            "id": "37fbd2c1-6e07-4e4f-b726-9ea4a1f41839",
+            "label": "container_1",
             "x": 78,
-            "y": 49
+            "y": 49,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "bb8a7162-62b5-45e1-8be0-e4c4c037078c",
+                    "label": "pTBlackBishop_1",
+                    "texture": {
+                        "key": "PTBlackBishop_1"
+                    }
+                }
+            ]
         }
     ],
     "plainObjects": [],

@@ -17,7 +17,7 @@ class Level extends Phaser.Scene {
 	editorCreate() {
 
 		// background
-		const background = this.add.image(-126, -75, "whiteTile");
+		const background = this.add.image(-106, -132, "whiteTile");
 		background.scaleX = 150;
 		background.scaleY = 100;
 		background.setOrigin(0, 0);
@@ -663,7 +663,7 @@ class Level extends Phaser.Scene {
 		const card = [cardPlaceholder_1, cardPlaceholder_2, cardPlaceholder_3, cardPlaceholder_4];
 		const cardBackground = [cardBackground_1, cardBackground_2, cardBackground_3, cardBackground_4];
 		const cardText = [cardText_1, cardText_2, cardText_3, cardText_4];
-		const letters = [text_1, text_7, text_6, text_5, text_4, text_3, text_2, text];
+		const letters = [text_1, text, text_2, text_3, text_4, text_5, text_6, text_7];
 		const numbers = [text_15, text_14, text_13, text_12, text_11, text_10, text_9, text_8];
 		const promotionTiersBlack = [pTBlackBishop, pTBlackRoock, pTBlackKnight, pTBlackQueen];
 		const promotionTiersWhite = [pTWhiteBishop, pTWhiteRoock, pTWhiteKnight, pTWhiteQueen];
@@ -1259,6 +1259,12 @@ class Level extends Phaser.Scene {
 								this.userName.text = gameState[1].player_name;
 								this.userName.setColor("#9d38feff");
 
+								//inversion of side letters and numbers according to color.
+
+								this.reversingNotation2(this.numbers);
+								this.reversingNotation(this.letters);
+								// this.numbers.reverse();
+								// this.letters.reverse();
 
 								//Display Promotion Tiers
 								//begins with initializing the id and it's img
@@ -1277,6 +1283,57 @@ class Level extends Phaser.Scene {
 		// Send a GET request to the server (just testing with /match/11 endpoint)
 		xhttp.open("GET", "../state/game/1", true);
 		xhttp.send();
+	}
+
+	reversingNotation(arr){
+		let j = arr.length - 1;
+		//let originalArr = arr.slice().reverse();;
+
+		let arrContents = ["A", "B", "C", "D","E", "F", "G", "H"];
+		for (let i = 0; i < arr.length; i++) {
+		
+			arr[i].text = arrContents[j];
+			j--;
+		}
+		
+		
+		//originalArr.reverse();
+
+		//console.log(originalArr);
+		// for (let i = 0; i < arr.length; i++) {
+
+		// 	arr[i].text = originalArr[i].text;
+		// 	console.log(arr[i].text);
+		// 	//arr[i].text = j;
+		// 	j--;
+		// }
+		console.log(" ");
+	}
+
+	reversingNotation2(arr){
+		let j = arr.length - 1;
+		//let originalArr = arr.slice().reverse();;
+		let arrContents2 =  [1, 2, 3, 4, 5, 6, 7,8];
+
+
+		for (let i = 0; i < arr.length; i++) {
+		
+			arr[i].text = arrContents2[j];
+			j--;
+		}
+		
+		
+		//originalArr.reverse();
+
+		//console.log(originalArr);
+		// for (let i = 0; i < arr.length; i++) {
+
+		// 	arr[i].text = originalArr[i].text;
+		// 	console.log(arr[i].text);
+		// 	//arr[i].text = j;
+		// 	j--;
+		// }
+		console.log(" ");
 	}
 
 	updateBoardState(gameState, playerID, callback) {
@@ -1576,7 +1633,6 @@ class Level extends Phaser.Scene {
 
 				this.cardRequest();
 				this.shardRequest();
-				//this.pTsetElements();
 
 				this.updateGameState(playerID, (gameState) => {
 					this.updateBoardState(gameState, playerID, (boardState) => {
@@ -1711,7 +1767,7 @@ class Level extends Phaser.Scene {
 					for(let i = 0; i < data.length; i++){
 						this.shards[i].text = data[i].mps_shard_ammount + "/" + data[i].shard_ammount_needed;
 
-						console.log(data[i]);
+						//missing the img and animation;
 					}
 
 				}
@@ -1720,12 +1776,6 @@ class Level extends Phaser.Scene {
 			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
 			xhttp.open("GET", "../state/shard/1", true);
 			xhttp.send();
-	}
-
-	pTsetElements(pTList, index){
-
-		this.promotionTiersBackground[index].alpha = 0;
-
 	}
 
 	pTDisplay(ptIdSentDB, player_color_nane, pc_id, pTList){
@@ -1739,12 +1789,7 @@ class Level extends Phaser.Scene {
 
 			pTList[i].PtId = i + 2;
 			this.promotionTiersBackground[i].alpha = 0;
-			//this.pTsetElements(pTList, ptIdSentDB-2);
 		}	
-	}
-
-	pTImageSelector(ptReference, ptAssetName){
-
 	}
 
 	/* END-USER-CODE */

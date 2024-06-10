@@ -1430,7 +1430,7 @@ class Level extends Phaser.Scene {
 		};
 
 		// Send a GET request to the server (just testing with /match/11 endpoint)
-		xhttp.open("GET", "../state/game/1", true);
+		xhttp.open("GET", "../state/game", true);
 		xhttp.send();
 	}
 
@@ -1521,7 +1521,7 @@ class Level extends Phaser.Scene {
 		};
 
 		// Send a GET request to the server (just testing with /match/1 endpoint)
-		xhttp.open("GET", "../state/boardR/1", true);
+		xhttp.open("GET", "../state/boardR", true);
 		xhttp.send();
 	}
 
@@ -1922,7 +1922,7 @@ class Level extends Phaser.Scene {
 		};
 
 		// Send a GET request to the server (just testing with /match/11 endpoint)
-		xhttp.open("GET", "../state/game/1", true);
+		xhttp.open("GET", "../state/game", true);
 		xhttp.send();
 	}
 
@@ -1992,7 +1992,7 @@ class Level extends Phaser.Scene {
 		};
 
 		// Send a GET request to the server (just testing with /match/1 endpoint)
-		xhttp.open("GET", "../state/boardR/1", true);
+		xhttp.open("GET", "../state/boardR", true);
 		xhttp.send();
 	}
 
@@ -2048,7 +2048,7 @@ class Level extends Phaser.Scene {
 		  };
 
 		  // Send a GET request to the server (just testing with /match/11 endpoint)
-		  xhttp.open("GET", "/state/donkey/1", true);
+		  xhttp.open("GET", "/state/donkey", true);
 		  xhttp.send();
 	}
 
@@ -2104,7 +2104,7 @@ class Level extends Phaser.Scene {
 			};
 
 			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
-			xhttp.open("GET", "../state/card/1", true);
+			xhttp.open("GET", "../state/card", true);
 			xhttp.send();
 	}
 
@@ -2258,7 +2258,7 @@ class Level extends Phaser.Scene {
 			};
 
 			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
-			xhttp.open("GET", "../state/shard/1", true);
+			xhttp.open("GET", "../state/shard", true);
 			xhttp.send();
 	}
 

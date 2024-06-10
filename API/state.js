@@ -5,9 +5,9 @@ const connection = require('../database');
 
 //----------------------------------------------GAME STATE----------------------------
 
-router.get('/game/:matchId', (request, response) => {
+router.get('/game', (request, response) => {
     // Get the data from the request as a parameter
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
 
     // if the vars are empty is gives an error message
     if (!matchId){
@@ -38,9 +38,9 @@ router.get('/game/:matchId', (request, response) => {
 
 //----------------------------CARD---------------------------------------------------
 
-router.get('/card/:matchId', (request, response) => {
+router.get('/card', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
     var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message
@@ -69,9 +69,9 @@ router.get('/card/:matchId', (request, response) => {
 
 //----------------------------SHARD---------------------------------------------------
 
-router.get('/shard/:matchId', (request, response) => {
+router.get('/shard', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
     var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message
@@ -100,9 +100,9 @@ router.get('/shard/:matchId', (request, response) => {
 
 //-----------------------------BOARD STAUTS DONE RIGHT-------------------------------
 
-router.get('/boardR/:matchId', (request, response) => {
+router.get('/boardR', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
 
 
     // if the vars are empty is gives an error message
@@ -143,62 +143,6 @@ function FillFleetingBoard(request, response, previusResults){
             if(results.length == 0){
                 response.send("MPPS for mps not found");
             }else{
-                // //console.log("pieces founds!");
-
-                // //printing th eboard to see if the id matches
-                // let tileset = '';
-                // for(let i = 0; i< results.length; i++){
-                //     chessboard[i] = results[i].tile_id;
-                //     tileset += chessboard[i] + '|'
-                //     if((i+1)%8 == 0){
-                //         tileset += '\n|';
-                //     }
-                // }
-
-
-                // //composing the chees board
-                // for(let i = 0; i < results.length; i++){
-
-                //     //If the pieece exist, we can start wokring on it
-                //     if(results[i].mpp_piece_id != null){
-
-                //         //Detecting the color
-                //         if(results[i].mp_pc_id == 1){
-                //             actualChessBoard[i] = 'w';
-                //         }else{
-                //             actualChessBoard[i] = 'b';
-                //         }
-
-                //         //Assinging the piece type
-                //         switch(results[i].mpp_piece_id){
-                //             case 1:     //Bishop
-                //                 actualChessBoard[i] += 'Bi';
-                //                 break;
-                //             case 2:     //Roock
-                //                 actualChessBoard[i] += 'Ro';
-                //                 break;
-                //             case 3:     //Knight
-                //                 actualChessBoard[i] += 'Kn';
-                //                 break;
-                //             case 4:     //Quween
-                //                 actualChessBoard[i] += 'Qw';
-                //                 break;
-                //             case 5:     //Pawn
-                //                 actualChessBoard[i] += 'Pa';
-                //                 break;
-                //             case 6:     //King
-                //                 actualChessBoard[i] += 'Ki';
-                //                 break;
-                //             default:
-                //                 console.log("roock is intentional btw");
-                //         }
-                //     }else{
-                //         actualChessBoard[i] = ' '
-                //     }
-                // }
-
-                // let horizontallyReversed = ReverseHorizontally(actualChessBoard);
-
                 response.send(results);
             }
             
@@ -224,9 +168,9 @@ function FillFleetingBoard(request, response, previusResults){
 //------------------------------------Donkey function-------------------------------------------
 //                       continuosly asking if it's the user's turn
 
-router.get('/donkey/:matchId', (request, response) => {
+router.get('/donkey', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
     var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message
@@ -251,5 +195,38 @@ router.get('/donkey/:matchId', (request, response) => {
         });
 });
 
+
+router.get('/inMatch', (request, response) =>{
+    var playerId = request.session.playerID; 
+
+    if(!playerId) {
+        response.send(" Missing data!");
+        return;
+    }
+
+    connection.execute('SELECT match_id FROM `Match` INNER JOIN Match_Player mp ON mp.mp_match_id =  `Match`.match_id WHERE match_ms_id = 1 AND mp.mp_player_id = ?;',
+        [playerId],
+        function (err, results, fields) {
+            if (err){
+                response.status(400).send({
+                    "error": "Not searching for a match!"
+                });
+                return;
+            }else{
+                if(results.length > 0){
+                    console.log(results[0].match_id);
+                    request.session.matchID = results[0].match_id;
+                    console.log(request.session.matchID, request.session.playerID);
+                    response.status(202).send({
+                        "message": "Player in match already!"
+                    });
+                }else{
+                    response.status(200).send({
+                        "message": "Not in a match yet!"
+                    });
+                }
+            }
+        });
+});
 
 module.exports = router;

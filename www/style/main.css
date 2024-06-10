@@ -3,12 +3,14 @@
             margin: 0px;
             background-color: black;
             background-image: url('../img/Pawns-&-Kings-welcome-1.00.gif');
+            font-size: small;
 
             /** Fullscreen background image without repeating. Adapt to the height of the screen */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            cursor: url('./www/img/worm.png'), auto;
+            
+            
         }
 
         #navbar {
@@ -47,8 +49,7 @@
             border-radius: 10px;
             margin-bottom: 15px;
             align-content: center;
-            text-align: center;
-
+               
         }
 
         .container input[type=text], .container input[type=password] {
@@ -59,6 +60,7 @@
             border: 1px solid #ccc;
             box-sizing: border-box;
             min-width: 200px;
+            
         }
 
         .container input[type=submit], .container input[type=button]{
@@ -75,7 +77,8 @@
         .container #title {
             color: green;
             font-size: 4vw;
-            text-shadow: 2px 2px 4px #000000;        
+            text-shadow: 2px 2px 4px #000000;  
+            font-size: 20px;      
         }
 
         #navbarright {
@@ -83,14 +86,30 @@
         }
 
         a {
-            font-size: 18px;
+            font-size: 20px;
         }
 
         #message {
-            font-size: 2vw;
+            font-size: 30px;
         }
 
         .center {
+            text-align: justify;
+            list-style-position: inside;
+            font-size: 25px;
+          }
+          .size {
             text-align: center;
             list-style-position: inside;
+            font-size: 20px;
           }
+
+          .middle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        
+        }

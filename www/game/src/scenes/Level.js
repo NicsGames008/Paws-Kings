@@ -1652,7 +1652,7 @@ class Level extends Phaser.Scene {
 
 				let canPlay = false;
 				var amogus;
-				amogus = setInterval(this.donkey(canPlay, amogus, playerID), 2000);
+				amogus = setInterval(this.donkey, 2000, canPlay, amogus, playerID);
 				
 
 			}
@@ -1887,16 +1887,17 @@ class Level extends Phaser.Scene {
 
 			  	console.log(canPlay);
 
-				// if (canPlay) {
-				// 	//clearInterval(donkeyFunction);
-
-				// 	//series of function to update the page
-				// 	this.cardRequest();
-				// 	//this.shardRequest();
-				// 	this.gameRequest(playerID);
-				// }else{
-				// 	console.log("it's not your turn to play yet!")
-				// }
+				if (canPlay) {
+					clearInterval(this.amogus);
+					console.log("im able to play!");
+					
+					//series of function to update the page
+					//this.cardRequest();
+					//this.shardRequest();
+					//this.gameRequest(playerID);
+				}else{
+					console.log("it's not your turn to play yet!")
+				}
 			}
 		  };
 		

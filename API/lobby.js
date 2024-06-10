@@ -154,7 +154,7 @@ function FillBoard(request, response, mpId, colorId){   //function FillBoard(req
             }
           }
     }else{ //fill the board for black
-        for (let i = 48; i <= 64; i++) {
+        for (let i = 49; i <= 64; i++) {
             switch(i){
                 case 61:
                     AllocatingPieces(mpId, i, kingId, kingPsId)

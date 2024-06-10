@@ -34,7 +34,7 @@ class Level extends Phaser.Scene {
 		// userName
 		const userName = this.add.text(43, 650, "", {});
 		userName.text = "%userName%";
-		userName.setStyle({ "color": "#fff7bbff", "fixedHeight":30,"fontSize": "30px", "shadow.offsetX":-4,"shadow.offsetY":5,"shadow.color": "#fff5a821", "shadow.blur":1,"shadow.fill":true});
+		userName.setStyle({ "color": "#fff7bbff", "fixedHeight":30,"fontSize": "30px", "shadow.offsetX":-4,"shadow.offsetY":5,"shadow.color": "#f9dc0021", "shadow.blur":1,"shadow.fill":true});
 
 		// tilesContainer
 		const tilesContainer = this.add.container(322, 325);
@@ -451,12 +451,6 @@ class Level extends Phaser.Scene {
 		const cardText_4 = this.add.text(1215, 528, "", {});
 		cardText_4.text = "%Qween Number%";
 
-		// cardWhiteKnight
-		const cardWhiteKnight = this.add.image(1216, 42, "cardWhiteKnight");
-		cardWhiteKnight.visible = false;
-		cardWhiteKnight.tintTopLeft = 16655612;
-		cardWhiteKnight.tintTopRight = 10551553;
-
 		// text_1
 		const text_1 = this.add.text(77, 609, "", {});
 		text_1.setOrigin(0.5, 0);
@@ -556,6 +550,7 @@ class Level extends Phaser.Scene {
 		// cardIdVar
 		const cardIdVar = new CardIdVar(this, 1264, 16);
 		this.add.existing(cardIdVar);
+		cardIdVar.visible = false;
 
 		// pTBlackBishop
 		const pTBlackBishop = new PTBlackBishop(this, 721, 480);
@@ -672,24 +667,24 @@ class Level extends Phaser.Scene {
 		currentTurnColor.setStyle({ "align": "center", "backgroundColor": "", "fixedHeight":46,"fontSize": "46px", "shadow.offsetY":-2,"shadow.color": "#13214177", "shadow.fill":true});
 
 		// shardBishopBottom
-		const shardBishopBottom = new ShardBottom(this, 878, 235, "mefrfr");
+		const shardBishopBottom = new ShardBottom(this, 876, 235, "mefrfr");
 		this.add.existing(shardBishopBottom);
 		shardBishopBottom.visible = false;
 
 		// shardBishopTop
-		const shardBishopTop = new ShardTop(this, 875, 147, "mefrfr");
+		const shardBishopTop = new ShardTop(this, 876, 167, "mefrfr");
 		this.add.existing(shardBishopTop);
 		shardBishopTop.scaleX = 1;
 		shardBishopTop.scaleY = 1;
 		shardBishopTop.visible = false;
 
 		// shardRoockBottom
-		const shardRoockBottom = new ShardBottom(this, 988, 235);
+		const shardRoockBottom = new ShardBottom(this, 989, 235);
 		this.add.existing(shardRoockBottom);
 		shardRoockBottom.visible = false;
 
 		// shardRoockTop
-		const shardRoockTop = new ShardTop(this, 988, 147);
+		const shardRoockTop = new ShardTop(this, 989, 167);
 		this.add.existing(shardRoockTop);
 		shardRoockTop.visible = false;
 
@@ -699,24 +694,36 @@ class Level extends Phaser.Scene {
 		shardKnightBottom.visible = false;
 
 		// shardKnightTop
-		const shardKnightTop = new ShardTop(this, 1101, 147);
+		const shardKnightTop = new ShardTop(this, 1102, 159);
 		this.add.existing(shardKnightTop);
 		shardKnightTop.visible = false;
 
 		// shardQueenBottom
-		const shardQueenBottom = new ShardBottom(this, 1216, 259);
+		const shardQueenBottom = new ShardBottom(this, 1215, 259);
 		this.add.existing(shardQueenBottom);
 		shardQueenBottom.visible = false;
 
-		// shardMiddle
-		const shardMiddle = new ShardMiddle(this, 1217, 202);
-		this.add.existing(shardMiddle);
-		shardMiddle.visible = false;
+		// shardMiddleQueen
+		const shardMiddleQueen = new ShardMiddle(this, 1215, 202);
+		this.add.existing(shardMiddleQueen);
+		shardMiddleQueen.visible = false;
 
 		// shardQueenTop
-		const shardQueenTop = new ShardTop(this, 1216, 133);
+		const shardQueenTop = new ShardTop(this, 1215, 158);
 		this.add.existing(shardQueenTop);
 		shardQueenTop.visible = false;
+
+		// currentTurnColor_1
+		const currentTurnColor_1 = this.add.text(875, 67, "", {});
+		currentTurnColor_1.setOrigin(0.5, 0);
+		currentTurnColor_1.text = "Shards";
+		currentTurnColor_1.setStyle({ "align": "center", "backgroundColor": "", "color": "#3a56a4ff", "fontSize": "26px", "shadow.offsetY":-2,"shadow.color": "#13214177", "shadow.fill":true});
+
+		// currentTurnColor_2
+		const currentTurnColor_2 = this.add.text(867, 335, "", {});
+		currentTurnColor_2.setOrigin(0.5, 0);
+		currentTurnColor_2.text = "CARDS";
+		currentTurnColor_2.setStyle({ "align": "center", "backgroundColor": "", "color": "#3a56a4ff", "fontSize": "26px", "shadow.offsetY":-2,"shadow.color": "#13214177", "shadow.fill":true});
 
 		// lists
 		const tiles = [tile_64, tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63];
@@ -733,7 +740,7 @@ class Level extends Phaser.Scene {
 		const shardsBishop = [shardBishopTop, shardBishopBottom];
 		const shardsRoock = [shardRoockTop, shardRoockBottom];
 		const shardsKnight = [shardKnightTop, shardKnightBottom];
-		const shardsQueen = [shardQueenTop, shardMiddle, shardQueenBottom];
+		const shardsQueen = [shardQueenTop, shardMiddleQueen, shardQueenBottom];
 
 		// tile_64 (prefab fields)
 		tile_64.tileId = 64;
@@ -960,8 +967,8 @@ class Level extends Phaser.Scene {
 		// shardQueenBottom (prefab fields)
 		shardQueenBottom.index = 0;
 
-		// shardMiddle (prefab fields)
-		shardMiddle.index = 1;
+		// shardMiddleQueen (prefab fields)
+		shardMiddleQueen.index = 1;
 
 		// shardQueenTop (prefab fields)
 		shardQueenTop.index = 2;
@@ -1074,7 +1081,10 @@ class Level extends Phaser.Scene {
 		this.shardKnightBottom = shardKnightBottom;
 		this.shardKnightTop = shardKnightTop;
 		this.shardQueenBottom = shardQueenBottom;
+		this.shardMiddleQueen = shardMiddleQueen;
 		this.shardQueenTop = shardQueenTop;
+		this.currentTurnColor_1 = currentTurnColor_1;
+		this.currentTurnColor_2 = currentTurnColor_2;
 		this.tiles = tiles;
 		this.shardBackground = shardBackground;
 		this.card = card;
@@ -1310,8 +1320,14 @@ class Level extends Phaser.Scene {
 	shardKnightTop;
 	/** @type {ShardBottom} */
 	shardQueenBottom;
+	/** @type {ShardMiddle} */
+	shardMiddleQueen;
 	/** @type {ShardTop} */
 	shardQueenTop;
+	/** @type {Phaser.GameObjects.Text} */
+	currentTurnColor_1;
+	/** @type {Phaser.GameObjects.Text} */
+	currentTurnColor_2;
 	/** @type {Array<Black_Tile|White_Tile>} */
 	tiles;
 	/** @type {Phaser.GameObjects.Image[]} */
@@ -1834,229 +1850,229 @@ class Level extends Phaser.Scene {
 
 	}
 
-	//useless doneky
-	gameRequest(playerID){
-		this.gameStateRequest(playerID, (gameState) => {
-			this.boardStateRequest(gameState, playerID, (boardState) => {
-				this.tileRequest(playerID);
-			});
-		});
-	}
+	// //useless doneky
+	// gameRequest(playerID){
+	// 	this.gameStateRequest(playerID, (gameState) => {
+	// 		this.boardStateRequest(gameState, playerID, (boardState) => {
+	// 			this.tileRequest(playerID);
+	// 		});
+	// 	});
+	// }
 
-	gameStateRequest(playerID, callback) {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = () => {
-			if (xhttp.readyState == 4) {
-				if (xhttp.status == 200) {
-					// Parse the JSON response
-					var gameState = JSON.parse(xhttp.responseText);
+	// gameStateRequest(playerID, callback) {
+	// 	var xhttp = new XMLHttpRequest();
+	// 	xhttp.onreadystatechange = () => {
+	// 		if (xhttp.readyState == 4) {
+	// 			if (xhttp.status == 200) {
+	// 				// Parse the JSON response
+	// 				var gameState = JSON.parse(xhttp.responseText);
 
-					//Displays who's turn is it and changes color accordingly
-					//could be moved inside the following for so that the user can also see somehting like "White's turn(you)" or "Black's turn(opponent)"
-					if(gameState[0].match_pc_id == 1){ //White
+	// 				//Displays who's turn is it and changes color accordingly
+	// 				//could be moved inside the following for so that the user can also see somehting like "White's turn(you)" or "Black's turn(opponent)"
+	// 				if(gameState[0].match_pc_id == 1){ //White
 
-						//changes color
-						this.currentTurnColor.setColor("#fff7bbff");
-						//changes text	
-						this.currentTurnColor.text = "White's turn";
+	// 					//changes color
+	// 					this.currentTurnColor.setColor("#fff7bbff");
+	// 					//changes text	
+	// 					this.currentTurnColor.text = "White's turn";
 
-					} else if (gameState[0].match_pc_id == 2){//Black
+	// 				} else if (gameState[0].match_pc_id == 2){//Black
 
-						//changes color
-						this.currentTurnColor.setColor("#7f00f8ff");	
-						//changes text					
-						this.currentTurnColor.text = "Black's turn";
+	// 					//changes color
+	// 					this.currentTurnColor.setColor("#7f00f8ff");	
+	// 					//changes text					
+	// 					this.currentTurnColor.text = "Black's turn";
 
-					}
+	// 				}
 
-					//Defines the player color and assigns it it's defined assets or rotation
-					for (let i = 0; i < gameState.length; i++) {
-						if (playerID == gameState[i].player_id) {
-							if (gameState[i].mp_pc_id == 1) {
-								//Functions for the white
-								this.tilesContainer.angle = 0;
+	// 				//Defines the player color and assigns it it's defined assets or rotation
+	// 				for (let i = 0; i < gameState.length; i++) {
+	// 					if (playerID == gameState[i].player_id) {
+	// 						if (gameState[i].mp_pc_id == 1) {
+	// 							//Functions for the white
+	// 							this.tilesContainer.angle = 0;
 
-								//sets up the name according to position
-								//top = black
-								this.advName.text = gameState[1].player_name;
-								this.advName.setColor("#7f00f8ff");
+	// 							//sets up the name according to position
+	// 							//top = black
+	// 							this.advName.text = gameState[1].player_name;
+	// 							this.advName.setColor("#7f00f8ff");
 
-								//bot = white
-								this.userName.text = gameState[0].player_name;
-								this.userName.setColor("#fff7bbff");
-
-
-								//Display Promotion Tiers
-								//begins with initializing the id and it's img
-								this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersWhite);
+	// 							//bot = white
+	// 							this.userName.text = gameState[0].player_name;
+	// 							this.userName.setColor("#fff7bbff");
 
 
-							} else if (gameState[i].mp_pc_id == 2) {
-								//Functions for the black
-								this.tilesContainer.angle = -180;
-
-								//sets up the name accordingly to position
-								//top = white
-								this.advName.text = gameState[0].player_name;
-								this.advName.setColor("#fff7bbff");
-
-								//bottom = black
-								this.userName.text = gameState[1].player_name;
-								this.userName.setColor("#7f00f8ff");
-
-								//inversion of side letters and numbers according to color.
-
-								this.reversingNumbers(this.numbers);
-								this.reversingLetter(this.letters);
-								// this.numbers.reverse();
-								// this.letters.reverse();
-
-								//Display Promotion Tiers
-								//begins with initializing the id and it's img
-								this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersBlack);
-							}
-						}
-					}
-
-					callback(gameState);
-				} else {
-					console.error('Error fetching game state');
-				}
-			}
-		};
-
-		// Send a GET request to the server (just testing with /match/11 endpoint)
-		xhttp.open("GET", "../state/game", true);
-		xhttp.send();
-	}
-
-	boardStateRequest(gameState, playerID, callback) {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = () => {
-			if (xhttp.readyState == 4) {
-				if (xhttp.status == 200) {
-					// Parse the JSON response
-					var boardState = JSON.parse(xhttp.responseText);
-
-					boardState.forEach(state => {
-						const tileElement = this.tiles.find(tile => tile.tileId === state.tile_id);
-						if (tileElement) {
-							switch (state.mpp_piece_id) {
-								case 1:
-									if (state.mp_pc_id === 1) {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteBishop);
-									} else {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackBishop);
-									}
-									break;
-								case 2:
-									if (state.mp_pc_id === 1) {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteRook);
-									} else {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackRook);
-									}
-									break;
-								case 3:
-									if (state.mp_pc_id === 1) {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKnight);
-									} else {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKnight);
-									}
-									break;
-								case 4:
-									if (state.mp_pc_id === 1) {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteQueen);
-									} else {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackQueen);
-									}
-									break;
-								case 5:
-									if (state.mp_pc_id === 1) {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, WhitePawn);
-									} else {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackPawn);
-									}
-									break;
-								case 6:
-									if (state.mp_pc_id === 1) {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKing);
-									} else {
-										placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKing);
-									}
-									break;
-							}
-						}
-					});
-
-					callback(boardState);
-				} else {
-					console.error('Error fetching board state');
-				}
-			}
-		};
-
-		// Send a GET request to the server (just testing with /match/1 endpoint)
-		xhttp.open("GET", "../state/boardR", true);
-		xhttp.send();
-	}
-
-	tileRequest(playerID) {
-		// Loop through each tile in the 'tiles' array
-		for (let index = 0; index < this.tiles.length; index++) {
-			// Get the current tile element at the 'index' position
-			const element = this.tiles[index];
-
-			// Add an event listener to the tile for the 'pointerdown' event
-			this.updateGameState(playerID, (gameState) => {
-				this.updateBoardState(gameState, playerID, (boardState) => {
-					// Extract the number from the tile's name using the 'extractNumberFromString' function
-					var tileId = element.tileId;
+	// 							//Display Promotion Tiers
+	// 							//begins with initializing the id and it's img
+	// 							this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersWhite);
 
 
-					this.tiles.forEach(element => {
-						const children = element.getAll();
-						const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
-						if (childToDestroyInHell) {
-							childToDestroyInHell.destroy();
-							element.remove(childToDestroyInHell);
-						}
-					});
+	// 						} else if (gameState[i].mp_pc_id == 2) {
+	// 							//Functions for the black
+	// 							this.tilesContainer.angle = -180;
 
-				});
-			});
+	// 							//sets up the name accordingly to position
+	// 							//top = white
+	// 							this.advName.text = gameState[0].player_name;
+	// 							this.advName.setColor("#fff7bbff");
 
-		}
-	}
+	// 							//bottom = black
+	// 							this.userName.text = gameState[1].player_name;
+	// 							this.userName.setColor("#7f00f8ff");
 
-	donkey(canPlay, donkeyFunction, playerID){
-		var xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = () => {
-			if (xhttp.readyState == 4) {
-				//sends back true if you can play and false if you cannot play
-			  	canPlay = JSON.parse(xhttp.responseText);
+	// 							//inversion of side letters and numbers according to color.
 
-			  	console.log(canPlay);
+	// 							this.reversingNumbers(this.numbers);
+	// 							this.reversingLetter(this.letters);
+	// 							// this.numbers.reverse();
+	// 							// this.letters.reverse();
 
-				if (canPlay) {
-					clearInterval(this.amogus);
-					console.log("im able to play!");
+	// 							//Display Promotion Tiers
+	// 							//begins with initializing the id and it's img
+	// 							this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersBlack);
+	// 						}
+	// 					}
+	// 				}
 
-					//series of function to update the page
-					//this.cardRequest();
-					//this.shardRequest();
-					//this.gameRequest(playerID);
-				}else{
-					console.log("it's not your turn to play yet!")
-				}
-			}
-		  };
+	// 				callback(gameState);
+	// 			} else {
+	// 				console.error('Error fetching game state');
+	// 			}
+	// 		}
+	// 	};
 
-		  // Send a GET request to the server (just testing with /match/11 endpoint)
-		  xhttp.open("GET", "/state/donkey", true);
-		  xhttp.send();
-	}
+	// 	// Send a GET request to the server (just testing with /match/11 endpoint)
+	// 	xhttp.open("GET", "../state/game", true);
+	// 	xhttp.send();
+	// }
 
-	//end of useless donkey funcitons
+	// boardStateRequest(gameState, playerID, callback) {
+	// 	var xhttp = new XMLHttpRequest();
+	// 	xhttp.onreadystatechange = () => {
+	// 		if (xhttp.readyState == 4) {
+	// 			if (xhttp.status == 200) {
+	// 				// Parse the JSON response
+	// 				var boardState = JSON.parse(xhttp.responseText);
+
+	// 				boardState.forEach(state => {
+	// 					const tileElement = this.tiles.find(tile => tile.tileId === state.tile_id);
+	// 					if (tileElement) {
+	// 						switch (state.mpp_piece_id) {
+	// 							case 1:
+	// 								if (state.mp_pc_id === 1) {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteBishop);
+	// 								} else {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackBishop);
+	// 								}
+	// 								break;
+	// 							case 2:
+	// 								if (state.mp_pc_id === 1) {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteRook);
+	// 								} else {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackRook);
+	// 								}
+	// 								break;
+	// 							case 3:
+	// 								if (state.mp_pc_id === 1) {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKnight);
+	// 								} else {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKnight);
+	// 								}
+	// 								break;
+	// 							case 4:
+	// 								if (state.mp_pc_id === 1) {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteQueen);
+	// 								} else {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackQueen);
+	// 								}
+	// 								break;
+	// 							case 5:
+	// 								if (state.mp_pc_id === 1) {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhitePawn);
+	// 								} else {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackPawn);
+	// 								}
+	// 								break;
+	// 							case 6:
+	// 								if (state.mp_pc_id === 1) {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKing);
+	// 								} else {
+	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKing);
+	// 								}
+	// 								break;
+	// 						}
+	// 					}
+	// 				});
+
+	// 				callback(boardState);
+	// 			} else {
+	// 				console.error('Error fetching board state');
+	// 			}
+	// 		}
+	// 	};
+
+	// 	// Send a GET request to the server (just testing with /match/1 endpoint)
+	// 	xhttp.open("GET", "../state/boardR", true);
+	// 	xhttp.send();
+	// }
+
+	// tileRequest(playerID) {
+	// 	// Loop through each tile in the 'tiles' array
+	// 	for (let index = 0; index < this.tiles.length; index++) {
+	// 		// Get the current tile element at the 'index' position
+	// 		const element = this.tiles[index];
+
+	// 		// Add an event listener to the tile for the 'pointerdown' event
+	// 		this.updateGameState(playerID, (gameState) => {
+	// 			this.updateBoardState(gameState, playerID, (boardState) => {
+	// 				// Extract the number from the tile's name using the 'extractNumberFromString' function
+	// 				var tileId = element.tileId;
+
+
+	// 				this.tiles.forEach(element => {
+	// 					const children = element.getAll();
+	// 					const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
+	// 					if (childToDestroyInHell) {
+	// 						childToDestroyInHell.destroy();
+	// 						element.remove(childToDestroyInHell);
+	// 					}
+	// 				});
+
+	// 			});
+	// 		});
+
+	// 	}
+	// }
+
+	// donkey(canPlay, donkeyFunction, playerID){
+	// 	var xhttp = new XMLHttpRequest();
+	// 	  xhttp.onreadystatechange = () => {
+	// 		if (xhttp.readyState == 4) {
+	// 			//sends back true if you can play and false if you cannot play
+	// 		  	canPlay = JSON.parse(xhttp.responseText);
+
+	// 		  	//console.log(canPlay);
+
+	// 			if (canPlay) {
+	// 				clearInterval(this.amogus);
+	// 				//console.log("im able to play!");
+
+	// 				//series of function to update the page
+	// 				//this.cardRequest();
+	// 				//this.shardRequest();
+	// 				//this.gameRequest(playerID);
+	// 			}else{
+	// 				//console.log("it's not your turn to play yet!")
+	// 			}
+	// 		}
+	// 	  };
+
+	// 	  // Send a GET request to the server (just testing with /match/11 endpoint)
+	// 	  xhttp.open("GET", "/state/donkey", true);
+	// 	  xhttp.send();
+	// }
+
+	// //end of useless donkey funcitons
 
 
 	cardRequest(){
@@ -2097,7 +2113,7 @@ class Level extends Phaser.Scene {
 								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
 							break;
 							default:
-								console.log("gg i guess");
+								//console.log("gg i guess");
 						}
 
 						//resetting for the successive card
@@ -2171,9 +2187,11 @@ class Level extends Phaser.Scene {
 
 			if(element == cardReference){
 				element.worm.alpha = 1;
-				console.log("highlithing: " + element.cardId);
+				element.worm.setTint("#bbe4b4");
+				//console.log("highlithing: " + element.cardId);
 			}else{
-				console.log("greying out: " + element.cardId);
+				element.worm.clearTint();
+				//console.log("greying out: " + element.cardId);
 				element.worm.alpha = 0.5;
 			}
 		})
@@ -2181,9 +2199,9 @@ class Level extends Phaser.Scene {
 
 	cardUnGreyOut(){
 		this.card.forEach(element => {
-
+			element.worm.clearTint();
 			element.worm.alpha = 1;
-			console.log("highlithing ALL: " + element.cardId);
+			//console.log("highlithing ALL: " + element.cardId);
 
 		})
 	}
@@ -2242,7 +2260,7 @@ class Level extends Phaser.Scene {
 								this.shardDispaly(this.shardsQueen, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
 							break;
 							default:
-								console.log("cannot shard for " + i);
+								//console.log("cannot shard for " + i);
 						}
 
 						//resetting for the successive shard
@@ -2273,23 +2291,15 @@ class Level extends Phaser.Scene {
 		this.shardsRoock.sort(()=> Math.random() - 0.5);
 		this.shardsKnight.sort(()=> Math.random() - 0.5);
 		this.shardsQueen.sort(()=> Math.random() - 0.5);
-
-		// for(let i = 0; i < this.shardsBishop.length; i++){
-		// 	//const randomNum = Math.random() < 0.5 ? 0 : 1;
-		// 	console.log("Bishop shard index: " + this.shardsBishop[i].index);
-		// 	console.log("queen : " + orderQueen);
-		// 	//this.shardsBishop[i].setOrder(order[randomNum]);
-		// 	//this.shardsBishop[order[0]]
-		// }
-
-
 	}
 
-	shardDispaly(shardsReference, shardNum, shardAssetReferenceT, shardAssetReferenceB, shardAssetNameM){
+	shardDispaly(shardsReference, shardNum, shardAssetReferenceT, shardAssetReferenceB, shardAssetReferenceM){
 
-
+		//console.log("top :" + shardAssetReferenceT + " Middle:" + shardAssetReferenceM, " bototm:" + shardAssetReferenceB);
+		
 		if(shardNum > 0){
 			for(let i = 0; i < shardNum; i++){
+
 				shardsReference[i].visible = true;
 
 				if(shardsReference[i].index == 0){
@@ -2301,7 +2311,7 @@ class Level extends Phaser.Scene {
 					shardsReference[i].setTexture(shardAssetReferenceT);
 				}else if (shardsReference[i].index == 1){
 					// middle display
-					shardsReference[i].setTexture(shardAssetNameM);
+					shardsReference[i].setTexture(shardAssetReferenceM);
 				}
 
 			}

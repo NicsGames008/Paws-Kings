@@ -58,7 +58,7 @@
             "shadow.offsetX": -4,
             "shadow.offsetY": 5,
             "shadow.fill": true,
-            "shadow.color": "#fff5a821",
+            "shadow.color": "#f9dc0021",
             "shadow.blur": 1
         },
         {
@@ -1291,19 +1291,6 @@
             "text": "%Qween Number%"
         },
         {
-            "type": "Image",
-            "id": "3f07c0c0-16b4-4554-a8c4-b6424e411ccd",
-            "label": "cardWhiteKnight",
-            "texture": {
-                "key": "cardWhiteKnight"
-            },
-            "x": 1216,
-            "y": 42,
-            "visible": false,
-            "tintTopLeft": "#fe24fc",
-            "tintTopRight": "#a10101"
-        },
-        {
             "type": "Text",
             "id": "81efd813-000c-4477-aa8d-6313711bef8e",
             "label": "text_1",
@@ -1476,12 +1463,14 @@
             "id": "96b2fdb3-f7c9-45d4-a9d1-bf19aa1d5b0e",
             "unlock": [
                 "x",
-                "y"
+                "y",
+                "visible"
             ],
             "label": "cardIdVar",
             "scope": "CLASS",
             "x": 1264,
-            "y": 16
+            "y": 16,
+            "visible": false
         },
         {
             "prefabId": "161e7197-fa06-4e6e-b19c-8456c1978802",
@@ -1755,7 +1744,7 @@
             "texture": {
                 "key": "mefrfr"
             },
-            "x": 878,
+            "x": 876,
             "y": 235,
             "visible": false
         },
@@ -1777,8 +1766,8 @@
             "texture": {
                 "key": "mefrfr"
             },
-            "x": 875,
-            "y": 147,
+            "x": 876,
+            "y": 167,
             "scaleX": 1,
             "scaleY": 1,
             "visible": false
@@ -1795,7 +1784,7 @@
             "label": "shardRoockBottom",
             "scope": "CLASS",
             "index": 0,
-            "x": 988,
+            "x": 989,
             "y": 235,
             "visible": false
         },
@@ -1811,8 +1800,8 @@
             "label": "shardRoockTop",
             "scope": "CLASS",
             "index": 2,
-            "x": 988,
-            "y": 147,
+            "x": 989,
+            "y": 167,
             "visible": false
         },
         {
@@ -1843,8 +1832,8 @@
             "label": "shardKnightTop",
             "scope": "CLASS",
             "index": 2,
-            "x": 1101,
-            "y": 147,
+            "x": 1102,
+            "y": 159,
             "visible": false
         },
         {
@@ -1859,7 +1848,7 @@
             "label": "shardQueenBottom",
             "scope": "CLASS",
             "index": 0,
-            "x": 1216,
+            "x": 1215,
             "y": 259,
             "visible": false
         },
@@ -1872,9 +1861,10 @@
                 "index",
                 "visible"
             ],
-            "label": "shardMiddle",
+            "label": "shardMiddleQueen",
+            "scope": "CLASS",
             "index": 1,
-            "x": 1217,
+            "x": 1215,
             "y": 202,
             "visible": false
         },
@@ -1890,9 +1880,43 @@
             "label": "shardQueenTop",
             "scope": "CLASS",
             "index": 2,
-            "x": 1216,
-            "y": 133,
+            "x": 1215,
+            "y": 158,
             "visible": false
+        },
+        {
+            "type": "Text",
+            "id": "8fde04fa-de48-4151-b309-908a24c3fdda",
+            "label": "currentTurnColor_1",
+            "scope": "CLASS",
+            "x": 875,
+            "y": 67,
+            "originX": 0.5,
+            "text": "Shards",
+            "align": "center",
+            "fontSize": "26px",
+            "color": "#3a56a4ff",
+            "backgroundColor": "",
+            "shadow.offsetY": -2,
+            "shadow.fill": true,
+            "shadow.color": "#13214177"
+        },
+        {
+            "type": "Text",
+            "id": "6e10e2ac-bb71-4cb5-a4bc-1494fecba08e",
+            "label": "currentTurnColor_2",
+            "scope": "CLASS",
+            "x": 867,
+            "y": 335,
+            "originX": 0.5,
+            "text": "CARDS",
+            "align": "center",
+            "fontSize": "26px",
+            "color": "#3a56a4ff",
+            "backgroundColor": "",
+            "shadow.offsetY": -2,
+            "shadow.fill": true,
+            "shadow.color": "#13214177"
         }
     ],
     "plainObjects": [],

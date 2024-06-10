@@ -117,6 +117,11 @@
                 "key": "cardWhiteKnight"
             },
             {
+                "url": "assets/cards/CardWhiteKnight.png",
+                "type": "image",
+                "key": "CardWhiteKnight"
+            },
+            {
                 "url": "assets/cards/cardWhiteQueen.png",
                 "type": "image",
                 "key": "cardWhiteQueen"
@@ -167,6 +172,11 @@
                 "key": "PTBlackBishop"
             },
             {
+                "url": "assets/promotionTiers/PTBlackBishop.png",
+                "type": "image",
+                "key": "PTBlackBishop_1"
+            },
+            {
                 "url": "assets/promotionTiers/pTBlackKnight.png",
                 "type": "image",
                 "key": "pTBlackKnight"
@@ -175,6 +185,11 @@
                 "url": "src/prefabs/promotionTiers/PTBlackKnight.js",
                 "type": "script",
                 "key": "PTBlackKnight"
+            },
+            {
+                "url": "assets/promotionTiers/PTBlackKnight.png",
+                "type": "image",
+                "key": "PTBlackKnight_1"
             },
             {
                 "url": "assets/promotionTiers/pTBlackQueen.png",
@@ -187,6 +202,11 @@
                 "key": "PTBlackQueen"
             },
             {
+                "url": "assets/promotionTiers/PTBlackQueen.png",
+                "type": "image",
+                "key": "PTBlackQueen_1"
+            },
+            {
                 "url": "assets/promotionTiers/pTBlackRoock.png",
                 "type": "image",
                 "key": "pTBlackRoock"
@@ -195,6 +215,11 @@
                 "url": "src/prefabs/promotionTiers/PTBlackRoock.js",
                 "type": "script",
                 "key": "PTBlackRoock"
+            },
+            {
+                "url": "assets/promotionTiers/PTBlackRoock.png",
+                "type": "image",
+                "key": "PTBlackRoock_1"
             },
             {
                 "url": "assets/promotionTiers/pTWhiteBishop.png",
@@ -207,6 +232,11 @@
                 "key": "PTWhiteBishop"
             },
             {
+                "url": "assets/promotionTiers/PTWhiteBishop.png",
+                "type": "image",
+                "key": "PTWhiteBishop_1"
+            },
+            {
                 "url": "assets/promotionTiers/pTWhiteKnight.png",
                 "type": "image",
                 "key": "pTWhiteKnight"
@@ -215,6 +245,11 @@
                 "url": "src/prefabs/promotionTiers/PTWhiteKnight.js",
                 "type": "script",
                 "key": "PTWhiteKnight"
+            },
+            {
+                "url": "assets/promotionTiers/PTWhiteKnight.png",
+                "type": "image",
+                "key": "PTWhiteKnight_1"
             },
             {
                 "url": "assets/promotionTiers/pTWhiteQueen.png",
@@ -227,6 +262,11 @@
                 "key": "PTWhiteQueen"
             },
             {
+                "url": "assets/promotionTiers/PTWhiteQueen.png",
+                "type": "image",
+                "key": "PTWhiteQueen_1"
+            },
+            {
                 "url": "assets/promotionTiers/pTWhiteRoock.png",
                 "type": "image",
                 "key": "pTWhiteRoock"
@@ -235,6 +275,11 @@
                 "url": "src/prefabs/promotionTiers/PTWhiteRoock.js",
                 "type": "script",
                 "key": "PTWhiteRoock"
+            },
+            {
+                "url": "assets/promotionTiers/PTWhiteRoock.png",
+                "type": "image",
+                "key": "PTWhiteRoock_1"
             },
             {
                 "url": "src/prefabs/redSquare.js",

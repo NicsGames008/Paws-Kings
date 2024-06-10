@@ -334,7 +334,7 @@ function ChangeUpgardeTier(request, response, matchId){
 }
 
 function ChangeMatchState(request, response, startX, startY, endX, endY,matchId) {
-    ChangePieceLocation(request, response, startX, startY, endX, endY)
+    ChangePieceLocation(request, response, startX, startY, endX, endY, matchId)
     connection.execute('UPDATE `Match` SET match_ms_id = 2 WHERE match_id = ?;',
     [matchId],
     function (err, results, fields) {

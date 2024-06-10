@@ -10,7 +10,7 @@ router.post('/move', (request, response) => {
     var endX = request.body.endX;
     var endY = request.body.endY;
     var playerId = request.session.playerID;
-    var matchId = request.body.matchId;
+    var matchId = request.session.matchID;
  
     // if the vars are empty is gives an error message
     if (!startX || !startY || !endX || !endY ||!playerId || !matchId){
@@ -101,7 +101,7 @@ router.post('/promote',(request, response)=>{
     var startX = request.body.startX;
     var startY = request.body.startY;
     var playerId = request.session.playerID;
-    var matchId = request.body.matchId;
+    var matchId = request.session.matchID;
     var cardId = request.body.cardId
 
     // If any of the info is missing

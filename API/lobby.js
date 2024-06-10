@@ -65,7 +65,6 @@ function CreateMatchAsFirst(request, response, playerId){
             response.send(err);
         } else {
             matchId = results.insertId;
-            request.session.matchID = matchId;
 
             CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorId)
         }
@@ -80,7 +79,8 @@ function CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorUse
         if (err) {
             response.send(err);
         } else {
-            console.log(matchId);
+            request.session.matchID = matchId;
+            
 
             response.status(201).send({
                 "message": "Created a match as first."
@@ -299,19 +299,20 @@ function LeaveMatchPlayer(request, response, matchId) {
 
 router.get('/status', (request, response) => {
     
-    var p1 = request.session.playerID;
+    var playerID = request.session.playerID;
+    var matchID = request.session.matchID;
+
     // Get the data from the request
-    if (!p1){
+    if (!playerID){
         response.status(403).send({
             "error": "Not logged in"
         });
         return;
     }
 
-    var matchId = request.session.matchID;
     //the matchid stops iding due to the server error, why?
 
-    if (!matchId)
+    if (!matchID)
     {
         response.status(400).send({
             "error": "Not searching for a match!"
@@ -323,29 +324,26 @@ router.get('/status', (request, response) => {
     }else{
         // Check if the player is already in match
             // if so, send message to the frontend to redirect to game page.
-        console.log(matchId);
-        connection.execute('SELECT match_id FROM `Match` WHERE match_ms_id = 1 AND match_id = ?',
-        [matchId],
+        connection.execute('SELECT match_id FROM `Match` INNER JOIN Match_Player mp ON mp.mp_match_id = `Match`.match_id WHERE (match_ms_id = 1 OR match_ms_id = 3) AND match_id = ? AND mp.mp_player_id != ?;',
+        [matchID, playerID],
         function (err, results, fields) {
             if (err){//not searhcing for anything
                 response.status(400).send({
                     "error": "Not searching for a match!"
                 });
                 return;
-            }else{
-                if(results.length == 0){//User is not searching any matches
-                response.status(204).send({
-                    "message": "Still searching for a match"
-                });
-                return;
-            }
-                
-                //User is searching for a match
+            }else if(results.length == 0){//User is not searching any matches
                 response.status(201).send({
-                    "message": "Match found, redirecting the user"
+                    "message": "Still searching for a match",
+                    "result": results
                 });
-            }
-            
+            }else if(results.length > 0) {
+                // //User is searching for a match
+                response.status(200).send({
+                    "message": "Match found, redirecting the user",
+                    "result": results
+                });
+            }              
         });
 
         // if not in game

@@ -5,9 +5,9 @@ const connection = require('../database');
 
 //----------------------------------------------GAME STATE----------------------------
 
-router.get('/game/:matchId', (request, response) => {
+router.get('/game', (request, response) => {
     // Get the data from the request as a parameter
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
 
     // if the vars are empty is gives an error message
     if (!matchId){
@@ -38,9 +38,9 @@ router.get('/game/:matchId', (request, response) => {
 
 //----------------------------CARD---------------------------------------------------
 
-router.get('/card/:matchId', (request, response) => {
+router.get('/card', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
     var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message
@@ -69,9 +69,9 @@ router.get('/card/:matchId', (request, response) => {
 
 //----------------------------SHARD---------------------------------------------------
 
-router.get('/shard/:matchId', (request, response) => {
+router.get('/shard', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
     var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message
@@ -100,9 +100,9 @@ router.get('/shard/:matchId', (request, response) => {
 
 //-----------------------------BOARD STAUTS DONE RIGHT-------------------------------
 
-router.get('/boardR/:matchId', (request, response) => {
+router.get('/boardR', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
 
 
     // if the vars are empty is gives an error message
@@ -224,9 +224,9 @@ function FillFleetingBoard(request, response, previusResults){
 //------------------------------------Donkey function-------------------------------------------
 //                       continuosly asking if it's the user's turn
 
-router.get('/donkey/:matchId', (request, response) => {
+router.get('/donkey', (request, response) => {
     // Get the data from the request
-    var matchId = request.params.matchId;
+    var matchId = request.session.matchID;
     var playerId = request.session.playerID;
 
     // if the vars are empty is gives an error message

@@ -11,14 +11,10 @@ function tryLogin() {
             if (xhttp.status == 200){
                 // If the login is successful, we show a message and redirect to the game page in 2 seconds.
                 message.innerHTML = data.message;
-                message.innerHTML += "<br>Redirecting to game page in 2 seconds...";
+
                 message.style.color = "green";
 
-                // Redirect to game page in 2 seconds
-                setTimeout(() => {
-
-                    window.location.replace("/match.html");
-                }, 2000)
+                isPlayerInMatch(message);
             } else {
                 // If the login is not successful, we show an error message.
                 message.innerHTML = data.error;
@@ -106,4 +102,33 @@ function FindMatchState(){
         // Send a POST request to the server
         xhttp.open("GET", "/lobby/status", true);
         xhttp.send();
+}
+
+function isPlayerInMatch(message) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4) {
+            var data = JSON.parse(xhttp.responseText);
+            if (xhttp.status == 400) {
+                console.log(data.error);
+            }
+            else if (xhttp.status == 202) {
+                message.innerHTML += "<br>Redirecting to game page in 2 seconds...";
+                // Redirect to game page in 2 seconds
+                setTimeout(() => {
+                    window.location.replace("/game/");
+                }, 2000)
+            }
+            else if (xhttp.status == 200) {
+                message.innerHTML += "<br>Redirecting to match page in 2 seconds...";
+                // Redirect to match page in 2 seconds
+                setTimeout(() => {
+                    window.location.replace("/match.html");
+                }, 2000)
+            }
+        }
+    };
+    // Send a POST request to the server
+    xhttp.open("GET", "/state/inMatch", true);
+    xhttp.send();
 }

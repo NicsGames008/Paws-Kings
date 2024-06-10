@@ -97,33 +97,6 @@ function FindMatchState(){
                         window.location.assign('/game');
                     }, 2000)
                 }
-
-
-
-            // else if (xhttp.status == 204) {//already searching
-            //     //document.getElementById("message").innerText = data.error;
-            //     document.getElementById("message").innerText = data.message;
-            //     //document.getElementById("searchMatch").style.display="none";
-            //     //document.getElementById("leaveMatch").style.display="block";
-                
-            // }
-            // else if (xhttp.status == 201) {//successful creation
-            //     // var message = document.getElementById("message");
-            //     // message.innerHTML = data.message;
-            //     // message.innerHTML += "<br>Redirecting to game page in 2 seconds...";
-            //     // message.style.color = "green";
-
-            //     // document.getElementById("message").innerHTML = message;
-
-            //     document.getElementById("message").innerText = data.message;
-
-            //     setTimeout(() => {
-            //         //window.location.replace("/game");
-            //         window.location.assign('/game');
-            //     }, 2000)
-            //     //document.getElementById("searchMatch").style.display="block";
-            //     //document.getElementById("leaveMatch").style.display="block";
-            // }
         }
     };
     clearInterval(intervalQueueStatus);

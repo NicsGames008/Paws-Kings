@@ -1408,7 +1408,7 @@ class Level extends Phaser.Scene {
 
 								//Display Promotion Tiers
 								//begins with initializing the id and it's img
-								this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersWhite);
+								this.promotionTierDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersWhite);
 
 
 							} else if (gameState[i].mp_pc_id == 2) {
@@ -1433,7 +1433,7 @@ class Level extends Phaser.Scene {
 
 								//Display Promotion Tiers
 								//begins with initializing the id and it's img
-								this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersBlack);
+								this.promotionTierDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersBlack);
 							}
 						}
 					}
@@ -1678,8 +1678,6 @@ class Level extends Phaser.Scene {
 		}
 	}
 
-
-
 	makeMove(possibleMoves, numbFromImage, playerID) {
 		var cordinates = numberToCoordinates(numbFromImage);
 		for (let i = 0; i < possibleMoves.length; i++) {
@@ -1821,9 +1819,6 @@ class Level extends Phaser.Scene {
 
 	}
 
-
-
-
 	cardRequest(){
 		var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = () => {
@@ -1847,19 +1842,19 @@ class Level extends Phaser.Scene {
 						switch(data[i].card_id){
 							case 1:     //Bishop
 								cardAssetName += "Bishop";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
+								this.cardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
 							break;
 							case 2:     // Roock
 								cardAssetName += "Roock";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
+								this.cardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
 							break;
 							case 3:     // Knight
 								cardAssetName += "Knight";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
+								this.cardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
 							break;
 							case 4:     // Quween
 								cardAssetName += "Queen";
-								this.CardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
+								this.cardDisplay(this.card[i], this.cardText[i], data[i].mpc_ammount, cardAssetName, i);
 							break;
 							default:
 								//console.log("gg i guess");
@@ -1877,7 +1872,7 @@ class Level extends Phaser.Scene {
 			xhttp.send();
 	}
 
-	CardDisplay(cardReference, cardText, cardAmmount, cardArtReference, i){
+	cardDisplay(cardReference, cardText, cardAmmount, cardArtReference, i){
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
 
 
@@ -1990,23 +1985,23 @@ class Level extends Phaser.Scene {
 							case 1:     //Bishop
 								shardAssetNameT += "Bishop";
 								shardAssetNameB += "Bishop";
-								this.shardDispaly(this.shardsBishop, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+								this.shardDisplay(this.shardsBishop, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
 							break;
 							case 2:     // Roock
 								shardAssetNameT += "Roock";
 								shardAssetNameB += "Roock";
-								this.shardDispaly(this.shardsRoock, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+								this.shardDisplay(this.shardsRoock, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
 							break;
 							case 3:     // Knight
 								shardAssetNameT += "Knight";
 								shardAssetNameB += "Knight";
-								this.shardDispaly(this.shardsKnight, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+								this.shardDisplay(this.shardsKnight, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
 							break;
 							case 4:     // Quween
 								shardAssetNameT += "Queen";
 								shardAssetNameM += "Queen";
 								shardAssetNameB += "Queen";
-								this.shardDispaly(this.shardsQueen, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+								this.shardDisplay(this.shardsQueen, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
 							break;
 							default:
 								//console.log("cannot shard for " + i);
@@ -2020,9 +2015,6 @@ class Level extends Phaser.Scene {
 
 						//TEXT functionality
 						// this.shardsText[i].text = data[i].mps_shard_ammount + "/" + data[i].shard_ammount_needed;
-						// if(i == 0)
-						// 	this.shardDispaly(this.shardsBishop, data[i].mps_shard_ammount);
-						//missing the img and animation;
 					}
 
 				}
@@ -2042,7 +2034,7 @@ class Level extends Phaser.Scene {
 		this.shardsQueen.sort(()=> Math.random() - 0.5);
 	}
 
-	shardDispaly(shardsReference, shardNum, shardAssetReferenceT, shardAssetReferenceB, shardAssetReferenceM){
+	shardDisplay(shardsReference, shardNum, shardAssetReferenceT, shardAssetReferenceB, shardAssetReferenceM){
 
 		//console.log("top :" + shardAssetReferenceT + " Middle:" + shardAssetReferenceM, " bototm:" + shardAssetReferenceB);
 		
@@ -2071,7 +2063,7 @@ class Level extends Phaser.Scene {
 		}
 	}
 
-	pTDisplay(ptIdSentDB, player_color_nane, pc_id, pTList){
+	promotionTierDisplay(ptIdSentDB, player_color_nane, pc_id, pTList){
 		//displays the right set of PT assets
 		for(let j = 0; j < pTList.length; j++){
 			pTList[j].scaleX = 1;
@@ -2091,15 +2083,6 @@ class Level extends Phaser.Scene {
 /* END OF COMPILED CODE */
 
 // You can write more code here
-
-// function fadeIntoScene(imgRef, dur) {
-// 	scene.tweens.add({
-// 		targets: imgRef,
-// 		alpha: 1,
-// 		duration: dur,
-// 		ease: 'Power2'
-// 	})	
-// }
 
 
 function placePiece(boardState, gameState, playerID, tileElement, PieceClass) {

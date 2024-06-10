@@ -8,8 +8,6 @@ class Card extends Phaser.GameObjects.Container {
 	constructor(scene, x, y) {
 		super(scene, x ?? 0, y ?? 0);
 
-		
-		this.setInteractive(new Phaser.Geom.Rectangle(0, 0, 100, 140), Phaser.Geom.Rectangle.Contains);
 		// worm
 		const worm = scene.add.image(46, 16, "worm");
 		worm.scaleX = 2;

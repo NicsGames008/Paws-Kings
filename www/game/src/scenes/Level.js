@@ -1409,13 +1409,27 @@ class Level extends Phaser.Scene {
 			element.worm.setInteractive(); // Ensure the element is interactive
 			element.worm.on("pointerdown", () => {
 				//changes the value of the beanz
-				this.cardIdVar.cardId = element.cardId;
+				if(this.cardIdVar.cardId != element.cardId){
 
+					this.cardIdVar.cardId = element.cardId;
+
+					//greyout function
+					this.cardGreyOut(element);
+					//debug line
+					console.log('Card id saved on the beanz: ' + this.cardIdVar.cardId + " / card_id property: " + element.cardId);
+
+				}else{
+
+					//highlight function
+					this.cardUnGreyOut();
+					this.cardIdVar.cardId = 0;
+					console.log('Card id reset on the beanz: ' + this.cardIdVar.cardId);
+				}
 				//Not selected cards could be shadowed.
 
 
 				// Debugging lines
-				console.log('Card id saved on the beanz: ' + this.cardIdVar.cardId + " / card_id property: " + element.cardId); 
+				 
 				// this.cardRequest();
 			});
 		});
@@ -1458,19 +1472,23 @@ class Level extends Phaser.Scene {
 							if (boardState[i].mpp_ps_id && k == tileId && boardState[i].playerID == playerID && gameStateForPlayer.match_pc_id == gameStateForPlayer.mp_pc_id) {
 
 								//Promotion section
-								cardId = this.cardIdVar.cardId;
-								if (cardId != 0) {
-									var coordinates = numberToCoordinates(tileId)
-									this.promotion(coordinates.x, coordinates.y, cardId, playerID);
+								// if(cardId == this.cardIdVar.cardId){
+								// 	this.cardIdVar.cardId = 0;
+								// 	console.log("Card deselected");
+								// }else{
+									cardId = this.cardIdVar.cardId;
+									if (cardId != 0) {
+										var coordinates = numberToCoordinates(tileId)
+										this.promotion(coordinates.x, coordinates.y, cardId, playerID);
 
+										this.cardIdVar.cardId = 0;
+										break;
+										//highlight all the other cards
+									}else{
+										console.log("no promotion. SELECT a Card first.");
+									}
 									this.cardIdVar.cardId = 0;
-									break;
-									//highlight all the other cards
-								}else{
-									console.log("no promotion. SELECT a Card first.");
-								}
-								this.cardIdVar.cardId = 0;
-
+								// }
 								//end promotion section
 
 
@@ -1650,9 +1668,9 @@ class Level extends Phaser.Scene {
 					});
 				});
 
-				let canPlay = false;
-				var amogus;
-				amogus = setInterval(this.donkey, 2000, canPlay, amogus, playerID);
+				// let canPlay = false;
+				// var amogus;
+				// amogus = setInterval(this.donkey, 2000, canPlay, amogus, playerID);
 				
 
 			}
@@ -1682,6 +1700,7 @@ class Level extends Phaser.Scene {
 
 	}
 
+	//useless doneky
 	gameRequest(playerID){
 		this.gameStateRequest(playerID, (gameState) => {
 			this.boardStateRequest(gameState, playerID, (boardState) => {
@@ -1875,9 +1894,6 @@ class Level extends Phaser.Scene {
 		}
 	}
 
-
-
-
 	donkey(canPlay, donkeyFunction, playerID){
 		var xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = () => {
@@ -1905,6 +1921,8 @@ class Level extends Phaser.Scene {
 		  xhttp.open("GET", "/state/donkey", true);
 		  xhttp.send();
 	}
+
+	//end of useless donkey funcitons
 
 
 	cardRequest(){
@@ -2007,6 +2025,28 @@ class Level extends Phaser.Scene {
 			duration: dur,
 			ease: 'Power2'
 		});
+	}
+
+	cardGreyOut(cardReference){
+		this.card.forEach(element => {
+			
+			if(element == cardReference){
+				element.worm.alpha = 1;
+				console.log("highlithing: " + element.cardId);
+			}else{
+				console.log("greying out: " + element.cardId);
+				element.worm.alpha = 0.5;
+			}
+		})
+	}
+
+	cardUnGreyOut(){
+		this.card.forEach(element => {
+			
+			element.worm.alpha = 1;
+			console.log("highlithing ALL: " + element.cardId);
+
+		})
 	}
 
 	shardRequest(){

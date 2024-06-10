@@ -142,6 +142,11 @@
                 "key": "Dot_1"
             },
             {
+                "url": "assets/mefrfr.png",
+                "type": "image",
+                "key": "mefrfr"
+            },
+            {
                 "url": "assets/promotionPlaceholder.png",
                 "type": "image",
                 "key": "promotionPlaceholder"
@@ -235,6 +240,111 @@
                 "url": "src/prefabs/redSquare.js",
                 "type": "script",
                 "key": "redSquare_1"
+            },
+            {
+                "url": "src/prefabs/shards/ShardBottom.js",
+                "type": "script",
+                "key": "ShardBottom"
+            },
+            {
+                "url": "assets/shards/bishop/shardBottomBlackBishop.png",
+                "type": "image",
+                "key": "shardBottomBlackBishop"
+            },
+            {
+                "url": "assets/shards/knight/shardBottomBlackKnight.png",
+                "type": "image",
+                "key": "shardBottomBlackKnight"
+            },
+            {
+                "url": "assets/shards/queen/shardBottomBlackQueen.png",
+                "type": "image",
+                "key": "shardBottomBlackQueen"
+            },
+            {
+                "url": "assets/shards/roock/shardBottomBlackRoock.png",
+                "type": "image",
+                "key": "shardBottomBlackRoock"
+            },
+            {
+                "url": "assets/shards/bishop/shardBottomWhiteBishop.png",
+                "type": "image",
+                "key": "shardBottomWhiteBishop"
+            },
+            {
+                "url": "assets/shards/knight/shardBottomWhiteKnight.png",
+                "type": "image",
+                "key": "shardBottomWhiteKnight"
+            },
+            {
+                "url": "assets/shards/queen/shardBottomWhiteQueen.png",
+                "type": "image",
+                "key": "shardBottomWhiteQueen"
+            },
+            {
+                "url": "assets/shards/roock/shardBottomWhiteRoock.png",
+                "type": "image",
+                "key": "shardBottomWhiteRoock"
+            },
+            {
+                "url": "src/prefabs/shards/ShardMiddle.js",
+                "type": "script",
+                "key": "ShardMiddle"
+            },
+            {
+                "url": "assets/shards/queen/shardMiddleBlackQueen.png",
+                "type": "image",
+                "key": "shardMiddleBlackQueen"
+            },
+            {
+                "url": "assets/shards/queen/shardMiddleWhiteQueen.png",
+                "type": "image",
+                "key": "shardMiddleWhiteQueen"
+            },
+            {
+                "url": "src/prefabs/shards/ShardTop.js",
+                "type": "script",
+                "key": "ShardTop"
+            },
+            {
+                "url": "assets/shards/bishop/shardTopBlackBishop.png",
+                "type": "image",
+                "key": "shardTopBlackBishop"
+            },
+            {
+                "url": "assets/shards/knight/shardTopBlackKnight.png",
+                "type": "image",
+                "key": "shardTopBlackKnight"
+            },
+            {
+                "url": "assets/shards/queen/shardTopBlackQueen.png",
+                "type": "image",
+                "key": "shardTopBlackQueen"
+            },
+            {
+                "url": "assets/shards/roock/shardTopBlackRoock.png",
+                "type": "image",
+                "key": "shardTopBlackRoock"
+            },
+            {
+                "url": "assets/shards/bishop/shardTopWhiteBishop.png",
+                "type": "image",
+                "key": "shardTopWhiteBishop"
+            },
+            {
+                "url": "assets/shards/knight/shardTopWhiteKnight.png",
+                "type": "image",
+                "key": "shardTopWhiteKnight"
+            },
+            {
+                "url": "assets/shards/queen/shardTopWhiteQueen.png",
+                "type": "image",
+                "key": "shardTopWhiteQueen"
+            },
+            {
+                "url": "assets/shards/roock/shardTopWhiteRoock.png",
+                "type": "image",
+                "key": "shardTopWhiteRoock"
             },
             {
                 "url": "src/prefabs/tiles/White_Tile.js",

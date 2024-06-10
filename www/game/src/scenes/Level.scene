@@ -18,7 +18,7 @@
                 "key": "whiteTile"
             },
             "x": -106,
-            "y": -132,
+            "y": -105,
             "scaleX": 150,
             "scaleY": 100,
             "originX": 0,
@@ -1190,13 +1190,15 @@
                 "x",
                 "y",
                 "playerOwner",
-                "cardId"
+                "cardId",
+                "alpha"
             ],
             "label": "cardPlaceholder_1",
             "scope": "CLASS",
             "cardId": 1,
             "x": 830,
-            "y": 434
+            "y": 434,
+            "alpha": 1
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1206,13 +1208,15 @@
                 "y",
                 "playerOwner",
                 "tintTopRight",
-                "cardId"
+                "cardId",
+                "alpha"
             ],
             "label": "cardPlaceholder_2",
             "scope": "CLASS",
             "cardId": 2,
             "x": 943,
-            "y": 434
+            "y": 434,
+            "alpha": 1
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1222,13 +1226,15 @@
                 "y",
                 "playerOwner",
                 "tintTopRight",
-                "cardId"
+                "cardId",
+                "alpha"
             ],
             "label": "cardPlaceholder_3",
             "scope": "CLASS",
             "cardId": 3,
             "x": 1055,
-            "y": 434
+            "y": 434,
+            "alpha": 1
         },
         {
             "prefabId": "977381d8-30db-4193-a1d2-26e86173c74e",
@@ -1238,13 +1244,15 @@
                 "y",
                 "playerOwner",
                 "tintTopRight",
-                "cardId"
+                "cardId",
+                "alpha"
             ],
             "label": "cardPlaceholder_4",
             "scope": "CLASS",
             "cardId": 4,
             "x": 1169,
-            "y": 434
+            "y": 434,
+            "alpha": 1
         },
         {
             "type": "Text",
@@ -1682,6 +1690,7 @@
             "scope": "CLASS",
             "x": 865,
             "y": 194,
+            "visible": false,
             "text": "%Bishop%"
         },
         {
@@ -1691,6 +1700,7 @@
             "scope": "CLASS",
             "x": 978,
             "y": 194,
+            "visible": false,
             "text": "%Roock%"
         },
         {
@@ -1700,6 +1710,7 @@
             "scope": "CLASS",
             "x": 1089,
             "y": 194,
+            "visible": false,
             "text": "%Knight%"
         },
         {
@@ -1709,6 +1720,7 @@
             "scope": "CLASS",
             "x": 1204,
             "y": 194,
+            "visible": false,
             "text": "%Queen%"
         },
         {
@@ -1726,6 +1738,161 @@
             "shadow.offsetY": -2,
             "shadow.fill": true,
             "shadow.color": "#13214177"
+        },
+        {
+            "prefabId": "ce312e96-6092-4101-bc32-deb012498d47",
+            "id": "01ffbf36-84b7-44ab-80ec-7863b555332f",
+            "unlock": [
+                "x",
+                "y",
+                "visible",
+                "index",
+                "texture"
+            ],
+            "label": "shardBishopBottom",
+            "scope": "CLASS",
+            "index": 0,
+            "texture": {
+                "key": "mefrfr"
+            },
+            "x": 878,
+            "y": 235,
+            "visible": false
+        },
+        {
+            "prefabId": "e74eceba-a578-4d30-b5a6-2f74cd92c9e9",
+            "id": "7641c7e4-505b-4794-b9b6-01076e70733a",
+            "unlock": [
+                "x",
+                "y",
+                "visible",
+                "index",
+                "scaleX",
+                "scaleY",
+                "texture"
+            ],
+            "label": "shardBishopTop",
+            "scope": "CLASS",
+            "index": 2,
+            "texture": {
+                "key": "mefrfr"
+            },
+            "x": 875,
+            "y": 147,
+            "scaleX": 1,
+            "scaleY": 1,
+            "visible": false
+        },
+        {
+            "prefabId": "ce312e96-6092-4101-bc32-deb012498d47",
+            "id": "18c781b5-d17c-4bbc-8f2b-4bf1fd388b94",
+            "unlock": [
+                "x",
+                "y",
+                "index",
+                "visible"
+            ],
+            "label": "shardRoockBottom",
+            "scope": "CLASS",
+            "index": 0,
+            "x": 988,
+            "y": 235,
+            "visible": false
+        },
+        {
+            "prefabId": "e74eceba-a578-4d30-b5a6-2f74cd92c9e9",
+            "id": "9c49eb23-fda5-4436-afd5-0b071effec06",
+            "unlock": [
+                "x",
+                "y",
+                "index",
+                "visible"
+            ],
+            "label": "shardRoockTop",
+            "scope": "CLASS",
+            "index": 2,
+            "x": 988,
+            "y": 147,
+            "visible": false
+        },
+        {
+            "prefabId": "ce312e96-6092-4101-bc32-deb012498d47",
+            "id": "1b622353-4a1b-4ef3-b73b-7c2214138d5d",
+            "unlock": [
+                "x",
+                "y",
+                "index",
+                "visible"
+            ],
+            "label": "shardKnightBottom",
+            "scope": "CLASS",
+            "index": 0,
+            "x": 1102,
+            "y": 235,
+            "visible": false
+        },
+        {
+            "prefabId": "e74eceba-a578-4d30-b5a6-2f74cd92c9e9",
+            "id": "40baba42-6d32-4940-bc33-8929c4aba0f4",
+            "unlock": [
+                "x",
+                "y",
+                "index",
+                "visible"
+            ],
+            "label": "shardKnightTop",
+            "scope": "CLASS",
+            "index": 2,
+            "x": 1101,
+            "y": 147,
+            "visible": false
+        },
+        {
+            "prefabId": "ce312e96-6092-4101-bc32-deb012498d47",
+            "id": "e232791b-31b6-4239-9a4d-a47456d5e609",
+            "unlock": [
+                "x",
+                "y",
+                "index",
+                "visible"
+            ],
+            "label": "shardQueenBottom",
+            "scope": "CLASS",
+            "index": 0,
+            "x": 1216,
+            "y": 259,
+            "visible": false
+        },
+        {
+            "prefabId": "0f7caa23-ce51-46e6-b2c6-70f7ed0bff36",
+            "id": "a5e2a69c-a7eb-41e7-9d24-0ec66e123583",
+            "unlock": [
+                "x",
+                "y",
+                "index",
+                "visible"
+            ],
+            "label": "shardMiddle",
+            "index": 1,
+            "x": 1217,
+            "y": 202,
+            "visible": false
+        },
+        {
+            "prefabId": "e74eceba-a578-4d30-b5a6-2f74cd92c9e9",
+            "id": "b7d0e731-f502-461c-b907-ef99ab43bdc8",
+            "unlock": [
+                "x",
+                "y",
+                "index",
+                "visible"
+            ],
+            "label": "shardQueenTop",
+            "scope": "CLASS",
+            "index": 2,
+            "x": 1216,
+            "y": 133,
+            "visible": false
         }
     ],
     "plainObjects": [],
@@ -1906,12 +2073,45 @@
         },
         {
             "id": "8277fb24-29ab-47eb-a897-d02550026f15",
-            "label": "shards",
+            "label": "shardsText",
             "objectIds": [
                 "4e342a68-bdb6-4bac-bbf3-afee6427420b",
                 "76da54cb-080d-4717-9595-eb0e9bc74e31",
                 "5b3d4b3f-f227-45a4-9822-41cbd2f850dc",
                 "9952af37-53d8-40f1-8569-053542be4544"
+            ]
+        },
+        {
+            "id": "372df0fe-1c6b-4aa9-9728-35f130e4ccec",
+            "label": "shardsBishop",
+            "objectIds": [
+                "7641c7e4-505b-4794-b9b6-01076e70733a",
+                "01ffbf36-84b7-44ab-80ec-7863b555332f"
+            ]
+        },
+        {
+            "id": "649d89dd-021b-4831-84c0-95ea5c821557",
+            "label": "shardsRoock",
+            "objectIds": [
+                "9c49eb23-fda5-4436-afd5-0b071effec06",
+                "18c781b5-d17c-4bbc-8f2b-4bf1fd388b94"
+            ]
+        },
+        {
+            "id": "e04019b8-9828-45f8-a1e8-f573ee20ec2e",
+            "label": "shardsKnight",
+            "objectIds": [
+                "40baba42-6d32-4940-bc33-8929c4aba0f4",
+                "1b622353-4a1b-4ef3-b73b-7c2214138d5d"
+            ]
+        },
+        {
+            "id": "8cea15af-a987-431b-b7f6-c29973eb361d",
+            "label": "shardsQueen",
+            "objectIds": [
+                "b7d0e731-f502-461c-b907-ef99ab43bdc8",
+                "a5e2a69c-a7eb-41e7-9d24-0ec66e123583",
+                "e232791b-31b6-4239-9a4d-a47456d5e609"
             ]
         }
     ]

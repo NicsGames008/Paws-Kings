@@ -17,7 +17,7 @@ class Level extends Phaser.Scene {
 	editorCreate() {
 
 		// background
-		const background = this.add.image(-106, -132, "whiteTile");
+		const background = this.add.image(-106, -105, "whiteTile");
 		background.scaleX = 150;
 		background.scaleY = 100;
 		background.setOrigin(0, 0);
@@ -418,18 +418,22 @@ class Level extends Phaser.Scene {
 		// cardPlaceholder_1
 		const cardPlaceholder_1 = new Card(this, 830, 434);
 		this.add.existing(cardPlaceholder_1);
+		cardPlaceholder_1.alpha = 1;
 
 		// cardPlaceholder_2
 		const cardPlaceholder_2 = new Card(this, 943, 434);
 		this.add.existing(cardPlaceholder_2);
+		cardPlaceholder_2.alpha = 1;
 
 		// cardPlaceholder_3
 		const cardPlaceholder_3 = new Card(this, 1055, 434);
 		this.add.existing(cardPlaceholder_3);
+		cardPlaceholder_3.alpha = 1;
 
 		// cardPlaceholder_4
 		const cardPlaceholder_4 = new Card(this, 1169, 434);
 		this.add.existing(cardPlaceholder_4);
+		cardPlaceholder_4.alpha = 1;
 
 		// cardText_1
 		const cardText_1 = this.add.text(876, 528, "", {});
@@ -643,18 +647,22 @@ class Level extends Phaser.Scene {
 
 		// text_16
 		const text_16 = this.add.text(865, 194, "", {});
+		text_16.visible = false;
 		text_16.text = "%Bishop%";
 
 		// text_17
 		const text_17 = this.add.text(978, 194, "", {});
+		text_17.visible = false;
 		text_17.text = "%Roock%";
 
 		// text_18
 		const text_18 = this.add.text(1089, 194, "", {});
+		text_18.visible = false;
 		text_18.text = "%Knight%";
 
 		// text_19
 		const text_19 = this.add.text(1204, 194, "", {});
+		text_19.visible = false;
 		text_19.text = "%Queen%";
 
 		// currentTurnColor
@@ -662,6 +670,53 @@ class Level extends Phaser.Scene {
 		currentTurnColor.setOrigin(0.5, 0);
 		currentTurnColor.text = "%Color Playing%";
 		currentTurnColor.setStyle({ "align": "center", "backgroundColor": "", "fixedHeight":46,"fontSize": "46px", "shadow.offsetY":-2,"shadow.color": "#13214177", "shadow.fill":true});
+
+		// shardBishopBottom
+		const shardBishopBottom = new ShardBottom(this, 878, 235, "mefrfr");
+		this.add.existing(shardBishopBottom);
+		shardBishopBottom.visible = false;
+
+		// shardBishopTop
+		const shardBishopTop = new ShardTop(this, 875, 147, "mefrfr");
+		this.add.existing(shardBishopTop);
+		shardBishopTop.scaleX = 1;
+		shardBishopTop.scaleY = 1;
+		shardBishopTop.visible = false;
+
+		// shardRoockBottom
+		const shardRoockBottom = new ShardBottom(this, 988, 235);
+		this.add.existing(shardRoockBottom);
+		shardRoockBottom.visible = false;
+
+		// shardRoockTop
+		const shardRoockTop = new ShardTop(this, 988, 147);
+		this.add.existing(shardRoockTop);
+		shardRoockTop.visible = false;
+
+		// shardKnightBottom
+		const shardKnightBottom = new ShardBottom(this, 1102, 235);
+		this.add.existing(shardKnightBottom);
+		shardKnightBottom.visible = false;
+
+		// shardKnightTop
+		const shardKnightTop = new ShardTop(this, 1101, 147);
+		this.add.existing(shardKnightTop);
+		shardKnightTop.visible = false;
+
+		// shardQueenBottom
+		const shardQueenBottom = new ShardBottom(this, 1216, 259);
+		this.add.existing(shardQueenBottom);
+		shardQueenBottom.visible = false;
+
+		// shardMiddle
+		const shardMiddle = new ShardMiddle(this, 1217, 202);
+		this.add.existing(shardMiddle);
+		shardMiddle.visible = false;
+
+		// shardQueenTop
+		const shardQueenTop = new ShardTop(this, 1216, 133);
+		this.add.existing(shardQueenTop);
+		shardQueenTop.visible = false;
 
 		// lists
 		const tiles = [tile_64, tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63];
@@ -674,7 +729,11 @@ class Level extends Phaser.Scene {
 		const promotionTiersBlack = [pTBlackBishop, pTBlackRoock, pTBlackKnight, pTBlackQueen];
 		const promotionTiersWhite = [pTWhiteBishop, pTWhiteRoock, pTWhiteKnight, pTWhiteQueen];
 		const promotionTiersBackground = [blackTile_1, blackTile_2, blackTile_3, blackTile_4];
-		const shards = [text_16, text_17, text_18, text_19];
+		const shardsText = [text_16, text_17, text_18, text_19];
+		const shardsBishop = [shardBishopTop, shardBishopBottom];
+		const shardsRoock = [shardRoockTop, shardRoockBottom];
+		const shardsKnight = [shardKnightTop, shardKnightBottom];
+		const shardsQueen = [shardQueenTop, shardMiddle, shardQueenBottom];
 
 		// tile_64 (prefab fields)
 		tile_64.tileId = 64;
@@ -880,6 +939,33 @@ class Level extends Phaser.Scene {
 		// cardPlaceholder_4 (prefab fields)
 		cardPlaceholder_4.cardId = 4;
 
+		// shardBishopBottom (prefab fields)
+		shardBishopBottom.index = 0;
+
+		// shardBishopTop (prefab fields)
+		shardBishopTop.index = 2;
+
+		// shardRoockBottom (prefab fields)
+		shardRoockBottom.index = 0;
+
+		// shardRoockTop (prefab fields)
+		shardRoockTop.index = 2;
+
+		// shardKnightBottom (prefab fields)
+		shardKnightBottom.index = 0;
+
+		// shardKnightTop (prefab fields)
+		shardKnightTop.index = 2;
+
+		// shardQueenBottom (prefab fields)
+		shardQueenBottom.index = 0;
+
+		// shardMiddle (prefab fields)
+		shardMiddle.index = 1;
+
+		// shardQueenTop (prefab fields)
+		shardQueenTop.index = 2;
+
 		this.advName = advName;
 		this.userName = userName;
 		this.tile_64 = tile_64;
@@ -981,6 +1067,14 @@ class Level extends Phaser.Scene {
 		this.text_18 = text_18;
 		this.text_19 = text_19;
 		this.currentTurnColor = currentTurnColor;
+		this.shardBishopBottom = shardBishopBottom;
+		this.shardBishopTop = shardBishopTop;
+		this.shardRoockBottom = shardRoockBottom;
+		this.shardRoockTop = shardRoockTop;
+		this.shardKnightBottom = shardKnightBottom;
+		this.shardKnightTop = shardKnightTop;
+		this.shardQueenBottom = shardQueenBottom;
+		this.shardQueenTop = shardQueenTop;
 		this.tiles = tiles;
 		this.shardBackground = shardBackground;
 		this.card = card;
@@ -991,7 +1085,11 @@ class Level extends Phaser.Scene {
 		this.promotionTiersBlack = promotionTiersBlack;
 		this.promotionTiersWhite = promotionTiersWhite;
 		this.promotionTiersBackground = promotionTiersBackground;
-		this.shards = shards;
+		this.shardsText = shardsText;
+		this.shardsBishop = shardsBishop;
+		this.shardsRoock = shardsRoock;
+		this.shardsKnight = shardsKnight;
+		this.shardsQueen = shardsQueen;
 
 		this.events.emit("scene-awake");
 	}
@@ -1198,6 +1296,22 @@ class Level extends Phaser.Scene {
 	text_19;
 	/** @type {Phaser.GameObjects.Text} */
 	currentTurnColor;
+	/** @type {ShardBottom} */
+	shardBishopBottom;
+	/** @type {ShardTop} */
+	shardBishopTop;
+	/** @type {ShardBottom} */
+	shardRoockBottom;
+	/** @type {ShardTop} */
+	shardRoockTop;
+	/** @type {ShardBottom} */
+	shardKnightBottom;
+	/** @type {ShardTop} */
+	shardKnightTop;
+	/** @type {ShardBottom} */
+	shardQueenBottom;
+	/** @type {ShardTop} */
+	shardQueenTop;
 	/** @type {Array<Black_Tile|White_Tile>} */
 	tiles;
 	/** @type {Phaser.GameObjects.Image[]} */
@@ -1219,7 +1333,15 @@ class Level extends Phaser.Scene {
 	/** @type {Phaser.GameObjects.Image[]} */
 	promotionTiersBackground;
 	/** @type {Phaser.GameObjects.Text[]} */
-	shards;
+	shardsText;
+	/** @type {Array<ShardTop|ShardBottom>} */
+	shardsBishop;
+	/** @type {Array<ShardTop|ShardBottom>} */
+	shardsRoock;
+	/** @type {Array<ShardTop|ShardBottom>} */
+	shardsKnight;
+	/** @type {Array<ShardTop|ShardMiddle|ShardBottom>} */
+	shardsQueen;
 
 	/* START-USER-CODE */
 
@@ -1429,7 +1551,7 @@ class Level extends Phaser.Scene {
 
 
 				// Debugging lines
-				 
+
 				// this.cardRequest();
 			});
 		});
@@ -1660,7 +1782,15 @@ class Level extends Phaser.Scene {
 				playerID = parseInt(xhttp.responseText);
 
 				this.cardRequest();
+
+				//some shards funciton
+
+				this.shardRandom();
 				this.shardRequest();
+
+
+
+
 
 				this.updateGameState(playerID, (gameState) => {
 					this.updateBoardState(gameState, playerID, (boardState) => {
@@ -1671,7 +1801,7 @@ class Level extends Phaser.Scene {
 				// let canPlay = false;
 				// var amogus;
 				// amogus = setInterval(this.donkey, 2000, canPlay, amogus, playerID);
-				
+
 
 			}
 			//; can be deleted?
@@ -1692,11 +1822,11 @@ class Level extends Phaser.Scene {
 		// 	this.gameRequest(playerID);
 		// }, 4000)
 
-		
-		//Donkey function
-		
 
-		
+		//Donkey function
+
+
+
 
 	}
 
@@ -1906,7 +2036,7 @@ class Level extends Phaser.Scene {
 				if (canPlay) {
 					clearInterval(this.amogus);
 					console.log("im able to play!");
-					
+
 					//series of function to update the page
 					//this.cardRequest();
 					//this.shardRequest();
@@ -1916,7 +2046,7 @@ class Level extends Phaser.Scene {
 				}
 			}
 		  };
-		
+
 		  // Send a GET request to the server (just testing with /match/11 endpoint)
 		  xhttp.open("GET", "/state/donkey/1", true);
 		  xhttp.send();
@@ -1981,6 +2111,8 @@ class Level extends Phaser.Scene {
 	CardDisplay(cardReference, cardText, cardAmmount, cardArtReference, i){
 		//assigning done better, giving name of asset and color possibly. or cereate a name based of of the asset
 
+
+
 		cardReference.cardId = i + 1;
 		cardReference.ammount = cardAmmount;
 		cardReference.worm.scaleX = 1;
@@ -2009,6 +2141,7 @@ class Level extends Phaser.Scene {
 
 	fadeIntoScene(imgRef, dur) {
 		//imgRef.alpha = 0;
+		imgRef.visible = true;
 		this.tweens.add({
 			targets: imgRef,
 			alpha: 1,
@@ -2025,11 +2158,13 @@ class Level extends Phaser.Scene {
 			duration: dur,
 			ease: 'Power2'
 		});
+
+		imgRef.visible = false;
 	}
 
 	cardGreyOut(cardReference){
 		this.card.forEach(element => {
-			
+
 			if(element == cardReference){
 				element.worm.alpha = 1;
 				console.log("highlithing: " + element.cardId);
@@ -2042,7 +2177,7 @@ class Level extends Phaser.Scene {
 
 	cardUnGreyOut(){
 		this.card.forEach(element => {
-			
+
 			element.worm.alpha = 1;
 			console.log("highlithing ALL: " + element.cardId);
 
@@ -2056,9 +2191,66 @@ class Level extends Phaser.Scene {
 					// Parse the JSON response
 					var data = JSON.parse(xhttp.responseText);
 
-					for(let i = 0; i < data.length; i++){
-						this.shards[i].text = data[i].mps_shard_ammount + "/" + data[i].shard_ammount_needed;
+					var shardAssetNameT = "";
+					var shardAssetNameB = "";
+					var shardAssetNameM = "";
 
+
+					for(let i = 0; i < data.length; i++){
+
+						//Constructing the name for the card prefab
+						// shard + Top/Bottom + White/Black + Piece-type
+						shardAssetNameT = "shard";
+						shardAssetNameM = "shard";
+						shardAssetNameB = "shard";
+
+						if(data[i].mp_pc_id == 1){
+							shardAssetNameT += "TopWhite";
+							shardAssetNameM += "MiddleWhite";
+							shardAssetNameB += "BottomWhite";
+						}else if(data[i].mp_pc_id == 2){
+							shardAssetNameT += "TopBlack";
+							shardAssetNameM += "MiddleBlack";
+							shardAssetNameB += "BottomBlack";
+						}
+
+						//Detecting the piecce type
+						switch(data[i].card_id){
+							case 1:     //Bishop
+								shardAssetNameT += "Bishop";
+								shardAssetNameB += "Bishop";
+								this.shardDispaly(this.shardsBishop, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+							break;
+							case 2:     // Roock
+								shardAssetNameT += "Roock";
+								shardAssetNameB += "Roock";
+								this.shardDispaly(this.shardsRoock, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+							break;
+							case 3:     // Knight
+								shardAssetNameT += "Knight";
+								shardAssetNameB += "Knight";
+								this.shardDispaly(this.shardsKnight, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+							break;
+							case 4:     // Quween
+								shardAssetNameT += "Queen";
+								shardAssetNameM += "Queen";
+								shardAssetNameB += "Queen";
+								this.shardDispaly(this.shardsQueen, data[i].mps_shard_ammount, shardAssetNameT, shardAssetNameB, shardAssetNameM);
+							break;
+							default:
+								console.log("cannot shard for " + i);
+						}
+
+						//resetting for the successive shard
+						shardAssetNameT = "";
+						shardAssetNameM = "";
+						shardAssetNameB = "";
+
+
+						//TEXT functionality
+						// this.shardsText[i].text = data[i].mps_shard_ammount + "/" + data[i].shard_ammount_needed;
+						// if(i == 0)
+						// 	this.shardDispaly(this.shardsBishop, data[i].mps_shard_ammount);
 						//missing the img and animation;
 					}
 
@@ -2068,6 +2260,52 @@ class Level extends Phaser.Scene {
 			// Send a GET request to the server, need a way to get the playerId from the  coockies or when the match is accessed
 			xhttp.open("GET", "../state/shard/1", true);
 			xhttp.send();
+	}
+
+	shardRandom(){
+
+		//defines how randomly the shards should appear
+		this.shardsBishop.sort(()=> Math.random() - 0.5);
+		this.shardsRoock.sort(()=> Math.random() - 0.5);
+		this.shardsKnight.sort(()=> Math.random() - 0.5);
+		this.shardsQueen.sort(()=> Math.random() - 0.5);
+
+		// for(let i = 0; i < this.shardsBishop.length; i++){
+		// 	//const randomNum = Math.random() < 0.5 ? 0 : 1;
+		// 	console.log("Bishop shard index: " + this.shardsBishop[i].index);
+		// 	console.log("queen : " + orderQueen);
+		// 	//this.shardsBishop[i].setOrder(order[randomNum]);
+		// 	//this.shardsBishop[order[0]]
+		// }
+
+
+	}
+
+	shardDispaly(shardsReference, shardNum, shardAssetReferenceT, shardAssetReferenceB, shardAssetNameM){
+
+
+		if(shardNum > 0){
+			for(let i = 0; i < shardNum; i++){
+				shardsReference[i].visible = true;
+
+				if(shardsReference[i].index == 0){
+					//bottom display
+					shardsReference[i].setTexture(shardAssetReferenceB);
+
+				}else if(shardsReference[i].index == 2){
+					// top display
+					shardsReference[i].setTexture(shardAssetReferenceT);
+				}else if (shardsReference[i].index == 1){
+					// middle display
+					shardsReference[i].setTexture(shardAssetNameM);
+				}
+
+			}
+		}else{
+			for(let i = 0; i < shardNum; i++){
+				shardsReference[i].visible = false;
+			}
+		}
 	}
 
 	pTDisplay(ptIdSentDB, player_color_nane, pc_id, pTList){

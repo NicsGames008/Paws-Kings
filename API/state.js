@@ -81,7 +81,7 @@ router.get('/shard/:matchId', (request, response) => {
     }
 
     //returns the shard's ammount for both player, ordered by mp_pc_id
-    connection.execute('SELECT mps_shard_ammount, shard_ammount_needed FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Shard ON Shard.card_id = Match_Player_Shard.mps_shard_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
+    connection.execute('SELECT card_id, mps_shard_ammount, shard_ammount_needed, mp_pc_id  FROM `Match` INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id INNER JOIN Match_Player_Shard ON Match_Player_Shard.mps_mp_id = Match_Player.mp_id INNER JOIN Shard ON Shard.card_id = Match_Player_Shard.mps_shard_id WHERE match_id = ? AND mp_player_id = ? ORDER BY mp_pc_id, card_id;',
         [matchId, playerId],
         function (err, results, fields) {
             if (err){

@@ -36,11 +36,13 @@
             "x": 43,
             "y": 10,
             "text": "%adversaryName%",
-            "fontSize": "24px",
-            "color": "#9d38feff",
-            "shadow.offsetX": 10,
-            "shadow.offsetY": -10,
-            "shadow.fill": true
+            "fixedHeight": 30,
+            "fontSize": "30px",
+            "color": "#7f00f8ff",
+            "shadow.offsetX": -6,
+            "shadow.offsetY": -5,
+            "shadow.fill": true,
+            "shadow.color": "#972bff2b"
         },
         {
             "type": "Text",
@@ -50,11 +52,13 @@
             "x": 43,
             "y": 650,
             "text": "%userName%",
-            "fontSize": "24px",
+            "fixedHeight": 30,
+            "fontSize": "30px",
             "color": "#fff7bbff",
-            "shadow.offsetX": 10,
-            "shadow.offsetY": 10,
+            "shadow.offsetX": -4,
+            "shadow.offsetY": 5,
             "shadow.fill": true,
+            "shadow.color": "#fff5a821",
             "shadow.blur": 1
         },
         {
@@ -1706,6 +1710,22 @@
             "x": 1204,
             "y": 194,
             "text": "%Queen%"
+        },
+        {
+            "type": "Text",
+            "id": "d2866488-bafa-46db-84a9-0b8122e03113",
+            "label": "currentTurnColor",
+            "scope": "CLASS",
+            "x": 640,
+            "originX": 0.5,
+            "text": "%Color Playing%",
+            "fixedHeight": 46,
+            "align": "center",
+            "fontSize": "46px",
+            "backgroundColor": "",
+            "shadow.offsetY": -2,
+            "shadow.fill": true,
+            "shadow.color": "#13214177"
         }
     ],
     "plainObjects": [],

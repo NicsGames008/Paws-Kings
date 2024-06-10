@@ -29,12 +29,12 @@ class Level extends Phaser.Scene {
 		// advName
 		const advName = this.add.text(43, 10, "", {});
 		advName.text = "%adversaryName%";
-		advName.setStyle({ "color": "#9d38feff", "fontSize": "24px", "shadow.offsetX":10,"shadow.offsetY":-10,"shadow.fill":true});
+		advName.setStyle({ "color": "#7f00f8ff", "fixedHeight":30,"fontSize": "30px", "shadow.offsetX":-6,"shadow.offsetY":-5,"shadow.color": "#972bff2b", "shadow.fill":true});
 
 		// userName
 		const userName = this.add.text(43, 650, "", {});
 		userName.text = "%userName%";
-		userName.setStyle({ "color": "#fff7bbff", "fontSize": "24px", "shadow.offsetX":10,"shadow.offsetY":10,"shadow.blur":1,"shadow.fill":true});
+		userName.setStyle({ "color": "#fff7bbff", "fixedHeight":30,"fontSize": "30px", "shadow.offsetX":-4,"shadow.offsetY":5,"shadow.color": "#fff5a821", "shadow.blur":1,"shadow.fill":true});
 
 		// tilesContainer
 		const tilesContainer = this.add.container(322, 325);
@@ -657,6 +657,12 @@ class Level extends Phaser.Scene {
 		const text_19 = this.add.text(1204, 194, "", {});
 		text_19.text = "%Queen%";
 
+		// currentTurnColor
+		const currentTurnColor = this.add.text(640, 0, "", {});
+		currentTurnColor.setOrigin(0.5, 0);
+		currentTurnColor.text = "%Color Playing%";
+		currentTurnColor.setStyle({ "align": "center", "backgroundColor": "", "fixedHeight":46,"fontSize": "46px", "shadow.offsetY":-2,"shadow.color": "#13214177", "shadow.fill":true});
+
 		// lists
 		const tiles = [tile_64, tile_1, tile_2, tile_3, tile_4, tile_5, tile_6, tile_7, tile_8, tile_9, tile_10, tile_11, tile_12, tile_13, tile_14, tile_15, tile_16, tile_17, tile_18, tile_19, tile_20, tile_21, tile_22, tile_23, tile_24, tile_25, tile_26, tile_27, tile_28, tile_29, tile_30, tile_31, tile_32, tile_33, tile_34, tile_35, tile_36, tile_37, tile_38, tile_39, tile_40, tile_41, tile_42, tile_43, tile_44, tile_45, tile_46, tile_47, tile_48, tile_49, tile_50, tile_51, tile_52, tile_53, tile_54, tile_55, tile_56, tile_57, tile_58, tile_59, tile_60, tile_61, tile_62, tile_63];
 		const shardBackground = [shardBackground_1, shardBackground_2, shardBackground_3, shardBackground_4];
@@ -974,6 +980,7 @@ class Level extends Phaser.Scene {
 		this.text_17 = text_17;
 		this.text_18 = text_18;
 		this.text_19 = text_19;
+		this.currentTurnColor = currentTurnColor;
 		this.tiles = tiles;
 		this.shardBackground = shardBackground;
 		this.card = card;
@@ -1189,6 +1196,8 @@ class Level extends Phaser.Scene {
 	text_18;
 	/** @type {Phaser.GameObjects.Text} */
 	text_19;
+	/** @type {Phaser.GameObjects.Text} */
+	currentTurnColor;
 	/** @type {Array<Black_Tile|White_Tile>} */
 	tiles;
 	/** @type {Phaser.GameObjects.Image[]} */
@@ -1224,6 +1233,24 @@ class Level extends Phaser.Scene {
 					// Parse the JSON response
 					var gameState = JSON.parse(xhttp.responseText);
 
+					//Displays who's turn is it and changes color accordingly
+					//could be moved inside the following for so that the user can also see somehting like "White's turn(you)" or "Black's turn(opponent)"
+					if(gameState[0].match_pc_id == 1){ //White
+
+						//changes color
+						this.currentTurnColor.setColor("#fff7bbff");
+						//changes text	
+						this.currentTurnColor.text = "White's turn";
+
+					} else if (gameState[0].match_pc_id == 2){//Black
+
+						//changes color
+						this.currentTurnColor.setColor("#7f00f8ff");	
+						//changes text					
+						this.currentTurnColor.text = "Black's turn";
+
+					}
+
 					//Defines the player color and assigns it it's defined assets or rotation
 					for (let i = 0; i < gameState.length; i++) {
 						if (playerID == gameState[i].player_id) {
@@ -1234,7 +1261,7 @@ class Level extends Phaser.Scene {
 								//sets up the name according to position
 								//top = black
 								this.advName.text = gameState[1].player_name;
-								this.advName.setColor("#9d38feff");
+								this.advName.setColor("#7f00f8ff");
 
 								//bot = white
 								this.userName.text = gameState[0].player_name;
@@ -1257,12 +1284,12 @@ class Level extends Phaser.Scene {
 
 								//bottom = black
 								this.userName.text = gameState[1].player_name;
-								this.userName.setColor("#9d38feff");
+								this.userName.setColor("#7f00f8ff");
 
 								//inversion of side letters and numbers according to color.
 
-								this.reversingNotation2(this.numbers);
-								this.reversingNotation(this.letters);
+								this.reversingNumbers(this.numbers);
+								this.reversingLetter(this.letters);
 								// this.numbers.reverse();
 								// this.letters.reverse();
 
@@ -1285,55 +1312,25 @@ class Level extends Phaser.Scene {
 		xhttp.send();
 	}
 
-	reversingNotation(arr){
+	reversingLetter(arr){
 		let j = arr.length - 1;
-		//let originalArr = arr.slice().reverse();;
+		let arrLetters = ["A", "B", "C", "D","E", "F", "G", "H"];
 
-		let arrContents = ["A", "B", "C", "D","E", "F", "G", "H"];
 		for (let i = 0; i < arr.length; i++) {
-		
-			arr[i].text = arrContents[j];
+
+			arr[i].text = arrLetters[j];
 			j--;
 		}
-		
-		
-		//originalArr.reverse();
-
-		//console.log(originalArr);
-		// for (let i = 0; i < arr.length; i++) {
-
-		// 	arr[i].text = originalArr[i].text;
-		// 	console.log(arr[i].text);
-		// 	//arr[i].text = j;
-		// 	j--;
-		// }
-		console.log(" ");
 	}
 
-	reversingNotation2(arr){
+	reversingNumbers(arr){
 		let j = arr.length - 1;
-		//let originalArr = arr.slice().reverse();;
-		let arrContents2 =  [1, 2, 3, 4, 5, 6, 7,8];
-
+		let arrNumbers =  [1, 2, 3, 4, 5, 6, 7,8];
 
 		for (let i = 0; i < arr.length; i++) {
-		
-			arr[i].text = arrContents2[j];
+			arr[i].text = arrNumbers[j];
 			j--;
 		}
-		
-		
-		//originalArr.reverse();
-
-		//console.log(originalArr);
-		// for (let i = 0; i < arr.length; i++) {
-
-		// 	arr[i].text = originalArr[i].text;
-		// 	console.log(arr[i].text);
-		// 	//arr[i].text = j;
-		// 	j--;
-		// }
-		console.log(" ");
 	}
 
 	updateBoardState(gameState, playerID, callback) {

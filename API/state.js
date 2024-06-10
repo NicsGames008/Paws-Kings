@@ -221,4 +221,35 @@ function FillFleetingBoard(request, response, previusResults){
 //     return reversedArray;
 // }
 
+//------------------------------------Donkey function-------------------------------------------
+//                       continuosly asking if it's the user's turn
+
+router.get('/donkey/:matchId', (request, response) => {
+    // Get the data from the request
+    var matchId = request.params.matchId;
+    var playerId = request.session.playerID;
+
+    // if the vars are empty is gives an error message
+    if (!matchId){
+        response.send(" Missing data!");
+        return;
+    }
+
+    //Fetches the on-going match of said player id(both gatehr from coockies) and if the results legth is not 0, then sends back the color to be used to check if it's said player's turn
+    connection.execute('SELECT match_ms_id, match_pc_id AS currentColor, mp_player_id, mp_pc_id AS playerColor FROM `Match` INNER JOIN Player_Color ON Player_Color.pc_id = match_pc_id  INNER JOIN Match_Player ON Match_Player.mp_match_id = `Match`.match_id   WHERE match_id = ? AND mp_player_id = ?  AND match_ms_id = 1 ORDER BY mp_pc_id;',
+        [matchId, playerId],
+        function (err, results, fields) {
+            if (err){
+                response.send(err);
+            }else{
+                if(results.length == 0){
+                    response.send("Player/Match/On-Going found");
+                }else{
+                    response.send(results[0].currentColor == results[0].playerColor);
+                }
+            }
+        });
+});
+
+
 module.exports = router;

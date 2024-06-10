@@ -22,8 +22,7 @@
                     "label": "pTWhiteQueen_1",
                     "texture": {
                         "key": "PTWhiteQueen_1"
-                    },
-                    "y": 181
+                    }
                 }
             ]
         }

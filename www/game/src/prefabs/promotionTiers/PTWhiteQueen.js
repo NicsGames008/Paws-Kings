@@ -9,7 +9,7 @@ class PTWhiteQueen extends Phaser.GameObjects.Container {
 		super(scene, x ?? 78, y ?? 57);
 
 		// pTWhiteQueen_1
-		const pTWhiteQueen_1 = scene.add.image(0, 181, "PTWhiteQueen_1");
+		const pTWhiteQueen_1 = scene.add.image(0, 0, "PTWhiteQueen_1");
 		this.add(pTWhiteQueen_1);
 
 		/* START-USER-CTR-CODE */

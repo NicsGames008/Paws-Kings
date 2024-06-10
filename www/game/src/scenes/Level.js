@@ -1698,7 +1698,11 @@ class Level extends Phaser.Scene {
 							});			
 
 							this.updateGameState(playerID, (gameState) => {
-								this.updateBoardState(gameState, playerID, (boardState) => {});
+								this.updateBoardState(gameState, playerID, (boardState) => {
+									this.cardRequest();
+
+									this.shardRequest();
+								});
 							});
 
 							console.log("Move from ", possibleMoves[possibleMoves.length - 1].x, possibleMoves[possibleMoves.length - 1].y, " to position ", cordinates.x, cordinates.y);
@@ -2302,9 +2306,9 @@ class Level extends Phaser.Scene {
 
 			}
 		}else{
-			for(let i = 0; i < shardNum; i++){
-				shardsReference[i].visible = false;
-			}
+			shardsReference.forEach(element => {
+				element.visible = false;
+			});
 		}
 	}
 

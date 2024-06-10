@@ -1782,15 +1782,6 @@ class Level extends Phaser.Scene {
 		this.editorCreate();
 		var playerID = -1;
 
-		//---------------------------------------------------
-		//how it sohuld work:
-		//first iteration of the create, every asset get's called once, just for display reason.
-		// -> one iteration of the donkey is called, without the setInterval
-		//		->if returns false, sets the interval.
-		//		->if returns true,  all the assets are updated and then allows the user to move and everything.
-		//			-> at the end of the movement a setInterval of the donkey should be called.
-		//----------------------------------------------
-
 		//used for card clicking event
 		this.cardClicked();
 
@@ -1801,10 +1792,10 @@ class Level extends Phaser.Scene {
 			if (xhttp.readyState == 4) {
 				playerID = parseInt(xhttp.responseText);
 
+
 				this.cardRequest();
 
 				//some shards funciton
-
 				this.shardRandom();
 				this.shardRequest();
 
@@ -1817,262 +1808,20 @@ class Level extends Phaser.Scene {
 						this.tileClicked(playerID);
 					});
 				});
-
-				// let canPlay = false;
-				// var amogus;
-				// amogus = setInterval(this.donkey, 2000, canPlay, amogus, playerID);
-
-
 			}
-			//; can be deleted?
+
 		};
 		// Send a GET request to the server
 		xhttp.open("GET", "/signing/playerID", true);
 		xhttp.send();
-		//until here
 
-
-		// setInterval(() =>{
-		// 	console.log("Displaying everything");
-
-		// 	//funciton used purerly for display
-		// 	this.cardRequest();
-		// 	this.shardRequest();
-		// 	//series of function to update the page
-		// 	this.gameRequest(playerID);
-		// }, 4000)
-
-
-		//Donkey function
 
 
 
 
 	}
 
-	// //useless doneky
-	// gameRequest(playerID){
-	// 	this.gameStateRequest(playerID, (gameState) => {
-	// 		this.boardStateRequest(gameState, playerID, (boardState) => {
-	// 			this.tileRequest(playerID);
-	// 		});
-	// 	});
-	// }
 
-	// gameStateRequest(playerID, callback) {
-	// 	var xhttp = new XMLHttpRequest();
-	// 	xhttp.onreadystatechange = () => {
-	// 		if (xhttp.readyState == 4) {
-	// 			if (xhttp.status == 200) {
-	// 				// Parse the JSON response
-	// 				var gameState = JSON.parse(xhttp.responseText);
-
-	// 				//Displays who's turn is it and changes color accordingly
-	// 				//could be moved inside the following for so that the user can also see somehting like "White's turn(you)" or "Black's turn(opponent)"
-	// 				if(gameState[0].match_pc_id == 1){ //White
-
-	// 					//changes color
-	// 					this.currentTurnColor.setColor("#fff7bbff");
-	// 					//changes text	
-	// 					this.currentTurnColor.text = "White's turn";
-
-	// 				} else if (gameState[0].match_pc_id == 2){//Black
-
-	// 					//changes color
-	// 					this.currentTurnColor.setColor("#7f00f8ff");	
-	// 					//changes text					
-	// 					this.currentTurnColor.text = "Black's turn";
-
-	// 				}
-
-	// 				//Defines the player color and assigns it it's defined assets or rotation
-	// 				for (let i = 0; i < gameState.length; i++) {
-	// 					if (playerID == gameState[i].player_id) {
-	// 						if (gameState[i].mp_pc_id == 1) {
-	// 							//Functions for the white
-	// 							this.tilesContainer.angle = 0;
-
-	// 							//sets up the name according to position
-	// 							//top = black
-	// 							this.advName.text = gameState[1].player_name;
-	// 							this.advName.setColor("#7f00f8ff");
-
-	// 							//bot = white
-	// 							this.userName.text = gameState[0].player_name;
-	// 							this.userName.setColor("#fff7bbff");
-
-
-	// 							//Display Promotion Tiers
-	// 							//begins with initializing the id and it's img
-	// 							this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersWhite);
-
-
-	// 						} else if (gameState[i].mp_pc_id == 2) {
-	// 							//Functions for the black
-	// 							this.tilesContainer.angle = -180;
-
-	// 							//sets up the name accordingly to position
-	// 							//top = white
-	// 							this.advName.text = gameState[0].player_name;
-	// 							this.advName.setColor("#fff7bbff");
-
-	// 							//bottom = black
-	// 							this.userName.text = gameState[1].player_name;
-	// 							this.userName.setColor("#7f00f8ff");
-
-	// 							//inversion of side letters and numbers according to color.
-
-	// 							this.reversingNumbers(this.numbers);
-	// 							this.reversingLetter(this.letters);
-	// 							// this.numbers.reverse();
-	// 							// this.letters.reverse();
-
-	// 							//Display Promotion Tiers
-	// 							//begins with initializing the id and it's img
-	// 							this.pTDisplay(gameState[i].mp_ut_id, gameState[i].pc_name, gameState[i].mp_pc_id, this.promotionTiersBlack);
-	// 						}
-	// 					}
-	// 				}
-
-	// 				callback(gameState);
-	// 			} else {
-	// 				console.error('Error fetching game state');
-	// 			}
-	// 		}
-	// 	};
-
-	// 	// Send a GET request to the server (just testing with /match/11 endpoint)
-	// 	xhttp.open("GET", "../state/game", true);
-	// 	xhttp.send();
-	// }
-
-	// boardStateRequest(gameState, playerID, callback) {
-	// 	var xhttp = new XMLHttpRequest();
-	// 	xhttp.onreadystatechange = () => {
-	// 		if (xhttp.readyState == 4) {
-	// 			if (xhttp.status == 200) {
-	// 				// Parse the JSON response
-	// 				var boardState = JSON.parse(xhttp.responseText);
-
-	// 				boardState.forEach(state => {
-	// 					const tileElement = this.tiles.find(tile => tile.tileId === state.tile_id);
-	// 					if (tileElement) {
-	// 						switch (state.mpp_piece_id) {
-	// 							case 1:
-	// 								if (state.mp_pc_id === 1) {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteBishop);
-	// 								} else {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackBishop);
-	// 								}
-	// 								break;
-	// 							case 2:
-	// 								if (state.mp_pc_id === 1) {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteRook);
-	// 								} else {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackRook);
-	// 								}
-	// 								break;
-	// 							case 3:
-	// 								if (state.mp_pc_id === 1) {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKnight);
-	// 								} else {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKnight);
-	// 								}
-	// 								break;
-	// 							case 4:
-	// 								if (state.mp_pc_id === 1) {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteQueen);
-	// 								} else {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackQueen);
-	// 								}
-	// 								break;
-	// 							case 5:
-	// 								if (state.mp_pc_id === 1) {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhitePawn);
-	// 								} else {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackPawn);
-	// 								}
-	// 								break;
-	// 							case 6:
-	// 								if (state.mp_pc_id === 1) {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, WhiteKing);
-	// 								} else {
-	// 									placePiece.call(this, boardState, gameState, playerID, tileElement, BlackKing);
-	// 								}
-	// 								break;
-	// 						}
-	// 					}
-	// 				});
-
-	// 				callback(boardState);
-	// 			} else {
-	// 				console.error('Error fetching board state');
-	// 			}
-	// 		}
-	// 	};
-
-	// 	// Send a GET request to the server (just testing with /match/1 endpoint)
-	// 	xhttp.open("GET", "../state/boardR", true);
-	// 	xhttp.send();
-	// }
-
-	// tileRequest(playerID) {
-	// 	// Loop through each tile in the 'tiles' array
-	// 	for (let index = 0; index < this.tiles.length; index++) {
-	// 		// Get the current tile element at the 'index' position
-	// 		const element = this.tiles[index];
-
-	// 		// Add an event listener to the tile for the 'pointerdown' event
-	// 		this.updateGameState(playerID, (gameState) => {
-	// 			this.updateBoardState(gameState, playerID, (boardState) => {
-	// 				// Extract the number from the tile's name using the 'extractNumberFromString' function
-	// 				var tileId = element.tileId;
-
-
-	// 				this.tiles.forEach(element => {
-	// 					const children = element.getAll();
-	// 					const childToDestroyInHell = children.find(child => child.name === 'dot' || child.name === 'redSquare');
-	// 					if (childToDestroyInHell) {
-	// 						childToDestroyInHell.destroy();
-	// 						element.remove(childToDestroyInHell);
-	// 					}
-	// 				});
-
-	// 			});
-	// 		});
-
-	// 	}
-	// }
-
-	// donkey(canPlay, donkeyFunction, playerID){
-	// 	var xhttp = new XMLHttpRequest();
-	// 	  xhttp.onreadystatechange = () => {
-	// 		if (xhttp.readyState == 4) {
-	// 			//sends back true if you can play and false if you cannot play
-	// 		  	canPlay = JSON.parse(xhttp.responseText);
-
-	// 		  	//console.log(canPlay);
-
-	// 			if (canPlay) {
-	// 				clearInterval(this.amogus);
-	// 				//console.log("im able to play!");
-
-	// 				//series of function to update the page
-	// 				//this.cardRequest();
-	// 				//this.shardRequest();
-	// 				//this.gameRequest(playerID);
-	// 			}else{
-	// 				//console.log("it's not your turn to play yet!")
-	// 			}
-	// 		}
-	// 	  };
-
-	// 	  // Send a GET request to the server (just testing with /match/11 endpoint)
-	// 	  xhttp.open("GET", "/state/donkey", true);
-	// 	  xhttp.send();
-	// }
-
-	// //end of useless donkey funcitons
 
 
 	cardRequest(){

@@ -267,7 +267,7 @@ function CheckCanPromote(request, response, matchId, playerId, callback) {
 
 function UpdateCanPromoteState(request, response, matchId, playerId, canPromote) {
 
-    connection.execute('UPDATE Match_Player SET mp_canPromote = ? WHERE mp_match_id = ? AND mp_player_id = ?;',
+    connection.execute('UPDATE Match_Player SET mp_canPromote = ? WHERE mp_match_id = ? AND mp_player_id = ?',
     [canPromote, matchId, playerId],
     function (err, results, fields) {
         if (err) {
@@ -409,7 +409,7 @@ function UpdatePieceType(request, response, cardId, startX, startY, matchId) {
 
     var mppId;
 
-    connection.execute('SELECT mpp_id FROM match_player_piece INNER JOIN tile ON tile_id = mpp_tile_id INNER JOIN match_player ON mp_id = mpp_mp_id WHERE mp_match_id = ? AND (tile_x = ? AND tile_y = ?);',
+    connection.execute('SELECT mpp_id FROM Match_Player_Piece INNER JOIN Tile ON tile_id = mpp_tile_id INNER JOIN Match_Player ON mp_id = mpp_mp_id WHERE mp_match_id = ? AND (tile_x = ? AND tile_y = ?);',
     [matchId, startX, startY],
     function (err, results, fields) {
         if (err) {
@@ -468,7 +468,7 @@ function ChangePieceState(request, response, endX, endY, matchId, state){
 function ChangePieceLocation(request, response, startX, startY, endX, endY, matchId){
     var mppId;
 
-    connection.execute('SELECT mpp_id FROM match_player_piece INNER JOIN tile ON tile_id = mpp_tile_id INNER JOIN match_player ON mp_id = mpp_mp_id WHERE mp_match_id = ? AND (tile_x = ? AND tile_y = ?);',
+    connection.execute('SELECT mpp_id FROM Match_Player_Piece INNER JOIN Tile ON tile_id = mpp_tile_id INNER JOIN Match_Player ON mp_id = mpp_mp_id WHERE mp_match_id = ? AND (tile_x = ? AND tile_y = ?);',
     [matchId, startX, startY],
     function (err, results, fields) {
         if (err) {

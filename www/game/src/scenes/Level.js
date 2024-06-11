@@ -1806,27 +1806,6 @@ class Level extends Phaser.Scene {
 						this.tileClicked(playerID);
 					});
 				});
-
-				// Repeatedly execute the block of code every two seconds
-				setInterval(() => {
-					this.updateGameState(playerID, (gameState) => {
-						if (gameState.match_pc_id !== playerID) {
-							
-							this.tilesContainer.list
-							.filter(child => !child.name.startsWith('Tile_')) // Ignore 'Tile_X' elements
-							.forEach(child => {
-								child.destroy();
-								// Ensure you have a reference to the parent container to remove the child
-								this.tilesContainer.remove(child);
-								
-							});	
-
-							// Run the block of code
-							this.updateBoardState(gameState, playerID, (boardState) => {
-							});
-						}
-					});
-				}, 2000);
 			}
 
 		};

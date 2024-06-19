@@ -94,7 +94,7 @@ function CreateMatchPlayerAsFirst(request, response, matchId, playerId, colorUse
 function InsertIntoMatchPlayerAsSecond(request, response, matchId, playerId, colorId){
 
     //used to calcolate the opponent's color, then creates the matc_players. GIVEN the match
-    connection.execute('INSERT INTO match_player(mp_match_id, mp_player_id, mp_ut_id, mp_pc_id, mp_canPromote) VALUES (?, ?, 1, ?, 1);',
+    connection.execute('INSERT INTO Match_Player(mp_match_id, mp_player_id, mp_ut_id, mp_pc_id, mp_canPromote) VALUES (?, ?, 1, ?, 1);',
     [matchId, playerId, colorId],
     function (err, results, fields) {
         if (err) {
@@ -221,7 +221,7 @@ function AllocatingShards(matchPlayerId, cardId){
 
 //Changes the state of a match, from "seathcing for a match" -> "on-going"
 function ReadyMatch(request, response, matchId){
-    connection.execute('UPDATE `match` SET match_ms_id = 1 WHERE match_id = ?;',
+    connection.execute('UPDATE `Match` SET match_ms_id = 1 WHERE match_id = ?;',
     [matchId],
     function (err, results, fields) {
         if (err) {

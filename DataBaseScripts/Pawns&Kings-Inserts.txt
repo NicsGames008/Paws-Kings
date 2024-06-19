@@ -213,7 +213,7 @@ insert into Player (player_name, player_email, player_password) values('Deal wit
 #`Match`
 insert into `Match` (match_ms_id, match_pc_id) values(1, 1);	#Id: 1 / on-going 				/ white turn(2)
 insert into `Match` (match_ms_id, match_pc_id) values(2, 1);	#Id: 2 / finished 				/ white won(1)
-insert into `Match` (match_ms_id, match_pc_id) values(3, 2);	#Id: 3 / searching for a match 	/ black(2)
+insert into `Match` (match_ms_id, match_pc_id) values(4, 2);	#Id: 3 / stopped seaching for a match 	/ black(2)
 insert into `Match` (match_ms_id, match_pc_id) values(1, 1);	#Id: 4 / on-going 				/ white turn(1)
 #For Testing
 insert into `Match` (match_ms_id, match_pc_id) values(1, 1);	#Id: 5 / on-going 				/ white turn(1)
